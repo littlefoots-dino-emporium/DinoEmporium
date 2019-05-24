@@ -25,7 +25,7 @@ namespace DinoEmporium.Controllers
         [HttpPost("register")]
         public ActionResult AddCustomer(CreateCustomerRequest createRequest)
         {
-            if (!_validator.Validate(createRequest))
+            if (_validator.Validate(createRequest))
                 return BadRequest(new { error = "customer must have a First Name, Last Name and Email " });
             var newCustomer = _customerRepository.AddCustomer(createRequest.FirstName, createRequest.LastName, createRequest.Date, createRequest.Email);
             return Created($"/api/customers/{newCustomer.Id}", newCustomer);
@@ -36,6 +36,20 @@ namespace DinoEmporium.Controllers
         {
             var allCustomers = _customerRepository.GetCustomers();
             return Ok(allCustomers);
+        }
+
+        [HttpGet("getSingleCustomer")]
+        public ActionResult GetSingleCustomer(int id)
+        {
+            var singleCustomer = _customerRepository.GetSingleCustomer(id);
+            return Ok(singleCustomer);
+        }
+
+        [HttpPut("updateCustomer")]
+        public ActionResult UpdateCustomer(CreateCustomerUpdateRequest createUpdateRequest, int id)
+        {
+            var user = _customerRepository.UpdateCustomer(id, createUpdateRequest.FirstName, createUpdateRequest.LastName, createUpdateRequest.Date, createUpdateRequest.Email);
+            return Ok(user);
         }
     }
 }
