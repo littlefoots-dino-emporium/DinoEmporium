@@ -36,7 +36,7 @@ namespace DinoEmporium.Controllers
 
         }
 
-        [HttpGet("allPayments")]
+        [HttpGet("allpayments")]
         public ActionResult GetAllPaymentInformation()
         {
             var paymentInformation = _repository.GetAllPaymentInformation();
@@ -44,7 +44,7 @@ namespace DinoEmporium.Controllers
             return Ok(paymentInformation);
         }
 
-        [HttpGet("lastPaymentUsed")]
+        [HttpGet("lastpaymentused")]
         public ActionResult LastUsedPaymentInformation()
         {
             var previousPaymentInformation = _repository.LastUsedPaymentInformation();

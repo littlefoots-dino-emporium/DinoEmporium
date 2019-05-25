@@ -1,4 +1,3 @@
-using DinoEmporium.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DinoEmporium.Data;
 
 namespace DinoEmporium
 {
@@ -22,6 +22,8 @@ namespace DinoEmporium
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DbConfiguration>(Configuration); // we are telling ASP.Net how to build things on this line and the above line
+            services.AddTransient<CustomerRespository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.Configure<DbConfiguration>(Configuration);
@@ -46,10 +48,10 @@ namespace DinoEmporium
                 app.UseHsts();
             }
 
-
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseStaticFiles();
 
+            app.UseMvc();
         }
     }
     public class DbConfiguration
@@ -57,3 +59,4 @@ namespace DinoEmporium
         public string ConnectionString { get; set; }
     }
 }
+
