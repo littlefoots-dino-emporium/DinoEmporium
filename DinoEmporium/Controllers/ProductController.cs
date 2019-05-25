@@ -35,6 +35,13 @@ namespace DinoEmporium.Controllers
 
             return Created($"api/product/{newProduct.Id}", newProduct);
         }
+
+        [HttpGet]
+        public ActionResult GetAllProducts()
+        {
+            var products = _repository.GetAll();
+            return Ok(products);
+        }
     }
 
     public class CreateProductRequestValidator
