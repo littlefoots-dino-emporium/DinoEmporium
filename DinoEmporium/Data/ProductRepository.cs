@@ -10,15 +10,15 @@ namespace DinoEmporium.Data
 {
     public class ProductRepository
     {
-        const string ConnectionString = "Server=localhost;Database=SwordAndFather;Trusted_Connection=True;";
-        public Product AddProduct(decimal price, string title, string description, decimal quantity)
+        const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
+        public Product AddProduct(decimal price, string title, string description, int quantity)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newProduct = db.QueryFirstOrDefault<Product>(
-                                                                @"Insert into products(price, title, description, quantity)
-                                                                Output inserted.*
-                                                                Values(@price, @title, @description, @quantity)",
+                                                                @"insert into Product (price, title, description, quantity)
+                                                                values (@price, @title, @description, @quantity)
+                                                                select * from Product",
                                                                 new { price, title, description, quantity });
 
                 if(newProduct != null)

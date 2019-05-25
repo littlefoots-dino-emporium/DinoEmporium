@@ -16,8 +16,9 @@ namespace DinoEmporium.Controllers
         readonly CreateProductRequestValidator _validator;
         readonly ProductRepository _repository;
 
-        public ProductController()
+        public ProductController(ProductRepository repository)
         {
+            _repository = repository;
             _validator = new CreateProductRequestValidator();
         }
 
@@ -25,7 +26,7 @@ namespace DinoEmporium.Controllers
         [HttpPost]
         public ActionResult AddProduct(CreateProductRequest createRequest)
         {
-            if (!_validator.Validate(createRequest))
+            if (_validator.Validate(createRequest))
             {
                 return BadRequest("All product information must be filled out.");
             }
