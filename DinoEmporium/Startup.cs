@@ -21,6 +21,8 @@ namespace DinoEmporium
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DbConfiguration>(Configuration); // we are telling ASP.Net how to build things on this line and the above line
+            services.AddTransient<CustomerRespository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Configure<DbConfiguration>(Configuration);
             services.AddTransient<ProductRepository>();
@@ -54,9 +56,9 @@ namespace DinoEmporium
             app.UseMvc();
         }
     }
-
     public class DbConfiguration
     {
         public string ConnectionString { get; set; }
     }
 }
+
