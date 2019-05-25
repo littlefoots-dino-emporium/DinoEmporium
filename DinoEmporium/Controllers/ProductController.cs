@@ -22,7 +22,7 @@ namespace DinoEmporium.Controllers
             _validator = new CreateProductRequestValidator();
         }
 
-
+        //creating a new product
         [HttpPost]
         public ActionResult AddProduct(CreateProductRequest createRequest)
         {
@@ -36,12 +36,24 @@ namespace DinoEmporium.Controllers
             return Created($"api/product/{newProduct.Id}", newProduct);
         }
 
+        //getting all products
         [HttpGet]
         public ActionResult GetAllProducts()
         {
             var products = _repository.GetAll();
             return Ok(products);
         }
+
+        //get single product 
+        [HttpGet]
+        public ActionResult GetSingleProduct(int id, int productTypeId)
+        {
+             
+        }
+
+        //update product
+
+        //delete product
     }
 
     public class CreateProductRequestValidator
