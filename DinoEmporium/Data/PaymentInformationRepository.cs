@@ -40,5 +40,15 @@ namespace DinoEmporium.Data
                 return allPaymentInformation;
             }
         }
+
+        public IEnumerable<PaymentInformation> LastUsedPaymentInformation()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var lastUsedPaymentInformation = db.Query<PaymentInformation>("SELECT TOP 1 * FROM paymentinformation ORDER BY ID DESC").ToList();
+
+                return lastUsedPaymentInformation;
+            }
+        }
     }
 }
