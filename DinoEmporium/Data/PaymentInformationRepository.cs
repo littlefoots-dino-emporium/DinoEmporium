@@ -30,5 +30,15 @@ namespace DinoEmporium.Data
 
             throw new Exception("No user created");
         }
+
+        public IEnumerable<PaymentInformation> GetAllPaymentInformation()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var allPaymentInformation = db.Query<PaymentInformation>("Select * from paymentinformation").ToList();
+
+                return allPaymentInformation;
+            }
+        }
     }
 }

@@ -35,6 +35,13 @@ namespace DinoEmporium.Controllers
             return Created($"api/users/{newPaymentInformation.Id}", newPaymentInformation);
 
         }
+        [HttpGet]
+        public ActionResult GetAllPaymentInformation()
+        {
+            var paymentInformation = _repository.GetAllPaymentInformation();
+
+            return Ok(paymentInformation);
+        }
     }
 
 
