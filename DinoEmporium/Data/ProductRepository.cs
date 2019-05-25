@@ -39,13 +39,14 @@ namespace DinoEmporium.Data
             }
         }
 
-        public Product GetSingleProduct(int id, int productTypeId)
+        public Product GetSingleProduct(int id)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var singleProduct = db.QueryFirstOrDefault<Product>(@"select *
                                                                     from Product
-                                                                    where id = ProductTypeId");
+                                                                    where id = @id",
+                                                                    new { id });
                 return singleProduct;
             }
         }

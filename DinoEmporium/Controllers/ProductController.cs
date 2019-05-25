@@ -37,7 +37,7 @@ namespace DinoEmporium.Controllers
         }
 
         //getting all products
-        [HttpGet]
+        [HttpGet("getAllProducts")]
         public ActionResult GetAllProducts()
         {
             var products = _repository.GetAll();
@@ -45,10 +45,11 @@ namespace DinoEmporium.Controllers
         }
 
         //get single product 
-        [HttpGet]
-        public ActionResult GetSingleProduct(int id, int productTypeId)
+        [HttpGet("getSingleProduct/{id}")]
+        public ActionResult GetSingleProduct(int id)
         {
-             
+            var singleProduct = _repository.GetSingleProduct(id);
+            return Ok(singleProduct);
         }
 
         //update product
