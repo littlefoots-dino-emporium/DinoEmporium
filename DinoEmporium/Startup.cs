@@ -24,6 +24,9 @@ namespace DinoEmporium
             services.Configure<DbConfiguration>(Configuration); // we are telling ASP.Net how to build things on this line and the above line
             services.AddTransient<CustomerRespository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<DbConfiguration>(Configuration);
+            services.AddTransient<ProductRepository>();
+
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -57,7 +60,5 @@ namespace DinoEmporium
     {
         public string ConnectionString { get; set; }
     }
-
-
 }
 
