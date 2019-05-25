@@ -19,6 +19,7 @@ namespace DinoEmporium
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<DbConfiguration>(Configuration); // we are telling ASP.Net how to build things on this line and the above line
@@ -28,12 +29,14 @@ namespace DinoEmporium
             services.AddTransient<ProductRepository>();
 
 
-            // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
+            services.Configure<DbConfiguration>(Configuration);
+
+            services.AddTransient<PaymentInformationRepository>();
+            //services.AddTransient<UserRepository>();
+
+            //services.AddTransient<ITargetRepository>(builder => builder.GetService<StubTargetRepository>());
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -44,14 +47,12 @@ namespace DinoEmporium
             }
             else
             {
-                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseMvc();
         }
