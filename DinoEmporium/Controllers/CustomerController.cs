@@ -38,17 +38,17 @@ namespace DinoEmporium.Controllers
             return Ok(allCustomers);
         }
 
-        [HttpGet("getSingleCustomer")]
+        [HttpGet("{id}")]
         public ActionResult GetSingleCustomer(int id)
         {
             var singleCustomer = _customerRepository.GetSingleCustomer(id);
             return Ok(singleCustomer);
         }
 
-        [HttpPut("updateCustomer")]
-        public ActionResult UpdateCustomer(CreateCustomerUpdateRequest createUpdateRequest, int id)
+        [HttpPut("updateCustomer/{id}")]
+        public ActionResult UpdateCustomer(int id, Customer customer)
         {
-            var user = _customerRepository.UpdateCustomer(id, createUpdateRequest.FirstName, createUpdateRequest.LastName, createUpdateRequest.Date, createUpdateRequest.Email);
+            var user = _customerRepository.UpdateCustomer(customer);
             return Ok(user);
         }
     }

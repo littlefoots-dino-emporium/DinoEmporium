@@ -10,7 +10,7 @@ namespace DinoEmporium.Validator
     {
         public bool Validate(CreateCustomerRequest requestToValidate)
         {
-            return !(string.IsNullOrEmpty(requestToValidate.FirstName)
+            return (string.IsNullOrEmpty(requestToValidate.FirstName)
                 || string.IsNullOrEmpty(requestToValidate.LastName)
                 || string.IsNullOrEmpty(requestToValidate.Email));
         }

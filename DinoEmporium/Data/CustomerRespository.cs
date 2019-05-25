@@ -12,19 +12,21 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Customer AddCustomer(string firstName, string lastName, DateTime dateTime, string email)
+        public Customer AddCustomer(string firstName, string lastName, DateTime date, string email)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var newCustomer = db.QueryFirstOrDefault<Customer>(@"
-                    Insert into users (firstName,lastName, dateTime, email)
-                    Output inserted.*
-                    Values(@firstName,@lastName,@dateTime,@email)",
-                    new { firstName, lastName, dateTime, email });
+                // var addCustomerInformation = db.CreateCommand();
 
-                if (newCustomer != null)
+                var addCustomerInformation= db.QueryFirstOrDefault<Customer>(@"
+                    Insert into customer (firstName,lastName, date, email)
+                    Output inserted.*
+                    Values(@firstName,@lastName,@date,@email)",
+                    new { firstName, lastName, date, email });             
+
+                if (addCustomerInformation != null)
                 {
-                    return newCustomer;
+                    return addCustomerInformation;
                 }
             }
 
@@ -55,23 +57,19 @@ namespace DinoEmporium.Data
             }
         }
 
-        public Customer UpdateCustomer(int id, string firstName, string lastName, DateTime date, string email)
+        public Customer UpdateCustomer(Customer CustomerInformation)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var updateCustomerCommand = db.CreateCommand();
-                updateCustomerCommand.Parameters.AddWithValue("@id", id);
-                updateCustomerCommand.CommandText = @"Update Customer
+
+                var updateCustomer = @"Update Customer
                             Set firstName = @firstName,
                                 lastName = @lastName,
                                 date = @date,
                                 email = @email
                             Where id = @id";
-                updateCustomerCommand.Parameters.AddWithValue("firstName", firstName);
-                updateCustomerCommand.Parameters.AddWithValue("lastName", lastName);
-                updateCustomerCommand.Parameters.AddWithValue("date", date);
-                updateCustomerCommand.Parameters.AddWithValue("email", email);
-                var numberOfRowsUpdated = updateCustomerCommand.ExecuteNonQuery();
+           
+                var numberOfRowsUpdated = db.Execute(updateCustomer, CustomerInformation);
 
                 throw new Exception("Could not update user");
             }
