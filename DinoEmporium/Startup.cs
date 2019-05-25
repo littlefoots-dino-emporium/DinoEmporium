@@ -25,6 +25,9 @@ namespace DinoEmporium
             services.Configure<DbConfiguration>(Configuration); // we are telling ASP.Net how to build things on this line and the above line
             services.AddTransient<CustomerRespository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<DbConfiguration>(Configuration);
+            services.AddTransient<ProductRepository>();
+
 
             services.Configure<DbConfiguration>(Configuration);
 
