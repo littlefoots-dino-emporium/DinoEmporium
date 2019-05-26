@@ -11,6 +11,8 @@ namespace DinoEmporium.Data
     public class ProductRepository
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
+        private readonly object connection;
+
         public Product AddProduct(decimal price, string title, string description, int quantity)
         {
             using (var db = new SqlConnection(ConnectionString))
@@ -49,6 +51,32 @@ namespace DinoEmporium.Data
                                                                     new { id });
                 return singleProduct;
             }
+        }
+
+        public Product UpdateSingleProduct(Product singleProduct)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var sqlQuery = @"update product
+                                        set quantity = @quantity,
+                                            price = @price,
+                                            title = @title,
+                                            description = @description
+                                            output inserted.*
+                                            where id = @id";
+                var updatedProduct = db.QueryFirstOrDefault<Product>(
+                                                                    sqlQuery,  
+                                                                    new {
+                                                                        id = singleProduct.Id,
+                                                                        quantity = singleProduct.Quantity,
+                                                                        price = singleProduct.Price,
+                                                                        title = singleProduct.Title,
+                                                                        description = singleProduct.Description
+                                                                        });
+                return updatedProduct;
+            }
+            throw new Exception("Could not update product.");
+
         }
     }
 }
