@@ -40,5 +40,22 @@ namespace DinoEmporium.Data
                 return productTypes;
             }
         }
+
+        public ProductType UpdateProductType(ProductType singleProductType)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updateProductType = db.QueryFirstOrDefault<ProductType>(@"update productType
+                                                                              set productName = @productName
+                                                                              output inserted.*
+                                                                              where id = @id",
+                                                                              new {
+                                                                                  id = singleProductType.Id,
+                                                                                  productName = singleProductType.ProductName
+                                                                                  });
+                return updateProductType;
+            }
+            throw new System.Exception("Could not update the product type.");
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace DinoEmporium.Controllers
             return Created($"api/product/{newProduct.Id}", newProduct);
         }
 
-        //getting all products
+        //get all products
         [HttpGet("getAllProducts")]
         public ActionResult GetAllProducts()
         {
