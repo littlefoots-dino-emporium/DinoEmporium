@@ -41,6 +41,18 @@ namespace DinoEmporium.Data
             }
         }
 
+        public ProductType GetSingleProductType(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var singleProductType = db.QueryFirstOrDefault<ProductType>(@"select *
+                                                                              from ProductType
+                                                                              where id = @id",
+                                                                              new { id });
+                return singleProductType;
+            }
+        }
+
         public ProductType UpdateProductType(ProductType singleProductType)
         {
             using (var db = new SqlConnection(ConnectionString))

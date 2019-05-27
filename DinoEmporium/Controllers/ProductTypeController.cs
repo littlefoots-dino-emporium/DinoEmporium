@@ -46,6 +46,12 @@ namespace DinoEmporium.Controllers
         }
 
         //get single productType
+        [HttpGet("getSingleType/{id}")]
+        public ActionResult GetSingleType(int id)
+        {
+            var singleProductType = _repository.GetSingleProductType(id);
+            return Ok(singleProductType);
+        }
 
         //update productType
         [HttpPut("{id}")]
