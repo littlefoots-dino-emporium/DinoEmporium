@@ -61,13 +61,25 @@ namespace DinoEmporium.Data
                                                                               set productName = @productName
                                                                               output inserted.*
                                                                               where id = @id",
-                                                                              new {
+                                                                               new {
                                                                                   id = singleProductType.Id,
                                                                                   productName = singleProductType.ProductName
                                                                                   });
                 return updateProductType;
             }
             throw new System.Exception("Could not update the product type.");
+        }
+
+        public ProductType DeleteSingleType(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var deleteProductType = db.QueryFirstOrDefault<ProductType>(@"delete
+                                                                              from ProductType
+                                                                              where id = @id",
+                                                                              new { id });
+                return deleteProductType;
+            }
         }
     }
 }
