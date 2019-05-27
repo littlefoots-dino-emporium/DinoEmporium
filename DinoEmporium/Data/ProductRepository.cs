@@ -72,7 +72,7 @@ namespace DinoEmporium.Data
                                                                  });
                 return updatedProduct;
             }
-            throw new Exception("Could not update product.");
+            throw new System.Exception("Could not update product.");
         }
 
         public Product DeleteSingleProduct(int id)

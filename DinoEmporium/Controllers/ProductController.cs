@@ -11,7 +11,7 @@ namespace DinoEmporium.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : Controller
+    public class ProductController : ControllerBase
     {
         readonly CreateProductRequestValidator _validator;
         readonly ProductRepository _repository;
