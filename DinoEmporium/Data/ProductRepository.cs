@@ -57,22 +57,22 @@ namespace DinoEmporium.Data
             using (var db = new SqlConnection(ConnectionString))
             {
                 var updatedProduct = db.QueryFirstOrDefault <Product>(@"update product
-                                        set quantity = @quantity,
-                                            price = @price,
-                                            title = @title,
-                                            description = @description
-                                            output inserted.*
-                                            where id = @id",
-                                                            new {
-                                                                 id = singleProduct.Id,
-                                                                 quantity = singleProduct.Quantity,
-                                                                 price = singleProduct.Price,
-                                                                 title = singleProduct.Title,
-                                                                 description = singleProduct.Description
-                                                                 });
+                                                                        set quantity = @quantity,
+                                                                        price = @price,
+                                                                        title = @title,
+                                                                        description = @description
+                                                                        output inserted.*
+                                                                        where id = @id",
+                                                                        new {
+                                                                            id = singleProduct.Id,
+                                                                            quantity = singleProduct.Quantity,
+                                                                            price = singleProduct.Price,
+                                                                            title = singleProduct.Title,
+                                                                            description = singleProduct.Description
+                                                                            });
                 return updatedProduct;
             }
-            throw new Exception("Could not update product.");
+            throw new System.Exception("Could not update product.");
         }
 
         public Product DeleteSingleProduct(int id)
