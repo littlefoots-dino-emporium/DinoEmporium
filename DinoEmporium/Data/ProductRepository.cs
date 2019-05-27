@@ -11,7 +11,6 @@ namespace DinoEmporium.Data
     public class ProductRepository
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
-        private readonly object connection;
 
         public Product AddProduct(decimal price, string title, string description, int quantity)
         {
@@ -57,26 +56,35 @@ namespace DinoEmporium.Data
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var sqlQuery = @"update product
+                var updatedProduct = db.QueryFirstOrDefault <Product>(@"update product
                                         set quantity = @quantity,
                                             price = @price,
                                             title = @title,
                                             description = @description
                                             output inserted.*
-                                            where id = @id";
-                var updatedProduct = db.QueryFirstOrDefault<Product>(
-                                                                    sqlQuery,  
-                                                                    new {
-                                                                        id = singleProduct.Id,
-                                                                        quantity = singleProduct.Quantity,
-                                                                        price = singleProduct.Price,
-                                                                        title = singleProduct.Title,
-                                                                        description = singleProduct.Description
-                                                                        });
+                                            where id = @id",
+                                                            new {
+                                                                 id = singleProduct.Id,
+                                                                 quantity = singleProduct.Quantity,
+                                                                 price = singleProduct.Price,
+                                                                 title = singleProduct.Title,
+                                                                 description = singleProduct.Description
+                                                                 });
                 return updatedProduct;
             }
             throw new Exception("Could not update product.");
+        }
 
+        public Product DeleteSingleProduct(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var deletedProduct = db.QueryFirstOrDefault<Product>(@"delete
+                                                                       from Product
+                                                                       where id = @id",
+                                                                       new { id });
+                return deletedProduct;
+            }
         }
     }
 }
