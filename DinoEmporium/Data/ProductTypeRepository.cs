@@ -30,5 +30,15 @@ namespace DinoEmporium.Data
 
             throw new System.Exception("No new product type found.");
         }
+
+        public IEnumerable<ProductType> GetAll()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var productTypes = db.Query<ProductType>("select * from ProductType").ToList();
+
+                return productTypes;
+            }
+        }
     }
 }
