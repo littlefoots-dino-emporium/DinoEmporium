@@ -53,8 +53,20 @@ namespace DinoEmporium.Controllers
         }
 
         //update product
+        [HttpPut("{id}")]
+        public ActionResult UpdateSingleProduct(Product product)
+        {
+            var updateSingleProduct = _repository.UpdateSingleProduct(product);
+            return Ok(updateSingleProduct);
+        }
 
         //delete product
+        [HttpDelete("{id}")]
+        public ActionResult DeleteSingleProduct(int id)
+        {
+            var deletedProduct = _repository.DeleteSingleProduct(id);
+            return Ok(deletedProduct);
+        }
     }
 
     public class CreateProductRequestValidator

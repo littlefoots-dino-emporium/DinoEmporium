@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DinoEmporium.Models
 {
-    public class CreateProductRequest
+    public class CreateProductUpdateRequest
     {
         public int Id { get; set; }
         public decimal Price { get; set; }
