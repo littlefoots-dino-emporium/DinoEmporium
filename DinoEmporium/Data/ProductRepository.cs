@@ -12,15 +12,16 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Product AddProduct(decimal price, string title, string description, int quantity)
+        public Product AddProduct(decimal price, int productTypeId, string title, string description, int quantity)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newProduct = db.QueryFirstOrDefault<Product>(
-                                                                @"insert into Product (price, title, description, quantity)
-                                                                values (@price, @title, @description, @quantity)
+                                                                @"insert into Product (price, title, productTypeId, description, quantity)
+                                                                Output inserted.*
+                                                                values (@price, @title, @productTypeId, @description, @quantity)
                                                                 select * from Product",
-                                                                new { price, title, description, quantity });
+                                                                new { price, title, productTypeId, description, quantity });
 
                 if(newProduct != null)
                 {
@@ -60,12 +61,14 @@ namespace DinoEmporium.Data
                                         set quantity = @quantity,
                                             price = @price,
                                             title = @title,
+                                            productTypeId = @productTypeId
                                             description = @description
                                             output inserted.*
                                             where id = @id",
                                                             new {
                                                                  id = singleProduct.Id,
                                                                  quantity = singleProduct.Quantity,
+                                                                 productTypeId = singleProduct.ProductTypeId,
                                                                  price = singleProduct.Price,
                                                                  title = singleProduct.Title,
                                                                  description = singleProduct.Description
