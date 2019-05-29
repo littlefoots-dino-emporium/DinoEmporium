@@ -22,18 +22,18 @@ namespace DinoEmporium.Controllers
             _validator = new CreateProductRequestValidator();
         }
 
-        [HttpPost]
-        public ActionResult AddProduct(CreateProductOrderRequest createRequest)
-        {
+        //[HttpPost]
+        //public ActionResult AddProduct(CreateProductOrderRequest createRequest)
+        //{
             //if (_validator.Validate(createRequest))
             //{
             //    return BadRequest("All product information must be filled out.");
             //}
 
-            var newProduct = _repository.AddProductOrder(createRequest.IsInCart);
+            //var newProduct = _repository.AddProductOrder(createRequest.IsInCart);
 
-            return Created($"api/product/{newProduct.Id}", newProduct);
-        }
+            //return Created($"api/product/{newProduct.Id}", newProduct);
+        //}
 
         //get productOrders
         [HttpGet("getProductOrders")]
