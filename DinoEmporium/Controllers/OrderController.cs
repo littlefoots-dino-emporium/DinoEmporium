@@ -49,5 +49,12 @@ namespace DinoEmporium.Controllers
 
             return Ok(singleOrder);
         }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateSingleOrder(Order order)
+        {
+            var updateSingleOrder = _repository.UpdateSingleOrder(order);
+            return Ok(updateSingleOrder);
+        }
     }
 }

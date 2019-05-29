@@ -49,5 +49,23 @@ namespace DinoEmporium.Data
                 return singleOrder;
             }
         }
+
+        public Order UpdateSingleOrder(Order singleOrder)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updatedOrder = db.QueryFirstOrDefault<Order>(@"update [Order]
+                                                                        set price = @price
+                                                                        output inserted.*
+                                                                        where id = @id",
+                                                                        new
+                                                                        {
+                                                                            id = singleOrder.Id,
+                                                                            price = singleOrder.Price,
+                                                                        });
+                return updatedOrder;
+            }
+            throw new System.Exception("Could not update order.");
+        }
     }
 }
