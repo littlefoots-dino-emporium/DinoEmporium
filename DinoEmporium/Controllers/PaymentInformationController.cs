@@ -52,6 +52,13 @@ namespace DinoEmporium.Controllers
             return Ok(previousPaymentInformation);
         }
 
+        [HttpPut("{id}")]
+        public ActionResult UpdateSinglePayment(PaymentInformation paymentInformation)
+        {
+            var updateSinglePayment = _repository.UpdateSinglePayment(paymentInformation);
+            return Ok(updateSinglePayment);
+        }
+
         [HttpDelete("{id}")]
         public ActionResult DeleteSinglePaymentInformation(int id)
         {
