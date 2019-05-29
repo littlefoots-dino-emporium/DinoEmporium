@@ -33,5 +33,21 @@ namespace DinoEmporium.Controllers
             return Created($"api/users/{newOrder.Id}", newOrder);
 
         }
+
+        [HttpGet("allorders")]
+        public ActionResult GetAllOrders()
+        {
+            var order = _repository.GetAllOrders();
+
+            return Ok(order);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult GetSingleOrder(int id)
+        {
+            var singleOrder = _repository.GetSingleOrder(id);
+
+            return Ok(singleOrder);
+        }
     }
 }
