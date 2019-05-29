@@ -11,7 +11,7 @@ namespace DinoEmporium.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : Controller
+    public class ProductController : ControllerBase
     {
         readonly CreateProductRequestValidator _validator;
         readonly ProductRepository _repository;
@@ -36,7 +36,7 @@ namespace DinoEmporium.Controllers
             return Created($"api/product/{newProduct.Id}", newProduct);
         }
 
-        //getting all products
+        //get all products
         [HttpGet("getAllProducts")]
         public ActionResult GetAllProducts()
         {

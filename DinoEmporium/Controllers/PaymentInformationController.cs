@@ -44,14 +44,31 @@ namespace DinoEmporium.Controllers
             return Ok(paymentInformation);
         }
 
-        [HttpGet("lastpaymentused")]
-        public ActionResult LastUsedPaymentInformation()
+        [HttpGet("{id}")]
+        public ActionResult GetSinglePayment(int id)
         {
-            var previousPaymentInformation = _repository.LastUsedPaymentInformation();
+            var previousPaymentInformation = _repository.GetSinglePayment(id);
 
             return Ok(previousPaymentInformation);
         }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateSinglePayment(PaymentInformation paymentInformation)
+        {
+            var updateSinglePayment = _repository.UpdateSinglePayment(paymentInformation);
+            return Ok(updateSinglePayment);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteSinglePaymentInformation(int id)
+        {
+            var deletedProduct = _repository.DeleteSinglePayment(id);
+            return Ok(deletedProduct);
+        }
+
     }
+
+
 
 
     public class CreatePaymentInformationRequestValidator
