@@ -29,7 +29,7 @@ namespace DinoEmporium
             services.AddTransient<ProductRepository>();
             services.Configure<DbConfiguration>(Configuration);
             services.AddTransient<ProductTypeRepository>();
-
+            services.AddTransient<OrderRepository>();
             services.Configure<DbConfiguration>(Configuration);
 
             services.AddTransient<PaymentInformationRepository>();
