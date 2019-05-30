@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace DinoEmporium.Models
 {
-    public class CreateOrderRequest
+    public class Order
     {
-        public int Price { get; set; }
+        public int Id { get; set; }
         public int CustomerId { get; set; }
+        public int Price { get; set; }
         public int PaymentInformationId { get; set; }
     }
 }

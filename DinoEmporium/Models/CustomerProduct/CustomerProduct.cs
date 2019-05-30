@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DinoEmporium.Models
+namespace DinoEmporium.Models.CustomerProduct
 {
-    public class CreateOrderRequest
+    public class CustomerProduct
     {
-        public int Price { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
         public int CustomerId { get; set; }
-        public int PaymentInformationId { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace DinoEmporium.Controllers
     {
         readonly CustomerRespository _customerRepository;
         readonly CreateCustomerRequestValidator _validator;
+       // readonly CreateCustomerProductValidator _customerProductValidator;
 
         // GET: /<controller>/
         public CustomerController()
@@ -31,6 +32,15 @@ namespace DinoEmporium.Controllers
             return Created($"/api/customers/{newCustomer.Id}", newCustomer);
 
         }
+
+       //[HttpPost("addProduct")]
+       //public ActionResult AddProductToCustomer(CreateCustomerProductRequst createRequest)
+       // {
+       //     //if (_validator.Validate(createRequest))
+       //     //    return BadRequest(new { error = "must add prodct id and customer id" });
+       //     var newCustomerProduct = _customerRepository.AddCustomerToProduct(createRequest.)
+       // }
+
         [HttpGet("allCustomers")]
         public ActionResult GetCustomers()
         {
@@ -46,7 +56,7 @@ namespace DinoEmporium.Controllers
         }
 
         [HttpPut("updateCustomer/{id}")]
-        public ActionResult UpdateCustomer(int id, Customer customer)
+        public ActionResult UpdateCustomer(Customer customer)
         {
             var user = _customerRepository.UpdateCustomer(customer);
             return Ok(user);

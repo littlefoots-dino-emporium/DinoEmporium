@@ -41,14 +41,51 @@ namespace DinoEmporium.Data
             }
         }
 
-        public IEnumerable<PaymentInformation> LastUsedPaymentInformation()
+        public PaymentInformation GetSinglePayment(int id)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var lastUsedPaymentInformation = db.Query<PaymentInformation>("SELECT TOP 1 * FROM paymentinformation ORDER BY ID DESC").ToList();
+                var singlePayment = db.QueryFirstOrDefault<PaymentInformation>(@"select * from paymentinformation where id = @id", new { id });
 
-                return lastUsedPaymentInformation;
+                return singlePayment;
             }
+        }
+
+
+        public PaymentInformation DeleteSinglePayment(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var deletedPayment = db.QueryFirstOrDefault<PaymentInformation>(@"delete
+                                                                       from PaymentInformation
+                                                                       where id = @id",
+                                                                       new { id });
+                return deletedPayment;
+            }
+        }
+
+        public PaymentInformation UpdateSinglePayment(PaymentInformation singlePayment)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var updatedPayment = db.QueryFirstOrDefault<PaymentInformation>(@"update PaymentInformation
+                                                                        set paymentType = @paymentType,
+                                                                        accountNumber = @accountNumber,
+                                                                        paymentFirstName = @paymentFirstName,
+                                                                        paymentLastName = @paymentLastName
+                                                                        output inserted.*
+                                                                        where id = @id",
+                                                                        new
+                                                                        {
+                                                                            id = singlePayment.Id,
+                                                                            paymentType = singlePayment.PaymentType,
+                                                                            accountNumber = singlePayment.AccountNumber,
+                                                                            paymentFirstName = singlePayment.PaymentFirstName,
+                                                                            paymentLastName = singlePayment.PaymentLastName
+                                                                        });
+                return updatedPayment;
+            }
+            throw new System.Exception("Could not update Payment.");
         }
     }
 }

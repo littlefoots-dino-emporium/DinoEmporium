@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DinoEmporium.Models;
 using System.Data.SqlClient;
+using DinoEmporium.Models.CustomerProduct;
 
 namespace DinoEmporium.Data
 {
@@ -62,16 +63,42 @@ namespace DinoEmporium.Data
             using (var db = new SqlConnection(ConnectionString))
             {
 
-                var updateCustomer = @"Update Customer
+                var updateCustomer = db.QueryFirstOrDefault<Customer>(@"Update Customer
                             Set firstName = @firstName,
                                 lastName = @lastName,
                                 date = @date,
                                 email = @email
-                            Where id = @id";
-           
-                var numberOfRowsUpdated = db.Execute(updateCustomer, CustomerInformation);
+                                output inserted.*
+                            Where id = @id",
+                            new { id = CustomerInformation.Id,
+                                firstName = CustomerInformation.FirstName,
+                                lastName = CustomerInformation.LastName,
+                                date = CustomerInformation.Date,
+                                email = CustomerInformation.Email });
 
+                return updateCustomer;
+            }
                 throw new Exception("Could not update user");
+            
+        }
+
+      public Customer ChooseProduct(Customer CustomerInformation)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                // var addCustomerInformation = db.CreateCommand();
+
+                var addCustomerInformation = db.QueryFirstOrDefault<Customer>(@"
+                    Insert into customer (firstName,lastName, date, email, productId)
+                    Output inserted.*
+                    Values(@firstName,@lastName,@date,@email,@productId)where id = @customerId",
+                    new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, date = CustomerInformation.Date, email = CustomerInformation.Email, product = CustomerInformation.ProductId });
+
+                if (addCustomerInformation != null)
+                {
+                    return addCustomerInformation;
+                }
+                throw new Exception("could not add product");
             }
         }
     }
