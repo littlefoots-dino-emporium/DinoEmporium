@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DinoEmporium.Models
 {
-    public class CreateCustomerProductRequst
+    public class CreateCustomerRequest
     {
         public int Id { get; set; }
         public string LastName { get; set; }

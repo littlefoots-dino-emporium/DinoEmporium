@@ -24,7 +24,7 @@ namespace DinoEmporium.Controllers
             _customerRepository = new CustomerRespository();
         }
         [HttpPost("register")]
-        public ActionResult AddCustomer(CreateCustomerProductRequst createRequest)
+        public ActionResult AddCustomer(CreateCustomerRequest createRequest)
         {
             if (_validator.Validate(createRequest))
                 return BadRequest(new { error = "customer must have a First Name, Last Name and Email " });
