@@ -13,35 +13,36 @@ namespace DinoEmporium.Controllers
     [ApiController]
     public class ProductOrderController : ControllerBase
     {
-        readonly ProductOrderRepository _repository;
+        readonly ProductOrderRepository _productOrderRepository;
         readonly CreateProductRequestValidator _validator;
 
         public ProductOrderController(ProductOrderRepository repository)
         {
-            _repository = repository;
+            _productOrderRepository = new ProductOrderRepository();
             _validator = new CreateProductRequestValidator();
         }
 
-        //[HttpPost]
-        //public ActionResult AddProduct(CreateProductOrderRequest createRequest)
-        //{
-            //if (_validator.Validate(createRequest))
-            //{
-            //    return BadRequest("All product information must be filled out.");
-            //}
-
-            //var newProduct = _repository.AddProductOrder(createRequest.IsInCart);
-
-            //return Created($"api/product/{newProduct.Id}", newProduct);
-        //}
+        //add productOrders
+        [HttpPost]
+        public ActionResult AddProductOrder(CreateProductOrderRequest createRequest)
+        {
+            var newProductOrder = _productOrderRepository.AddProductToOrder(createRequest.OrderId, createRequest.ProductId, createRequest.IsInCart);
+            return Created($"/api/productOrder/{newProductOrder.Id}", newProductOrder);
+        }
 
         //get productOrders
         [HttpGet("getProductOrders")]
         public ActionResult GetAllProductOrders()
         {
-            var productOrders = _repository.GetAll();
+            var productOrders = _productOrderRepository.GetAll();
             return Ok(productOrders);
         }
+
+        //get single productOrder
+
+        //update productOrder
+
+        //delete productOrder
     }
 
     //public class CreateProductOrderRequestValidator
