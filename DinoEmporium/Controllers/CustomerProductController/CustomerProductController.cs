@@ -7,7 +7,6 @@ using DinoEmporium.Models;
 using DinoEmporium.Models.CustomerProduct;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace DinoEmporium.Controllers.CustomerProductController
 {
@@ -16,19 +15,15 @@ namespace DinoEmporium.Controllers.CustomerProductController
     public class CustomerProductController : ControllerBase
     {
         readonly CustomerProductRepository _customerProductRepository;
-        //readonly CreateCustomerProductRequestValidator _validator;
 
         // GET: /<controller>/
         public CustomerProductController()
         {
-            //_validator = new CreateCustomerRequestValidator();
             _customerProductRepository = new CustomerProductRepository();
         }
         [HttpPost("register")]
         public ActionResult AddCustomer(CreateCustomerProductRequest createRequest)
         {
-            //if (_validator.Validate(createRequest))
-            //    return BadRequest(new { error = "customer must have a First Name, Last Name and Email " });
             var newCustomerProduct = _customerProductRepository.AddCustomerToProduct(createRequest.CustomerId, createRequest.ProductId);
             return Created($"/api/customerProduct/{newCustomerProduct.Id}", newCustomerProduct);
 

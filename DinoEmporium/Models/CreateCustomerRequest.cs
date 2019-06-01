@@ -12,7 +12,6 @@ namespace DinoEmporium.Models
         public string FirstName { get; set; }
         public DateTime Date { get; set; }
         public string Email { get; set; }
-        public List<int> ProductId { get; set; } = new List<int>();
 
     }
 }
