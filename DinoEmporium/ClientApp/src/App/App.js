@@ -69,21 +69,32 @@ class App extends React.Component {
   }
 
   render () {
-    // const {
-    //   authed,
-    // } = this.state 
+    const {
+      authed,
+    } = this.state 
 
-    // if (!authed) {
-    //   return (
-    //     <div className="App">
-    //       <MyNavbar
-    //           authed={this.state.authed}
-    //           runAway={this.runAway}
-    //           component={Login}
-    //         />
-    //     </div>
-    //   )
-    // }
+    if (!authed) {
+      return (
+        <div className="App">
+          <MyNavbar
+              authed={this.state.authed}
+              runAway={this.runAway}
+              component={Login}
+            />
+          <Route path="/" exact component={Login}/>  
+          <PublicRoute
+              path="/login"
+              authed={this.state.authed}
+              component={Login}
+              />
+          <PublicRoute
+              path="/register"
+              authed={this.state.authed}
+              component={Register}
+                  />
+        </div>
+      )
+    }
 
     return (
       <div className="App">

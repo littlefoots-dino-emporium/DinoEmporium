@@ -3,13 +3,9 @@ import {Link} from 'react-router-dom';
 
 import authRequests from  '../../firebaseRequests/auth';
 import {
-  Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  Nav,
-  Button,
-  NavItem,
   NavLink,
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
