@@ -2,10 +2,20 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import authRequests from  '../../firebaseRequests/auth';
-
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  Button,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.scss';
 
-class Navbar extends React.Component {
+class MyNavbar extends React.Component {
   render () {
     const {authed, runAway} = this.props;
     const logoutClickEvent = () => {
@@ -15,36 +25,19 @@ class Navbar extends React.Component {
 
     return (
       <div className="Navbar">
-        <nav className="navbar navbar-inverse">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-              <Link  to="/" className="navbar-brand">Fish Store</Link>
-            </div>
+         <Navbar color="dark" dark expand="md">
+        <NavbarBrand  to="/" className="navbar-brand">Dino Emporium</NavbarBrand>
+        <NavbarToggler/>
+
+
+
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              {
-                authed ? (
-                  <ul className="nav navbar-nav navbar-right">
-                    <li>
-                      <Link to="/inventory">Inventory</Link>
-                    </li>
-                    <li>
-                      <Link to="/orders">Orders</Link>
-                    </li>
-                    <li className="navbar-form">
-                      <button
+              { authed ? ( <NavLink
                         onClick={logoutClickEvent}
                         className="btn btn-danger"
                       >
                         Logout
-                      </button>
-                    </li>
-                  </ul>
+                      </NavLink>
                 ) : (
                   <ul className="nav navbar-nav navbar-right">
                     <li>
@@ -54,11 +47,10 @@ class Navbar extends React.Component {
                 )
               }
             </div>
-          </div>
-        </nav>
+          </Navbar>
       </div>
     );
   }
 }
 
-export default Navbar;
+export default MyNavbar;

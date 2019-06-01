@@ -6,7 +6,7 @@ import firebase from 'firebase';
 
 import Home from '../components/Home/Home';
 import Login from '../components/Login/Login';
-import Navbar from '../components/Navbar/Navbar';
+import MyNavbar from '../components/Navbar/Navbar';
 import Register from '../components/Register/Register';
 import fbConnection from '../firebaseRequests/connection';
 fbConnection();
@@ -69,11 +69,27 @@ class App extends React.Component {
   }
 
   render () {
+    // const {
+    //   authed,
+    // } = this.state 
+
+    // if (!authed) {
+    //   return (
+    //     <div className="App">
+    //       <MyNavbar
+    //           authed={this.state.authed}
+    //           runAway={this.runAway}
+    //           component={Login}
+    //         />
+    //     </div>
+    //   )
+    // }
+
     return (
       <div className="App">
         <BrowserRouter>
           <div>
-            <Navbar
+            <MyNavbar
               authed={this.state.authed}
               runAway={this.runAway}
             />
