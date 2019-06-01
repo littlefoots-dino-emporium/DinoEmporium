@@ -23,14 +23,9 @@ namespace DinoEmporium.Controllers
         [HttpPost()]
         public ActionResult AddOrder(CreateOrderRequest createRequest)
         {
-            //if (_validator.Validate(createRequest))
-            //{
-            //    return BadRequest(new { error = "users must have a username and password" });
-            //}
-
             var newOrder = _repository.AddOrder(createRequest.Price);
 
-            return Created($"api/users/{newOrder.Id}", newOrder);
+            return Created($"api/orders/{newOrder.Id}", newOrder);
 
         }
 
