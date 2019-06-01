@@ -12,7 +12,7 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public ProductOrder AddProductToOrder(int productId, int orderId, bool isInCart)
+        public ProductOrder AddProductToOrder(int orderId, int productId, bool isInCart)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -20,7 +20,7 @@ namespace DinoEmporium.Data
                                                                               @"insert into ProductOrder(ProductId, OrderId, IsInCart)
                                                                               output inserted.*
                                                                               values (@productId, @orderId, @isInCart)",
-                                                                              new { productId, orderId, isInCart });
+                                                                              new { orderId, productId, isInCart });
 
                 if (joinProductToOrder != null)
                 {
@@ -39,6 +39,31 @@ namespace DinoEmporium.Data
                 var products = db.Query<ProductOrder>("select * from ProductOrder").ToList();
 
                 return products;
+            }
+        }
+
+        public ProductOrder GetSingleProductOrder(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var getSingleProductOrder = db.QueryFirstOrDefault<ProductOrder>(
+                                                                                 @"select * from productOrder
+                                                                                 where id = @id",
+                                                                                 new { id });
+                return getSingleProductOrder;
+            }
+        }
+
+        public ProductOrder DeleteProductOrder(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var deleteProductOrder = db.QueryFirstOrDefault<ProductOrder>(
+                                                                              @"delete
+                                                                              from productOrder
+                                                                              where id = @id",
+                                                                              new { id });
+                return deleteProductOrder;
             }
         }
     }

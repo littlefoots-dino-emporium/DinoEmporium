@@ -39,10 +39,20 @@ namespace DinoEmporium.Controllers
         }
 
         //get single productOrder
-
-        //update productOrder
+        [HttpGet("getSingleProductOrder/{id}")]
+        public ActionResult GetSingleProductOrder(int id)
+        {
+            var singleproductOrder = _productOrderRepository.GetSingleProductOrder(id);
+            return Ok(singleproductOrder);
+        }
 
         //delete productOrder
+        [HttpDelete("{id}")]
+        public ActionResult DeleteProductOrder(int id)
+        {
+            var deleteProductOrder = _productOrderRepository.DeleteProductOrder(id);
+            return Ok(deleteProductOrder);
+        }
     }
 
     //public class CreateProductOrderRequestValidator
