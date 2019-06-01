@@ -32,7 +32,7 @@ namespace DinoEmporium.Controllers
 
             var newPaymentInformation = _repository.AddPaymentInformation(createRequest.PaymentType, createRequest.AccountNumber, createRequest.PaymentFirstName, createRequest.PaymentLastName);
 
-            return Created($"api/users/{newPaymentInformation.Id}", newPaymentInformation);
+            return Created($"api/paymentinformation/{newPaymentInformation.Id}", newPaymentInformation);
 
         }
 

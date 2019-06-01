@@ -33,14 +33,6 @@ namespace DinoEmporium.Controllers
 
         }
 
-       //[HttpPost("addProduct")]
-       //public ActionResult AddProductToCustomer(CreateCustomerProductRequst createRequest)
-       // {
-       //     //if (_validator.Validate(createRequest))
-       //     //    return BadRequest(new { error = "must add prodct id and customer id" });
-       //     var newCustomerProduct = _customerRepository.AddCustomerToProduct(createRequest.)
-       // }
-
         [HttpGet("allCustomers")]
         public ActionResult GetCustomers()
         {
