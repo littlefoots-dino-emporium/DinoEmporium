@@ -22,7 +22,7 @@ class MyNavbar extends React.Component {
     return (
       <div className="Navbar">
          <Navbar color="dark" dark expand="md">
-        <NavbarBrand  to="/" className="navbar-brand">Dino Emporium</NavbarBrand>
+        <NavbarBrand  to="/" className="navbar-brand">Littlefoot's Dino Emporium</NavbarBrand>
         <NavbarToggler/>
 
 
