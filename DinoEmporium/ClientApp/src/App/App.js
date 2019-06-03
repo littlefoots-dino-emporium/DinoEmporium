@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, BrowserRouter, Redirect, Switch}  from 'react-router-dom';
 import firebase from 'firebase';
+import connection from '../firebaseRequests/connection';
 
 // import './App.scss';
 
@@ -50,12 +51,17 @@ class App extends React.Component {
     authed: false,
   }
 
-  componentDidMount () {
+  componentDidMount() {
+    connection();
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({authed: true});
+        this.setState({
+          authed: true,
+        });
       } else {
-        this.setState({authed: false});
+        this.setState({
+          authed: false,
+        });
       }
     });
   }
