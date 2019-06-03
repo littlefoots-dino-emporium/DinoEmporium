@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 import authRequests from  '../../firebaseRequests/auth';
 import {
@@ -37,7 +37,6 @@ class MyNavbar extends React.Component {
                 ) : (
                   <ul className="nav navbar-nav navbar-right">
                     <li>
-                      <Link to="/login">Login</Link>
                     </li>
                   </ul>
                 )
