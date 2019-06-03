@@ -1,0 +1,114 @@
+{
+  "dinosaur1":
+  {
+    "image": "",
+    "name": "Ankylosaur",
+    "price": 450000,
+    "description": "The Ankylosaur is an armoured herbivore. It requires a 60% comfort threshold and an ideal population of 0-8 in a fenced area. It's social requirements are at least 1-f4 other Ankylosaurs; though, it is not uncommon for it to be on it's own. It prefers an equal amount of plains and forest land. The Ankylosaur is susceptible of cryptosporidium and camplybacter. It's grown height is 2.0M, weight is 6.0T, and length 8.0M. The Ankylosaur is not an aggressive dinosaur unless provoked and is much like a cow in it's desire to roam and graze in packs."
+  },
+  "dinosaur2":
+  {
+    "image": "",
+    "name": "Pachycephalosaurus",
+    "price": 250000,
+    "description": "The Pachycephalosaurus is a small herbivore. It's comfort threshold is a low 25%, which means they need all requirements to be met. They prefer much more grassland in comparison to forest. Their ideal population is 3-10 dinosaurs in a fenced area. Social requirements are at least 3-6. At it's adult size, the Pachycephalosaurus will be 1.4M in height, 450KG in weight and 4.5M in length. It is very important for these dinosaurs to have the appropriate social group or their content level will drop. The Pachycephalosaurus is a great dinosaur to have, but if the content drops, the Pachycephalosaurus can be dangerous due to the bone crown upon it's head. It is susceptible to campylobacter."
+  },
+  "dinosaur3":
+  {
+    "image": "",
+    "name": "Gigantspinosaurus",
+    "price": 370000,
+    "description": "The Gigantspinosaurus is an armoured herbivore. It's comfort level is 55%. It prefers almost equal grassland and forestland, but prefers the open plains a little more. The ideal population with other dinosaurs ranges from 4-16 if given enough land to roam. It prefers a social group of at least 4-10 others. It is susceptible to bracken poisoning, but is immune to the common cold. It's mature height is 2.3M, weight 700KG and height 8.0M. This particular dinosaur is a beautiful find, but it is imperative for it to have companions, like other social pack creatures."
+  },
+  "dinosaur4":
+  {
+    "image": "",
+    "name": "Muttaburrasaurus",
+    "price": 235000,
+    "description": " "
+  },
+  "dinosaur5":
+  {
+    "image": "Majungasaurus",
+    "name": "",
+    "price": 1463124,
+    "description": ""
+  },
+  "dinosaur6":
+  {
+    "image": "",
+    "name": "Apatosaurus",
+    "price": 2500000,
+    "description": ""
+  },
+  "dinosaur7":
+  {
+    "image": "",
+    "name": "Archaeornithomimus",
+    "price": 100000,
+    "description": ""
+  },
+  "dinosaur8":
+  {
+    "image": "",
+    "name": "Huayangosaurus",
+    "price": 210000,
+    "description": ""
+  },
+  "dinosaur9":
+  {
+    "image": "",
+    "name": "Triceratops",
+    "price": 322000,
+    "description": ""
+  },
+  "dinosaur10":
+  {
+    "image": "",
+    "name": "Velociraptor",
+    "price": 378970,
+    "description": ""
+  },
+  "dinosaur11":
+  {
+    "image": "",
+    "name": "Tyrannosaurus Rex",
+    "price": 1961043,
+    "description": ""
+  },
+  "dinosaur12":
+  {
+    "image": "",
+    "name": "Metriacanthosaurus",
+    "price": 1605277,
+    "description": ""
+  },  
+  "dinosaur13":
+  {
+    "image": "",
+    "name": "Parasaurolophus",
+    "price": 180000,
+    "description": ""
+  },
+  "dinosaur14":
+  {
+    "image": "",
+    "name": "Dracorex",
+    "price": 150000,
+    "description": ""
+  },
+  "dinosaur15":
+  {
+    "image": "",
+    "name": "Dilophosaurus",
+    "price": 739687,
+    "description": ""
+  },
+  "dinosaur16":
+  {
+    "image": "",
+    "name": "Brachiosaurus",
+    "price": 987000,
+    "description": ""
+  }
+}
