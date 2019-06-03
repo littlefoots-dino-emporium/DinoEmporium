@@ -6,6 +6,7 @@ import connection from '../firebaseRequests/connection';
 // import './App.scss';
 
 import Home from '../components/Home/Home';
+import CustomerProfile from '../components/CustomerProfile/CustomerProfile';
 import Login from '../components/Login/Login';
 import MyNavbar from '../components/Navbar/Navbar';
 import Register from '../components/Register/Register';
@@ -114,16 +115,8 @@ class App extends React.Component {
               <div className="row">
                 <Switch>
                   <Route path="/" exact component={Home}/>
-                  <PublicRoute
-                    path="/register"
-                    authed={this.state.authed}
-                    component={Register}
-                  />
-                  <PublicRoute
-                    path="/login"
-                    authed={this.state.authed}
-                    component={Login}
-                  />
+                  <PrivateRoute path='/{customerId}/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
+                  <PrivateRoute path='/{customerId}/home' exact component={Home} authed={this.state.authed} />
                 </Switch>
               </div>
             </div>
