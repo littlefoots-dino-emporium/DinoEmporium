@@ -5,19 +5,53 @@ import authRequests from '../../firebaseRequests/auth';
 
 import './Register.scss';
 
+const customerInformation = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  date: '',
+  email: ''
+}
 class Register extends React.Component {
   state = {
-    user: {
-      email: '',
-      password: '',
-    },
+      newCustomerInformation: customerInformation,    
   };
 
+  formFieldStringState = (name,e) => {
+    e.preventDefault();
+    const tempInfo = { ...this.state.newCustomerInformation};
+    tempInfo[name] = e.target.value;
+    this.setState({ newCustomerInformation: tempInfo});
+  }
+  
+  emailChange = e => {
+    // const tempUser = { ...this.state.user };
+    // tempUser.email = e.target.value;
+    // this.setState({ user: tempUser });
+    this.formFieldStringState('name', e);
+  };
+
+  firstNameChange = e => {
+    this.formFieldStringState('firstName', e);
+  };
+  
+  lastNameChange = e => {
+    this.formFieldStringState('lastName', e);
+  };
+
+  dateChange = e => {
+    this.formFieldStringState('date', e);
+  };
+
+  emailChange = e => {
+    this.formFieldStringState('email', e);
+  }
+
   registerClickEvent = e => {
-    const { user } = this.state;
+    const { newCustomerInformation } = this.state;
     e.preventDefault();
     authRequests
-      .registerUser(user)
+      .registerUser(newCustomerInformation)
       .then(() => {
         this.props.history.push('/');
       })
@@ -26,25 +60,43 @@ class Register extends React.Component {
       });
   };
 
-  emailChange = e => {
-    const tempUser = { ...this.state.user };
-    tempUser.email = e.target.value;
-    this.setState({ user: tempUser });
-  };
-
-  passwordChange = e => {
-    const tempUser = { ...this.state.user };
-    tempUser.password = e.target.value;
-    this.setState({ user: tempUser });
-  };
-
   render () {
-    const { user } = this.state;
+    const { newCustomerInformation } = this.state;
     return (
       <div className="Register">
         <div id="login-form">
           <h1 className="text-center">Register</h1>
           <form className="form-horizontal col-sm-6 col-sm-offset-3">
+            <div className="form-group">
+              <label htmlFor="inputEmail" className="col-sm-4 control-label">
+                First Name:
+              </label>
+              <div className="col-sm-8">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="inputEmail"
+                  placeholder="Email"
+                  value={newCustomerInformation.firstName}
+                  onChange={this.firstNameChange}
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputEmail" className="col-sm-4 control-label">
+                Last Name:
+              </label>
+              <div className="col-sm-8">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="inputEmail"
+                  placeholder="Email"
+                  value={newCustomerInformation.lastName}
+                  onChange={this.lastNameChange}
+                />
+              </div>
+            </div>
             <div className="form-group">
               <label htmlFor="inputEmail" className="col-sm-4 control-label">
                 Email:
@@ -55,14 +107,14 @@ class Register extends React.Component {
                   className="form-control"
                   id="inputEmail"
                   placeholder="Email"
-                  value={user.email}
+                  value={newCustomerInformation.email}
                   onChange={this.emailChange}
                 />
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="inputPassword" className="col-sm-4 control-label">
-                Password:
+                Date:
               </label>
               <div className="col-sm-8">
                 <input
@@ -70,8 +122,8 @@ class Register extends React.Component {
                   className="form-control"
                   id="inputPassword"
                   placeholder="Password"
-                  value={user.password}
-                  onChange={this.passwordChange}
+                  value={newCustomerInformation.Date}
+                  onChange={this.dateChange}
                 />
               </div>
             </div>

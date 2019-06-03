@@ -2,12 +2,16 @@ import React from 'react';
 import {Route, BrowserRouter, Redirect, Switch}  from 'react-router-dom';
 import firebase from 'firebase';
 
-// import './App.scss';
+//import './App.css';
 
 import Home from '../components/Home/Home';
+//import Inventory from '../components/Inventory/Inventory';
 import Login from '../components/Login/Login';
-import MyNavbar from '../components/Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
+//import New from '../components/New/New';
+//import OrderSpa from '../components/OrderSpa/OrderSpa';
 import Register from '../components/Register/Register';
+//import SingleOrder from '../components/SingleOrder/SingleOrder';
 import fbConnection from '../firebaseRequests/connection';
 fbConnection();
 
@@ -69,38 +73,11 @@ class App extends React.Component {
   }
 
   render () {
-    const {
-      authed,
-    } = this.state 
-
-    if (!authed) {
-      return (
-        <div className="App">
-          <MyNavbar
-              authed={this.state.authed}
-              runAway={this.runAway}
-              component={Login}
-            />
-          <Route path="/" exact component={Login}/>  
-          <PublicRoute
-              path="/login"
-              authed={this.state.authed}
-              component={Login}
-              />
-          <PublicRoute
-              path="/register"
-              authed={this.state.authed}
-              component={Register}
-                  />
-        </div>
-      )
-    }
-
     return (
       <div className="App">
         <BrowserRouter>
           <div>
-            <MyNavbar
+            <Navbar
               authed={this.state.authed}
               runAway={this.runAway}
             />
@@ -108,6 +85,12 @@ class App extends React.Component {
               <div className="row">
                 <Switch>
                   <Route path="/" exact component={Home}/>
+                  {/* <PrivateRoute
+                    path="/inventory"
+                    authed={this.state.authed}
+                    component={Inventory}
+                  /> */}
+
                   <PublicRoute
                     path="/register"
                     authed={this.state.authed}
@@ -118,6 +101,21 @@ class App extends React.Component {
                     authed={this.state.authed}
                     component={Login}
                   />
+                  {/* <PrivateRoute
+                    path="/orders"
+                    authed={this.state.authed}
+                    component={OrderSpa}
+                  /> */}
+                  {/* <PrivateRoute
+                    path="/order/:id"
+                    authed={this.state.authed}
+                    component={SingleOrder}
+                  /> */}
+                  {/* <PrivateRoute
+                    path="/new"
+                    authed={this.state.authed}
+                    component={New}
+                  /> */}
                 </Switch>
               </div>
             </div>
