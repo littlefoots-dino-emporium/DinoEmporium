@@ -49,7 +49,7 @@ class Login extends React.Component {
               <label htmlFor="inputEmail" className="col-sm-4 control-label">
                 Email:
               </label>
-              <div className="col-sm-8">
+              <div className="col-l-16">
                 <input
                   type="email"
                   className="form-control"
@@ -64,7 +64,7 @@ class Login extends React.Component {
               <label htmlFor="inputPassword" className="col-sm-4 control-label">
                 Password:
               </label>
-              <div className="col-sm-8">
+              <div className="col-l-16">
                 <input
                   type="password"
                   className="form-control"
@@ -76,12 +76,12 @@ class Login extends React.Component {
               </div>
             </div>
             <div className="form-group">
-              <div className="col-sm-12 text-center">
+              <div className="col-l-12 text-center">
                 <Link to="/register">Need to Register?</Link>
               </div>
             </div>
             <div className="form-group">
-              <div className="col-sm-12">
+              <div className="col-l-12">
                 <button
                   type="submit"
                   className="btn btn-default col-xs-12"
