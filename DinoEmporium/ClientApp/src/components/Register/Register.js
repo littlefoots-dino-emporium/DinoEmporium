@@ -5,6 +5,15 @@ import authRequests from '../../firebaseRequests/auth';
 
 import './Register.scss';
 
+
+// const customerInformation = {
+//   email: '',
+//   firstName: '',
+//   lastName: '',
+//   date: '',
+//   password: '',
+// }
+
 class Register extends React.Component {
   state = {
     user: {
