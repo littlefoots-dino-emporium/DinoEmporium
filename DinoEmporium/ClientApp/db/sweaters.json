@@ -8,56 +8,56 @@
   "sweater2":
   {
     "name":"Christmas Sweater",
-    "price": "102",
+    "price": 102,
     "size": "XXXXXXXXL"
   },
   "sweater3":
   {
     "name":"Yellow V-Neck",
-    "price": "98",
+    "price": 98,
     "size": "XXXXL"
 
   },
   "sweater4":
   {
     "name":"Pink Cashmere",
-    "price": "150",
+    "price": 150,
     "size": "XXL"
   },
   "sweater5":
   {
     "name":"Orange and Green Polka Dots",
-    "price": "63",
+    "price": 63,
     "size": "XL"
   },
   "sweater6":
   {
     "name":"Black Wool",
-    "price": "23",
+    "price": 23,
     "size": "M"
   },
   "sweater7":
   {
     "name":"Thin Purple Turtleneck",
-    "price": "115",
+    "price": 115,
     "size": "XXXXXXXL"
   },
   "sweater8":
   {
     "name":"Loose & Fluffy Tan",
-    "price": "28",
+    "price": 28,
     "size": "M"
   },
   "sweater9":
   {
     "name":"Loose & Fluffy Yellow",
-    "price": "480",
+    "price": 480,
     "size": "XXXXXXXXXXXXXXXXXL"
   },
   "sweater10":
   {
     "name":"Red and White Stripes",
-    "price": "64",
+    "price": 64,
     "size": "L"
   }
 }
