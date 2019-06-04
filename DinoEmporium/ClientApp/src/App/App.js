@@ -3,13 +3,16 @@ import {Route, BrowserRouter, Redirect, Switch}  from 'react-router-dom';
 import firebase from 'firebase';
 import connection from '../firebaseRequests/connection';
 
-// import './App.scss';
+//import './App.css';
 
 import Home from '../components/Home/Home';
 import CustomerProfile from '../components/CustomerProfile/CustomerProfile';
 import Login from '../components/Login/Login';
 import MyNavbar from '../components/Navbar/Navbar';
+//import New from '../components/New/New';
+//import OrderSpa from '../components/OrderSpa/OrderSpa';
 import Register from '../components/Register/Register';
+//import SingleOrder from '../components/SingleOrder/SingleOrder';
 import fbConnection from '../firebaseRequests/connection';
 fbConnection();
 

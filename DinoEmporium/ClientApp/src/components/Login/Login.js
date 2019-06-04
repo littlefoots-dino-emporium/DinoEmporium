@@ -38,6 +38,12 @@ class Login extends React.Component {
     this.setState({ user: tempUser });
   };
 
+  register = (e) => {
+    e.preventDefault();
+    this.props.signUp( this.state.newParentInformation)
+  };
+
+
   render () {
     const { user } = this.state;
     return (
