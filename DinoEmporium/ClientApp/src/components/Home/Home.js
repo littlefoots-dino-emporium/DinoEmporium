@@ -13,6 +13,7 @@ import FenceItem from '../FenceItem/FenceItem';
         //  fenceRequests.getRequest().then((fence) => {
         //      this.setState({ fence });
         //  });
+       // this.allFences();
         }
 
          allFences = () => {
