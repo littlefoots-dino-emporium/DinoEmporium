@@ -10,7 +10,7 @@ const customerInformation = {
   firstName: '',
   lastName: '',
   date: '',
-  email: ''
+  password: '',
 }
 class Register extends React.Component {
   state = {
