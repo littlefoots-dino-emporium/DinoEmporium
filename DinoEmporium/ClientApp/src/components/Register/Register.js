@@ -51,7 +51,7 @@ class Register extends React.Component {
     const { newCustomerInformation } = this.state;
     e.preventDefault();
     authRequests
-      .registerUser(newCustomerInformation)
+      .registerUser(newCustomerInformation.e)
       .then(() => {
         this.props.history.push('/');
       })

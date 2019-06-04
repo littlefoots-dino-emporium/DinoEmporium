@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import fencingShape from '../../helpers/propz/fencingShape';
 import fenceRequests from '../../helpers/data/fenceRequest';
 import FenceItem from '../FenceItem/FenceItem';
