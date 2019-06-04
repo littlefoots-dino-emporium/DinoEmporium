@@ -1,9 +1,24 @@
 import React from 'react';
-//import fencingShape from '../../helpers/propz/fencingShape';
-//import fenceRequests from '../../helpers/data/fenceRequest';
+//import fenceRequest from '../../helpers/data/fenceRequest';
 
+  class Home extends React.Component {
+//   state = {
+//     //dinosaurs: [],
+//     //filteredDinosaurs: [],
+//     //sweaters: [],
+//     //filteredSweaters: [],
+//     fences: [],
+//     filteredFences: [],
+//   }
 
- class Home extends React.Component {
+//   componentDidMount(){
+//     fenceRequest.getFenceRequest()
+//     .then((fences) => {
+//       this.setState({ fences });
+//       this.setState({ filteredFences: fences});
+//     })
+//     .catch(err => console.error('error with componentDidMount with fences.', err));
+//   }
 
   render() {
     return (<div>wat</div>)
