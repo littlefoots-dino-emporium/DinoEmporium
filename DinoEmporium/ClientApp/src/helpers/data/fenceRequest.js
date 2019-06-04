@@ -5,18 +5,18 @@ import apiKeys from '../../firebaseRequests/apiKeys';
 
 const getRequest = () => new Promise((resolve, reject) => {
   axios
-    .get(`${firebaseURL}/fences.json`)
+    .get(`api/product/getAllProducts`)
     .then((res) => {
       console.log(res);
-      const fences = [];
-      if (res.data !== null) {
-        Object.keys(res.data).forEach((key) => {
-          res.data[key].id = key;
-          fences.push(res.data[key]);
-        });
-      }
-      console.log(fences);
-      resolve(fences);
+      //const fences = [];
+      // if (res.data !== null) {
+      //   Object.keys(res.data).forEach((key) => {
+      //     res.data[key].id = key;
+      //     fences.push(res.data[key]);
+      //   });
+      // }
+      console.log(res.data);
+     // resolve(res);
     })
     .catch(err => reject(err));
 });
