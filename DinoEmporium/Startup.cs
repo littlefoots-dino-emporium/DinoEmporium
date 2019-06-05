@@ -58,6 +58,11 @@ namespace DinoEmporium
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials();
+            });
+
             app.UseMvc();
         }
     }
