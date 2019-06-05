@@ -28,7 +28,7 @@ namespace DinoEmporium.Controllers
         {
             if (_validator.Validate(createRequest))
                 return BadRequest(new { error = "customer must have a First Name, Last Name and Email " });
-            var newCustomer = _customerRepository.AddCustomer(createRequest.FirstName, createRequest.LastName, createRequest.Date, createRequest.Email);
+            var newCustomer = _customerRepository.AddCustomer(createRequest.FirstName, createRequest.LastName, createRequest.CustomerUid,  createRequest.Email);
             return Created($"/api/customers/{newCustomer.Id}", newCustomer);
 
         }

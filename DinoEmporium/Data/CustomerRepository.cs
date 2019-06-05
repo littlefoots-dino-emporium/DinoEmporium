@@ -13,17 +13,17 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Customer AddCustomer(string firstName, string lastName, DateTime date, string email)
+        public Customer AddCustomer(string firstName, string lastName, string customerUid, string email)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 // var addCustomerInformation = db.CreateCommand();
 
                 var addCustomerInformation= db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, date, email)
+                    Insert into customer (firstName,lastName, customerUid, email)
                     Output inserted.*
-                    Values(@firstName,@lastName,@date,@email)",
-                    new { firstName, lastName, date, email });             
+                    Values(@firstName,@lastName,@customerUid,@email)",
+                    new { firstName, lastName, customerUid, email });             
 
                 if (addCustomerInformation != null)
                 {
@@ -89,10 +89,10 @@ namespace DinoEmporium.Data
                 // var addCustomerInformation = db.CreateCommand();
 
                 var addCustomerInformation = db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, date, email, productId)
+                    Insert into customer (firstName,lastName, customerUid, email)
                     Output inserted.*
-                    Values(@firstName,@lastName,@date,@email,@productId)where id = @customerId",
-                    new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, date = CustomerInformation.Date, email = CustomerInformation.Email, product = CustomerInformation.ProductId });
+                    Values(@firstName,@lastName,@customerUid,@email)where id = @customerId",
+                    new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, customerUid = CustomerInformation.CustomerUid, email = CustomerInformation.Email });
 
                 if (addCustomerInformation != null)
                 {

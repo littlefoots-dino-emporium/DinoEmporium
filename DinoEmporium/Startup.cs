@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DinoEmporium.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DinoEmporium
 {
@@ -19,7 +21,7 @@ namespace DinoEmporium
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<DbConfiguration>(Configuration); // we are telling ASP.Net how to build things on this line and the above line
@@ -39,6 +41,20 @@ namespace DinoEmporium
             //services.AddTransient<UserRepository>();
 
             //services.AddTransient<ITargetRepository>(builder => builder.GetService<StubTargetRepository>());
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.IncludeErrorDetails = true;
+                options.Authority = "https://securetoken.google.com/littlefoots-dino-emporium";
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = "https://securetoken.google.com/littlefoots-dino-emporium",
+                    ValidateAudience = true,
+                    ValidAudience = "littlefoots-dino-emporium",
+                    ValidateLifetime = true
+                };
+            });
         }
 
 
@@ -54,9 +70,12 @@ namespace DinoEmporium
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials();
+            });
 
             app.UseMvc();
         }
