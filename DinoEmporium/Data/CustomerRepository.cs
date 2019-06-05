@@ -20,9 +20,9 @@ namespace DinoEmporium.Data
                 // var addCustomerInformation = db.CreateCommand();
 
                 var addCustomerInformation= db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, date, email)
+                    Insert into customer (firstName,lastName, email)
                     Output inserted.*
-                    Values(@firstName,@lastName,@date,@email)",
+                    Values(@firstName,@lastName,@email)",
                     new { firstName, lastName, date, email });             
 
                 if (addCustomerInformation != null)
