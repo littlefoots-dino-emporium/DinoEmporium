@@ -19,12 +19,12 @@ const getSweaterRequest = () => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-const getAllSweaters = sweater => axios.post(`${firebaseURL}/sweaters.json`, sweater);
+const createSweater = sweater => axios.post(`${firebaseURL}/sweaters.json`, sweater);
 
-const getSingleSweater = sweaterId => axios.get(`${firebaseURL}/sweaters/${sweaterId}.json`);
+const getAllSweaters = sweaterId => axios.get(`${firebaseURL}/sweaters/${sweaterId}.json`);
 
 export default {
   getSweaterRequest,
-  getSingleSweater,
+  createSweater,
   getAllSweaters
 };
