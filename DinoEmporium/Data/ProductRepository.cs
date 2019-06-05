@@ -12,16 +12,16 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Product AddProduct(decimal price, int productTypeId, string title, string description, int quantity)
+        public Product AddProduct(decimal price, int productTypeId, string title, string description, int quantity, string size, string image)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newProduct = db.QueryFirstOrDefault<Product>(
-                                                                @"insert into Product (price, title, productTypeId, description, quantity)
+                                                                @"insert into Product (price, title, productTypeId, description, quantity, size, image)
                                                                 Output inserted.*
-                                                                values (@price, @title, @productTypeId, @description, @quantity)
+                                                                values (@price, @title, @productTypeId, @description, @quantity, @size, @image)
                                                                 select * from Product",
-                                                                new { price, title, productTypeId, description, quantity });
+                                                                new { price, title, productTypeId, description, quantity, size, image });
 
                 if(newProduct != null)
                 {
@@ -61,17 +61,21 @@ namespace DinoEmporium.Data
                                         set quantity = @quantity,
                                             price = @price,
                                             title = @title,
-                                            productTypeId = @productTypeId
-                                            description = @description
+                                            productTypeId = @productTypeId,
+                                            description = @description,
+                                            size = @size,
+                                            image = @image
                                             output inserted.*
                                             where id = @id",
                                                             new {
                                                                  id = singleProduct.Id,
                                                                  quantity = singleProduct.Quantity,
-                                                                 productTypeId = singleProduct.ProductTypeId,
-                                                                 price = singleProduct.Price,
                                                                  title = singleProduct.Title,
-                                                                 description = singleProduct.Description
+                                                                 price = singleProduct.Price,
+                                                                 productTypeId = singleProduct.ProductTypeId,
+                                                                 description = singleProduct.Description,
+                                                                 size = singleProduct.Size,
+                                                                 image = singleProduct.Image
                                                                  });
                 return updatedProduct;
             }

@@ -82,24 +82,24 @@ namespace DinoEmporium.Data
             
         }
 
-      public Customer ChooseProduct(Customer CustomerInformation)
-        {
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                // var addCustomerInformation = db.CreateCommand();
+      //public Customer ChooseProduct(Customer CustomerInformation)
+      //  {
+      //      using (var db = new SqlConnection(ConnectionString))
+      //      {
+      //          // var addCustomerInformation = db.CreateCommand();
 
-                var addCustomerInformation = db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, date, email, productId)
-                    Output inserted.*
-                    Values(@firstName,@lastName,@date,@email,@productId)where id = @customerId",
-                    new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, date = CustomerInformation.Date, email = CustomerInformation.Email, product = CustomerInformation.ProductId });
+      //          var addCustomerInformation = db.QueryFirstOrDefault<Customer>(@"
+      //              Insert into customer (firstName,lastName, date, email, productId)
+      //              Output inserted.*
+      //              Values(@firstName,@lastName,@date,@email,@productId)where id = @customerId",
+      //              new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, date = CustomerInformation.Date, email = CustomerInformation.Email, product = CustomerInformation.ProductId });
 
-                if (addCustomerInformation != null)
-                {
-                    return addCustomerInformation;
-                }
-                throw new Exception("could not add product");
-            }
-        }
+      //          if (addCustomerInformation != null)
+      //          {
+      //              return addCustomerInformation;
+      //          }
+      //          throw new Exception("could not add product");
+      //      }
+      //  }
     }
 }
