@@ -11,10 +11,10 @@ export class UserProfile extends React.Component {
   }
 
   componentDidMount() {
-    const uid = autheRequests.getUid();
-  getCustomerInfo.getCustomerProfile(uid).then((profile) => { 
-    this.setState({profile})
-  });
+  //   const uid = autheRequests.getUid();
+  // getCustomerInfo.getCustomerProfile(uid).then((profile) => { 
+  //   this.setState({profile})
+  // });
 }
 
   render() {
