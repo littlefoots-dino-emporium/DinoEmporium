@@ -33,12 +33,12 @@ class MyNavbar extends React.Component {
             {authed ? (
               <Nav>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to='/{customerId}/home'>
+                  <NavLink tag={RRNavLink} to='/home'>
                     Home
               </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={RRNavLink} to='/{customerId}/customerprofile'>
+                  <NavLink tag={RRNavLink} to='/customerprofile'>
                     Profile
               </NavLink>
                 </NavItem>

@@ -4,17 +4,17 @@ import './CustomerProfile.scss';
 import autheRequests from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 
-export class UserProfile extends React.Component {
+export class CustomerProfile extends React.Component {
 
   state = {
     customer: []
   }
 
   componentDidMount() {
-  //   const uid = autheRequests.getUid();
-  // getCustomerInfo.getCustomerProfile(uid).then((profile) => { 
-  //   this.setState({profile})
-  // });
+    const uid = autheRequests.getUid();
+  getCustomerInfo.getCustomerProfile(uid).then((profile) => { 
+    this.setState({customer: profile})
+  });
 }
 
   render() {
@@ -28,4 +28,4 @@ export class UserProfile extends React.Component {
   }
 }
 
-export default UserProfile
+export default CustomerProfile
