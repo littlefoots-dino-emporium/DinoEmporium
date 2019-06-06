@@ -8,6 +8,7 @@ class FenceItem extends React.Component {
         const { fence } = this.props;
         return (
             <div>
+                {fence.name}
                 {fence.price}
             </div>
         )

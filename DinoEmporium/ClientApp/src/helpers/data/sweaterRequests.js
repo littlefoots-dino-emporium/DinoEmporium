@@ -5,19 +5,14 @@ const firebaseURL = apiKeys.firebaseConfig.databaseURL;
 
 const getSweaterRequest = () => new Promise((resolve, reject) => {
   axios
-    .get(`${firebaseURL}/sweaters.json`)
+    .get(`http://localhost:50312/api/product/getAllProducts`)
     .then((res) => {
-      const sweaters = [];
-      if (res.data !== null) {
-        Object.keys(res.data).forEach((key) => {
-          res.data[key].id = key;
-          sweaters.push(res.data[key]);
-        });
-      }
+      const sweaters = res.data;
       resolve(sweaters);
     })
     .catch(err => reject(err));
 });
+
 
 const createSweater = sweater => axios.post(`${firebaseURL}/sweaters.json`, sweater);
 

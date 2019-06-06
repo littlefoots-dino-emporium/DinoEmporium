@@ -1,92 +1,62 @@
 import React from 'react';
 //import fencingShape from '../../helpers/propz/fencingShape';
-import fenceRequests from '../../helpers/data/fenceRequest';
+import fenceRequests from '../../helpers/data/fenceRequests';
 import FenceItem from '../FenceItem/FenceItem';
 import SweaterItem from '../SweaterItem/SweaterItem';
-import sweaterRequest from '../../helpers/data/sweaterRequest';
+import sweaterRequests from '../../helpers/data/sweaterRequests';
 
 
 
- class Home extends React.Component {
-     state = {
-         fences: [], 
-         sweater: [],
-     }
+class Home extends React.Component {
+  state = {
+    fence: [],
+    sweater: [],
+  }
 
-     //componentDidMount() {
-         //const uid = authRequests.getCurrentUid();
-        //  fenceRequests.getRequest().then((fence) => {
-        //      this.setState({ fence });
-        //  });
+  componentDidMount() {
+    this.allFences();
+    this.allSweaters();
+  }
 
-        //}
+  allFences = () => {
+    fenceRequests.getRequest().then((fence) => {
+      this.setState({ fence });
+    })
+  }
 
-        //  allFences = () => {
-        //      fenceRequests.getRequest().then((fence) => {
-        //          this.setState({ fence });
-        //      })
-        //  }
-       // this.allFences();
+  allSweaters = () => {
+    sweaterRequests.getSweaterRequest().then((sweater) => {
+      this.setState({ sweater });
+    })
+  }
 
-       componentDidMount() {
-         sweaterRequest.getAllSweaters()
-         .then((sweaters) => {
-          this.setState({ sweaters });
-         })
-         .catch(err => console.error('error with componentDidMount getSweater request'));
-       }
+  render() {
+    const { fence } = this.state;
+    const fenceItemComponent = fence.map(fence => (
+      <FenceItem
+        fence={fence}
+        key={fence.id}
+      />
+    ));
 
-         allFences = () => {
-             fenceRequests.getRequest().then((fences) => {
-                 this.setState({ fences });
-                 console.log(fences);
-             })
-         }
+    const { sweater } = this.state;
+    const sweaterItemComponent = sweater.map(sweater => (
+      <SweaterItem
+        sweater={sweater}
+        key={sweater.id}
+      />
+    ));
 
-         allSweaters = () => {
-           sweaterRequest.getRequest().then((sweaters) => {
-             this.setState({ sweaters });
-             console.log(sweaters);
-           })
-         }
-
-
-         render() {
-             const { 
-               fences,
-             } = this.state;
-
-
-             const fenceItemComponent = fences.map(fence => (
-                 <FenceItem
-                 fence = {fences}
-                 key = {fences.id}
-                 />
-             ));
-             
-
-             const { sweater } = this.state;
-             const sweaterItemComponent = sweater.map(sweater => (
-               <SweaterItem
-               sweater = {sweater}
-               key = {sweater.id}
-               />
-             ))
-
-
-             return (
-                 <div>
-                     <div className="card-body">
-                         {fenceItemComponent}
-
-                         {sweaterItemComponent}
-
-                     </div>
-                 </div>
-             )
-         }
-        }
- 
+    return (
+      <div>
+        <div className="all-card">
+          {fenceItemComponent}
+          {sweaterItemComponent}
+        </div>
+      </div>
+    )
+  }
+}
 
 
 export default Home;
