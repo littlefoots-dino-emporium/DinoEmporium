@@ -20,9 +20,9 @@ namespace DinoEmporium.Data
                 // var addCustomerInformation = db.CreateCommand();
 
                 var addCustomerInformation= db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, date, customerUid, email)
+                    Insert into customer (firstName,lastName, customerUid, email)
                     Output inserted.*
-                    Values(@firstName,@lastName,@date, @customerUid,@email)",
+                    Values(@firstName,@lastName,@customerUid,@email)",
                     new { firstName, lastName, date, customerUid, email });             
 
 
@@ -40,7 +40,6 @@ namespace DinoEmporium.Data
             using (var db = new SqlConnection(ConnectionString))
             {
                 var allCustomers = db.Query<Customer>(@"Select * from Customer").ToList();
-                
                 return allCustomers;
             }
         }
@@ -52,7 +51,7 @@ namespace DinoEmporium.Data
             {
                 var allCustomers = db.QueryFirstOrDefault<Customer>(@"Select * 
                                                       from Customer
-                                                       Where Id = @id",
+                                                       Where id = @id",
                                                        new { id });
 
                 return allCustomers;
