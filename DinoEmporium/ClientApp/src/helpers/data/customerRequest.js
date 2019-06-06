@@ -1,29 +1,29 @@
 import axios from 'axios';
-import apiKeys from '../apiKeys';
+import apiKeys from '../../firebaseRequests/apiKeys';
 
-const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getProfileByCustomerId = customerId => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/customers.json?orderBy="customerId"&equalTo="${customerId}"`)
-    .then((result) => {
-      const customerObject = result.data;
-      const customerArray = [];
-      if (customerObject != null) {
-        Object.keys(customerObject).forEach((customerId) => {
-          customerObject[customerId].id = customerId;
-          customerArray.push(customerObject[customerId]);
-        });
-      }
-      resolve(customerArray);
+// const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
+const getCustomerProfile = () => new Promise((resolve, reject) => {
+  axios
+    .get(`http://localhost:50312/api/customer/1`)
+    .then((res) => {
+      console.log(res.data);
+
+      // let customer = '';
+      // if (res.data !== null) {
+      //   Object.keys(res.data).forEach((key) => {
+      //     res.data[key].id = key;
+      //     customer = res.data[key];
+      //   });
+      // }
+      // resolve(customer);
     })
-    .catch((error) => {
-      reject(error);
-    });
+    .catch(err => reject(err));
 });
 
-const postCustomerRequest = newCustomer => axios.post(`${firebaseUrl}/customers.json`, newCustomer);
+const postCustomerRequest = (customerInfo) => axios.post(`http://localhost:50312/api/customer/register`, customerInfo);
 
 export default {
-  getProfileByCustomerId,
-  postCustomerRequest
+  postCustomerRequest,
+  getCustomerProfile
 }

@@ -14,6 +14,7 @@ namespace DinoEmporium.Models
         public DateTime Date { get; set; }
         public string Email { get; set; }
         public string CustomerUid { get; set; }
+        public int ProductId { get; set; }
     }
    
 }

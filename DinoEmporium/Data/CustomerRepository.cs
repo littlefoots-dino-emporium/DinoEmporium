@@ -13,17 +13,18 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Customer AddCustomer(string firstName, string lastName, string customerUid, string email)
+        public Customer AddCustomer(string firstName, string lastName, DateTime date, string customerUid, string email)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 // var addCustomerInformation = db.CreateCommand();
 
                 var addCustomerInformation= db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, customerUid, email)
+                    Insert into customer (firstName,lastName, date, customerUid, email)
                     Output inserted.*
-                    Values(@firstName,@lastName,@customerUid,@email)",
-                    new { firstName, lastName, customerUid, email });             
+                    Values(@firstName,@lastName,@date, @customerUid,@email)",
+                    new { firstName, lastName, date, customerUid, email });             
+
 
                 if (addCustomerInformation != null)
                 {

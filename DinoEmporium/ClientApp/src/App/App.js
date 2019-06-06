@@ -118,8 +118,8 @@ class App extends React.Component {
               <div className="row">
                 <Switch>
                   <Route path="/" exact component={Home}/>
-                  <PrivateRoute path='/{customerId}/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
-                  <PrivateRoute path='/{customerId}/home' exact component={Home} authed={this.state.authed} />
+                  <PrivateRoute path='/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
+                  <PrivateRoute path='/home' exact component={Home} authed={this.state.authed} />
                 </Switch>
               </div>
             </div>

@@ -2,20 +2,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import authRequests from '../../firebaseRequests/auth';
+import postCustomer from '../../helpers/data/customerRequest';
+import firebase from 'firebase';
+
 
 import './Register.scss';
 
 const customerInformation = {
   email: '',
+  password: '',
   firstName: '',
   lastName: '',
   date: '',
-  password: '',
 }
 class Register extends React.Component {
   state = {
       newCustomerInformation: customerInformation,    
   };
+
+  signUp = ( newCustomerInformation) => {
+    firebase.auth().createUserWithEmailAndPassword(newCustomerInformation.email, newCustomerInformation.password).then((res) => {
+      newCustomerInformation.uid = authRequests.getUid();
+      const customerInformation = { firstName: newCustomerInformation.firstName,
+                        lastName: newCustomerInformation.lastName,
+                        email: newCustomerInformation.email,
+                        customerUid: newCustomerInformation.uid
+                        }
+      postCustomer.postCustomerRequest(customerInformation);
+      this.props.history.push('/');
+    }).catch(err => console.error('there was an error with auth', err));
+  }
 
   formFieldStringState = (name,e) => {
     e.preventDefault();
@@ -25,9 +41,6 @@ class Register extends React.Component {
   }
   
   emailChange = e => {
-    // const tempUser = { ...this.state.user };
-    // tempUser.email = e.target.value;
-    // this.setState({ user: tempUser });
     this.formFieldStringState('name', e);
   };
 
@@ -47,18 +60,30 @@ class Register extends React.Component {
     this.formFieldStringState('email', e);
   }
 
-  registerClickEvent = e => {
-    const { newCustomerInformation } = this.state;
+  passwordChange = e => {
+    this.formFieldStringState('password', e);
+  }
+
+  // registerClickEvent = e => {
+  //   const { newCustomerInformation } = this.state;
+  //   e.preventDefault();
+  //   console.log('click');
+  //   authRequests
+  //     .registerUser(newCustomerInformation)
+  //     .then(() => {
+  //       this.props.history.push('/');
+  //     })
+  //     .catch(error => {
+  //       console.error('there was an error in registering', error);
+  //     });
+  // };
+
+  formSubmit = (e) => {
     e.preventDefault();
-    authRequests
-      .registerUser(newCustomerInformation.e)
-      .then(() => {
-        this.props.history.push('/');
-      })
-      .catch(error => {
-        console.error('there was an error in registering', error);
-      });
-  };
+    const userInformation = { ...this.state.newCustomerInformation };
+    this.signUp(userInformation);
+    this.setState({ newCustomerInformation:customerInformation });
+  }
 
   render () {
     const { newCustomerInformation } = this.state;
@@ -68,30 +93,30 @@ class Register extends React.Component {
           <h1 className="text-center">Register</h1>
           <form className="form-horizontal col-sm-6 col-sm-offset-3">
             <div className="form-group">
-              <label htmlFor="inputEmail" className="col-sm-4 control-label">
+              <label htmlFor="inputName" className="col-sm-4 control-label">
                 First Name:
               </label>
               <div className="col-sm-8">
                 <input
-                  type="email"
+                  type="name"
                   className="form-control"
                   id="inputEmail"
-                  placeholder="Email"
+                  placeholder="First Name"
                   value={newCustomerInformation.firstName}
                   onChange={this.firstNameChange}
                 />
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="inputEmail" className="col-sm-4 control-label">
+              <label htmlFor="inputLastName" className="col-sm-4 control-label">
                 Last Name:
               </label>
               <div className="col-sm-8">
                 <input
-                  type="email"
+                  type="name"
                   className="form-control"
                   id="inputEmail"
-                  placeholder="Email"
+                  placeholder="Last Name"
                   value={newCustomerInformation.lastName}
                   onChange={this.lastNameChange}
                 />
@@ -114,7 +139,7 @@ class Register extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="inputPassword" className="col-sm-4 control-label">
-                Date:
+                Password:
               </label>
               <div className="col-sm-8">
                 <input
@@ -122,8 +147,8 @@ class Register extends React.Component {
                   className="form-control"
                   id="inputPassword"
                   placeholder="Password"
-                  value={newCustomerInformation.Date}
-                  onChange={this.dateChange}
+                  value={newCustomerInformation.password}
+                  onChange={this.passwordChange}
                 />
               </div>
             </div>
@@ -137,7 +162,7 @@ class Register extends React.Component {
                 <button
                   type="submit"
                   className="btn btn-default col-xs-12"
-                  onClick={this.registerClickEvent}
+                  onClick={this.formSubmit}
                 >
                   Register
                 </button>
