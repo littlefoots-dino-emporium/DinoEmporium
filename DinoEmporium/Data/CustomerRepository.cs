@@ -82,25 +82,5 @@ namespace DinoEmporium.Data
                 throw new Exception("Could not update user");
             
         }
-
-      public Customer ChooseProduct(Customer CustomerInformation)
-        {
-            using (var db = new SqlConnection(ConnectionString))
-            {
-                // var addCustomerInformation = db.CreateCommand();
-
-                var addCustomerInformation = db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, customerUid, email)
-                    Output inserted.*
-                    Values(@firstName,@lastName,@customerUid,@email)where id = @customerId",
-                    new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, customerUid = CustomerInformation.CustomerUid, email = CustomerInformation.Email });
-
-                if (addCustomerInformation != null)
-                {
-                    return addCustomerInformation;
-                }
-                throw new Exception("could not add product");
-            }
-        }
     }
 }

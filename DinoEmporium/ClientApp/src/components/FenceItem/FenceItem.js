@@ -8,7 +8,10 @@ class FenceItem extends React.Component {
         const { fence } = this.props;
         return (
             <div>
+                <h1>
                 {fence.price}
+                </h1>
+                
             </div>
         )
     }
