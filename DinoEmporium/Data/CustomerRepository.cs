@@ -13,17 +13,18 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Customer AddCustomer(string firstName, string lastName, DateTime date, string email)
+        public Customer AddCustomer(string firstName, string lastName, DateTime date, string customerUid, string email)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 // var addCustomerInformation = db.CreateCommand();
 
                 var addCustomerInformation= db.QueryFirstOrDefault<Customer>(@"
-                    Insert into customer (firstName,lastName, email)
+                    Insert into customer (firstName,lastName, date, customerUid, email)
                     Output inserted.*
-                    Values(@firstName,@lastName,@email)",
-                    new { firstName, lastName, date, email });             
+                    Values(@firstName,@lastName,@date, @customerUid,@email)",
+                    new { firstName, lastName, date, customerUid, email });             
+
 
                 if (addCustomerInformation != null)
                 {
@@ -78,28 +79,7 @@ namespace DinoEmporium.Data
 
                 return updateCustomer;
             }
-                throw new Exception("Could not update user");
-            
+                throw new Exception("Could not update user");   
         }
-
-      //public Customer ChooseProduct(Customer CustomerInformation)
-      //  {
-      //      using (var db = new SqlConnection(ConnectionString))
-      //      {
-      //          // var addCustomerInformation = db.CreateCommand();
-
-      //          var addCustomerInformation = db.QueryFirstOrDefault<Customer>(@"
-      //              Insert into customer (firstName,lastName, date, email, productId)
-      //              Output inserted.*
-      //              Values(@firstName,@lastName,@date,@email,@productId)where id = @customerId",
-      //              new { customerId = CustomerInformation.Id, firstName = CustomerInformation.FirstName, lastName = CustomerInformation.LastName, date = CustomerInformation.Date, email = CustomerInformation.Email, product = CustomerInformation.ProductId });
-
-      //          if (addCustomerInformation != null)
-      //          {
-      //              return addCustomerInformation;
-      //          }
-      //          throw new Exception("could not add product");
-      //      }
-      //  }
     }
 }
