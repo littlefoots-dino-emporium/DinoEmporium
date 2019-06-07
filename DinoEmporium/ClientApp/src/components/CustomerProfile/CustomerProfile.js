@@ -1,19 +1,18 @@
 import React from 'react';
-
-import './CustomerProfile.scss';
-import autheRequests from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
+import './CustomerProfile.scss';
+
+
 
 export class CustomerProfile extends React.Component {
 
   state = {
-    customer: []
+    customer: [],
   }
 
   componentDidMount() {
-    const uid = autheRequests.getUid();
-  getCustomerInfo.getCustomerProfile(uid).then((profile) => { 
-    this.setState({customer: profile})
+  getCustomerInfo.getCustomerProfile().then((customer) => { 
+    this.setState({ customer })
   });
 }
 
@@ -23,6 +22,8 @@ export class CustomerProfile extends React.Component {
     return (
       <div>
         <h1>{customer.firstName}</h1>
+        <h1>{customer.lastName}</h1>
+        <h3>{customer.email}</h3>
       </div>
     )
   }

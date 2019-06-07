@@ -1,62 +1,42 @@
 import React from 'react';
-//import fencingShape from '../../helpers/propz/fencingShape';
-import fenceRequests from '../../helpers/data/fenceRequests';
-import FenceItem from '../FenceItem/FenceItem';
-import SweaterItem from '../SweaterItem/SweaterItem';
-import sweaterRequests from '../../helpers/data/sweaterRequests';
+import productRequests from '../../helpers/data/productRequest';
+import ProductItem from '../ProductItem/ProductItem';
 
 
 
-class Home extends React.Component {
-  state = {
-    fence: [],
-    sweater: [],
-  }
+ class Home extends React.Component {
+     state = {
+         product: [], 
+     }
+     componentDidMount() {
+        this.allProducts();
+        }
 
-  componentDidMount() {
-    this.allFences();
-    this.allSweaters();
-  }
+         allProducts = () => {
+             productRequests.getRequest().then((product) => {
+                 this.setState({ product });
+                 console.log(product);
+             })
+         }
 
-  allFences = () => {
-    fenceRequests.getRequest().then((fence) => {
-      this.setState({ fence });
-    })
-  }
+         render() {
+             const { product } = this.state;
+             const productItemComponent = product.map(product => (
+                 <ProductItem
+                 product = {product}
+                 key = {product.id}
+                 />
+             ));
 
-  allSweaters = () => {
-    sweaterRequests.getSweaterRequest().then((sweater) => {
-      this.setState({ sweater });
-    })
-  }
-
-  render() {
-    const { fence } = this.state;
-    const fenceItemComponent = fence.map(fence => (
-      <FenceItem
-        fence={fence}
-        key={fence.id}
-      />
-    ));
-
-    const { sweater } = this.state;
-    const sweaterItemComponent = sweater.map(sweater => (
-      <SweaterItem
-        sweater={sweater}
-        key={sweater.id}
-      />
-    ));
-
-    return (
-      <div>
-        <div className="all-card">
-          {fenceItemComponent}
-          {sweaterItemComponent}
-        </div>
-      </div>
-    )
-  }
-}
+             return (
+                 <div>
+                     <div className="productCards">
+                         {productItemComponent}
+                     </div>
+                 </div>
+             )
+         }
+     }
 
 
 export default Home;

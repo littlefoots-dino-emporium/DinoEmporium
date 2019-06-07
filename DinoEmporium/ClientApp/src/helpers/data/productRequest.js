@@ -1,5 +1,4 @@
 import axios from 'axios';
-//import apiKeys from '../../apiKeys';
 import apiKeys from '../../firebaseRequests/apiKeys';
 
 const firebaseURL = apiKeys.firebaseConfig.databaseURL;
@@ -8,15 +7,15 @@ const firebaseURL = apiKeys.firebaseConfig.databaseURL;
    axios
      .get(`http://localhost:50312/api/product/getAllProducts`)
      .then((res) => {
-        const fences = res.data;
-       resolve(fences);
+        const products = res.data;
+       resolve(products);
      })
      .catch(err => reject(err));
  });
 
-const getSingleFence = fenceId => axios.get(`${firebaseURL}/fences/${fenceId}.json`);
+const getSingleProduct = productId => axios.get(`${firebaseURL}/products/${productId}.json`);
 
 export default {
   getRequest,
-  getSingleFence,
+  getSingleProduct,
 };
