@@ -1,39 +1,21 @@
 import React from 'react';
-//import Modal from 'react-responsive-modal';
-import { Button } from 'react';
 import './ProductItem.scss';
 
 class ProductItem extends React.Component {
 
+
     render() {
-        //const { product } = this.props;
-         const infoButtons = () => (
-             <div>
-                 <span className="openForInfo col">
-                     <Button outline color="info" onClick={this.openForInfo}>
-                         Information
-                 </Button>
-                 </span>
-                 <span className="addToCart col">
-                     <Button outline color="danger" onClick={this.addToCart}>
-                         Add To Cart
-                 </Button>
-                 </span>
-             </div>
-         );
-
-
+        const { product } = this.props;
         return (
-            <div className='productCard card'>
-                <div className='text-center card-header'>
-                    
-                    {infoButtons()}
-                </div>
+
+            <div className='card-body productCard'>
+            <img className='product-image' src={product.image} alt='product' />
+            <li className='product-title'>{product.title}</li>
+            <li className='plant-price'><i>${product.price}</i></li>
+            <li className='plant-description'>{product.description}</li>
+            <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
             </div>
-        )
-    }
+        )}
 }
 
 export default ProductItem;
-//<span className='col-3' onClick={this.addToCart}>{cartButton()}</span>
-//<span className='col-3' onClick={this.openForInfo}>{infoButton()}</span>
