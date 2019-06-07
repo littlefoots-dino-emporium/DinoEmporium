@@ -40,10 +40,10 @@ namespace DinoEmporium.Controllers
             return Ok(allCustomers);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult GetSingleCustomer(int id)
+        [HttpGet("{customerUid}")]
+        public ActionResult GetSingleCustomer(string customerUid)
         {
-            var singleCustomer = _customerRepository.GetSingleCustomer(id);
+            var singleCustomer = _customerRepository.GetSingleCustomer(customerUid);
             return Ok(singleCustomer);
         }
 

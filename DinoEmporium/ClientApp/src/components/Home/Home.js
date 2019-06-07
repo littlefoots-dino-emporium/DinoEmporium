@@ -7,6 +7,7 @@ import FenceItem from '../FenceItem/FenceItem';
  class Home extends React.Component {
      state = {
          fence: [], 
+         singleFence: ''
      }
      componentDidMount() {
          //const uid = authRequests.getCurrentUid();
@@ -23,6 +24,13 @@ import FenceItem from '../FenceItem/FenceItem';
              })
          }
 
+         singleFence = () => {
+            fenceRequests.getSingleFence().then((fence) => {
+                this.setState({ fence });
+                console.log(fence);
+            })
+        }
+
          render() {
              const { fence } = this.state;
              const fenceItemComponent = fence.map(fence => (
@@ -35,7 +43,7 @@ import FenceItem from '../FenceItem/FenceItem';
              return (
                  <div>
                      <div className="all-card">
-                         {fenceItemComponent}
+                         {fenceItemComponent} 
                      </div>
                  </div>
              )
