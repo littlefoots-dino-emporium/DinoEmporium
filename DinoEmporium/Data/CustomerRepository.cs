@@ -45,14 +45,14 @@ namespace DinoEmporium.Data
         }
 
 
-        public Customer GetSingleCustomer(int id)
+        public Customer GetSingleCustomer(string customerUid)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var allCustomers = db.QueryFirstOrDefault<Customer>(@"Select * 
                                                       from Customer
-                                                       Where id = @id",
-                                                       new { id });
+                                                       Where customerUid = @customerUid",
+                                                       new { customerUid });
 
                 return allCustomers;
             }

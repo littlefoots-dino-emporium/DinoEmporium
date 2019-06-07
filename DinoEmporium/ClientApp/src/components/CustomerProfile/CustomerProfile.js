@@ -7,11 +7,12 @@ import './CustomerProfile.scss';
 export class CustomerProfile extends React.Component {
 
   state = {
-    customer: [],
+    customer: {},
   }
 
   componentDidMount() {
-  getCustomerInfo.getCustomerProfile().then((customer) => { 
+  let uid = autheRequests.getUid();
+  getCustomerInfo.getCustomerProfile(uid).then((customer) => { 
     this.setState({ customer })
   });
 }
