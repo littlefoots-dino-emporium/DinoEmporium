@@ -2,9 +2,6 @@ import React from 'react';
 import {Route, BrowserRouter, Redirect, Switch}  from 'react-router-dom';
 import firebase from 'firebase';
 import connection from '../firebaseRequests/connection';
-
-//import './App.css';
-
 import Home from '../components/Home/Home';
 import CustomerProfile from '../components/CustomerProfile/CustomerProfile';
 import Login from '../components/Login/Login';

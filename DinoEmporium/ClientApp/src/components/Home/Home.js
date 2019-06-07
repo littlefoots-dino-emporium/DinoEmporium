@@ -1,8 +1,10 @@
 import React from 'react';
 import productRequests from '../../helpers/data/productRequest';
+//import productShape from '../../helpers/propz/productShape';
 import ProductItem from '../ProductItem/ProductItem';
 import Modal from 'react-responsive-modal';
-import { Button } from 'react';
+import { ModalFooter } from 'reactstrap';
+//import { Button } from 'react';
 
 
 class Home extends React.Component {
@@ -16,13 +18,6 @@ class Home extends React.Component {
     this.allProducts();
   }
 
-  allProducts = () => {
-    productRequests.getRequest().then((product) => {
-      this.setState({ product });
-      console.log(product);
-    })
-  }
-
   onOpenModal = () => {
     this.setState({ open: true });
   };
@@ -30,6 +25,13 @@ class Home extends React.Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
+
+
+  allProducts = () => {
+    productRequests.getRequest().then((product) => {
+      this.setState({ product });
+    })
+  }
 
   render() {
     const { product, open } = this.state;
@@ -42,18 +44,19 @@ class Home extends React.Component {
     ));
 
     return (
-      <div className='productStuff'>{productItemComponent}</div>
-
-
-      
-        <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-        <img className='product-image' src={product.image} alt='product' />
-        <li className='product-title'>{product.title}</li>
-        <li className='plant-price'><i>${product.price}</i></li>
-        <li className='plant-description'>{product.description}</li>
-        <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-        </Modal>
-        <ModalFooter>
+      <div className='product'>
+        <div className='productStuff'>{productItemComponent}</div>
+        <div className='whatwhat'>
+          <Modal className="modal" open={open} onClose={this.onCloseModal} center>
+            <img className='product-image' src={product.image} alt='product' />
+            <li className='product-title'>{product.title}</li>
+            <li className='plant-price'><i>${product.price}</i></li>
+            <li className='plant-description'>{product.description}</li>
+            <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
+          </Modal>
+        </div>
+        <ModalFooter></ModalFooter>
+      </div>
     )
   }
 }
