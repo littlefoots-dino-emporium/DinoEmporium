@@ -2,20 +2,11 @@ import axios from 'axios';
 import apiKeys from '../../firebaseRequests/apiKeys';
 
 
-// const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
-const getCustomerProfile = () => new Promise((resolve, reject) => {
+const getCustomerProfile = uid => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/customer/3`)
+    .get(`http://localhost:50312/api/customer/${uid}`)
     .then((res) => {
-      console.log(res.data);
-
       let customer = res.data;
-      // if (res.data !== null) {
-      //   Object.keys(res.data).forEach((key) => {
-      //     res.data[key].id = key;
-      //     customer = res.data[key];
-      //   });
-      // }
       resolve(customer);
     })
     .catch(err => reject(err));
