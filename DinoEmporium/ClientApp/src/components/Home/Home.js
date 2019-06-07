@@ -1,55 +1,38 @@
 import React from 'react';
-//import fencingShape from '../../helpers/propz/fencingShape';
-import fenceRequests from '../../helpers/data/fenceRequest';
-import FenceItem from '../FenceItem/FenceItem';
+import productRequests from '../../helpers/data/productRequest';
+import ProductItem from '../ProductItem/ProductItem';
 
 
- class Home extends React.Component {
-     state = {
-         fence: [], 
-         singleFence: ''
-     }
-     componentDidMount() {
-         //const uid = authRequests.getCurrentUid();
-        //  fenceRequests.getRequest().then((fence) => {
-        //      this.setState({ fence });
-        //  });
-        this.allFences();
-        }
+class Home extends React.Component {
 
-         allFences = () => {
-             fenceRequests.getRequest().then((fence) => {
-                 this.setState({ fence });
-                 console.log(fence);
-             })
-         }
+  state = {
+    product: [],
+  }
 
-         singleFence = () => {
-            fenceRequests.getSingleFence().then((fence) => {
-                this.setState({ fence });
-                console.log(fence);
-            })
-        }
+  componentDidMount() {
+    this.allProducts();
+  }
 
-         render() {
-             const { fence } = this.state;
-             const fenceItemComponent = fence.map(fence => (
-                 <FenceItem
-                 fence = {fence}
-                 key = {fence.id}
-                 />
-             ));
+  allProducts = () => {
+    productRequests.getRequest().then((product) => {
+      this.setState({ product });
+    })
+  }
 
-             return (
-                 <div>
-                     <div className="all-card">
-                         {fenceItemComponent} 
-                     </div>
-                 </div>
-             )
-         }
-     }
- 
+  render() {
+    const { product } = this.state;
+    const productItemComponent = product.map(product => (
+      <ProductItem
+        product={product}
+        key={product.id}
+      />
+    ));
+
+    return (
+      <div className='productStuff'>{productItemComponent}</div>
+    )
+  }
+}
 
 
 export default Home;

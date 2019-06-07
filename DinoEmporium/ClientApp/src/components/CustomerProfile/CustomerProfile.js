@@ -1,8 +1,8 @@
 import React from 'react';
-
-import './CustomerProfile.scss';
-import autheRequests from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
+import './CustomerProfile.scss';
+
+
 
 export class CustomerProfile extends React.Component {
 

@@ -78,8 +78,7 @@ namespace DinoEmporium.Data
 
                 return updateCustomer;
             }
-                throw new Exception("Could not update user");
-            
+                throw new Exception("Could not update user");  
         }
     }
 }
