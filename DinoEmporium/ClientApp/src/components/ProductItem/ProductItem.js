@@ -19,8 +19,9 @@ class ProductItem extends React.Component {
         return (
             <div className="app">
                 <button className="modal_opener" onClick={this.toggleModal}>
-                    Product
-            </button>
+                    <img className='product-image' src={product.image} alt='product' />
+                    <li className='product-title'>{product.title}</li>
+                </button>
 
                 <Modal
                     show={this.state.showModal}
@@ -29,8 +30,6 @@ class ProductItem extends React.Component {
                 >
                     <React.Fragment>
                         <div className='card-body productCard'>
-                            <img className='product-image' src={product.image} alt='product' />
-                            <li className='product-title'>{product.title}</li>
                             <li className='plant-price'><i>${product.price}</i></li>
                             <li className='plant-description'>{product.description}</li>
                             <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
