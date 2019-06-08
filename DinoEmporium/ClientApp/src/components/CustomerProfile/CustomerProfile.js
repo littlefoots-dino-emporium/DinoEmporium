@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import customerShape from '../../helpers/propz/customerShape'
 //import getCustomerInfo from '../../helpers/data/customerRequest';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
@@ -12,6 +13,13 @@ export class CustomerProfile extends React.Component {
 
   state = {
     customer: {},
+    isEditing: false,
+    editId: '-1',
+  }
+
+  static propTypes = {
+    customerShape: customerShape.customerShape,
+    // passCustomerToEdit: this.PropTypes.func,
   }
 
   componentDidMount() {
@@ -21,8 +29,15 @@ export class CustomerProfile extends React.Component {
     });
   }
 
+  editLineup = (e) => {
+    e.preventDefault();
+    const { passCustomerToEdit, customerShape } = this.props;
+    passCustomerToEdit(customerShape.id);
+  }
+  passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
+
   render() {
-    const { customer } = this.state;
+    const { customer, isEditing, editId } = this.state;
     const makeButtons = () => (
       <div>
         <span className="editLineup col">
@@ -34,7 +49,7 @@ export class CustomerProfile extends React.Component {
     );
 
     return (
-      <div>
+      <div passCustomerToEdit={this.passCustomerToEdit}>
         <h1>{customer.firstName}</h1>
         <h1>{customer.lastName}</h1>
         <h3>{customer.email}</h3>
@@ -42,8 +57,8 @@ export class CustomerProfile extends React.Component {
         <div className='lineupForm'>
         <EditCustomerForm
           onSubmit={this.formSubmitLineup}
-          // isEditing={isEditing}
-          // editId={editId}
+          isEditing={isEditing}
+          editId={editId}
         />
       </div>
       </div>

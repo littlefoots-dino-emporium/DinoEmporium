@@ -97,7 +97,7 @@ class EditCustomerForm extends React.Component {
   componentDidUpdate(prevProps) {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
-      customerRequest.getSingleCustomer(editId)
+      customerRequest.getCustomerProfile(editId)
         .then((customer) => {
           this.setState({ newCustomer : customer.data });
         })
