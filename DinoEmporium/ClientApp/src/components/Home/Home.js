@@ -3,6 +3,7 @@ import productRequests from '../../helpers/data/productRequest';
 import ProductItem from '../ProductItem/ProductItem';
 
 
+
 class Home extends React.Component {
 
   state = {
@@ -28,9 +29,9 @@ class Home extends React.Component {
       />
     ));
 
-    return (
-      <div className='productStuff'>{productItemComponent}</div>
-    )
+      return (
+        <p>{productItemComponent}</p>
+    );
   }
 }
 

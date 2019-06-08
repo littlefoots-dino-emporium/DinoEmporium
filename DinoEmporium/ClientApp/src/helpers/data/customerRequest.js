@@ -1,11 +1,7 @@
 import axios from 'axios';
 
-<<<<<<< HEAD
-const getCustomerProfile = () => new Promise((resolve, reject) => {
-=======
 
 const getCustomerProfile = uid => new Promise((resolve, reject) => {
->>>>>>> master
   axios
     .get(`http://localhost:50312/api/customer/${uid}`)
     .then((res) => {
