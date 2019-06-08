@@ -1,5 +1,5 @@
 import React from 'react';
-import getCustomerInfo from '../../helpers/data/customerRequest';
+//import getCustomerInfo from '../../helpers/data/customerRequest';
 import './CustomerProfile.scss';
 
 
@@ -10,12 +10,12 @@ export class CustomerProfile extends React.Component {
     customer: {},
   }
 
-  componentDidMount() {
-  let uid = autheRequests.getUid();
-  getCustomerInfo.getCustomerProfile(uid).then((customer) => { 
-    this.setState({ customer })
-  });
-}
+//   componentDidMount() {
+//   let uid = autheRequests.getUid();
+//   getCustomerInfo.getCustomerProfile(uid).then((customer) => { 
+//     this.setState({ customer })
+//   });
+// }
 
   render() {
     const { customer } = this.state;
