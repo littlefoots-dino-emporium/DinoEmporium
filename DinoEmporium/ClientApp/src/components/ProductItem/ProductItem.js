@@ -1,11 +1,24 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import './ProductItem.scss';
+import customerProduct from '../../helpers/data/customerProductRequest';
+import customerRequest from '../../helpers/data/customerRequest';
+import autheRequests from '../../firebaseRequests/auth';
 
 class ProductItem extends React.Component {
 
     state = {
-        showModal: false
+        showModal: false,
+        customer: ''
+    }
+
+    componentDidMount() {
+        let uid = autheRequests.getUid();
+        const { product } = this.props;
+        customerRequest.getCustomerProfile(uid).then((customer) => {
+            console.log(customer.id, product.id);
+            this.setState({ customer });
+          })
     }
 
     toggleModal = () => {
@@ -13,6 +26,17 @@ class ProductItem extends React.Component {
             showModal: !this.state.showModal
         });
     }
+
+    addToCart = () => {
+        const { customer } = this.state;
+        const { product } = this.props;
+        const CustomerProductInfo = {
+            productId: product.id,
+            customerId: customer.id
+        }
+        customerProduct(CustomerProductInfo);
+    }
+
 
     render() {
         const { product } = this.props;
@@ -34,6 +58,7 @@ class ProductItem extends React.Component {
                             <li className='plant-price'><i>${product.price}</i></li>
                             <li className='plant-description'>{product.description}</li>
                             <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
+                            <button onClick= {this.addToCart}>Add To Cart </button>
                         </div>
                     </React.Fragment>
                 </Modal>
