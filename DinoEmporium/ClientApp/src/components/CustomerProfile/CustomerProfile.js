@@ -17,10 +17,10 @@ export class CustomerProfile extends React.Component {
     editId: '-1',
   }
 
-  static propTypes = {
-    customer: customerShape.customerShape,
-    // passCustomerToEdit: this.PropTypes.func,
-  }
+  // static propTypes = {
+  //   customer: customerShape.customerShape,
+  //   // passCustomerToEdit: this.PropTypes.func,
+  // }
 
   componentDidMount() {
     let uid = autheRequests.getUid();
@@ -29,12 +29,16 @@ export class CustomerProfile extends React.Component {
     });
   }
 
-  editLineup = (e) => {
+  editCustomer = (e) => {
     e.preventDefault();
-    const { passCustomerToEdit, customer } = this.props;
-    passCustomerToEdit(customer.uid);
+    // const { passCustomerToEdit, customer } = this.props;
+    let uid = autheRequests.getUid();
+    getCustomerInfo.getCustomerProfile(uid).then(() => {
+      this.setState({ isEditing: true, editId: uid })
+    });
   }
-  passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
+
+  // passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
 
   render() {
     const { customer, isEditing, editId } = this.state;

@@ -8,7 +8,7 @@ import firebase from 'firebase';
 
 // import './Register.scss';
 
-const customerInformation = {
+const defaultCustomerInformation = {
   email: '',
   password: '',
   firstName: '',
@@ -23,9 +23,13 @@ class EditCustomerForm extends React.Component {
     editId: PropTypes.string,
   }
 
-  props = {
-      newCustomerInformation: customerInformation,    
+  state = {
+      updatedCustomerInfo: defaultCustomerInformation,
   };
+
+  // props = {
+  //   customer,
+  // }
 
   // signUp = ( newCustomerInformation) => {
   //   firebase.auth().createUserWithEmailAndPassword(newCustomerInformation.email, newCustomerInformation.password).then((res) => {
@@ -42,9 +46,9 @@ class EditCustomerForm extends React.Component {
 
   formFieldStringState = (name,e) => {
     e.preventDefault();
-    const tempInfo = { ...this.state.newCustomerInformation};
+    const tempInfo = { ...this.state.updatedCustomerInfo};
     tempInfo[name] = e.target.value;
-    this.setState({ newCustomerInformation: tempInfo});
+    this.setState({ updatedCustomerInfo: tempInfo});
   }
   
   // emailChange = e => {
@@ -86,28 +90,28 @@ class EditCustomerForm extends React.Component {
   // };
 
 
-  formSubmit = (e) => {
-    e.preventDefault();
-    const { onSubmit } = this.props;
-    const userInformation = { ...this.props.newCustomerInformation };
-    userInformation.uid = authRequests.Uid();
-    onSubmit(userInformation);
-    this.setState({ newCustomerInformation: customerInformation });
-  }
+  // formSubmit = (e) => {
+  //   e.preventDefault();
+  //   const { onSubmit } = this.props;
+  //   const userInformation = { ...this.props.CustomerInfo };
+  //   userInformation.uid = authRequests.Uid();
+  //   onSubmit(userInformation);
+  //   this.setState({ updatedCustomerInfo: defaultCustomerInformation });
+  // }
 
-  componentDidUpdate(prevProps) {
-    const { isEditing, editId } = this.props;
-    if (prevProps !== this.props && isEditing) {
-      customerRequest.getCustomerProfile(editId)
-        .then((customer) => {
-          this.setState({ newCustomer : customer.data });
-        })
-        .catch(err => console.error('error with getSingleListing', err));
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const { isEditing, editId } = this.props;
+  //   if (prevProps !== this.props && isEditing) {
+  //     customerRequest.getCustomerProfile(editId)
+  //       .then((customer) => {
+  //         this.setState({ newCustomerInfo: customer.data });
+  //       })
+  //       .catch(err => console.error('error with getSingleListing', err));
+  //   }
+  // }
 
   render () {
-    const { newCustomerInformation, isEditing } = this.props;
+    const { newCustomerInfo, isEditing } = this.props;
 
       const title = () => {
         if(isEditing) {
@@ -126,8 +130,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="First Name"
-                        value={newCustomerInformation.firstName}
-                        onChange={this.firstNameChange}
+                        // value={newCustomerInformation.firstName}
+                        // onChange={this.firstNameChange}
                       />
                     </div>
                   </div>
@@ -141,8 +145,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="Last Name"
-                        value={newCustomerInformation.lastName}
-                        onChange={this.lastNameChange}
+                        // value={newCustomerInformation.lastName}
+                        // onChange={this.lastNameChange}
                       />
                     </div>
                   </div>
@@ -156,8 +160,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="Email"
-                        value={newCustomerInformation.email}
-                        onChange={this.emailChange}
+                        // value={newCustomerInformation.email}
+                        // onChange={this.emailChange}
                       />
                     </div>
                   </div>
@@ -171,20 +175,20 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputPassword"
                         placeholder="Password"
-                        value={newCustomerInformation.password}
-                        onChange={this.passwordChange}
+                        // value={newCustomerInformation.password}
+                        // onChange={this.passwordChange}
                       />
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-sm-12">
-                      <button
+                      {/* <button
                         type="submit"
                         className="btn btn-default col-xs-12"
                         onClick={this.formSubmit}
                       >
                         Update Info
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </form>
