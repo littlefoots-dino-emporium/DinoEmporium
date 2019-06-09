@@ -1,19 +1,12 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import { Button } from 'reactstrap';
-import './ProductItem.scss';
 
-class ProductItem extends React.Component {
+class DinosaurItem extends React.Component {
 
     state = {
         showModal: false
     }
-
-    
-  passToDinoPage = (e) => {
-    const dinosaurId = this.props.match.params.id;
-    this.props.history.push(`/products/${dinosaurId}/dinosaurPage`);
-  }
 
     toggleModal = () => {
         this.setState({
@@ -48,4 +41,4 @@ class ProductItem extends React.Component {
     }
 }
 
-export default ProductItem;
+export default DinosaurItem;

@@ -1,44 +1,37 @@
-
 import React from 'react';
-import Modal from '../../helpers/modal/Modal';
-import { Button } from 'reactstrap';
+import DinosaurItem from '../DinosaurItem/DinosaurItem';
+import productTypeRequests from '../../helpers/data/productTypeRequest';
+
 
 class Dinosaur extends React.Component {
 
   state = {
-    showModal: false
+    product: [],
+    productTypeId: [],
   }
 
-  toggleModal = () => {
-    this.setState({
-      showModal: !this.state.showModal
-    });
+
+  
+  getDinosaurs = () => {
+    productTypeRequests.getDinoRequest().then((productType) => {
+      this.setState({ productType });
+    })
   }
 
   render() {
-    const { product } = this.props;
-    return (
-      <div className="app">
-        <Button className="modal_opener" onClick={this.toggleModal}>
-          <img className='product-image' src={product.image} alt='product' />
-          <p className='product-title'><i>{product.title}</i></p>
-        </Button>
+    const { productTypeId } = this.state;
+    const productTypeComponent = productTypeId.map(productTypeId => (
+      <DinosaurItem
+        productType={productTypeId}
+        key={productTypeId.id}
+      />
+    ));
 
-        <Modal
-          show={this.state.showModal}
-          closeCallback={this.toggleModal}
-          customClass="custom_modal_class"
-        >
-          <React.Fragment>
-            <div className='productCard'>
-              <li className='plant-price'><i>${product.price}</i></li>
-              <li className='plant-description'>{product.description}</li>
-              <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-            </div>
-          </React.Fragment>
-        </Modal>
+    return (
+      <div className='producttype'>
+        {productTypeComponent}
       </div>
-    )
+    );
   }
 }
 
