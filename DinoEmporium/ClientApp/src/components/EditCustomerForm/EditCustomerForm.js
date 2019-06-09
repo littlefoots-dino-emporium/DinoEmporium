@@ -99,19 +99,20 @@ class EditCustomerForm extends React.Component {
   //   this.setState({ updatedCustomerInfo: defaultCustomerInformation });
   // }
 
-  // componentDidUpdate(prevProps) {
-  //   const { isEditing, editId } = this.props;
-  //   if (prevProps !== this.props && isEditing) {
-  //     customerRequest.getCustomerProfile(editId)
-  //       .then((customer) => {
-  //         this.setState({ newCustomerInfo: customer.data });
-  //       })
-  //       .catch(err => console.error('error with getSingleListing', err));
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    const { isEditing, editId } = this.props;
+    if (prevProps !== this.props && isEditing) {
+      customerRequest.getCustomerProfile(editId)
+        .then((customer) => {
+          this.setState({ updatedCustomerInfo: customer });
+        })
+        .catch(err => console.error('error with getSingleListing', err));
+    }
+  }
 
   render () {
-    const { newCustomerInfo, isEditing } = this.props;
+    const { updatedCustomerInfo } = this.state; 
+    const { isEditing } = this.props;
 
       const title = () => {
         if(isEditing) {
@@ -130,8 +131,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="First Name"
-                        // value={newCustomerInformation.firstName}
-                        // onChange={this.firstNameChange}
+                        value={updatedCustomerInfo.firstName}
+                        onChange={this.firstNameChange}
                       />
                     </div>
                   </div>
@@ -145,8 +146,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="Last Name"
-                        // value={newCustomerInformation.lastName}
-                        // onChange={this.lastNameChange}
+                        value={updatedCustomerInfo.lastName}
+                        onChange={this.lastNameChange}
                       />
                     </div>
                   </div>
@@ -160,8 +161,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="Email"
-                        // value={newCustomerInformation.email}
-                        // onChange={this.emailChange}
+                        value={updatedCustomerInfo.email}
+                        onChange={this.emailChange}
                       />
                     </div>
                   </div>
@@ -175,8 +176,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputPassword"
                         placeholder="Password"
-                        // value={newCustomerInformation.password}
-                        // onChange={this.passwordChange}
+                        value={updatedCustomerInfo.password}
+                        onChange={this.passwordChange}
                       />
                     </div>
                   </div>
