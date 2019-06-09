@@ -1,7 +1,7 @@
 import React from 'react';
 import productRequests from '../../helpers/data/productRequest';
 import ProductItem from '../ProductItem/ProductItem';
-
+import { Button } from 'reactstrap';
 
 
 class Home extends React.Component {
@@ -30,7 +30,10 @@ class Home extends React.Component {
     ));
 
       return (
+        <div>
+        <Button className='btn btn seeDinosaurs' onClick={this.passToDinoPage}>See All Dinosaurs</Button>
         <p>{productItemComponent}</p>
+        </div>
     );
   }
 }
