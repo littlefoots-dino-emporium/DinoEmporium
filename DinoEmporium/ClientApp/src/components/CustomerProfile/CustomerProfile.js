@@ -18,7 +18,7 @@ export class CustomerProfile extends React.Component {
   }
 
   static propTypes = {
-    customerShape: customerShape.customerShape,
+    customer: customerShape.customerShape,
     // passCustomerToEdit: this.PropTypes.func,
   }
 
@@ -31,8 +31,8 @@ export class CustomerProfile extends React.Component {
 
   editLineup = (e) => {
     e.preventDefault();
-    const { passCustomerToEdit, customerShape } = this.props;
-    passCustomerToEdit(customerShape.id);
+    const { passCustomerToEdit, customer } = this.props;
+    passCustomerToEdit(customer.uid);
   }
   passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
 

@@ -14,6 +14,7 @@ const customerInformation = {
   firstName: '',
   lastName: '',
   date: '',
+  uid: '',
 }
 class EditCustomerForm extends React.Component {
   static propTypes = {
@@ -125,8 +126,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="First Name"
-                        // value={newCustomerInformation.firstName}
-                        // onChange={this.firstNameChange}
+                        value={newCustomerInformation.firstName}
+                        onChange={this.firstNameChange}
                       />
                     </div>
                   </div>
@@ -140,8 +141,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="Last Name"
-                        // value={newCustomerInformation.lastName}
-                        // onChange={this.lastNameChange}
+                        value={newCustomerInformation.lastName}
+                        onChange={this.lastNameChange}
                       />
                     </div>
                   </div>
@@ -155,8 +156,8 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputEmail"
                         placeholder="Email"
-                        // value={newCustomerInformation.email}
-                        // onChange={this.emailChange}
+                        value={newCustomerInformation.email}
+                        onChange={this.emailChange}
                       />
                     </div>
                   </div>
@@ -170,20 +171,20 @@ class EditCustomerForm extends React.Component {
                         className="form-control"
                         id="inputPassword"
                         placeholder="Password"
-                        // value={newCustomerInformation.password}
-                        // onChange={this.passwordChange}
+                        value={newCustomerInformation.password}
+                        onChange={this.passwordChange}
                       />
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="col-sm-12">
-                      {/* <button
+                      <button
                         type="submit"
                         className="btn btn-default col-xs-12"
                         onClick={this.formSubmit}
                       >
-                        Register
-                      </button> */}
+                        Update Info
+                      </button>
                     </div>
                   </div>
                 </form>
