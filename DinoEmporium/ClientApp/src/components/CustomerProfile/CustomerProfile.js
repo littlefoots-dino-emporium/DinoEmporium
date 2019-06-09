@@ -22,20 +22,21 @@ export class CustomerProfile extends React.Component {
   //   // passCustomerToEdit: this.PropTypes.func,
   // }
 
-  componentDidMount() {
+  getCustomer = () => {
     let uid = autheRequests.getUid();
     getCustomerInfo.getCustomerProfile(uid).then((customer) => {
       this.setState({ customer })
     });
   }
 
+  componentDidMount() {
+    this.getCustomer();
+  }
+
   editCustomer = (e) => {
     e.preventDefault();
-    // const { passCustomerToEdit, customer } = this.props;
     let uid = autheRequests.getUid();
-    getCustomerInfo.getCustomerProfile(uid).then(() => {
-      this.setState({ isEditing: true, editId: uid })
-    });
+    this.setState({ isEditing: true, editId: uid };
   }
 
   // passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
