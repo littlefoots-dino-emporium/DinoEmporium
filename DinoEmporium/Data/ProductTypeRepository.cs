@@ -41,6 +41,45 @@ namespace DinoEmporium.Data
             }
         }
 
+        public IEnumerable<Product> GetDinos()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var getDinoWinos = db.Query<Product>(@"select *
+                                                     from Product p, ProductType pt
+                                                     where p.ProductTypeId = 2
+                                                     and pt.Id = 2").ToList();
+
+                return getDinoWinos;
+            }
+        }
+
+        public IEnumerable<Product> GetSweaters()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var getSweaters = db.Query<Product>(@"select *
+                                                     from Product p, ProductType pt
+                                                     where p.ProductTypeId = 1
+                                                     and pt.Id = 1").ToList();
+
+                return getSweaters;
+            }
+        }
+
+        public IEnumerable<Product> GetFences()
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var getFences = db.Query<Product>(@"select *
+                                                     from Product p, ProductType pt
+                                                     where p.ProductTypeId = 3
+                                                     and pt.Id = 3").ToList();
+
+                return getFences;
+            }
+        }
+
         public ProductType GetSingleProductType(int id)
         {
             using (var db = new SqlConnection(ConnectionString))

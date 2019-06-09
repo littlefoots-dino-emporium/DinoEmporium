@@ -45,6 +45,30 @@ namespace DinoEmporium.Controllers
             return Ok(productTypes);
         }
 
+        //get all dinosaurs
+        [HttpGet("dinosaurTypes")]
+        public ActionResult GetAllDinosaurs()
+        {
+            var productNTypes = _repository.GetDinos();
+            return Ok(productNTypes);
+        }
+
+        //get all sweaters
+        [HttpGet("sweaterTypes")]
+        public ActionResult GetAllSweaters()
+        {
+            var productNTypes = _repository.GetSweaters();
+            return Ok(productNTypes);
+        }
+
+        //get all fences
+        [HttpGet("fenceTypes")]
+        public ActionResult GetAllFences()
+        {
+            var productNTypes = _repository.GetFences();
+            return Ok(productNTypes);
+        }
+
         //get single productType
         [HttpGet("getSingleType/{id}")]
         public ActionResult GetSingleType(int id)
