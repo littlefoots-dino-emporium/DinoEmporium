@@ -7,6 +7,7 @@ import CustomerProfile from '../components/CustomerProfile/CustomerProfile';
 import Login from '../components/Login/Login';
 import MyNavbar from '../components/Navbar/Navbar';
 import Dinosaurs from '../components/pages/Dinosaurs';
+import Sweaters from '../components/pages/Sweaters';
 //import New from '../components/New/New';
 //import OrderSpa from '../components/OrderSpa/OrderSpa';
 import Register from '../components/Register/Register';

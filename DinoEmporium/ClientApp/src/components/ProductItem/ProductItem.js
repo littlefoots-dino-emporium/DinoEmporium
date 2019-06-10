@@ -8,13 +8,6 @@ class ProductItem extends React.Component {
     state = {
         showModal: false
     }
-
-    
-  passToDinoPage = (e) => {
-    const dinosaurId = this.props.match.params.id;
-    this.props.history.push(`/products/${dinosaurId}/dinosaurPage`);
-  }
-
     toggleModal = () => {
         this.setState({
             showModal: !this.state.showModal

@@ -4,32 +4,32 @@ import productTypeRequests from '../../helpers/data/productTypeRequest';
 
 
 class Dinosaur extends React.Component {
-
   state = {
-    product: [],
-    productTypeId: [],
+    productType: [],
   }
 
+  componentDidMount() {
+    this.allDinos();
+  }
 
-  
-  getDinosaurs = () => {
+  allDinos = () => {
     productTypeRequests.getDinoRequest().then((productType) => {
       this.setState({ productType });
     })
   }
 
   render() {
-    const { productTypeId } = this.state;
-    const productTypeComponent = productTypeId.map(productTypeId => (
+    const { productType } = this.state;
+    const dinosaurItemComponent = productType.map(productType => (
       <DinosaurItem
-        productType={productTypeId}
-        key={productTypeId.id}
+        product={productType}
+        key={productType.id}
       />
     ));
 
     return (
-      <div className='producttype'>
-        {productTypeComponent}
+      <div className='dinosaurs'>
+        {dinosaurItemComponent}
       </div>
     );
   }

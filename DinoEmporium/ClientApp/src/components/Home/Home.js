@@ -5,12 +5,10 @@ import ProductItem from '../ProductItem/ProductItem';
 //import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
 class Home extends React.Component {
 
   state = {
     product: [],
-    productType: [],
   }
 
   componentDidMount() {
@@ -22,8 +20,6 @@ class Home extends React.Component {
       this.setState({ product });
     })
   } 
-  
-  passToDinos = productTypeId => this.props.history.push(`/home/${productTypeId}`);
 
   render() {
     const { product } = this.state;
@@ -36,6 +32,7 @@ class Home extends React.Component {
 
       return (
         <div className='productLinks'>
+          <li><Link to="/dinosaurs">See More Dinosaurs</Link></li>
         <p>{productItemComponent}</p>
         </div>
     );

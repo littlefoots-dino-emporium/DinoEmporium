@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import { Button } from 'reactstrap';
 
+import './DinosaurItem.scss';
+
 class DinosaurItem extends React.Component {
 
     state = {
