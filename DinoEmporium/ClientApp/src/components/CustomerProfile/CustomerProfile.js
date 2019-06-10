@@ -1,9 +1,5 @@
 import React from 'react';
 import getCustomerInfo from '../../helpers/data/customerRequest';
-<<<<<<< HEAD
-import autheRequests from '../../firebaseRequests/auth'
-=======
->>>>>>> master
 import './CustomerProfile.scss';
 import autheRequests from '../../firebaseRequests/auth';
 
