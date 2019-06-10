@@ -6,8 +6,9 @@ import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import EditCustomerForm from '../EditCustomerForm/EditCustomerForm';
 import './CustomerProfile.scss';
+import authRequests from '../../firebaseRequests/auth';
 
-
+ 
 
 export class CustomerProfile extends React.Component {
 
@@ -23,7 +24,7 @@ export class CustomerProfile extends React.Component {
   // }
 
   getCustomer = () => {
-    let uid = autheRequests.getUid();
+    let uid = authRequests.getUid();
     getCustomerInfo.getCustomerProfile(uid).then((customer) => {
       this.setState({ customer })
     });
