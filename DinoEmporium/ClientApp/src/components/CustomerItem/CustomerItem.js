@@ -1,11 +1,19 @@
 import React from 'react';
 import customerShape from '../../helpers/propz/customerShape';
-
+import PropTypes from 'prop-types';
+import Button from 'reactstrap';
 import './CustomerItem.scss';
 
 class CustomerItem extends React.Component {
   static propTypes = {
     customer: customerShape.customerShape,
+    passCustomerToEdit: PropTypes.func,
+  }
+
+  editCustomer = (e) => {
+    e.preventDefault();
+    const { passCustomerToEdit, customer } = this.props;
+    passCustomerToEdit(customer.uid);
   }
 
   render() {
@@ -23,6 +31,7 @@ class CustomerItem extends React.Component {
           <div className="col">
             {customer.email}
           </div>
+          <Button outline color="info" onClick={this.editCustomer}>Edit</Button>
         </div>
         <hr></hr>
       </div>
