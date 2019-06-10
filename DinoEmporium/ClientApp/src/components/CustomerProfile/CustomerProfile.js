@@ -36,7 +36,7 @@ export class CustomerProfile extends React.Component {
   editCustomer = (e) => {
     e.preventDefault();
     let uid = autheRequests.getUid();
-    this.setState({ isEditing: true, editId: uid };
+    this.setState({ isEditing: true, editId: uid })
   }
 
   // passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });

@@ -16,6 +16,7 @@ const defaultCustomerInformation = {
   date: '',
   uid: '',
 }
+
 class EditCustomerForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
@@ -31,18 +32,16 @@ class EditCustomerForm extends React.Component {
   //   customer,
   // }
 
-  // signUp = ( newCustomerInformation) => {
-  //   firebase.auth().createUserWithEmailAndPassword(newCustomerInformation.email, newCustomerInformation.password).then((res) => {
-  //     newCustomerInformation.uid = authRequests.getUid();
-  //     const customerInformation = { firstName: newCustomerInformation.firstName,
-  //                       lastName: newCustomerInformation.lastName,
-  //                       email: newCustomerInformation.email,
-  //                       customerUid: newCustomerInformation.uid
-  //                       }
-  //     customerRequest.postCustomerRequest(customerInformation);
-  //     this.props.history.push('/');
-  //   }).catch(err => console.error('there was an error with auth', err));
-  // }
+  updateCustomer = ( updatedCustomerInformation ) => {
+      updatedCustomerInformation.uid = authRequests.getUid();
+      const defaultCustomerInformation = { firstName: updatedCustomerInformation.firstName,
+                        lastName: updatedCustomerInformation.lastName,
+                        email: updatedCustomerInformation.email,
+                        customerUid: updatedCustomerInformation.uid
+                        }
+      customerRequest.updateCustomerRequest(defaultCustomerInformation);
+      // this.props.history.push('/');
+  }
 
   formFieldStringState = (name,e) => {
     e.preventDefault();
@@ -71,16 +70,13 @@ class EditCustomerForm extends React.Component {
     this.formFieldStringState('email', e);
   }
 
-  passwordChange = e => {
-    this.formFieldStringState('password', e);
-  }
 
   // registerClickEvent = e => {
-  //   const { newCustomerInformation } = this.state;
+  //   const { defaultCustomerInformation } = this.state;
   //   e.preventDefault();
   //   console.log('click');
   //   authRequests
-  //     .registerUser(newCustomerInformation)
+  //     .registerUser(defaultCustomerInformation)
   //     .then(() => {
   //       this.props.history.push('/');
   //     })
@@ -88,6 +84,12 @@ class EditCustomerForm extends React.Component {
   //       console.error('there was an error in registering', error);
   //     });
   // };
+  formSubmit = (e) => {
+    e.preventDefault();
+    const userInformation = { ...this.state.updatedCustomerInformation };
+    this.updateCustomer(userInformation);
+    this.setState({ updatedCustomerInformation:defaultCustomerInformation });
+  }
 
 
   // formSubmit = (e) => {
@@ -167,29 +169,14 @@ class EditCustomerForm extends React.Component {
                     </div>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="inputPassword" className="col-sm-4 control-label">
-                      Password:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="password"
-                        className="form-control"
-                        id="inputPassword"
-                        placeholder="Password"
-                        value={updatedCustomerInfo.password}
-                        onChange={this.passwordChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
                     <div className="col-sm-12">
-                      {/* <button
+                      <button
                         type="submit"
                         className="btn btn-default col-xs-12"
                         onClick={this.formSubmit}
                       >
                         Update Info
-                      </button> */}
+                      </button>
                     </div>
                   </div>
                 </form>
