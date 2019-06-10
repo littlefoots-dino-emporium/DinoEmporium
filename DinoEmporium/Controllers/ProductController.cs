@@ -31,7 +31,7 @@ namespace DinoEmporium.Controllers
                 return BadRequest("All product information must be filled out.");
             }
 
-            var newProduct = _repository.AddProduct(createRequest.Price, createRequest.ProductTypeId, createRequest.Title,  createRequest.Description, createRequest.Quantity, createRequest.Size, createRequest.Image);
+            var newProduct = _repository.AddProduct(createRequest.Price, createRequest.ProductTypeId, createRequest.Title, createRequest.Description, createRequest.Quantity, createRequest.Size, createRequest.Image);
 
             return Created($"api/product/{newProduct.Id}", newProduct);
         }

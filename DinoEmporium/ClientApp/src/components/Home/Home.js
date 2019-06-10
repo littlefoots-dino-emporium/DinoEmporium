@@ -1,8 +1,9 @@
 import React from 'react';
 import productRequests from '../../helpers/data/productRequest';
+//import productTypeRequests from '../../helpers/data/productTypeRequest';
 import ProductItem from '../ProductItem/ProductItem';
-
-
+//import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 
@@ -18,7 +19,7 @@ class Home extends React.Component {
     productRequests.getRequest().then((product) => {
       this.setState({ product });
     })
-  }
+  } 
 
   render() {
     const { product } = this.state;
@@ -30,7 +31,10 @@ class Home extends React.Component {
     ));
 
       return (
+        <div className='productLinks'>
+          <li><Link to="/dinosaurs">See More Dinosaurs</Link></li>
         <p>{productItemComponent}</p>
+        </div>
     );
   }
 }

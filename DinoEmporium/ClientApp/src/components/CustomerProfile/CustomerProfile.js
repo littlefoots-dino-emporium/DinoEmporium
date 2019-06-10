@@ -3,7 +3,7 @@ import getCustomerInfo from '../../helpers/data/customerRequest';
 import './CustomerProfile.scss';
 import autheRequests from '../../firebaseRequests/auth';
 
-
+ 
 
 export class CustomerProfile extends React.Component {
 
