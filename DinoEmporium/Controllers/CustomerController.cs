@@ -47,7 +47,7 @@ namespace DinoEmporium.Controllers
             return Ok(singleCustomer);
         }
 
-        [HttpPut("updateCustomer/{id}")]
+        [HttpPut("{customerUid}")]
         public ActionResult UpdateCustomer(Customer customer)
         {
             var user = _customerRepository.UpdateCustomer(customer);
