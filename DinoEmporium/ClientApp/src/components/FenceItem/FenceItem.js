@@ -2,9 +2,9 @@ import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import { Button } from 'reactstrap';
 
-import './SweaterItem.scss';
+import './FenceItem.scss';
 
-class SweaterItem extends React.Component {
+class FenceItem extends React.Component {
 
     state = {
         showModal: false
@@ -43,4 +43,4 @@ class SweaterItem extends React.Component {
     }
 }
 
-export default SweaterItem;
+export default FenceItem;

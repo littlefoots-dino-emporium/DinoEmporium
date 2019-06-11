@@ -1,39 +1,39 @@
-// import React from 'react';
-// import SweaterItem from '../SweaterItem/SweaterItem';
-// import productTypeRequests from '../../helpers/data/productTypeRequest';
+import React from 'react';
+import SweaterItem from '../SweaterItem/SweaterItem';
+import productTypeRequests from '../../helpers/data/productTypeRequest';
 
 
-// class Sweaters extends React.Component {
-//   props = {
-//     productType: [],
-//   }
+class Sweaters extends React.Component {
+  state = {
+    product: [],
+  }
 
-//   componentDidMount() {
-//     this.allSweaters();
-//   }
+  componentDidMount() {
+    this.allSweaters();
+  }
 
-//   allSweaters = () => {
-//     productTypeRequests.getSweaterRequest().then((productType) => {
-//       this.setState({ productType });
-//       console.log(productType);
-//     })
-//   }
+  allSweaters = () => {
+    productTypeRequests.getSweaterRequest().then((product) => {
+      this.setState({ product });
+      console.log(product);
+    })
+  }
 
-//   render() {
-//     const { productType } = this.state;
-//     const sweaterItemComponent = productType && productType.map(productType => (
-//       <SweaterItem
-//         productType={productType}
-//         key={productType.id}
-//       />
-//     ));
+  render() {
+    const { product } = this.state;
+    const sweaterItemComponent = product.map(product => (
+      <SweaterItem
+        product={product}
+        key={product.id}
+      />
+    ));
 
-//     return (
-//       <div className='sweaters'>
-//         {sweaterItemComponent}
-//       </div>
-//     );
-//   }
-// }
+    return (
+      <div className='sweaters'>
+        {sweaterItemComponent}
+      </div>
+    );
+  }
+}
 
-// export default Sweaters;
+export default Sweaters;

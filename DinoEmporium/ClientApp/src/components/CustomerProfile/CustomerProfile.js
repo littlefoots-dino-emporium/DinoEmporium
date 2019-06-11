@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import customerShape from '../../helpers/propz/customerShape'
+//import customerShape from '../../helpers/propz/customerShape'
 //import getCustomerInfo from '../../helpers/data/customerRequest';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
