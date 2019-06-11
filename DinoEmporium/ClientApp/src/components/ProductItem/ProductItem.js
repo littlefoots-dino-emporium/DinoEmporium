@@ -44,7 +44,7 @@ class ProductItem extends React.Component {
             <div className="app">
                 <Button className="modal_opener" onClick={this.toggleModal}>
                     <img className='product-image' src={product.image} alt='product' />
-                    <p className='product-title'><i>{product.title}</i></p>
+                    <p className='product-title'><i>Muttaburrasaurus</i></p>
                 </Button>
 
                 <Modal
@@ -54,9 +54,9 @@ class ProductItem extends React.Component {
                 >
                     <React.Fragment>
                         <div className='productCard'>
-                            <li className='product-price'><i></i></li>
-                            <li className='product-description'></li>
-                            <li className='product-quantity'>We have <b>12</b> in stock.</li>
+                            <li className='product-price'><i>$235,000</i></li>
+                            <li className='product-description'>The Muttaburrasaurus is a dinosaur from Australia.</li>
+                            <li className='product-quantity'>We have <b>16</b> in stock.</li>
                             <button onClick= {this.addToCart}>Add To Cart </button>
                         </div>
                     </React.Fragment>
