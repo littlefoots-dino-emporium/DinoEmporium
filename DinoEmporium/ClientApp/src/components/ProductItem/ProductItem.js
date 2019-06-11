@@ -54,9 +54,9 @@ class ProductItem extends React.Component {
                 >
                     <React.Fragment>
                         <div className='productCard'>
-                            <li className='plant-price'><i>${product.price}</i></li>
-                            <li className='plant-description'>{product.description}</li>
-                            <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
+                            <li className='product-price'><i></i></li>
+                            <li className='product-description'></li>
+                            <li className='product-quantity'>We have <b>12</b> in stock.</li>
                             <button onClick= {this.addToCart}>Add To Cart </button>
                         </div>
                     </React.Fragment>

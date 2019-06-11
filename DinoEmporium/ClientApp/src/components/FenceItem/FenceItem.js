@@ -21,8 +21,8 @@ class FenceItem extends React.Component {
         return (
             <div className="app">
                 <Button className="modal_opener" onClick={this.toggleModal}>
-                    <img className='product-image' src={product.image} alt='product' />
-                    <p className='product-title'><i>{product.title}</i></p>
+                    <img className='fence-image' src={product.image} alt='product' />
+                    <p className='fence-title'><i>{product.title}</i></p>
                 </Button>
 
                 <Modal
@@ -32,9 +32,9 @@ class FenceItem extends React.Component {
                 >
                     <React.Fragment>
                         <div className='productCard'>
-                            <li className='plant-price'><i>${product.price}</i></li>
-                            <li className='plant-description'>{product.description}</li>
-                            <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
+                            <li className='fence-price'><i>${product.price}</i></li>
+                            <li className='fence-description'>{product.description}</li>
+                            <li className='fence-quantity'>We have <b>{product.quantity}</b> in stock.</li>
                         </div>
                     </React.Fragment>
                 </Modal>
