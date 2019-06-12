@@ -14,6 +14,7 @@ import Fences from '../components/pages/Fences';
 import Register from '../components/Register/Register';
 //import SingleOrder from '../components/SingleOrder/SingleOrder';
 import fbConnection from '../firebaseRequests/connection';
+import './App.scss';
 fbConnection();
 
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
