@@ -26,7 +26,6 @@ class EditCustomerForm extends React.Component {
 
   state = {
       updatedCustomerInformation: defaultCustomerInformation,
-      customer: this.props.customer,
   };
 
   // props = {
@@ -71,36 +70,12 @@ class EditCustomerForm extends React.Component {
     this.formFieldStringState('email', e);
   }
 
-
-  // registerClickEvent = e => {
-  //   const { defaultCustomerInformation } = this.state;
-  //   e.preventDefault();
-  //   console.log('click');
-  //   authRequests
-  //     .registerUser(defaultCustomerInformation)
-  //     .then(() => {
-  //       this.props.history.push('/');
-  //     })
-  //     .catch(error => {
-  //       console.error('there was an error in registering', error);
-  //     });
-  // };
   formSubmit = (e) => {
     e.preventDefault();
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
     this.setState({ updatedCustomerInformation:defaultCustomerInformation });
   }
-
-
-  // formSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { onSubmit } = this.props;
-  //   const userInformation = { ...this.props.CustomerInfo };
-  //   userInformation.uid = authRequests.Uid();
-  //   onSubmit(userInformation);
-  //   this.setState({ updatedCustomerInformation: defaultCustomerInformation });
-  // }
 
   componentDidUpdate(prevProps) {
     const { isEditing, editId } = this.props;
