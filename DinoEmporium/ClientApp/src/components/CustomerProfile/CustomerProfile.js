@@ -40,8 +40,6 @@ export class CustomerProfile extends React.Component {
     this.setState({ isEditing: true, editId: uid })
   }
 
-  // passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
-
   render() {
     const { customer, isEditing, editId } = this.state;
     const makeButtons = () => (
@@ -55,14 +53,14 @@ export class CustomerProfile extends React.Component {
     );
 
     return (
-      <div passCustomerToEdit={this.passCustomerToEdit}>
+      <div>
         <h1>{customer.firstName}</h1>
         <h1>{customer.lastName}</h1>
         <h3>{customer.email}</h3>
         {makeButtons()}
         <div className='lineupForm'>
         <EditCustomerForm
-          onSubmit={this.formSubmitLineup}
+          customer={this.state.customer}
           isEditing={isEditing}
           editId={editId}
         />

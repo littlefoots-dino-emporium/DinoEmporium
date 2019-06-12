@@ -26,6 +26,7 @@ class EditCustomerForm extends React.Component {
 
   state = {
       updatedCustomerInformation: defaultCustomerInformation,
+      customer: this.props.customer,
   };
 
   // props = {
