@@ -32,11 +32,13 @@ class MyNavbar extends React.Component {
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             {authed ? (
               <Nav>
+
                 <NavItem>
-                  <NavLink tag={RRNavLink} to='/home'>
-                    Home
-              </NavLink>
+                          <NavLink tag={RRNavLink} to='/home'>
+                                Home
+                          </NavLink>
                 </NavItem>
+
                 <NavItem>
                   <NavLink tag={RRNavLink} to='/customerprofile'>
                     Profile
@@ -46,16 +48,20 @@ class MyNavbar extends React.Component {
                   <NavLink tag={RRNavLink} to='/ShoppingCart'>
                   <i class="fas fa-cart-arrow-down"></i>
                   </NavLink>
-              
                 </NavItem>
-                <NavLink
-                  onClick={logoutClickEvent}
-                  className="btn btn-danger"
-                >
-                  Logout
-              </NavLink>
+
+                          <NavLink
+                                onClick={logoutClickEvent}
+                                className="btn btn-danger"
+                          >
+                                Logout
+                          </NavLink>
+
               </Nav>
-            ) : (
+
+            ) 
+            : 
+            (
                 <ul className="nav navbar-nav navbar-right">
                   <li>
                   </li>

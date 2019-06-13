@@ -6,6 +6,8 @@ import Home from '../components/Home/Home';
 import CustomerProfile from '../components/CustomerProfile/CustomerProfile';
 import Login from '../components/Login/Login';
 import MyNavbar from '../components/Navbar/Navbar';
+import Dinosaurs from '../components/pages/Dinosaurs';
+//import Sweaters from '../components/pages/Sweaters';
 //import New from '../components/New/New';
 //import OrderSpa from '../components/OrderSpa/OrderSpa';
 import Register from '../components/Register/Register';
@@ -119,6 +121,7 @@ class App extends React.Component {
                   <PrivateRoute path='/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
                   <PrivateRoute path='/home' exact component={Home} authed={this.state.authed} />
                   <PrivateRoute path='/shoppingCart' exact component={ShoppingCart} authed={this.state.authed} />
+                  <PrivateRoute path='/dinosaurs' exact component={Dinosaurs} authed={this.state.authed} />
                 </Switch>
               </div>
             </div>

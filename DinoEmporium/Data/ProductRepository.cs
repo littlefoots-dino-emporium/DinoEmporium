@@ -53,6 +53,7 @@ namespace DinoEmporium.Data
             }
         }
 
+
         public Product UpdateSingleProduct(Product singleProduct)
         {
             using (var db = new SqlConnection(ConnectionString))
