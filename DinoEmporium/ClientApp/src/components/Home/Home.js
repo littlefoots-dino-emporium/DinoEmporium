@@ -17,6 +17,7 @@ class Home extends React.Component {
   allProducts = () => {
     productRequests.getRequest().then((product) => {
       this.setState({ product });
+      console.log(product);
     })
   }
 

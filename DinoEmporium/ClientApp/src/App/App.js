@@ -11,6 +11,7 @@ import MyNavbar from '../components/Navbar/Navbar';
 import Register from '../components/Register/Register';
 //import SingleOrder from '../components/SingleOrder/SingleOrder';
 import fbConnection from '../firebaseRequests/connection';
+import ShoppingCart from '../components/ShoppingCart/ShoppingCart';
 fbConnection();
 
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
@@ -117,6 +118,7 @@ class App extends React.Component {
                   <Route path="/" exact component={Home}/>
                   <PrivateRoute path='/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
                   <PrivateRoute path='/home' exact component={Home} authed={this.state.authed} />
+                  <PrivateRoute path='/shoppingCart' exact component={ShoppingCart} authed={this.state.authed} />
                 </Switch>
               </div>
             </div>
