@@ -65,13 +65,13 @@ export class CustomerProfile extends React.Component {
         <h3>{customer.email}</h3>
         {makeButtons()}
         <div className='lineupForm'>
-        <Modal  open={open} onClose={this.onCloseModal} center>
         <EditCustomerForm
           customer={this.state.customer}
           isEditing={isEditing}
           editId={editId}
+          open={this.state.open}
+          onCloseModal={this.onCloseModal}
         />
-        </Modal>
       </div>
       </div>
     )

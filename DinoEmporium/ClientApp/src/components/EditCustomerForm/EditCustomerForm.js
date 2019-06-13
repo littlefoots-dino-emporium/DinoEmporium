@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
+import Modal from 'react-responsive-modal';
 import firebase from 'firebase';
 
 
@@ -165,7 +166,9 @@ class EditCustomerForm extends React.Component {
         };
       return (
         <div className="editCustomer">
+        <Modal  open={this.props.open} onClose={this.props.onCloseModal} center>
         {title()}
+        </Modal>
       </div>
     );
   }
