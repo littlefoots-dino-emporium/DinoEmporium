@@ -47,7 +47,7 @@ export class CustomerProfile extends React.Component {
   }
 
   render() {
-    const { customer, isEditing, editId, open } = this.state;
+    const { customer, isEditing, editId } = this.state;
     const makeButtons = () => (
       <div>
         <span className="editLineup col">
