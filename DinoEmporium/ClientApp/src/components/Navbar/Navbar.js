@@ -48,6 +48,7 @@ class MyNavbar extends React.Component {
                           <NavLink
                                 onClick={logoutClickEvent}
                                 className="btn btn-danger"
+                                tag={RRNavLink} to='/'
                           >
                                 Logout
                           </NavLink>
