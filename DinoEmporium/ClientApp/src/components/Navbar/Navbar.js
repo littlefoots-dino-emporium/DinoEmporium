@@ -48,11 +48,15 @@ class MyNavbar extends React.Component {
                   <NavLink tag={RRNavLink} to='/ShoppingCart'>
                   <i class="fas fa-cart-arrow-down"></i>
                   </NavLink>
+                          <NavLink tag={RRNavLink} to='/accounthome'>
+                                Account
+                          </NavLink>
                 </NavItem>
 
                           <NavLink
                                 onClick={logoutClickEvent}
                                 className="btn btn-danger"
+                                tag={RRNavLink} to='/'
                           >
                                 Logout
                           </NavLink>

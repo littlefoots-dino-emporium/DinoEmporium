@@ -6,6 +6,7 @@ import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import './CustomerProfile.scss';
 import EditCustomerForm from '../EditCustomerForm/EditCustomerForm';
+import Modal from 'react-responsive-modal';
 import './CustomerProfile.scss';
 import authRequests from '../../firebaseRequests/auth';
 
@@ -17,12 +18,16 @@ export class CustomerProfile extends React.Component {
     customer: {},
     isEditing: false,
     editId: '-1',
+    open: false,
   }
 
-  // static propTypes = {
-  //   customer: customerShape.customerShape,
-  //   // passCustomerToEdit: this.PropTypes.func,
-  // }
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
 
   getCustomer = () => {
     let uid = authRequests.getUid();
@@ -39,9 +44,8 @@ export class CustomerProfile extends React.Component {
     e.preventDefault();
     let uid = autheRequests.getUid();
     this.setState({ isEditing: true, editId: uid })
+    this.onOpenModal();
   }
-
-  // passCustomerToEdit = uid => this.setState({ isEditing: true, editId: uid });
 
   render() {
     const { customer, isEditing, editId } = this.state;
@@ -57,16 +61,18 @@ export class CustomerProfile extends React.Component {
 
     return (
 
-      <div passCustomerToEdit={this.passCustomerToEdit}>
+      <div className="customerProfile">
         <h1>{customer.firstName}</h1>
         <h1>{customer.lastName}</h1>
         <h3>{customer.email}</h3>
         {makeButtons()}
         <div className='lineupForm'>
         <EditCustomerForm
-          onSubmit={this.formSubmitLineup}
+          customer={this.state.customer}
           isEditing={isEditing}
           editId={editId}
+          open={this.state.open}
+          onCloseModal={this.onCloseModal}
         />
       </div>
       </div>

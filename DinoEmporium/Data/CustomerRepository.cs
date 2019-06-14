@@ -66,15 +66,10 @@ namespace DinoEmporium.Data
                 var updateCustomer = db.QueryFirstOrDefault<Customer>(@"Update Customer
                             Set firstName = @firstName,
                                 lastName = @lastName,
-                                date = @date,
                                 email = @email
                                 output inserted.*
-                            Where id = @id",
-                            new { id = CustomerInformation.Id,
-                                firstName = CustomerInformation.FirstName,
-                                lastName = CustomerInformation.LastName,
-                                date = CustomerInformation.Date,
-                                email = CustomerInformation.Email });
+                            Where customerUid = @customerUid",
+                           CustomerInformation);
 
                 return updateCustomer;
             }
