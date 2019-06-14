@@ -28,14 +28,14 @@ export class AccountHome extends Component {
         <div className="welcome">
         <h1>Hello {customer.firstName}!</h1>
         </div>
-        <div>
-        <Button className="customerNav" outline color="info" tag={RRNavLink} to='/customerprofile'>
+        <div className="customerNav">
+        <Button className="customerNavBtn" outline color="info" tag={RRNavLink} to='/customerprofile'>
         Profile
         </Button>   
-        <Button className="customerNav" outline color="info">
-        PaymentInformation
+        <Button className="customerNavBtn" outline color="info">
+        Payment Information
         </Button>
-        <Button className="customerNav" outline color="info">
+        <Button className="customerNavBtn" outline color="info">
         Reset Password
         </Button>
         </div>
