@@ -60,9 +60,9 @@ export class CustomerProfile extends React.Component {
 
     return (
       <div className="customerProfile">
-        <h1>Welcome back, {customer.firstName}!</h1>
-        {/* <h1>{customer.lastName}</h1>
-        <h3>{customer.email}</h3> */}
+        <h1>{customer.firstName}</h1>
+        <h1>{customer.lastName}</h1>
+        <h3>{customer.email}</h3>
         {makeButtons()}
         <div className='lineupForm'>
         <EditCustomerForm

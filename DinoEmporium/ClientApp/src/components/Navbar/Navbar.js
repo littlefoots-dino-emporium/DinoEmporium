@@ -40,7 +40,7 @@ class MyNavbar extends React.Component {
                 </NavItem>
 
                 <NavItem>
-                          <NavLink tag={RRNavLink} to='/customerprofile'>
+                          <NavLink tag={RRNavLink} to='/accounthome'>
                                 Profile
                           </NavLink>
                 </NavItem>
