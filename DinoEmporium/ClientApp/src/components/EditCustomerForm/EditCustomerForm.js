@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
-import Modal from 'react-responsive-modal';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import firebase from 'firebase';
 
 
@@ -27,7 +27,7 @@ class EditCustomerForm extends React.Component {
 
   state = {
       updatedCustomerInformation: defaultCustomerInformation,
-      customer: {}
+      customer: this.props.customer,
   };
 
   getCustomer = () => {
@@ -38,6 +38,17 @@ class EditCustomerForm extends React.Component {
   }
   // props = {
   //   customer,
+  // }
+
+  getCustomer = () => {
+    let uid = authRequests.getUid();
+    customerRequest.getCustomerProfile(uid).then((customer) => {
+      this.setState({ customer })
+    });
+  }
+
+  // componentDidMount() {
+  //   this.getCustomer();
   // }
 
   updateCustomer = ( updatedCustomerInformation ) => {
@@ -160,6 +171,7 @@ class EditCustomerForm extends React.Component {
                         type="submit"
                         className="btn btn-default col-xs-12"
                         onClick={this.formSubmit}
+                        tag={RRNavLink} to='/accounthome'
                       >
                         Update Info
                       </button>
@@ -170,14 +182,13 @@ class EditCustomerForm extends React.Component {
             </div>
           )} return (
             <div className="Hide form">
+
             </div>
           )
         };
       return (
         <div className="editCustomer">
-        <Modal  open={this.props.open} onClose={this.props.onCloseModal} customer={customer} center>
         {title()}
-        </Modal>
       </div>
     );
   }

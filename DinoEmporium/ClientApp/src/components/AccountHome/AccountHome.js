@@ -16,6 +16,13 @@ export class AccountHome extends Component {
     });
   }
 
+  editCustomer = (e) => {
+    e.preventDefault();
+    let uid = authRequests.getUid();
+    this.setState({ isEditing: true, editId: uid })
+    this.onOpenModal();
+  }
+
   componentDidMount() {
     this.getCustomer();
   }
@@ -27,6 +34,9 @@ export class AccountHome extends Component {
       <div className="accountHome">
         <div className="welcome">
         <h1>Hello {customer.firstName}!</h1>
+        <h1>{customer.firstName}</h1>
+        <h1>{customer.lastName}</h1>
+        <h3>{customer.email}</h3>
         </div>
         <div className="customerNav">
         <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'> 
@@ -36,7 +46,7 @@ export class AccountHome extends Component {
         Payment Information
         </Button>
         <Button className="customerNavBtn variant=outline-secondary">
-        Reset Password
+        Order History
         </Button>
         <Button className="customerNavBtn variant=outline-secondary">
         Reset Password
