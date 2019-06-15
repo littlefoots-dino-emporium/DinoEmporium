@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { Redirect, Route } from 'react-router'
-import firebase from 'firebase';
+import { Redirect } from 'react-router'
 
-
-// import './Register.scss';
 
 const defaultCustomerInformation = {
   email: '',
@@ -31,10 +27,6 @@ class EditCustomerForm extends React.Component {
       updatedCustomerInformation: defaultCustomerInformation,
       customer: this.props.customer,
   };
-
-  // props = {
-  //   customer,
-  // }
 
   getCustomer = () => {
     let uid = authRequests.getUid();
@@ -64,10 +56,6 @@ class EditCustomerForm extends React.Component {
     tempInfo[name] = e.target.value;
     this.setState({ updatedCustomerInformation: tempInfo});
   }
-  
-  // emailChange = e => {
-  //   this.formFieldStringState('name', e);
-  // };
 
   firstNameChange = e => {
     this.formFieldStringState('firstName', e);
@@ -76,11 +64,7 @@ class EditCustomerForm extends React.Component {
   lastNameChange = e => {
     this.formFieldStringState('lastName', e);
   };
-
-  dateChange = e => {
-    this.formFieldStringState('date', e);
-  };
-
+  
   emailChange = e => {
     this.formFieldStringState('email', e);
   }

@@ -1,13 +1,9 @@
 import React from 'react';
-import { Button } from 'reactstrap';
-import customerShape from '../../helpers/propz/customerShape'
 import PropTypes from 'prop-types';
-//import getCustomerInfo from '../../helpers/data/customerRequest';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import './CustomerProfile.scss';
 import EditCustomerForm from '../EditCustomerForm/EditCustomerForm';
-import Modal from 'react-responsive-modal';
 import './CustomerProfile.scss';
 import authRequests from '../../firebaseRequests/auth';
 
@@ -56,20 +52,10 @@ export class CustomerProfile extends React.Component {
 
   render() {
     const { customer, isEditing, editId } = this.state;
-    // const makeButtons = () => (
-    //   <div>
-    //     <span className="editLineup col">
-    //       <Button outline color="info" onClick={this.editCustomer}>
-    //         Edit
-    //           </Button>
-    //     </span>
-    //   </div>
-    // );
 
     return (
 
       <div className="customerProfile">
-        {/* {makeButtons()} */}
         <div className='lineupForm'>
         <EditCustomerForm
           customer={customer}
