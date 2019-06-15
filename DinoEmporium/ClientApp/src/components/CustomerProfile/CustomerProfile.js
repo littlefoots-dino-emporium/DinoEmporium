@@ -76,7 +76,6 @@ export class CustomerProfile extends React.Component {
           editId={editId}
           open={this.state.open}
           onCloseModal={this.onCloseModal}
-          onSubmit={this.getCustomer}
         />
       </div>
       </div>
