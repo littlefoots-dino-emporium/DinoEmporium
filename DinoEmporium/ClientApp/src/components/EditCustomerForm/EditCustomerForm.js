@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { Redirect } from 'react-router'
-
+import { Redirect } from 'react-router';
+import './EditCustomerForm.scss';
 
 const defaultCustomerInformation = {
   email: '',
@@ -24,8 +24,8 @@ class EditCustomerForm extends React.Component {
   }
 
   state = {
-      updatedCustomerInformation: defaultCustomerInformation,
-      customer: this.props.customer,
+    updatedCustomerInformation: defaultCustomerInformation,
+    customer: this.props.customer,
   };
 
   getCustomer = () => {
@@ -39,32 +39,33 @@ class EditCustomerForm extends React.Component {
     this.getCustomer();
   }
 
-  updateCustomer = ( updatedCustomerInformation ) => {
+  updateCustomer = (updatedCustomerInformation) => {
     updatedCustomerInformation.uid = authRequests.getUid();
-      const defaultCustomerInformation = { firstName: updatedCustomerInformation.firstName,
-                        lastName: updatedCustomerInformation.lastName,
-                        email: updatedCustomerInformation.email,
-                        customerUid: updatedCustomerInformation.uid
-                        }
-      customerRequest.updateCustomerRequest(defaultCustomerInformation);
-      // this.props.history.push('/');
+    const defaultCustomerInformation = {
+      firstName: updatedCustomerInformation.firstName,
+      lastName: updatedCustomerInformation.lastName,
+      email: updatedCustomerInformation.email,
+      customerUid: updatedCustomerInformation.uid
+    }
+    customerRequest.updateCustomerRequest(defaultCustomerInformation);
+    // this.props.history.push('/');
   }
 
-  formFieldStringState = (name,e) => {
+  formFieldStringState = (name, e) => {
     e.preventDefault();
-    const tempInfo = { ...this.state.updatedCustomerInformation};
+    const tempInfo = { ...this.state.updatedCustomerInformation };
     tempInfo[name] = e.target.value;
-    this.setState({ updatedCustomerInformation: tempInfo});
+    this.setState({ updatedCustomerInformation: tempInfo });
   }
 
   firstNameChange = e => {
     this.formFieldStringState('firstName', e);
   };
-  
+
   lastNameChange = e => {
     this.formFieldStringState('lastName', e);
   };
-  
+
   emailChange = e => {
     this.formFieldStringState('email', e);
   }
@@ -73,7 +74,7 @@ class EditCustomerForm extends React.Component {
     e.preventDefault();
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
-    this.setState({ updatedCustomerInformation:defaultCustomerInformation, toDashboard: true })
+    this.setState({ updatedCustomerInformation: defaultCustomerInformation, toDashboard: true })
   }
 
   componentDidUpdate(prevProps) {
@@ -88,92 +89,64 @@ class EditCustomerForm extends React.Component {
     }
   }
 
-  render () {
-    const { updatedCustomerInformation, customer } = this.state; 
+  render() {
+    const { updatedCustomerInformation, customer } = this.state;
     const { isEditing } = this.props;
     if (this.state.toDashboard === true) {
       return <Redirect to='/accounthome' />
     }
 
-      const title = () => {
-        if(isEditing) {
-          return (
-            <div className="Register">
-              <div id="login-form">
-                <h1 className="text-center">Update Customer</h1>
-                <form className="form-horizontal col-sm-6 col-sm-offset-3">
-                  <div className="form-group">
-                    <label htmlFor="inputName" className="col-sm-4 control-label">
-                      First Name:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="name"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="First Name"
-                        value={updatedCustomerInformation.firstName}
-                        onChange={this.firstNameChange}
-                      />
-                    </div>
+    const title = () => {
+      if (isEditing) {
+        return (
+          <div className="UpdateCustomer">
+              <h1 className="text-center">Update Profile Information</h1>
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="firstName" className="form-control" id="inputFirstName" placeholder="First Name" value={updatedCustomerInformation.firstName} onChange={this.firstNameChange}></input>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="inputLastName" className="col-sm-4 control-label">
-                      Last Name:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="name"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="Last Name"
-                        value={updatedCustomerInformation.lastName}
-                        onChange={this.lastNameChange}
-                      />
-                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="lastName" className="form-control" id="inputLastName" placeholder="Last Name" value={updatedCustomerInformation.lastName} onChange={this.lastNameChange}></input>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="inputEmail" className="col-sm-4 control-label">
-                      Email:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="Email"
-                        value={updatedCustomerInformation.email}
-                        onChange={this.emailChange}
-                      />
-                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" className="form-control" id="inputEmail4" placeholder="Email" value={updatedCustomerInformation.email} onChange={this.emailChange}></input>
                   </div>
-                  <div className="form-group">
-                    <div className="col-sm-12">
-                      <button
-                        type="submit"
-                        className="btn btn-default col-xs-12"
-                        onClick={this.formSubmit}
-                        tag={RRNavLink} to='/accounthome'
-                      >
-                        Update Info
+                </div>
+                    <div className="form-group">
+                      <div className="col-sm-12">
+                        <button
+                          type="submit"
+                          className="btn btn-default col-xs-12"
+                          onClick={this.formSubmit}
+                          tag={RRNavLink} to='/accounthome'
+                        >
+                          Update Information
                       </button>
+                      </div>
                     </div>
-                  </div>
                 </form>
-              </div>
             </div>
-          )} return (
+              )} return (
             <div className="Hide form">
 
-            </div>
-          )
-        };
-      return (
+              </div>
+              )
+            };
+          return (
         <div className="editCustomer">
-        {title()}
-      </div>
-    );
-  }
-}
+                {title()}
+              </div>
 
+              );
+            }
+          }
+          
 export default EditCustomerForm;
