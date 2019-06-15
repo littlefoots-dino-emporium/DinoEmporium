@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import customerShape from '../../helpers/propz/customerShape'
+import PropTypes from 'prop-types';
 //import getCustomerInfo from '../../helpers/data/customerRequest';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
@@ -18,6 +19,10 @@ export class CustomerProfile extends React.Component {
     isEditing: false,
     editId: '-1',
     open: false,
+  }
+
+  static propTypes = {
+    onSubmit: PropTypes.func,
   }
 
   onOpenModal = () => {
@@ -71,6 +76,7 @@ export class CustomerProfile extends React.Component {
           editId={editId}
           open={this.state.open}
           onCloseModal={this.onCloseModal}
+          onSubmit={this.getCustomer}
         />
       </div>
       </div>

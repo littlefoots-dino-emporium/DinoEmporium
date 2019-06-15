@@ -30,7 +30,7 @@ export class AccountHome extends Component {
         </div>
         <div className="customerNav">
         <Button className="customerNavBtn" outline color="info" tag={RRNavLink} to='/customerprofile'>
-        Profile
+        Profile Information
         </Button>   
         <Button className="customerNavBtn" outline color="info">
         Payment Information
