@@ -34,22 +34,27 @@ export class AccountHome extends Component {
       <div className="accountHome">
         <div className="welcome">
         <h1>Hello {customer.firstName}!</h1>
-        <h1>{customer.firstName}</h1>
-        <h1>{customer.lastName}</h1>
-        <h3>{customer.email}</h3>
+          <div class="card text-center">
+            <div class="card-header">
+            <h3>{customer.firstName} {customer.lastName}</h3>
+          </div>
+            <div class="card-body">
+              <p>email: {customer.email}</p>
+            </div>
+          </div>
         </div>
         <div className="customerNav">
-        <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'> 
-        Profile Information
-        </Button>   
-        <Button className="customerNavBtn outline-secondary">
-        Payment Information
+          <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'>
+            Profile Information
         </Button>
-        <Button className="customerNavBtn variant=outline-secondary">
-        Order History
+          <Button className="customerNavBtn outline-secondary">
+            Payment Information
         </Button>
-        <Button className="customerNavBtn variant=outline-secondary">
-        Reset Password
+          <Button className="customerNavBtn variant=outline-secondary">
+            Order History
+        </Button>
+          <Button className="customerNavBtn variant=outline-secondary">
+            Reset Password
         </Button>
         </div>
       </div>
