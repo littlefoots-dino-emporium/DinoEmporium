@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
 import { NavLink as RRNavLink } from 'react-router-dom';
+import { Redirect, Route } from 'react-router'
 import firebase from 'firebase';
 
 
@@ -23,6 +24,7 @@ class EditCustomerForm extends React.Component {
     onSubmit: PropTypes.func,
     isEditing: PropTypes.bool,
     editId: PropTypes.string,
+    toDashboard: false,
   }
 
   state = {
@@ -30,12 +32,6 @@ class EditCustomerForm extends React.Component {
       customer: this.props.customer,
   };
 
-  getCustomer = () => {
-    let uid = authRequests.getUid();
-    customerRequest.getCustomerProfile(uid).then((customer) => {
-      this.setState({ customer })
-    });
-  }
   // props = {
   //   customer,
   // }
@@ -47,9 +43,9 @@ class EditCustomerForm extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.getCustomer();
-  // }
+  componentDidMount() {
+    this.getCustomer();
+  }
 
   updateCustomer = ( updatedCustomerInformation ) => {
     updatedCustomerInformation.uid = authRequests.getUid();
@@ -93,8 +89,7 @@ class EditCustomerForm extends React.Component {
     e.preventDefault();
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
-    this.setState({ updatedCustomerInformation:defaultCustomerInformation });
-    this.getCustomer();
+    this.setState({ updatedCustomerInformation:defaultCustomerInformation, toDashboard: true })
   }
 
   componentDidUpdate(prevProps) {
@@ -112,6 +107,9 @@ class EditCustomerForm extends React.Component {
   render () {
     const { updatedCustomerInformation, customer } = this.state; 
     const { isEditing } = this.props;
+    if (this.state.toDashboard === true) {
+      return <Redirect to='/accounthome' />
+    }
 
       const title = () => {
         if(isEditing) {
