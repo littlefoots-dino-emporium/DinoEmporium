@@ -6,27 +6,31 @@ import SearchField from 'react-search-field';
 
 class Dinosaur extends React.Component {
   state = {
-    product: [],
+    products: [],
     filteredDinosaurs: [],
   }
 
-  allDinosComponentDidMount = () => {
-    productTypeRequests.getDinoRequest().then((product) => {
-      this.setState({ product });
-      this.setState({ filteredDinosaurs: product });
+  getAllDinosaurs = () => {
+    productTypeRequests.getDinoRequest().then((products) => {
+      this.setState({ products });
+      this.setState({ filteredDinosaurs: products });
     })
+    .catch(err => console.error(err));
+  }
+
+  componentDidMount = () => {
+    this.getAllDinosaurs();
   }
 
   onChange = (value, e) => {
-    const { product } = this.state;
+    const { products } = this.state;
     const filteredDinosaurs = [];
     e.preventDefault();
     if (!value) {
-      this.setState({ filteredDinosaurs: product });
+      this.setState({ filteredDinosaurs: products });
     } else {
-      product.forEach((product) => {
+      products.forEach((product) => {
         if (product.title.toLowerCase().includes(value.toLowerCase())
-          || product.price.toLowerCase().includes(value.toLowerCase())
           || product.size.toLowerCase().includes(value.toLowerCase())
         ) {
           filteredDinosaurs.push(product);
@@ -37,8 +41,11 @@ class Dinosaur extends React.Component {
   }
 
   render() {
-    const { product } = this.state;
-    const dinosaurItemComponent = product.map(product => (
+    const { filteredDinosaurs } = this.state;
+
+
+    
+    const dinosaurItemComponent = filteredDinosaurs.map(product => (
       <div>
         <DinosaurItem 
           product={product}
