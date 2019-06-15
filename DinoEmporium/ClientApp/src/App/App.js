@@ -7,13 +7,12 @@ import CustomerProfile from '../components/CustomerProfile/CustomerProfile';
 import Login from '../components/Login/Login';
 import MyNavbar from '../components/Navbar/Navbar';
 import Dinosaurs from '../components/pages/Dinosaurs';
+import Sweaters from '../components/pages/Sweaters';
+import Fences from '../components/pages/Fences';
 import AccountHome from '../components/AccountHome/AccountHome';
-//import Sweaters from '../components/pages/Sweaters';
-//import New from '../components/New/New';
-//import OrderSpa from '../components/OrderSpa/OrderSpa';
 import Register from '../components/Register/Register';
-//import SingleOrder from '../components/SingleOrder/SingleOrder';
 import fbConnection from '../firebaseRequests/connection';
+import './App.scss';
 import ShoppingCart from '../components/ShoppingCart/ShoppingCart';
 fbConnection();
 
@@ -123,6 +122,8 @@ class App extends React.Component {
                   <PrivateRoute path='/home' exact component={Home} authed={this.state.authed} />
                   <PrivateRoute path='/shoppingCart' exact component={ShoppingCart} authed={this.state.authed} />
                   <PrivateRoute path='/dinosaurs' exact component={Dinosaurs} authed={this.state.authed} />
+                  <PrivateRoute path='/sweaters' exact component={Sweaters} authed={this.state.authed} />
+                  <PrivateRoute path='/fences' exact component={Fences} authed={this.state.authed} />
                   <PrivateRoute path='/accounthome' exact component={AccountHome} authed={this.state.authed} />
                 </Switch>
               </div>
