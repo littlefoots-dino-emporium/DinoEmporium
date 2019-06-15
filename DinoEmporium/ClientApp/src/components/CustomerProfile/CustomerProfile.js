@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 //import getCustomerInfo from '../../helpers/data/customerRequest';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
+import './CustomerProfile.scss';
 import EditCustomerForm from '../EditCustomerForm/EditCustomerForm';
 import Modal from 'react-responsive-modal';
 import './CustomerProfile.scss';
@@ -66,6 +67,7 @@ export class CustomerProfile extends React.Component {
     // );
 
     return (
+
       <div className="customerProfile">
         {/* {makeButtons()} */}
         <div className='lineupForm'>

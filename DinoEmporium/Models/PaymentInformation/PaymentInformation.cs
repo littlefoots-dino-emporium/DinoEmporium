@@ -13,5 +13,6 @@ namespace DinoEmporium.Models
         public int CustomerId { get; set; }
         public string PaymentFirstName { get; set; }
         public string PaymentLastName { get; set; }
+        public string CustomerUid { get; set; }
     }
 }
