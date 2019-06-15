@@ -79,5 +79,18 @@ namespace DinoEmporium.Data.CustomerProductRepo.cs
             }
 
         }
+
+        public IEnumerable<CustomerProduct> GetCustomerProduct(string customerUid)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var getSingleCustomerProduct = db.Query<CustomerProduct>(@"select * From CustomerProduct cp
+                                                                                        Join Customer c on cp.CustomerId = c.id
+                                                                                        join Product p on cp.ProductId = p.id
+                                                                                        where c.customerUid = @customerUid",
+                                                                                        new { customerUid }).ToList();
+                return getSingleCustomerProduct;
+            }
+        }
     }
 }

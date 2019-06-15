@@ -13,7 +13,7 @@ const getCustomerProfile = uid => new Promise((resolve, reject) => {
 
 const postCustomerRequest = (customerInfo) => axios.post(`http://localhost:50312/api/customer/register`, customerInfo);
 
-const updateCustomerRequest = (uid, customer) => axios.put(`http://localhost:50312/api/customer/${uid}`, customer);
+const updateCustomerRequest = (customer) => axios.put(`http://localhost:50312/api/customer/${customer}`, customer);
 
 export default {
   postCustomerRequest,
