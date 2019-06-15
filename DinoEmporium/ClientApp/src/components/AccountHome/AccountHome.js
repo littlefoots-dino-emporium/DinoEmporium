@@ -32,7 +32,7 @@ export class AccountHome extends Component {
         <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'> 
         Profile Information
         </Button>   
-        <Button className="customerNavBtn outline-secondary">
+        <Button className="customerNavBtn outline-secondary" tag={RRNavLink} to='/paymentInformation'>
         Payment Information
         </Button>
         <Button className="customerNavBtn variant=outline-secondary">

@@ -34,7 +34,7 @@ class ProductItem extends React.Component {
             productId: product.id,
             customerId: customer.id
         }
-        customerProduct(CustomerProductInfo);
+        customerProduct.postCustomerProductRequest(CustomerProductInfo);
     }
 
 
