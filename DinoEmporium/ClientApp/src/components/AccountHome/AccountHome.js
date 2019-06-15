@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import  { Button }  from 'react-bootstrap';
 import customerRequest from '../../helpers/data/customerRequest';
 import authRequests from '../../firebaseRequests/auth';
 import './AccountHome.scss';
@@ -44,16 +44,16 @@ export class AccountHome extends Component {
           </div>
         </div>
         <div className="customerNav">
-          <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'>
+          <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile' variant="outline-primary">
             Profile Information
         </Button>
-          <Button className="customerNavBtn outline-secondary">
+          <Button className="customerNavBtn outline-secondary" variant="outline-success">
             Payment Information
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary">
+          <Button className="customerNavBtn variant=outline-secondary" variant="outline-secondary">
             Order History
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary">
+          <Button className="customerNavBtn variant=outline-secondary" variant="outline-danger">
             Reset Password
         </Button>
         </div>
