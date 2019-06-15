@@ -38,12 +38,6 @@ class MyNavbar extends React.Component {
                                 Home
                           </NavLink>
                 </NavItem>
-
-                <NavItem>
-                  <NavLink tag={RRNavLink} to='/customerprofile'>
-                    Profile
-                  </NavLink>
-                </NavItem>
                 <NavItem>
                   <NavLink tag={RRNavLink} to='/ShoppingCart'>
                   <i class="fas fa-cart-arrow-down"></i>
