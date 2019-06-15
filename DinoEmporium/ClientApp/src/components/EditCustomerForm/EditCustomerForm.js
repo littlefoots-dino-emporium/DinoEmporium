@@ -27,8 +27,15 @@ class EditCustomerForm extends React.Component {
 
   state = {
       updatedCustomerInformation: defaultCustomerInformation,
+      customer: {}
   };
 
+  getCustomer = () => {
+    let uid = authRequests.getUid();
+    customerRequest.getCustomerProfile(uid).then((customer) => {
+      this.setState({ customer })
+    });
+  }
   // props = {
   //   customer,
   // }
@@ -76,6 +83,7 @@ class EditCustomerForm extends React.Component {
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
     this.setState({ updatedCustomerInformation:defaultCustomerInformation });
+    this.getCustomer();
   }
 
   componentDidUpdate(prevProps) {
@@ -84,13 +92,14 @@ class EditCustomerForm extends React.Component {
       customerRequest.getCustomerProfile(editId)
         .then((customer) => {
           this.setState({ updatedCustomerInformation: customer });
+          this.getCustomer();
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
   }
 
   render () {
-    const { updatedCustomerInformation } = this.state; 
+    const { updatedCustomerInformation, customer } = this.state; 
     const { isEditing } = this.props;
 
       const title = () => {
@@ -166,7 +175,7 @@ class EditCustomerForm extends React.Component {
         };
       return (
         <div className="editCustomer">
-        <Modal  open={this.props.open} onClose={this.props.onCloseModal} center>
+        <Modal  open={this.props.open} onClose={this.props.onCloseModal} customer={customer} center>
         {title()}
         </Modal>
       </div>
