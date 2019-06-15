@@ -31,6 +31,7 @@ class Dinosaur extends React.Component {
     } else {
       products.forEach((product) => {
         if (product.title.toLowerCase().includes(value.toLowerCase())
+          || product.description.toLowerCase().includes(value.toLowerCase())
           || product.size.toLowerCase().includes(value.toLowerCase())
         ) {
           filteredDinosaurs.push(product);
