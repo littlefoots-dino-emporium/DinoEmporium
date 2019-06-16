@@ -38,6 +38,14 @@ export class AccountHome extends Component {
           </div>
             <div class="card-body">
               <p>email: {customer.email}</p>
+              <p>
+                address: 
+                {customer.address}
+                {customer.city}
+                {customer.state}
+                {customer.zip}
+              </p>
+              
             </div>
           </div>
         <div className="customerNav">
