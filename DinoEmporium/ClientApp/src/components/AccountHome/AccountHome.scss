@@ -16,16 +16,15 @@
   }
   .customerNav {
     display: flex;
-    // text-align: center;
+    text-align: center;
+    align-items: center;
     // align-items: center;
     .customerNavBtn {
-      text-align: center;
-      display: flex;
-      align-items: center;
-      text-align: right;
+      // display: flex;
+      // align-items: center;
+      // background-color: rgb(106, 219, 149);
       width: 100%;
       margin: 1%;
-      padding-left: 5%;
       height: 7rem;
     }
   }

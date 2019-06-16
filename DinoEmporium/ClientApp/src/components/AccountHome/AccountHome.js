@@ -48,17 +48,17 @@ export class AccountHome extends Component {
               
             </div>
           </div>
-        <div className="customerNav">
-          <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile' variant="outline-primary">
+        <div className="customerNav text-right">
+          <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'  color="info">
             Update Profile Information
         </Button>
-          <Button className="customerNavBtn outline-secondary" variant="outline-success">
+          <Button className="customerNavBtn outline-secondary"  color="info">
             Payment Information
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary" variant="outline-secondary">
+          <Button className="customerNavBtn variant=outline-secondary"  color="info">
             Order History
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary" variant="outline-danger">
+          <Button className="customerNavBtn variant=outline-secondary"  color="info" text="center">
             Reset Password
         </Button>
         </div>
