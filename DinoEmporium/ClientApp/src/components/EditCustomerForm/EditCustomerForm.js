@@ -101,6 +101,7 @@ class EditCustomerForm extends React.Component {
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
     this.setState({ updatedCustomerInformation: defaultCustomerInformation, toDashboard: true })
+    this.componentDidMount();
   }
 
   componentDidUpdate(prevProps) {
@@ -109,7 +110,7 @@ class EditCustomerForm extends React.Component {
       customerRequest.getCustomerProfile(editId)
         .then((customer) => {
           this.setState({ updatedCustomerInformation: customer });
-          this.getCustomer();
+          this.componentDidMount();
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
