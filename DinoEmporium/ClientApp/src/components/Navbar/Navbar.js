@@ -42,8 +42,10 @@ class MyNavbar extends React.Component {
                   <NavLink tag={RRNavLink} to='/ShoppingCart'>
                   <i class="fas fa-cart-arrow-down"></i>
                   </NavLink>
+                </NavItem>
+                <NavItem>
                           <NavLink tag={RRNavLink} to='/accounthome'>
-                                Account
+                          <i class="fas fa-user"></i>
                           </NavLink>
                 </NavItem>
 
