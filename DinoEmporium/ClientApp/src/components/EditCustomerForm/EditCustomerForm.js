@@ -45,7 +45,12 @@ class EditCustomerForm extends React.Component {
       firstName: updatedCustomerInformation.firstName,
       lastName: updatedCustomerInformation.lastName,
       email: updatedCustomerInformation.email,
-      customerUid: updatedCustomerInformation.uid
+      customerUid: updatedCustomerInformation.uid,
+      address: updatedCustomerInformation.address,
+      address2: updatedCustomerInformation.address2,
+      city: updatedCustomerInformation.city,
+      state: updatedCustomerInformation.state,
+      zip: updatedCustomerInformation.zip,
     }
     customerRequest.updateCustomerRequest(defaultCustomerInformation);
     // this.props.history.push('/');
@@ -70,6 +75,27 @@ class EditCustomerForm extends React.Component {
     this.formFieldStringState('email', e);
   }
 
+  addressChange = e => {
+    this.formFieldStringState('address', e);
+  }
+
+  address2Change = e => {
+    this.formFieldStringState('address2', e);
+  }
+
+  cityChange = e => {
+    this.formFieldStringState('city', e);
+  }
+
+  stateChange = e => {
+    this.formFieldStringState('state', e);
+  }
+
+  zipChange = e => {
+    this.formFieldStringState('zip', e);
+  }
+
+
   formSubmit = (e) => {
     e.preventDefault();
     const userInformation = { ...this.state.updatedCustomerInformation };
@@ -90,7 +116,7 @@ class EditCustomerForm extends React.Component {
   }
 
   render() {
-    const { updatedCustomerInformation, customer } = this.state;
+    const { updatedCustomerInformation } = this.state;
     const { isEditing } = this.props;
     if (this.state.toDashboard === true) {
       return <Redirect to='/accounthome' />
@@ -117,24 +143,24 @@ class EditCustomerForm extends React.Component {
               </div>
               <div class="form-group">
                 <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"></input>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" value={updatedCustomerInformation.address} onChange={this.addressChange}></input>
               </div>
               <div class="form-group">
                 <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"></input>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value={updatedCustomerInformation.address2} onChange={this.address2Change}></input>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity"></input>
+                  <input type="text" class="form-control" id="inputCity" value={updatedCustomerInformation.city} onChange={this.cityChange}></input>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputState">State</label>
-                  <input type="text" class="form-control" id="inputCity"></input>
+                  <input type="text" class="form-control" id="inputCity" value={updatedCustomerInformation.state} onChange={this.stateChange}></input>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip"></input>
+                  <input type="text" class="form-control" id="inputZip" value={updatedCustomerInformation.zip} onChange={this.zipChange}></input>
                 </div>
               </div>
               {/* <button type="submit" class="btn btn-primary">Sign in</button> */}
