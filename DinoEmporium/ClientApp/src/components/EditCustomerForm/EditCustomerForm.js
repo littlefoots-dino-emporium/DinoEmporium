@@ -99,8 +99,7 @@ class EditCustomerForm extends React.Component {
     const title = () => {
       if (isEditing) {
         return (
-          <div className="UpdateCustomer">
-            <h1 className="text-center">Update Profile Information</h1>
+          <div className="updateCustomer">
             <form>
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -131,10 +130,7 @@ class EditCustomerForm extends React.Component {
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputState">State</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
+                  <input type="text" class="form-control" id="inputCity"></input>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="inputZip">Zip</label>
@@ -160,7 +156,8 @@ class EditCustomerForm extends React.Component {
       )
     };
     return (
-      <div className="editCustomer">
+      <div>
+        <h1 className="text-center">Update Profile Information</h1>
         {title()}
       </div>
 

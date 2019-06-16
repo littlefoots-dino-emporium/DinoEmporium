@@ -54,9 +54,7 @@ export class CustomerProfile extends React.Component {
     const { customer, isEditing, editId } = this.state;
 
     return (
-
       <div className="customerProfile">
-        <div className='lineupForm'>
         <EditCustomerForm
           customer={customer}
           isEditing={isEditing}
@@ -64,7 +62,6 @@ export class CustomerProfile extends React.Component {
           open={this.state.open}
           onCloseModal={this.onCloseModal}
         />
-      </div>
       </div>
     )
   }
