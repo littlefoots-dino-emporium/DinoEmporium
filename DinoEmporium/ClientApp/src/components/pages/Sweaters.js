@@ -1,36 +1,72 @@
 import React from 'react';
 import SweaterItem from '../SweaterItem/SweaterItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
+import SearchField from 'react-search-field';
 
 
 class Sweaters extends React.Component {
   state = {
-    product: [],
+    products: [],
+    filteredSweaters: [],
   }
 
-  componentDidMount() {
-    this.allSweaters();
-  }
-
-  allSweaters = () => {
-    productTypeRequests.getSweaterRequest().then((product) => {
-      this.setState({ product });
-      console.log(product);
+  getAllSweaters = () => {
+    productTypeRequests.getSweaterRequest().then((products) => {
+      this.setState({ products });
+      this.setState({ filteredSweaters: products })
     })
   }
 
+  
+  componentDidMount() {
+    this.getAllSweaters();
+  }
+
+  onChange = (value, e) => {
+    const { products } = this.state;
+    const filteredSweaters = [];
+    e.preventDefault();
+    if (!value) {
+      this.setState({ filteredDinosaurs: products });
+    } else {
+      products.forEach((product) => {
+        if (product.title.toLowerCase().includes(value.toLowerCase())
+          || product.description.toLowerCase().includes(value.toLowerCase())
+          || product.size.toLowerCase().includes(value.toLowerCase())
+        ) {
+          filteredSweaters.push(product);
+        }
+        this.setState({ filteredSweaters });
+      });
+    }
+  }
+
+
   render() {
-    const { product } = this.state;
-    const sweaterItemComponent = product.map(product => (
+    const { filteredSweaters } = this.state;
+
+
+    const sweaterItemComponent = filteredSweaters.map(product => (
+      <div>
       <SweaterItem
         product={product}
         key={product.id}
       />
+      </div>
     ));
 
+
     return (
-      <div className='sweaters'>
+      <div>
+      <SearchField
+      placeholder="Search Sweaters..."
+      onChange={this.onChange}
+      searchText=""
+      classNames="test-class w-50 mt-auto"
+    />
+      <div className='dinosaurs'>
         {sweaterItemComponent}
+      </div>
       </div>
     );
   }
