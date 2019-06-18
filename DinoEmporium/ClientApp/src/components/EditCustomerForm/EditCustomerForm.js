@@ -28,16 +28,16 @@ class EditCustomerForm extends React.Component {
     customer: this.props.customer,
   };
 
-  getCustomer = () => {
-    let uid = authRequests.getUid();
-    customerRequest.getCustomerProfile(uid).then((customer) => {
-      this.setState({ customer })
-    });
-  }
+  // getCustomer = () => {
+  //   let uid = authRequests.getUid();
+  //   customerRequest.getCustomerProfile(uid).then((customer) => {
+  //     this.setState({ customer })
+  //   });
+  // }
 
-  componentDidMount() {
-    this.getCustomer();
-  }
+  // componentDidMount() {
+  //   this.getCustomer();
+  // }
 
   updateCustomer = (updatedCustomerInformation) => {
     updatedCustomerInformation.uid = authRequests.getUid();
@@ -101,7 +101,7 @@ class EditCustomerForm extends React.Component {
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
     this.setState({ updatedCustomerInformation: defaultCustomerInformation, toDashboard: true })
-    this.componentDidMount();
+    // this.componentDidMount();
   }
 
   componentDidUpdate(prevProps) {
@@ -110,7 +110,7 @@ class EditCustomerForm extends React.Component {
       customerRequest.getCustomerProfile(editId)
         .then((customer) => {
           this.setState({ updatedCustomerInformation: customer });
-          this.componentDidMount();
+          // this.componentDidMount();
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
