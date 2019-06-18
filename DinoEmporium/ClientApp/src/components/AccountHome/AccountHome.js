@@ -9,6 +9,7 @@ export class AccountHome extends Component {
   state = {
     customer: {},
     toUpdateCustomer: false,
+    orderHistory: false,
   }
 
   getCustomer = () => {
@@ -19,11 +20,11 @@ export class AccountHome extends Component {
   }
 
   editCustomer = (e) => {
-    // e.preventDefault();
-    // let uid = authRequests.getUid();
-    // this.setState({ isEditing: true, editId: uid })
-    // this.onOpenModal();
     this.setState({ toUpdateCustomer: true })
+  }
+
+  orderHistory = (e) => {
+    this.setState({ orderHistory: true })
   }
 
   componentDidMount() {
@@ -34,6 +35,9 @@ export class AccountHome extends Component {
     const { customer } = this.state;
     if (this.state.toUpdateCustomer === true) {
       return <Redirect to='/customerprofile' />
+    }
+    if (this.state.orderHistory === true) {
+      return <Redirect to='/orderhistory' />
     }
 
 
@@ -62,7 +66,7 @@ export class AccountHome extends Component {
           <Button className="customerNavBtn outline-secondary"  color="info">
             Payment Information
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary"  color="info">
+          <Button className="customerNavBtn variant=outline-secondary"  onClick={this.orderHistory} color="info">
             Order History
         </Button>
           <Button className="customerNavBtn variant=outline-secondary"  color="info" text="center">
