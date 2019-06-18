@@ -41,7 +41,17 @@ namespace DinoEmporium.Data
             }
         }
 
-        public PaymentInformation GetSinglePayment(string customerId)
+        public IEnumerable<PaymentInformation> GetAllPaymentInformationOfSingleUser(int id)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var allPaymentInformation = db.Query<PaymentInformation>("Select * from paymentinformation where customerId = @id", new { id }).ToList();
+
+                return allPaymentInformation;
+            }
+        }
+
+        public PaymentInformation GetSinglePayment(int customerId)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
@@ -71,8 +81,8 @@ namespace DinoEmporium.Data
                 var updatedPayment = db.QueryFirstOrDefault<PaymentInformation>(@"update PaymentInformation
                                                                         set paymentType = @paymentType,
                                                                         accountNumber = @accountNumber,
-                                                                        paymentFirstName = @paymentFirstName,
-                                                                        paymentLastName = @paymentLastName
+                                                                        nameOnCard = @nameOnCard,
+                                                                        expirationDate = @expirationDate
                                                                         output inserted.*
                                                                         where id = @id",
                                                                         new
@@ -80,8 +90,8 @@ namespace DinoEmporium.Data
                                                                             id = singlePayment.Id,
                                                                             paymentType = singlePayment.PaymentType,
                                                                             accountNumber = singlePayment.AccountNumber,
-                                                                            paymentFirstName = singlePayment.PaymentFirstName,
-                                                                            paymentLastName = singlePayment.PaymentLastName
+                                                                            nameOnCard = singlePayment.NameOnCard,
+                                                                            expirationDate = singlePayment.ExpirationDate
                                                                         });
                 return updatedPayment;
             }

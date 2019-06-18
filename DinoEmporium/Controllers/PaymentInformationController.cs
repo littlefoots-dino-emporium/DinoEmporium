@@ -44,8 +44,16 @@ namespace DinoEmporium.Controllers
             return Ok(paymentInformation);
         }
 
+        [HttpGet("allpaymentsOfCustomer/{id}")]
+        public ActionResult GetAllPaymentInformationOfSingleUser(int id)
+        {
+            var paymentInformation = _repository.GetAllPaymentInformationOfSingleUser(id);
+
+            return Ok(paymentInformation);
+        }
+
         [HttpGet("{customerUid}")]
-        public ActionResult GetSinglePayment(string customerUid)
+        public ActionResult GetSinglePayment(int customerUid)
         {
             var previousPaymentInformation = _repository.GetSinglePayment(customerUid);
 

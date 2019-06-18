@@ -1,30 +1,44 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
-import { Button } from 'reactstrap';
-import paymentRequest from '../../helpers/data/paymentInformation';
+import {
+    TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col,
+  } from 'reactstrap';
+import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import authRequest from '../../firebaseRequests/auth';
+import getCustomerInfo from '../../helpers/data/customerRequest';
+import PaymentItem from '../PaymentItem/PaymentItem';
 
 
 class PaymentInformation extends React.Component {
 
     state = {
         paymentInfo: [],
+        customer: {},
         open: false
     }
+
     componentDidMount() {
         const uid = authRequest.getUid();
-        
-    paymentRequest.getPaymentInformation(uid).then((paymentInfo) => {
-        this.setState({ paymentInfo })
-        console.log(paymentInfo);
-    })
+        getCustomerInfo.getCustomerProfile(uid).then((customer) => {
+          this.setState({ customer })
+          console.log(customer);
+          this.getCustomerPayment();
+        })
 }
-
-addPayment = () => {
-paymentRequest.postPaymentInformation().then((customerInfo) => {
-    
+getCustomerPayment = () => {
+    const { customer } = this.state;
+paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
+    this.setState({ paymentInfo })
+    console.log(paymentInfo);
+    console.log(customer.id);
 })
 }
+
+// addPayment = () => {
+// paymentRequest.postPaymentInformation().then((customerInfo) => {
+    
+// })
+// }
 
 onOpenModal = () => {
     this.setState({ open: true });
@@ -38,6 +52,14 @@ onOpenModal = () => {
 render(){
     const { open } = this.state;
   const { paymentInfo } = this.state;
+
+  const paymentInfoItem = paymentInfo.map(paymentInfo => (
+    <PaymentItem
+    paymentInfo={paymentInfo}
+      key={paymentInfo.id}
+    />
+  ));
+
   return (
   <div>
       <Button onClick={this.onOpenModal}>Add Payment Information</Button>
@@ -89,11 +111,22 @@ render(){
                       />
                     </div>
                   </div>
+                  <div className="form-group">
+                    <div className="col-sm-12">
+                      <button
+                        type="submit"
+                        className="btn btn-default col-xs-12"
+                        //onClick={this.formSubmit}
+                      >
+                        Add Payment 
+                      </button>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>
         </Modal>
-      {paymentInfo}
+      {paymentInfoItem}
   </div>
   )};
 }
