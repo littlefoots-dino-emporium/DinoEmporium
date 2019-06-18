@@ -12,15 +12,15 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public PaymentInformation AddPaymentInformation(PaymentType paymentType, int accountNumber, string paymentFirstName, string paymentLastName)
+        public PaymentInformation AddPaymentInformation(PaymentType paymentType, int accountNumber, string nameOnCard, DateTime expirationDate)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newPaymentInformation = db.QueryFirstOrDefault<PaymentInformation>(@"
-                    Insert into paymentinformation (paymentType,accountNumber, paymentFirstName,paymentLastName)
+                    Insert into paymentinformation (paymentType,accountNumber, nameOnCard, expirationDate)
                     Output inserted.*
-                    Values(@paymentType,@accountNumber,@paymentFirstName,@paymentLastName)",
-                    new { paymentType, accountNumber, paymentFirstName, paymentLastName });
+                    Values(@paymentType,@accountNumber,@nameOnCard, @expirationDate)",
+                    new { paymentType, accountNumber, nameOnCard, expirationDate});
 
                 if (newPaymentInformation != null)
                 {

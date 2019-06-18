@@ -6,6 +6,10 @@ const getPaymentInformation = uid => new Promise((resolve, reject) => {
     .get(`http://localhost:50312/api/paymentInformation/${uid}`)
     .then((res) => {
       let customer = res.data;
+      if(!customer)
+      {
+          resolve("Please add payment information!")
+      }
       resolve(customer);
     })
     .catch(err => reject(err));

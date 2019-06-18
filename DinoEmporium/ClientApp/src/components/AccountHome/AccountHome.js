@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import customerRequest from '../../helpers/data/customerRequest';
+import PaymentInformation from '../PaymentInformation/PaymentInformation';
 import authRequests from '../../firebaseRequests/auth';
 import './AccountHome.scss';
 export class AccountHome extends Component {
