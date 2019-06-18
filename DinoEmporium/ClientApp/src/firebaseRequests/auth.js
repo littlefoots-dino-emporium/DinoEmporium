@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import axios from 'axios';
 
+
 axios.interceptors.request.use(function (request) {
   const token = sessionStorage.getItem('token');
 

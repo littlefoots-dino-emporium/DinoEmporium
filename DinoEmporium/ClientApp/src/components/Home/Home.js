@@ -24,16 +24,18 @@ class Home extends React.Component {
 
   render() {
     const { product } = this.state;
-    const productItemComponent = product.map(product => (
+    const productItemComponent = 
       <ProductItem
         product={product}
         key={product.id}
       />
-    ));
+    // ));
 
       return (
         <div className='productLinks'>
           <li><Link to="/dinosaurs">See More Dinosaurs</Link></li>
+          <li><Link to="/sweaters">See More Sweaters</Link></li>
+          <li><Link to="/fences">See More Fences</Link></li>
         <p>{productItemComponent}</p>
         </div>
     );
