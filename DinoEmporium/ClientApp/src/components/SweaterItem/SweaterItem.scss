@@ -2,3 +2,11 @@
   height: 300px;
   width: 300px;
 }
+
+.app {
+  display: inline-flex;
+  flex-flow: wrap;
+  align-content: space-around;
+  margin: 1%;
+  padding: 1%;
+}
