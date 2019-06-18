@@ -1,5 +1,14 @@
-.app {
+.dinosaurs {
   display: inline-flex;
   flex-wrap: wrap;
-  margin: 2%;
+  margin: 2%; 
+}
+
+.product-image{
+  height: 60%;
+  width: 70%;
+}
+
+.modal_opener{
+  background-color: rgba(0,0,0,.0000) !important;
 }

@@ -2,9 +2,9 @@ import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import { Button } from 'reactstrap';
 
-import './DinosaurItem.scss';
+import './FenceItem.scss';
 
-class DinosaurItem extends React.Component {
+class FenceItem extends React.Component {
 
     state = {
         showModal: false
@@ -21,8 +21,8 @@ class DinosaurItem extends React.Component {
         return (
             <div className="app">
                 <Button className="modal_opener" onClick={this.toggleModal}>
-                    <img className='dino-image' src={product.image} alt='product' />
-                    <p className='dino-title'><i>{product.title}</i></p>
+                    <img className='fence-image' src={product.image} alt='product' />
+                    <p className='fence-title'><i>{product.title}</i></p>
                 </Button>
 
                 <Modal
@@ -32,9 +32,9 @@ class DinosaurItem extends React.Component {
                 >
                     <React.Fragment>
                         <div className='productCard'>
-                            <li className='dino-price'><i>${product.price}</i></li>
-                            <li className='dino-description'>{product.description}</li>
-                            <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
+                            <li className='fence-price'><i>${product.price}</i></li>
+                            <li className='fence-description'>{product.description}</li>
+                            <li className='fence-quantity'>We have <b>{product.quantity}</b> in stock.</li>
                         </div>
                     </React.Fragment>
                 </Modal>
@@ -43,4 +43,4 @@ class DinosaurItem extends React.Component {
     }
 }
 
-export default DinosaurItem;
+export default FenceItem;
