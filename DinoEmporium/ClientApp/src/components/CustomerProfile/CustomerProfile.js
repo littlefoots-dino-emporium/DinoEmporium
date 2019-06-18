@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';

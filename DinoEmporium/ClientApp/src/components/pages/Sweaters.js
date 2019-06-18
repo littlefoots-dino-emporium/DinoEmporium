@@ -1,39 +1,75 @@
-// import React from 'react';
-// import SweaterItem from '../SweaterItem/SweaterItem';
-// import productTypeRequests from '../../helpers/data/productTypeRequest';
+import React from 'react';
+import SweaterItem from '../SweaterItem/SweaterItem';
+import productTypeRequests from '../../helpers/data/productTypeRequest';
+import SearchField from 'react-search-field';
 
 
-// class Sweaters extends React.Component {
-//   props = {
-//     productType: [],
-//   }
+class Sweaters extends React.Component {
+  state = {
+    products: [],
+    filteredSweaters: [],
+  }
 
-//   componentDidMount() {
-//     this.allSweaters();
-//   }
+  getAllSweaters = () => {
+    productTypeRequests.getSweaterRequest().then((products) => {
+      this.setState({ products });
+      this.setState({ filteredSweaters: products })
+    })
+  }
 
-//   allSweaters = () => {
-//     productTypeRequests.getSweaterRequest().then((productType) => {
-//       this.setState({ productType });
-//       console.log(productType);
-//     })
-//   }
+  
+  componentDidMount() {
+    this.getAllSweaters();
+  }
 
-//   render() {
-//     const { productType } = this.state;
-//     const sweaterItemComponent = productType && productType.map(productType => (
-//       <SweaterItem
-//         productType={productType}
-//         key={productType.id}
-//       />
-//     ));
+  onChange = (value, e) => {
+    const { products } = this.state;
+    const filteredSweaters = [];
+    e.preventDefault();
+    if (!value) {
+      this.setState({ filteredDinosaurs: products });
+    } else {
+      products.forEach((product) => {
+        if (product.title.toLowerCase().includes(value.toLowerCase())
+          || product.description.toLowerCase().includes(value.toLowerCase())
+          || product.size.toLowerCase().includes(value.toLowerCase())
+        ) {
+          filteredSweaters.push(product);
+        }
+        this.setState({ filteredSweaters });
+      });
+    }
+  }
 
-//     return (
-//       <div className='sweaters'>
-//         {sweaterItemComponent}
-//       </div>
-//     );
-//   }
-// }
 
-// export default Sweaters;
+  render() {
+    const { filteredSweaters } = this.state;
+
+
+    const sweaterItemComponent = filteredSweaters.map(product => (
+      <div>
+      <SweaterItem
+        product={product}
+        key={product.id}
+      />
+      </div>
+    ));
+
+
+    return (
+      <div>
+      <SearchField
+      placeholder="Search Sweaters..."
+      onChange={this.onChange}
+      searchText=""
+      classNames="test-class w-50 mt-auto"
+    />
+      <div className='dinosaurs'>
+        {sweaterItemComponent}
+      </div>
+      </div>
+    );
+  }
+}
+
+export default Sweaters;
