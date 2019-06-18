@@ -41,11 +41,11 @@ namespace DinoEmporium.Data
             }
         }
 
-        public PaymentInformation GetSinglePayment(int id)
+        public PaymentInformation GetSinglePayment(string customerUid)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var singlePayment = db.QueryFirstOrDefault<PaymentInformation>(@"select * from paymentinformation where id = @id", new { id });
+                var singlePayment = db.QueryFirstOrDefault<PaymentInformation>(@"select * from paymentinformation where customerUid = @customerUid", new { customerUid });
 
                 return singlePayment;
             }
