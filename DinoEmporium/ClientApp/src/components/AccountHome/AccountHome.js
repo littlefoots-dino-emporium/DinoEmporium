@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom';
 import  { Button }  from 'reactstrap';
+import { Redirect } from 'react-router';
 import customerRequest from '../../helpers/data/customerRequest';
 import authRequests from '../../firebaseRequests/auth';
 import './AccountHome.scss';
 export class AccountHome extends Component {
   state = {
     customer: {},
+    toUpdateCustomer: false,
   }
 
   getCustomer = () => {
@@ -17,10 +19,11 @@ export class AccountHome extends Component {
   }
 
   editCustomer = (e) => {
-    e.preventDefault();
-    let uid = authRequests.getUid();
-    this.setState({ isEditing: true, editId: uid })
-    this.onOpenModal();
+    // e.preventDefault();
+    // let uid = authRequests.getUid();
+    // this.setState({ isEditing: true, editId: uid })
+    // this.onOpenModal();
+    this.setState({ toUpdateCustomer: true })
   }
 
   componentDidMount() {
@@ -29,6 +32,10 @@ export class AccountHome extends Component {
 
   render() {
     const { customer } = this.state;
+    if (this.state.toUpdateCustomer === true) {
+      return <Redirect to='/customerprofile' />
+    }
+
 
     return (
       <div className="accountHome">
@@ -49,7 +56,7 @@ export class AccountHome extends Component {
             </div>
           </div>
         <div className="customerNav text-right">
-          <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'  color="info">
+          <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
             Update Profile Information
         </Button>
           <Button className="customerNavBtn outline-secondary"  color="info">
