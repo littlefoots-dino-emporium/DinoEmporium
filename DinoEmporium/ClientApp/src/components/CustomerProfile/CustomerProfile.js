@@ -49,11 +49,10 @@ export class CustomerProfile extends React.Component {
     this.setState({ isEditing: true, editId: uid })
     this.onOpenModal();
   }
-  // componentWillUnmount() {
-  //   let uid = autheRequests.getUid();
-  //   this.getCustomer();
-  //   this.setState({ isEditing: false, editId: '-1' })
-  // }
+  componentWillUnmount() {
+    this.getCustomer();
+    this.setState({ isEditing: false, editId: '-1' })
+  }
 
   render() {
     const { customer, isEditing, editId } = this.state;
@@ -66,6 +65,7 @@ export class CustomerProfile extends React.Component {
           editId={editId}
           open={this.state.open}
           onCloseModal={this.onCloseModal}
+          componentWillUnmount={this.componentWillUnmount}
         />
       </div>
     )
