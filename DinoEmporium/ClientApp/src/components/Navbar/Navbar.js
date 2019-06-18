@@ -1,6 +1,6 @@
 import React from 'react';
 // import {Link} from 'react-router-dom';
-import { NavLink as RRNavLink } from 'react-router-dom';
+import { NavLink as RRNavLink, Redirect } from 'react-router-dom';
 import authRequests from '../../firebaseRequests/auth';
 import {
   Navbar,
@@ -19,6 +19,7 @@ class MyNavbar extends React.Component {
     const logoutClickEvent = () => {
       authRequests.logoutUser();
       runAway();
+      return <Redirect to='/login' />
     };
 
     return (
@@ -42,8 +43,10 @@ class MyNavbar extends React.Component {
                   <NavLink tag={RRNavLink} to='/ShoppingCart'>
                   <i class="fas fa-cart-arrow-down"></i>
                   </NavLink>
+                </NavItem>
+                <NavItem>
                           <NavLink tag={RRNavLink} to='/accounthome'>
-                                Account
+                          <i class="fas fa-user"></i>
                           </NavLink>
                 </NavItem>
 
@@ -51,6 +54,7 @@ class MyNavbar extends React.Component {
                                 onClick={logoutClickEvent}
                                 className="btn btn-danger"
                                 tag={RRNavLink} to='/login'
+                                
                           >
                                 Logout
                           </NavLink>
