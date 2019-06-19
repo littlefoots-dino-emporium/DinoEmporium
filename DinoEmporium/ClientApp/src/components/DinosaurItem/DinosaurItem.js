@@ -19,7 +19,7 @@ class DinosaurItem extends React.Component {
     render() {
         const { product } = this.props;
         return (
-            <div className="app">
+            <div className="dinosaurModal">
                 <Button className="modal_opener" onClick={this.toggleModal}>
                     <img className='dino-image' src={product.image} alt='product' />
                     <p className='dino-title'><i>{product.title}</i></p>
