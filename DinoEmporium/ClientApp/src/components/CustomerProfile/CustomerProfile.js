@@ -39,7 +39,9 @@ export class CustomerProfile extends React.Component {
   }
 
   componentDidMount() {
+    let uid = autheRequests.getUid();
     this.getCustomer();
+    this.setState({ isEditing: true, editId: uid })
   }
 
   editCustomer = (e) => {
@@ -48,35 +50,24 @@ export class CustomerProfile extends React.Component {
     this.setState({ isEditing: true, editId: uid })
     this.onOpenModal();
   }
+  componentWillUnmount() {
+    this.getCustomer();
+    this.setState({ isEditing: false, editId: '-1' })
+  }
 
   render() {
     const { customer, isEditing, editId } = this.state;
-    const makeButtons = () => (
-      <div>
-        <span className="editLineup col">
-          <Button outline color="info" onClick={this.editCustomer}>
-            Edit
-              </Button>
-        </span>
-      </div>
-    );
 
     return (
-
       <div className="customerProfile">
-        <h1>{customer.firstName}</h1>
-        <h1>{customer.lastName}</h1>
-        <h3>{customer.email}</h3>
-        {makeButtons()}
-        <div className='lineupForm'>
         <EditCustomerForm
-          customer={this.state.customer}
+          customer={customer}
           isEditing={isEditing}
           editId={editId}
           open={this.state.open}
           onCloseModal={this.onCloseModal}
+          componentWillUnmount={this.componentWillUnmount}
         />
-      </div>
       </div>
     )
   }

@@ -1,16 +1,16 @@
 
 
 
-class PaymentInformation extends React.Component {
+// class PaymentInformation extends React.Component {
 
-    state = {
+//     state = {
         
-    }
+//     }
 
 
-render(){
+// render(){
 
-}
+// }
 
 
-}
+// }

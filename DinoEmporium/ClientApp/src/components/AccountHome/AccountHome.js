@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { NavLink as RRNavLink } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import  { Button }  from 'reactstrap';
+import { Redirect } from 'react-router';
 import customerRequest from '../../helpers/data/customerRequest';
 import authRequests from '../../firebaseRequests/auth';
 import './AccountHome.scss';
 export class AccountHome extends Component {
   state = {
     customer: {},
+    toUpdateCustomer: false,
+    orderHistory: false,
+    wishList: false,
   }
 
   getCustomer = () => {
@@ -16,30 +20,63 @@ export class AccountHome extends Component {
     });
   }
 
+  editCustomer = (e) => {
+    this.setState({ toUpdateCustomer: true })
+  }
+
+  orderHistory = (e) => {
+    this.setState({ orderHistory: true })
+  }
+
+  wishList = (e) => {
+    this.setState({ wishList: true })
+  }
+
   componentDidMount() {
     this.getCustomer();
   }
 
   render() {
     const { customer } = this.state;
+    if (this.state.toUpdateCustomer === true) {
+      return <Redirect to='/customerprofile' />
+    }
+    if (this.state.orderHistory === true) {
+      return <Redirect to='/orderhistory' />
+    }
+    if (this.state.wishList === true) {
+      return <Redirect to='/wishlist' />
+    }
+
 
     return (
       <div className="accountHome">
-        <div className="welcome">
-        <h1>Hello {customer.firstName}!</h1>
-        </div>
-        <div className="customerNav">
-        <Button className="customerNavBtn outline color=secondary" tag={RRNavLink} to='/customerprofile'> 
-        Profile Information
-        </Button>   
-        <Button className="customerNavBtn outline-secondary" tag={RRNavLink} to='/paymentInformation'>
-        Payment Information
+          <div class="card welcome text-center">
+            <h3>{customer.firstName} {customer.lastName}</h3>
+            <div class="card-body">
+              <p>email: {customer.email}</p>
+              <p>
+                address: 
+                {customer.address}
+                {customer.city}
+                {customer.state}
+                {customer.zip}
+              </p>
+              
+            </div>
+          </div>
+        <div className="customerNav text-right">
+          <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
+            Update Profile Information
         </Button>
-        <Button className="customerNavBtn variant=outline-secondary">
-        Reset Password
+          <Button className="customerNavBtn outline-secondary"  onClick={this.wishList} color="info">
+            Wish List
         </Button>
-        <Button className="customerNavBtn variant=outline-secondary">
-        Reset Password
+          <Button className="customerNavBtn variant=outline-secondary"  onClick={this.orderHistory} color="info">
+            Order History
+        </Button>
+          <Button className="customerNavBtn variant=outline-secondary"  color="info" text="center">
+            Payment Information
         </Button>
         </div>
       </div>
