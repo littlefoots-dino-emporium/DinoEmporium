@@ -1,5 +1,4 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
 import { NavLink as RRNavLink, Redirect } from 'react-router-dom';
 import authRequests from '../../firebaseRequests/auth';
 import {
@@ -36,7 +35,7 @@ class MyNavbar extends React.Component {
 
                 <NavItem>
                           <NavLink tag={RRNavLink} to='/home'>
-                                Home
+                          <i class="fas fa-home"></i>
                           </NavLink>
                 </NavItem>
                 <NavItem>
