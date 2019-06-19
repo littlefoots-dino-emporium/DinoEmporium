@@ -45,7 +45,7 @@ namespace DinoEmporium.Data
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var getDinoWinos = db.Query<Product>(@"select *
+                var getDinoWinos = db.Query<Product>(@"select title,description, image, price, quantity, size, p.Id
                                                      from Product p, ProductType pt
                                                      where p.ProductTypeId = 2
                                                      and pt.Id = 2").ToList();

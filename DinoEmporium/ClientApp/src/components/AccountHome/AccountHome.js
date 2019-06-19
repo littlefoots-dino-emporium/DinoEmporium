@@ -12,6 +12,7 @@ export class AccountHome extends Component {
     toUpdateCustomer: false,
     orderHistory: false,
     wishList: false,
+    paymentInformation: false,
   }
 
   getCustomer = () => {
@@ -33,6 +34,10 @@ export class AccountHome extends Component {
     this.setState({ wishList: true })
   }
 
+  paymentInformation = (e) => {
+    this.setState({ paymentInformation: true })
+  }
+
   componentDidMount() {
     this.getCustomer();
   }
@@ -47,6 +52,9 @@ export class AccountHome extends Component {
     }
     if (this.state.wishList === true) {
       return <Redirect to='/wishlist' />
+    }
+    if (this.state.paymentInformation === true) {
+      return <Redirect to='/paymentInformation' />
     }
 
 
@@ -76,7 +84,7 @@ export class AccountHome extends Component {
           <Button className="customerNavBtn variant=outline-secondary"  onClick={this.orderHistory} color="info">
             Order History
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary"  color="info" text="center">
+          <Button className="customerNavBtn variant=outline-secondary"  onClick={this.paymentInformation} color="info" text="center">
             Payment Information
         </Button>
         </div>
