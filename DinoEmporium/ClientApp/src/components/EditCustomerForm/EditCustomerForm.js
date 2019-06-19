@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
-import Modal from 'react-responsive-modal';
-import firebase from 'firebase';
-
-
-// import './Register.scss';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import './EditCustomerForm.scss';
 
 const defaultCustomerInformation = {
   email: '',
@@ -23,67 +20,88 @@ class EditCustomerForm extends React.Component {
     onSubmit: PropTypes.func,
     isEditing: PropTypes.bool,
     editId: PropTypes.string,
+    toDashboard: false,
   }
 
   state = {
-      updatedCustomerInformation: defaultCustomerInformation,
-      customer: {}
+    updatedCustomerInformation: defaultCustomerInformation,
+    customer: this.props.customer,
   };
 
-  getCustomer = () => {
-    let uid = authRequests.getUid();
-    customerRequest.getCustomerProfile(uid).then((customer) => {
-      this.setState({ customer })
-    });
-  }
-  // props = {
-  //   customer,
+  // getCustomer = () => {
+  //   let uid = authRequests.getUid();
+  //   customerRequest.getCustomerProfile(uid).then((customer) => {
+  //     this.setState({ customer })
+  //   });
   // }
 
-  updateCustomer = ( updatedCustomerInformation ) => {
+  // componentDidMount() {
+  //   this.getCustomer();
+  // }
+
+  updateCustomer = (updatedCustomerInformation) => {
     updatedCustomerInformation.uid = authRequests.getUid();
-      const defaultCustomerInformation = { firstName: updatedCustomerInformation.firstName,
-                        lastName: updatedCustomerInformation.lastName,
-                        email: updatedCustomerInformation.email,
-                        customerUid: updatedCustomerInformation.uid
-                        }
-      customerRequest.updateCustomerRequest(defaultCustomerInformation);
-      // this.props.history.push('/');
+    const defaultCustomerInformation = {
+      firstName: updatedCustomerInformation.firstName,
+      lastName: updatedCustomerInformation.lastName,
+      email: updatedCustomerInformation.email,
+      customerUid: updatedCustomerInformation.uid,
+      address: updatedCustomerInformation.address,
+      address2: updatedCustomerInformation.address2,
+      city: updatedCustomerInformation.city,
+      state: updatedCustomerInformation.state,
+      zip: updatedCustomerInformation.zip,
+    }
+    customerRequest.updateCustomerRequest(defaultCustomerInformation);
+    // this.props.history.push('/');
   }
 
-  formFieldStringState = (name,e) => {
+  formFieldStringState = (name, e) => {
     e.preventDefault();
-    const tempInfo = { ...this.state.updatedCustomerInformation};
+    const tempInfo = { ...this.state.updatedCustomerInformation };
     tempInfo[name] = e.target.value;
-    this.setState({ updatedCustomerInformation: tempInfo});
+    this.setState({ updatedCustomerInformation: tempInfo });
   }
-  
-  // emailChange = e => {
-  //   this.formFieldStringState('name', e);
-  // };
 
   firstNameChange = e => {
     this.formFieldStringState('firstName', e);
   };
-  
+
   lastNameChange = e => {
     this.formFieldStringState('lastName', e);
-  };
-
-  dateChange = e => {
-    this.formFieldStringState('date', e);
   };
 
   emailChange = e => {
     this.formFieldStringState('email', e);
   }
 
+  addressChange = e => {
+    this.formFieldStringState('address', e);
+  }
+
+  address2Change = e => {
+    this.formFieldStringState('address2', e);
+  }
+
+  cityChange = e => {
+    this.formFieldStringState('city', e);
+  }
+
+  stateChange = e => {
+    this.formFieldStringState('state', e);
+  }
+
+  zipChange = e => {
+    this.formFieldStringState('zip', e);
+  }
+
+
   formSubmit = (e) => {
     e.preventDefault();
     const userInformation = { ...this.state.updatedCustomerInformation };
     this.updateCustomer(userInformation);
-    this.setState({ updatedCustomerInformation:defaultCustomerInformation });
-    this.getCustomer();
+    this.setState({ updatedCustomerInformation: defaultCustomerInformation, toDashboard: true })
+    // this.componentDidMount();
   }
 
   componentDidUpdate(prevProps) {
@@ -92,93 +110,84 @@ class EditCustomerForm extends React.Component {
       customerRequest.getCustomerProfile(editId)
         .then((customer) => {
           this.setState({ updatedCustomerInformation: customer });
-          this.getCustomer();
+          // this.componentDidMount();
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
   }
 
-  render () {
-    const { updatedCustomerInformation, customer } = this.state; 
+  render() {
+    const { updatedCustomerInformation } = this.state;
     const { isEditing } = this.props;
+    if (this.state.toDashboard === true) {
+      return <Redirect to='/accounthome' />
+    }
 
-      const title = () => {
-        if(isEditing) {
-          return (
-            <div className="Register">
-              <div id="login-form">
-                <h1 className="text-center">Update Customer</h1>
-                <form className="form-horizontal col-sm-6 col-sm-offset-3">
-                  <div className="form-group">
-                    <label htmlFor="inputName" className="col-sm-4 control-label">
-                      First Name:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="name"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="First Name"
-                        value={updatedCustomerInformation.firstName}
-                        onChange={this.firstNameChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="inputLastName" className="col-sm-4 control-label">
-                      Last Name:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="name"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="Last Name"
-                        value={updatedCustomerInformation.lastName}
-                        onChange={this.lastNameChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="inputEmail" className="col-sm-4 control-label">
-                      Email:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="Email"
-                        value={updatedCustomerInformation.email}
-                        onChange={this.emailChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="col-sm-12">
-                      <button
-                        type="submit"
-                        className="btn btn-default col-xs-12"
-                        onClick={this.formSubmit}
-                      >
-                        Update Info
-                      </button>
-                    </div>
-                  </div>
-                </form>
+    const title = () => {
+      if (isEditing) {
+        return (
+          <div className="updateCustomer">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputFirstName">First Name</label>
+                  <input type="firstName" className="form-control" id="inputFirstName" placeholder="First Name" value={updatedCustomerInformation.firstName} onChange={this.firstNameChange}></input>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputLastName">Last Name</label>
+                  <input type="lastName" className="form-control" id="inputLastName" placeholder="Last Name" value={updatedCustomerInformation.lastName} onChange={this.lastNameChange}></input>
+                </div>
               </div>
-            </div>
-          )} return (
-            <div className="Hide form">
-            </div>
-          )
-        };
-      return (
-        <div className="editCustomer">
-        <Modal  open={this.props.open} onClose={this.props.onCloseModal} customer={customer} center>
+              <div class="form-row">
+                <label for="inputEmail4">Email</label>
+                <input type="email" className="form-control" id="inputEmail4" placeholder="Email" value={updatedCustomerInformation.email} onChange={this.emailChange}></input>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" value={updatedCustomerInformation.address} onChange={this.addressChange}></input>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress2">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value={updatedCustomerInformation.address2} onChange={this.address2Change}></input>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">City</label>
+                  <input type="text" class="form-control" id="inputCity" value={updatedCustomerInformation.city} onChange={this.cityChange}></input>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <input type="text" class="form-control" id="inputCity" value={updatedCustomerInformation.state} onChange={this.stateChange}></input>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputZip">Zip</label>
+                  <input type="text" class="form-control" id="inputZip" value={updatedCustomerInformation.zip} onChange={this.zipChange}></input>
+                </div>
+              </div>
+              {/* <button type="submit" class="btn btn-primary">Sign in</button> */}
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    className="btn btn-primary col-xs-12"
+                    onClick={this.formSubmit}
+                  >
+                    Update Information
+                      </button>
+            </form>
+          </div>
+        )
+      } return (
+        <div className="Hide form">
+
+        </div>
+      )
+    };
+    return (
+      <div>
+        <h1 className="text-center">Update Profile Information</h1>
         {title()}
-        </Modal>
       </div>
+
     );
   }
 }

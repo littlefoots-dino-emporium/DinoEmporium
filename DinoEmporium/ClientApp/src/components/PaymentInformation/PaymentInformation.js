@@ -9,7 +9,7 @@ import getCustomerInfo from '../../helpers/data/customerRequest';
 import PaymentItem from '../PaymentItem/PaymentItem';
 
 
-class PaymentInformation extends React.Component {
+ class PaymentInformation extends React.Component {
 
     state = {
         paymentInfo: [],

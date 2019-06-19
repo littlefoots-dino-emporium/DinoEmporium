@@ -19,7 +19,7 @@ class SweaterItem extends React.Component {
     render() {
         const { product } = this.props;
         return (
-            <div className="app">
+            <div className="sweaterModal">
                 <Button className="modal_opener" onClick={this.toggleModal}>
                     <img className='sweater-image' src={product.image} alt='product' />
                     <p className='sweater-title'><i>{product.title}</i></p>

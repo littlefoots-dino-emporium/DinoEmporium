@@ -1,14 +1,14 @@
 import React from 'react';
 import productRequests from '../../helpers/data/productRequest';
-//import productTypeRequests from '../../helpers/data/productTypeRequest';
 import ProductItem from '../ProductItem/ProductItem';
-//import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
+import './Home.scss';
 
 class Home extends React.Component {
 
   state = {
-    product: [],
+    products: [],
   }
 
   componentDidMount() {
@@ -16,27 +16,28 @@ class Home extends React.Component {
   }
 
   allProducts = () => {
-    productRequests.getRequest().then((product) => {
-      this.setState({ product });
-      console.log(product);
+    productRequests.getRequest().then((products) => {
+      this.setState({ products });
     })
-  } 
+  }
 
   render() {
-    const { product } = this.state;
-    const productItemComponent = 
+    const { products } = this.state;
+    const productItemComponent =
       <ProductItem
-        product={product}
-        key={product.id}
+        product={products}
+        key={products.id}
       />
-    // ));
 
-      return (
-        <div className='productLinks'>
-          <li><Link to="/dinosaurs">See More Dinosaurs</Link></li>
-          <li><Link to="/sweaters">See More Sweaters</Link></li>
-          <li><Link to="/fences">See More Fences</Link></li>
-        <p>{productItemComponent}</p>
+    return (
+        <div className='productLinks row'>
+
+          <Link to="/dinosaurs" className="link"><Button className="btn dinosaurLinkToPge" color="info"> Dinosaurs</Button></Link>
+
+          <Link to="/sweaters" className="link"><Button className="btn sweaterLinkToPge" color="info">Sweaters</Button></Link>
+
+          <Link to="/fences" className="link"><Button className="btn fenceLinkToPge" color="info">Fences</Button></Link>
+
         </div>
     );
   }

@@ -19,7 +19,7 @@ class FenceItem extends React.Component {
     render() {
         const { product } = this.props;
         return (
-            <div className="app">
+            <div className="fenceModal">
                 <Button className="modal_opener" onClick={this.toggleModal}>
                     <img className='fence-image' src={product.image} alt='product' />
                     <p className='fence-title'><i>{product.title}</i></p>
