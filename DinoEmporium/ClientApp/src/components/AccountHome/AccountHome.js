@@ -64,7 +64,6 @@ export class AccountHome extends Component {
               </p>
               
             </div>
-          </div>
         <div className="customerNav text-right">
           <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
             Update Profile Information
@@ -78,6 +77,7 @@ export class AccountHome extends Component {
           <Button className="customerNavBtn variant=outline-secondary"  color="info" text="center">
             Payment Information
         </Button>
+        </div>
         </div>
       </div>
     )
