@@ -1,19 +1,42 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import { Button } from 'reactstrap';
+import customerRequest from '../../helpers/data/customerRequest';
+import customerProduct from '../../helpers/data/customerProductRequest';
+import autheRequests from '../../firebaseRequests/auth';
 
 import './DinosaurItem.scss';
 
 class DinosaurItem extends React.Component {
 
     state = {
-        showModal: false
+        showModal: false,
+        customer: ''
+    }
+
+    componentDidMount() {
+        let uid = autheRequests.getUid();
+        const { product } = this.props;
+        customerRequest.getCustomerProfile(uid).then((customer) => {
+            console.log(customer.id, product.id);
+            this.setState({ customer });
+          })
     }
 
     toggleModal = () => {
         this.setState({
             showModal: !this.state.showModal
         });
+    }
+
+    addToCart = () => {
+        const { customer } = this.state;
+        const { product } = this.props;
+        const CustomerProductInfo = {
+            productId: product.id,
+            customerId: customer.id
+        }
+        customerProduct.postCustomerProductRequest(CustomerProductInfo);
     }
 
     render() {
@@ -35,6 +58,7 @@ class DinosaurItem extends React.Component {
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
+                            <Button onClick= {this.addToCart}>Add To Cart </Button>
                         </div>
                     </React.Fragment>
                 </Modal>
