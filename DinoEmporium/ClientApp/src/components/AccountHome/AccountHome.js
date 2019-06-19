@@ -10,6 +10,7 @@ export class AccountHome extends Component {
     customer: {},
     toUpdateCustomer: false,
     orderHistory: false,
+    wishList: false,
   }
 
   getCustomer = () => {
@@ -27,6 +28,10 @@ export class AccountHome extends Component {
     this.setState({ orderHistory: true })
   }
 
+  wishList = (e) => {
+    this.setState({ wishList: true })
+  }
+
   componentDidMount() {
     this.getCustomer();
   }
@@ -39,14 +44,15 @@ export class AccountHome extends Component {
     if (this.state.orderHistory === true) {
       return <Redirect to='/orderhistory' />
     }
+    if (this.state.wishList === true) {
+      return <Redirect to='/wishlist' />
+    }
 
 
     return (
       <div className="accountHome">
-          <div class="welcome card text-center">
-            <div class="card-header">
+          <div class="card welcome text-center">
             <h3>{customer.firstName} {customer.lastName}</h3>
-          </div>
             <div class="card-body">
               <p>email: {customer.email}</p>
               <p>
@@ -63,14 +69,14 @@ export class AccountHome extends Component {
           <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
             Update Profile Information
         </Button>
-          <Button className="customerNavBtn outline-secondary"  color="info">
-            Payment Information
+          <Button className="customerNavBtn outline-secondary"  onClick={this.wishList} color="info">
+            Wish List
         </Button>
           <Button className="customerNavBtn variant=outline-secondary"  onClick={this.orderHistory} color="info">
             Order History
         </Button>
           <Button className="customerNavBtn variant=outline-secondary"  color="info" text="center">
-            Reset Password
+            Payment Information
         </Button>
         </div>
       </div>

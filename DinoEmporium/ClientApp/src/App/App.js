@@ -15,6 +15,7 @@ import OrderHistory from '../components/OrderHistory/OrderHistory';
 import fbConnection from '../firebaseRequests/connection';
 import './App.scss';
 import ShoppingCart from '../components/ShoppingCart/ShoppingCart';
+import WishList from '../components/WishList/WishList';
 fbConnection();
 
 const PrivateRoute = ({ component: Component, authed, ...rest}) => {
@@ -127,6 +128,7 @@ class App extends React.Component {
                   <PrivateRoute path='/fences' exact component={Fences} authed={this.state.authed} />
                   <PrivateRoute path='/accounthome' exact component={AccountHome} authed={this.state.authed} />
                   <PrivateRoute path='/orderhistory' exact component={OrderHistory} authed={this.state.authed} />
+                  <PrivateRoute path='/wishlist' exact component={WishList} authed={this.state.authed} />
                 </Switch>
               </div>
             </div>
