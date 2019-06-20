@@ -45,7 +45,7 @@ class Home extends React.Component {
             <div class="carousel-item active">
               <img class="d-block w-100" src="http://i66.tinypic.com/5kp120.jpg" alt="First slide"></img>
             </div>
-            <div class="carousel-item active">
+            <div class="carousel-item">
               <img class="d-block w-100" src="http://i63.tinypic.com/23lf6ok.jpg" alt="Second slide"></img>
             </div>
             <div class="carousel-item">
