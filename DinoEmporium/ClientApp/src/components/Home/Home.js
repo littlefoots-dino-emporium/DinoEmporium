@@ -32,11 +32,11 @@ class Home extends React.Component {
     return (
         <div className='productLinks row'>
 
-          <Link to="/dinosaurs" className="link"><Button className="btn dinosaurLinkToPge" color="info"> Dinosaurs</Button></Link>
+          <Link to="/dinosaurs" className="homeLink"><Button className="btn dinosaurLinkToPge" color="info"> Dinosaurs</Button></Link>
 
-          <Link to="/sweaters" className="link"><Button className="btn sweaterLinkToPge" color="info">Sweaters</Button></Link>
+          <Link to="/sweaters" className="homeLink"><Button className="btn sweaterLinkToPge" color="info">Sweaters</Button></Link>
 
-          <Link to="/fences" className="link"><Button className="btn fenceLinkToPge" color="info">Fences</Button></Link>
+          <Link to="/fences" className="homeLink"><Button className="btn fenceLinkToPge" color="info">Fences</Button></Link>
 
         </div>
     );

@@ -1,18 +1,24 @@
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  // justify-content: space-evenly;
 }
   
 .dinosaurLinkToPge, .sweaterLinkToPge, .fenceLinkToPge {
   width: 9rem;
-  margin: 3%;
   height: 7rem;
   text-align: center;
+  margin: 2%;
 } 
 
-.link{
-  margin: 2%;
+.homeLink {
+  margin: 1%;
 }
 
+// .productLinks {
+//   display: flex;
+//   justify-content: space-between;
+//   margin: 2%;
+// }
 
