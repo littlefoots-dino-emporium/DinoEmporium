@@ -8,13 +8,20 @@ import authRequest from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import PaymentItem from '../PaymentItem/PaymentItem';
 
+const payment = {
+    PaymentType: '',
+    AccountNumber: '',
+    NameOnCard: '',
+    ExpirationDate: ''
+    }
 
  class PaymentInformation extends React.Component {
 
     state = {
-        paymentInfo: [],
+        
         customer: {},
-        open: false
+        open: false,
+        paymenttt: payment
     }
 
     componentDidMount() {
@@ -27,18 +34,24 @@ import PaymentItem from '../PaymentItem/PaymentItem';
 }
 getCustomerPayment = () => {
     const { customer } = this.state;
-paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
-    this.setState({ paymentInfo })
-    console.log(paymentInfo);
+paymentRequest.getPaymentInformation(customer.id).then((paymenttt) => {
+    this.setState({ paymenttt })
+    console.log(paymenttt.nameOnCard);
     console.log(customer.id);
 })
 }
 
-// addPayment = () => {
-// paymentRequest.postPaymentInformation().then((customerInfo) => {
-    
-// })
-// }
+addPayment = () => {
+    const { paymenttt } = this.state;
+    const PaymentInformation = {
+        paymentType: paymenttt.PaymentType,
+        accountNumber: paymenttt.AccountNumber,
+        nameOnCard: paymenttt.NameOnCard,
+        expirationDate: paymenttt.ExpirationDate
+    }
+    console.log(PaymentInformation);
+paymentRequest.postPaymentInformation(PaymentInformation);
+}
 
 onOpenModal = () => {
     this.setState({ open: true });
@@ -51,14 +64,14 @@ onOpenModal = () => {
 
 render(){
     const { open } = this.state;
-  const { paymentInfo } = this.state;
+  const { paymenttt } = this.state;
 
-  const paymentInfoItem = paymentInfo.map(paymentInfo => (
-    <PaymentItem
-    paymentInfo={paymentInfo}
-      key={paymentInfo.id}
-    />
-  ));
+//   const paymentInfoItem = paymenttt.map(paymenttt => (
+//     <PaymentItem
+//     paymenttt={paymenttt}
+//       key={paymenttt.id}
+//     />
+//   ));
 
   return (
   <div>
@@ -116,7 +129,7 @@ render(){
                       <button
                         type="submit"
                         className="btn btn-default col-xs-12"
-                        //onClick={this.formSubmit}
+                        onClick={this.addPayment}
                       >
                         Add Payment 
                       </button>
@@ -126,7 +139,7 @@ render(){
               </div>
             </div>
         </Modal>
-      {paymentInfoItem}
+      {/* {paymentInfoItem} */}
   </div>
   )};
 }
