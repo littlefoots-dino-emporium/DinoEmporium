@@ -5,8 +5,9 @@
 
 .app {
   display: inline-flex;
+  flex-direction: row;
   flex-flow: wrap;
-  align-content: space-between;
-  margin: 1%;
+  align-content: center;
+  margin: 2%;
   padding: 1%;
 }
