@@ -4,20 +4,28 @@
   // flex-direction: column;
   // text-align: center;
   width: 100%;
-  height: 100%;
+  // height: ;
+  background-color: white;
+  margin-top: 3%;
+  padding-bottom: 5%;
+  padding-left: 8%;
+  padding-right: 8%;
+  border: double black;
   // 
   h1 {
     text-align: center;
     padding: 2%;
   }
-  .card {
+  .welcome {
     width: 100%;
     text-align: center;
   }
   .customerNav {
     display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
+
     // align-items: center;
     .customerNavBtn {
       // display: flex;
