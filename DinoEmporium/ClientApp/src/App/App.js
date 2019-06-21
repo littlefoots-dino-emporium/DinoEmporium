@@ -118,7 +118,6 @@ class App extends React.Component {
               runAway={this.runAway}
             />
             <div className="container">
-              <div className="row">
                 <Switch>
                   <Route path="/" exact component={Home}/>
                   <PrivateRoute path='/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
@@ -132,7 +131,6 @@ class App extends React.Component {
                   <PrivateRoute path='/orderhistory' exact component={OrderHistory} authed={this.state.authed} />
                   <PrivateRoute path='/wishlist' exact component={WishList} authed={this.state.authed} />
                 </Switch>
-              </div>
             </div>
           </div>
         </BrowserRouter>
