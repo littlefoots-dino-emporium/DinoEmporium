@@ -6,8 +6,8 @@ class CartItem extends React.Component {
 
     deleteKidEvent = (e) => {
         e.preventDefault();
-        const { deleteOneProduct, customerProduct } = this.props;
-        deleteOneProduct(customerProduct.productId);
+        const { deleteOneProduct, customerProduct,customer } = this.props;
+        deleteOneProduct(customerProduct.productId, customerProduct.customerId);
       }
     render() {
         const { customerProduct } = this.props;
@@ -21,7 +21,7 @@ class CartItem extends React.Component {
                 <img src={customerProduct.image} alt="cart items"/>
                 <h2>Size:{customerProduct.size}</h2>
                 <h2>Price:{customerProduct.price}</h2> 
-                <button className="btn btn-danger"><i class="fas fa-trash-restore"></i></button>
+                <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
                 </div>
             </div>
         )};

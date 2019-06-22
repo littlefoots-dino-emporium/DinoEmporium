@@ -67,13 +67,13 @@ namespace DinoEmporium.Data.CustomerProductRepo.cs
             throw new Exception("could not update");
         }
 
-        public CustomerProduct DeleteSingleCustomerProduct(int productId)
+        public CustomerProduct DeleteSingleCustomerProduct(int productId, int customerId)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var deleteCustomerProduct = db.QueryFirstOrDefault<CustomerProduct>(@"delete 
                                                                        from customerProduct
-                                                                       where productId = @productId",
+                                                                       where productId = @productId and customerId=@customerId",
                                                                        new { productId });
                 return deleteCustomerProduct;
             }
