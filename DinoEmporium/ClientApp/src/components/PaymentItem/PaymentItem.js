@@ -11,9 +11,9 @@ class PaymentItem extends React.Component {
         return(
 
             <div className="product-info card">
-                <h3>Name on card:{paymentInfo.nameOnCard}</h3>
-                <h3>Account Number:{paymentInfo.accountNumber}</h3>
-                <h3>Expiration Date:{paymentInfo.expirationDate}</h3>
+                <h4>Name on card: {paymentInfo.nameOnCard}</h4>
+                <h4>Account Number: {paymentInfo.accountNumber}</h4>
+                <h4>Expiration Date: {paymentInfo.expirationDate}</h4>
                 {/* <h3>PaymentType:{paymentInfo.paymentType}</h3>  */}
             </div>
         )};
