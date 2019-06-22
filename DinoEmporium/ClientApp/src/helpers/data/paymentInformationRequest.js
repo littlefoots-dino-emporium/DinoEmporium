@@ -18,7 +18,10 @@ const getPaymentInformation = customerId => new Promise((resolve, reject) => {
 
 const postPaymentInformation = (paymentInformation) => axios.post(`http://localhost:50312/api/PaymentInformation/register`, paymentInformation);
 
+const deleteSinglePaymentInformation = paymentId => axios.delete(`http://localhost:50312/api/paymentInformation/deletePayment/${paymentId}`);
+
 export default {
     getPaymentInformation,
-    postPaymentInformation
+    postPaymentInformation,
+    deleteSinglePaymentInformation
 }
