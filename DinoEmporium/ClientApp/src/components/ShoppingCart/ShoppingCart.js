@@ -21,6 +21,17 @@ componentDidMount() {
     });
 }
 
+deleteOneProduct = (productId) => {
+    const uid = autheRequests.getUid();
+    customerProductRequest.deleteSingleProduct(productId)
+      .then(() => {
+        customElements.getCustomerProductsRequest(uid)
+          .then((customerProduct) => {
+            this.setState({ customerProduct });
+          });
+      })
+      .catch(err => console.error('error with delte single', err));
+  }
 
     render() {
         const { customerProducts } = this.state;
@@ -30,6 +41,7 @@ componentDidMount() {
             <CartItem
             customerProduct={customerProducts}
               key={customerProducts.id}
+              deleteOneProduct={this.deleteOneProduct}
             />
           ));
           

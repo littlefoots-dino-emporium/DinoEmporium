@@ -4,7 +4,11 @@ import { Button } from 'reactstrap';
 
 class CartItem extends React.Component {
 
-
+    deleteKidEvent = (e) => {
+        e.preventDefault();
+        const { deleteOneProduct, customerProduct } = this.props;
+        deleteOneProduct(customerProduct.productId);
+      }
     render() {
         const { customerProduct } = this.props;
         console.log(customerProduct);
