@@ -13,6 +13,7 @@ namespace DinoEmporium.Models
         public string NameOnCard { get; set; }
         public string CustomerUid { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public string Address { get; set; }
 
     }
 

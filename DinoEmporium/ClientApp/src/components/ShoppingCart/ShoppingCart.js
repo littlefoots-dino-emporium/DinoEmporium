@@ -17,10 +17,7 @@ class ShoppingCart extends React.Component {
 
 componentDidMount() {
     let uid = autheRequests.getUid();
-    customerProductRequest.getCustomerProductsRequest(uid).then((customerProducts) => {
-        this.setState({ customerProducts });
-        console.log(customerProducts);
-    });
+    this.customerInfo();
         getCustomerInfo.getCustomerProfile(uid).then((customer) => {
           this.setState({ customer })
           console.log(customer);
@@ -28,14 +25,18 @@ componentDidMount() {
     });
 }
 
+customerInfo = () => {
+    let uid = autheRequests.getUid();
+    customerProductRequest.getCustomerProductsRequest(uid).then((customerProducts) => {
+        this.setState({ customerProducts });
+        console.log(customerProducts);
+    });
+}
+
 deleteOneProduct = (productId) => {
-    const uid = autheRequests.getUid();
     customerProductRequest.deleteSingleProduct(productId)
       .then(() => {
-        customerProductRequest.getCustomerProductsRequest(uid)
-          .then((customerProducts) => {
-            this.setState({ customerProducts });
-          });
+        this.customerInfo();
       })
       .catch(err => console.error('error with delte single', err));
   }
@@ -54,7 +55,7 @@ deleteOneProduct = (productId) => {
           ));
           
         return(
-            <div className="card">
+            <div className="card all-in-cart">
             <h1 className="cart">Shopping Cart</h1>
             <div>
             { customerProductItem } 

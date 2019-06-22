@@ -17,11 +17,16 @@ class CartItem extends React.Component {
             <div>
 
             <div className="product-info">
-                <h2>Title:{customerProduct.title}</h2>
-                <img src={customerProduct.image} alt="cart items"/>
-                <h2>Size:{customerProduct.size}</h2>
-                <h2>Price:{customerProduct.price}</h2> 
-                <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
+                <div className="product-img">
+                    <img src={customerProduct.image} alt="cart items"/>
+                </div>
+                <div className="product-description">
+                    <h5>Title:{customerProduct.title}</h5>
+                    <h5>Size:{customerProduct.size}</h5>
+                    <h5>Price:${customerProduct.price}</h5> 
+                    <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
+                </div>
+                
                 </div>
             </div>
         )};

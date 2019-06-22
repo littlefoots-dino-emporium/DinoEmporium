@@ -14,7 +14,8 @@ import './AddPaymentInformation.scss';
 const addPayment = {
     accountNumber: '',
     nameOnCard: '',
-    expirationDate: ''
+    expirationDate: '',
+    address: ''
     }
 
 class AddPaymentInformation extends React.Component {
@@ -49,7 +50,8 @@ class AddPaymentInformation extends React.Component {
         AccountNumber: addNewPayment.accountNumber,
         NameOnCard: addNewPayment.nameOnCard,
         ExpirationDate: addNewPayment.expirationDate,
-        CustomerId: customer.id
+        CustomerId: customer.id,
+        Address: addNewPayment.address
     }
     console.log(customer.id);
 paymentRequest.postPaymentInformation(addPayment);
@@ -77,6 +79,10 @@ formFieldStringState = (name,e) => {
     this.formFieldStringState('expirationDate', e);
   };
 
+  addressChange = e => {
+    this.formFieldStringState('address', e);
+  };
+
   formSubmit = (e) => {
     e.preventDefault();
     const userInformation = { ...this.state.addNewPayment };
@@ -88,15 +94,13 @@ getPaymentType = (e) => {
     const { paymentType } = this.state;
 const value = e.target.value;
 this.setState({ paymentType: value })
-console.log(paymentType);
 }
 
  render() {
-    const { open, addNewPayment, getPaymentType } = this.state;
-    console.log(addNewPayment);
+    const { open, addNewPayment } = this.state;
  return (
      <div className="addPayment">
-         <Button onClick={this.onOpenModal} >Add Payment Information</Button>
+         <button onClick={this.onOpenModal} className="add btn btn-info">Add Payment Information</button>
       <Modal open={open} onClose={this.onCloseModal} center>
       <div className="Register">
               <div id="login-form">
@@ -118,6 +122,21 @@ console.log(paymentType);
                     </div>
                   </div>
                   <div className="form-group">
+                    <h3 htmlFor="inputAddress" className="col-sm-4 control-label">
+                     Address:
+                    </h3>
+                    <div className="col-sm-8">
+                      <input
+                        type="name"
+                        className="form-control"
+                        id="inputAddress"
+                        placeholder="3324 Edge Moor Dr, Nashville, 37014 "
+                        value={addNewPayment.address}
+                        onChange={this.addressChange}
+                       />
+                    </div>
+                  </div>
+                  <div className="form-group">
                     <label htmlFor="inputLastName" className="col-sm-4 control-label">
                       Card Number:
                     </label>
@@ -126,7 +145,7 @@ console.log(paymentType);
                         type="name"
                         className="form-control"
                         id="inputEmail"
-                        placeholder="Last Name"
+                        placeholder="Card Number"
                         value={addNewPayment.accountNumber}
                         onChange={this.accountNumberChange}
                       />
@@ -151,19 +170,19 @@ console.log(paymentType);
                     <label>Payment Type</label>
                     <FormGroup check>
                         <Label check>
-                        <Input type="radio" name="radio1" value="1" onClick={this.getPaymentType}/>{' '}
+                        <Input type="radio" name="radio1" value="0" onClick={this.getPaymentType}/>{' '}
                         Master Card
                         </Label>
                     </FormGroup>
                     <FormGroup check>
                         <Label check>
-                        <Input type="radio" name="radio1" value="2" onClick={this.getPaymentType}/>{' '}
+                        <Input type="radio" name="radio1" value="1" onClick={this.getPaymentType}/>{' '}
                         Visa
                         </Label>
                     </FormGroup>
                     <FormGroup check >
                         <Label check>
-                        <Input type="radio" name="radio1" value="3" onClick={this.getPaymentType}/>{' '}
+                        <Input type="radio" name="radio1" value="2" onClick={this.getPaymentType}/>{' '}
                         American Express
                         </Label>
                     </FormGroup>

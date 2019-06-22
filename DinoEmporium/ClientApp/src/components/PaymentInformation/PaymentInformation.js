@@ -36,6 +36,17 @@ paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
 })
 }
 
+deleteOnePaymentInformation = (paymentId) => {
+    const { customer } = this.state;
+    paymentRequest.deleteSinglePaymentInformation(paymentId)
+      .then(() => {
+        paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
+            this.setState({ paymentInfo})
+        })
+      })
+      .catch(err => console.error('error with delte single', err));
+  }
+
 render(){
     // const { open } = this.state;
   const { paymentInfo } = this.state;
@@ -45,13 +56,15 @@ render(){
     <PaymentItem
     paymentInfo={paymentInfo}
       key={paymentInfo.id}
+      deleteOnePaymentInformation={this.deleteOnePaymentInformation}
     />
   ));
 
   return (
   <div>
       <AddPaymentInformation />
-      <div className="payment">
+      <div className="payment card">
+      <h3 className="payment-methods">Your Payment Methods</h3>
       {paymentInfoItem}
       </div>
   </div>

@@ -30,7 +30,7 @@ namespace DinoEmporium.Controllers
             //    return BadRequest(new { error = "users must have a username and password" });
             //}
 
-            var newPaymentInformation = _repository.AddPaymentInformation(createRequest.PaymentType, createRequest.AccountNumber, createRequest.NameOnCard, createRequest.ExpirationDate, createRequest.CustomerId);
+            var newPaymentInformation = _repository.AddPaymentInformation(createRequest.PaymentType, createRequest.AccountNumber, createRequest.NameOnCard, createRequest.ExpirationDate, createRequest.CustomerId, createRequest.Address);
 
             return Created($"api/paymentinformation/{newPaymentInformation.Id}", newPaymentInformation);
 
@@ -67,7 +67,7 @@ namespace DinoEmporium.Controllers
             return Ok(updateSinglePayment);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("deletePayment/{id}")]
         public ActionResult DeleteSinglePaymentInformation(int id)
         {
             var deletedProduct = _repository.DeleteSinglePayment(id);
