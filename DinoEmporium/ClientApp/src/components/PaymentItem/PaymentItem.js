@@ -1,5 +1,5 @@
 import React from 'react';
-//import './PaymentItem.scss';
+import './PaymentItem.scss';
 
 class PaymentItem extends React.Component {
 
@@ -9,13 +9,12 @@ class PaymentItem extends React.Component {
         console.log(paymentInfo);
 
         return(
-            <div>
 
-            <div className="product-info">
-                <h2>Name on card:{paymentInfo.nameOnCard}</h2>
-                <h2>AccountNumber:{paymentInfo.accountNumber}</h2>
-                <h2>PaymentType:{paymentInfo.paymentType}</h2> 
-                </div>
+            <div className="product-info card">
+                <h4>Name on card: {paymentInfo.nameOnCard}</h4>
+                <h4>Account Number: {paymentInfo.accountNumber}</h4>
+                <h4>Expiration Date: {paymentInfo.expirationDate}</h4>
+                {/* <h3>PaymentType:{paymentInfo.paymentType}</h3>  */}
             </div>
         )};
 

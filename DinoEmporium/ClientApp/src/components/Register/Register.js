@@ -87,6 +87,7 @@ class Register extends React.Component {
 
   render () {
     const { newCustomerInformation } = this.state;
+    console.log(newCustomerInformation);
     return (
       <div className="container">
         <div className="Register" id="login-form">
