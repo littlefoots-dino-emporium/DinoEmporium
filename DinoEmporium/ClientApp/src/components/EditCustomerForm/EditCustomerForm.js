@@ -183,7 +183,7 @@ class EditCustomerForm extends React.Component {
       )
     };
     return (
-      <div>
+      <div className="editCustomer">
         <h1 className="text-center">Update Profile Information</h1>
         {title()}
       </div>

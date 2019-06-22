@@ -60,7 +60,7 @@ export class AccountHome extends Component {
 
     return (
       <div className="accountHome">
-          <div class="card welcome text-center">
+          <div class="welcome text-center">
             <h3>{customer.firstName} {customer.lastName}</h3>
             <div class="card-body">
               <p>email: {customer.email}</p>
