@@ -168,7 +168,7 @@ class EditCustomerForm extends React.Component {
                   <button
                     class="btn btn-primary"
                     type="submit"
-                    className="btn btn-primary col-xs-12"
+                    className="btn btn-info col-xs-12"
                     onClick={this.formSubmit}
                   >
                     Update Information

@@ -59,7 +59,7 @@ export class AccountHome extends Component {
 
 
     return (
-      <div className="accountHome">
+      <div className="container accountHome">
           <div class="welcome text-center">
             <h3>{customer.firstName} {customer.lastName}</h3>
             <div class="card-body">

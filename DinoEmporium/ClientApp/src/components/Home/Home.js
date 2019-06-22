@@ -31,13 +31,24 @@ class Home extends React.Component {
 
     return (
       <div className="homePage">
+        {/* <div className="container"> */}
+      <div className='productLinks row'>
+
+        <Link to="/dinosaurs" className="homeLink"><Button className="btn dinosaurLinkToPge" color="info">Shop Dinosaurs</Button></Link>
+
+        <Link to="/sweaters" className="homeLink"><Button className="btn sweaterLinkToPge" color="info">Shop Sweaters</Button></Link>
+
+        <Link to="/fences" className="homeLink"><Button className="btn fenceLinkToPge" color="info">Shop Fences</Button></Link>
+
+      </div>
+      {/* </div> */}
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-100" src="http://i68.tinypic.com/bikl5d.jpg" alt="First slide" position="center"></img>
               <h1>Hey</h1>
             </div>
-            <div class="carousel-item active">
+            <div class="carousel-item">
               <img class="d-block w-100" src="http://i66.tinypic.com/25qszlu.jpg" alt="Second slide"></img>
               <h1>hey</h1>
             </div>
@@ -54,15 +65,6 @@ class Home extends React.Component {
             <span class="sr-only">Next</span>
           </a>
         </div>
-      <div className='productLinks row'>
-
-        <Link to="/dinosaurs" className="homeLink"><Button className="btn dinosaurLinkToPge" color="info">Shop Dinosaurs</Button></Link>
-
-        <Link to="/sweaters" className="homeLink"><Button className="btn sweaterLinkToPge" color="info">Shop Sweaters</Button></Link>
-
-        <Link to="/fences" className="homeLink"><Button className="btn fenceLinkToPge" color="info">Shop Fences</Button></Link>
-
-      </div>
       </div>
     );
   }
