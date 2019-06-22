@@ -4,20 +4,37 @@
   // flex-direction: column;
   // text-align: center;
   width: 100%;
-  height: 100%;
+  // height: ;
+  background-color: white;
+  margin-top: 3%;
+  padding-right: 13%;
+  padding-left: 13%;
+  // padding-bottom: 5%;
+  // padding-left: 8%;
+  // padding-right: 8%;
+  border: double black;
   // 
   h1 {
     text-align: center;
     padding: 2%;
   }
-  .card {
+  .welcome {
     width: 100%;
     text-align: center;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 1%;
+    padding-bottom: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: white;
   }
   .customerNav {
     display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
+
     // align-items: center;
     .customerNavBtn {
       // display: flex;
@@ -25,7 +42,8 @@
       // background-color: rgb(106, 219, 149);
       width: 100%;
       margin: 1%;
-      height: 7rem;
+      height: 50%;
+      border-radius: 25px 25px;
     }
   }
 }

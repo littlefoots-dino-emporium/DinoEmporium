@@ -89,8 +89,8 @@ class Register extends React.Component {
     const { newCustomerInformation } = this.state;
     console.log(newCustomerInformation);
     return (
-      <div className="Register">
-        <div id="login-form">
+      <div className="container">
+        <div className="Register" id="login-form">
           <h1 className="text-center">Register</h1>
           <form className="form-horizontal col-sm-6 col-sm-offset-3">
             <div className="form-group">
