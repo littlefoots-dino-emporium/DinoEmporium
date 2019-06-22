@@ -34,7 +34,7 @@ componentDidMount() {
           ));
           
         return(
-            <div>
+            <div className="card">
             <h1 className="cart">Shopping Cart</h1>
             <div>
             { customerProductItem } 
