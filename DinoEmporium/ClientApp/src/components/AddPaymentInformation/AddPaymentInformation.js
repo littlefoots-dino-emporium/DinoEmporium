@@ -9,6 +9,7 @@ import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import authRequest from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import PaymentItem from '../PaymentItem/PaymentItem';
+import './AddPaymentInformation.scss';
 
 const addPayment = {
     accountNumber: '',
@@ -94,17 +95,17 @@ console.log(paymentType);
     const { open, addNewPayment, getPaymentType } = this.state;
     console.log(addNewPayment);
  return (
-     <div>
-         <Button onClick={this.onOpenModal}>Add Payment Information</Button>
+     <div className="addPayment">
+         <Button onClick={this.onOpenModal} >Add Payment Information</Button>
       <Modal open={open} onClose={this.onCloseModal} center>
       <div className="Register">
               <div id="login-form">
                 <h1 className="text-center">Add Card</h1>
                 <form className="form-horizontal col-sm-6 col-sm-offset-3">
                   <div className="form-group">
-                    <label htmlFor="inputName" className="col-sm-4 control-label">
+                    <h3 htmlFor="inputName" className="col-sm-4 control-label">
                       Name on card:
-                    </label>
+                    </h3>
                     <div className="col-sm-8">
                       <input
                         type="name"

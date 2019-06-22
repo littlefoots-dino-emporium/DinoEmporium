@@ -8,6 +8,7 @@ import authRequest from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import PaymentItem from '../PaymentItem/PaymentItem';
 import AddPaymentInformation from '../AddPaymentInformation/AddPaymentInformation';
+import './PaymentInformation.scss';
 
  class PaymentInformation extends React.Component {
 
@@ -50,7 +51,9 @@ render(){
   return (
   <div>
       <AddPaymentInformation />
+      <div className="payment">
       {paymentInfoItem}
+      </div>
   </div>
   )};
 }
