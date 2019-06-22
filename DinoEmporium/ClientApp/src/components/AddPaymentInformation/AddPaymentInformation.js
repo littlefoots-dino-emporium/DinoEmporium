@@ -107,9 +107,9 @@ this.setState({ paymentType: value })
                 <h1 className="text-center">Add Card</h1>
                 <form className="form-horizontal col-sm-6 col-sm-offset-3">
                   <div className="form-group">
-                    <h3 htmlFor="inputName" className="col-sm-4 control-label">
+                    <label htmlFor="inputName" className="col-sm-4 control-label">
                       Name on card:
-                    </h3>
+                    </label>
                     <div className="col-sm-8">
                       <input
                         type="name"
@@ -122,9 +122,9 @@ this.setState({ paymentType: value })
                     </div>
                   </div>
                   <div className="form-group">
-                    <h3 htmlFor="inputAddress" className="col-sm-4 control-label">
+                    <label htmlFor="inputAddress" className="col-sm-4 control-label">
                      Address:
-                    </h3>
+                    </label>
                     <div className="col-sm-8">
                       <input
                         type="name"
@@ -189,13 +189,13 @@ this.setState({ paymentType: value })
                     </FormGroup>                
                   <div className="form-group">
                     <div className="col-sm-12">
-                      <button
+                      <Button
                         type="submit"
                         className="btn btn-default col-xs-12"
                         onClick={this.formSubmit}
                       >
                         Add Payment 
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </form>
