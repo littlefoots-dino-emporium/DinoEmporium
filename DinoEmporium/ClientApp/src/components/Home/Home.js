@@ -31,7 +31,7 @@ class Home extends React.Component {
 
     return (
       <div className="homePage">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-100" src="http://i68.tinypic.com/bikl5d.jpg" alt="First slide" position="center"></img>

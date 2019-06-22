@@ -10,6 +10,10 @@
   width: 33.3%;
 }
 
+// .homePage {
+//   margin-top: 5%;
+// }
+
 .btn-info:hover {
   width: 100%;
 }
@@ -22,7 +26,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  border: solid white;
+  // border: solid white;
+  margin-top: 1%;
 }
 
 .carousel-inner {
