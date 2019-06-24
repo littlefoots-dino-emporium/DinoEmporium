@@ -12,7 +12,8 @@ class FenceItem extends React.Component {
 
     state = {
         showModal: false,
-        customer: ''
+        customer: '',
+        buttonTextChange: "Add To Cart"
     }
     componentDidMount() {
         let uid = autheRequests.getUid();
@@ -30,6 +31,7 @@ class FenceItem extends React.Component {
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;
+        this.setState({ buttonTextChange: "In Cart" });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
@@ -56,8 +58,9 @@ class FenceItem extends React.Component {
                             <li className='fence-price'><i>${product.price}</i></li>
                             <li className='fence-description'>{product.description}</li>
                             <li className='fence-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick= {this.addToCart}>Add To Cart </Button>
-
+                            <Button onClick = {this.addToCart}>
+                                {this.state.buttonTextChange}
+                            </Button>
                         </div>
                     </React.Fragment>
                 </Modal>

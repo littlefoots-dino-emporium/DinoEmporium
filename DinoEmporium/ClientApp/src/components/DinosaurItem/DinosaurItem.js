@@ -12,7 +12,7 @@ class DinosaurItem extends React.Component {
     state = {
         showModal: false,
         customer: '',
-        buttonTextChange: "Add To Cart",
+        buttonTextChange: "Add To Cart"
     }
 
     componentDidMount() {
@@ -29,7 +29,7 @@ class DinosaurItem extends React.Component {
             showModal: !this.state.showModal
         });
     }
-    
+
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;
@@ -62,8 +62,9 @@ class DinosaurItem extends React.Component {
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick = {this.addToCart}>{this.state.buttonTextChange}
-                            </Button >
+                            <Button onClick = {this.addToCart}>
+                                {this.state.buttonTextChange}
+                            </Button>
                         </div>
                     </React.Fragment>
                 </Modal>
