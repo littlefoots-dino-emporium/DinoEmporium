@@ -4,6 +4,11 @@ import customerProduct from '../../helpers/data/customerProductRequest';
 import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import { Button } from 'reactstrap';
+import customerProduct from '../../helpers/data/customerProductRequest';
+import autheRequests from '../../firebaseRequests/auth';
+import customerRequest from '../../helpers/data/customerRequest';
+
+
 
 import './SweaterItem.scss';
 
@@ -19,6 +24,7 @@ class SweaterItem extends React.Component {
             showModal: !this.state.showModal
         });
     }
+
 
     componentDidMount() {
         let uid = autheRequests.getUid();
@@ -59,7 +65,6 @@ class SweaterItem extends React.Component {
                             <li className='sweater-description'>{product.description}</li>
                             <li className='sweater-quantity'>We have <b>{product.quantity}</b> in stock.</li>
                             <Button onClick= {this.addToCart}>Add To Cart</Button>
-
                         </div>
                     </React.Fragment>
                 </Modal>

@@ -1,18 +1,53 @@
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-  
+
 .dinosaurLinkToPge, .sweaterLinkToPge, .fenceLinkToPge {
-  width: 9rem;
-  margin: 3%;
+  width: 100%;
   height: 7rem;
   text-align: center;
 } 
 
-.link{
-  margin: 2%;
+.homeLink {
+  border: double white;
+  width: 33.3%;
 }
 
+// .homePage {
+//   margin-top: 5%;
+// }
+
+.btn-info:hover {
+  width: 100%;
+}
+
+// .homePage {
+//   height: 100%;
+// }
+
+.productLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  // border: solid white;
+}
+
+.carousel-item {
+  background-color: white;
+}
+
+.carousel-inner {
+  height: 20rem;
+  background-color: white;
+  border: black solid;
+  text-align: center;
+  // max-width: 200rem;
+}
+
+.test { 
+  background-color: white;
+}
+
+// .productLinks {
+//   display: flex;
+//   justify-content: space-between;
+//   margin: 2%;
+// }
 

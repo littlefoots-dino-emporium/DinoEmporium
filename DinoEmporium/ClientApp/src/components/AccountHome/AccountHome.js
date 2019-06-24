@@ -59,8 +59,8 @@ export class AccountHome extends Component {
 
 
     return (
-      <div className="accountHome">
-          <div class="card welcome text-center">
+      <div className="container accountHome">
+          <div class="welcome text-center">
             <h3>{customer.firstName} {customer.lastName}</h3>
             <div class="card-body">
               <p>email: {customer.email}</p>
@@ -73,7 +73,6 @@ export class AccountHome extends Component {
               </p>
               
             </div>
-          </div>
         <div className="customerNav text-right">
           <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
             Update Profile Information
@@ -87,6 +86,7 @@ export class AccountHome extends Component {
           <Button className="customerNavBtn variant=outline-secondary"  onClick={this.paymentInformation} color="info" text="center">
             Payment Information
         </Button>
+        </div>
         </div>
       </div>
     )

@@ -59,7 +59,7 @@ export class CustomerProfile extends React.Component {
     const { customer, isEditing, editId } = this.state;
 
     return (
-      <div className="customerProfile">
+      <div className="container customerProfile">
         <EditCustomerForm
           customer={customer}
           isEditing={isEditing}

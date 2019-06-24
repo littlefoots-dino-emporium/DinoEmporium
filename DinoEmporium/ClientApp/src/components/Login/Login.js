@@ -47,8 +47,8 @@ class Login extends React.Component {
   render () {
     const { user } = this.state;
     return (
-      <div className="Login">
-        <div id="login-form">
+      <div className="container Login">
+        <div className="loginForm" id="login-form">
           <h1 className="text-center">Login</h1>
           <form className="form-horizontal col-sm-6 col-sm-offset-3">
             <div className="form-group">
@@ -98,6 +98,7 @@ class Login extends React.Component {
               </div>
             </div>
           </form>
+          
         </div>
       </div>
     );

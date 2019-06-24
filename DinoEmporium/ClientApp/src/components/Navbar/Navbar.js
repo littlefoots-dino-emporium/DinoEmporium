@@ -23,13 +23,11 @@ class MyNavbar extends React.Component {
 
     return (
       <div className="Navbar">
+       
         <Navbar color="dark" dark expand="md">
           <NavbarBrand to="/" className="navbar-brand">Littlefoot's Dino Emporium</NavbarBrand>
           <NavbarToggler />
-
-
-
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div className="collapse navbar-collapse navar-buttons" id="bs-example-navbar-collapse-1">
             {authed ? (
               <Nav>
 

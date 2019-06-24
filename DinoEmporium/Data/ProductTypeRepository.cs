@@ -58,7 +58,7 @@ namespace DinoEmporium.Data
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var getSweaters = db.Query<Product>(@"select *
+                var getSweaters = db.Query<Product>(@"select title,description, image, price, quantity, size, p.Id
                                                      from Product p, ProductType pt
                                                      where p.ProductTypeId = 1
                                                      and pt.Id = 1").ToList();
@@ -71,7 +71,7 @@ namespace DinoEmporium.Data
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var getFences = db.Query<Product>(@"select *
+                var getFences = db.Query<Product>(@"select title,description, image, price, quantity, size, p.Id
                                                      from Product p, ProductType pt
                                                      where p.ProductTypeId = 3
                                                      and pt.Id = 3").ToList();

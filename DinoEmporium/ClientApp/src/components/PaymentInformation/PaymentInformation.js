@@ -7,14 +7,16 @@ import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import authRequest from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import PaymentItem from '../PaymentItem/PaymentItem';
-
+import AddPaymentInformation from '../AddPaymentInformation/AddPaymentInformation';
+import './PaymentInformation.scss';
 
  class PaymentInformation extends React.Component {
 
     state = {
-        paymentInfo: [],
+        
         customer: {},
-        open: false
+        //open: false,
+        paymentInfo: []
     }
 
     componentDidMount() {
@@ -27,106 +29,44 @@ import PaymentItem from '../PaymentItem/PaymentItem';
 }
 getCustomerPayment = () => {
     const { customer } = this.state;
+    
 paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
-    this.setState({ paymentInfo })
-    console.log(paymentInfo);
+    this.setState({ paymentInfo})
     console.log(customer.id);
 })
 }
 
-// addPayment = () => {
-// paymentRequest.postPaymentInformation().then((customerInfo) => {
-    
-// })
-// }
-
-onOpenModal = () => {
-    this.setState({ open: true });
-  };
- 
-  onCloseModal = () => {
-    this.setState({ open: false });
-  };
-
+deleteOnePaymentInformation = (paymentId) => {
+    const { customer } = this.state;
+    paymentRequest.deleteSinglePaymentInformation(paymentId)
+      .then(() => {
+        paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
+            this.setState({ paymentInfo})
+        })
+      })
+      .catch(err => console.error('error with delte single', err));
+  }
 
 render(){
-    const { open } = this.state;
+    // const { open } = this.state;
   const { paymentInfo } = this.state;
+  console.log(paymentInfo);
 
   const paymentInfoItem = paymentInfo.map(paymentInfo => (
     <PaymentItem
     paymentInfo={paymentInfo}
       key={paymentInfo.id}
+      deleteOnePaymentInformation={this.deleteOnePaymentInformation}
     />
   ));
 
   return (
   <div>
-      <Button onClick={this.onOpenModal}>Add Payment Information</Button>
-      <Modal open={open} onClose={this.onCloseModal} center>
-      <div className="Register">
-              <div id="login-form">
-                <h1 className="text-center">Add Card</h1>
-                <form className="form-horizontal col-sm-6 col-sm-offset-3">
-                  <div className="form-group">
-                    <label htmlFor="inputName" className="col-sm-4 control-label">
-                      Name on card:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="name"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="First Name"
-                    //     value={updatedCustomerInformation.firstName}
-                    //     onChange={this.firstNameChange}
-                       />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="inputLastName" className="col-sm-4 control-label">
-                      Card Number:
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="name"
-                        className="form-control"
-                        id="inputEmail"
-                        placeholder="Last Name"
-                        // value={updatedCustomerInformation.lastName}
-                        // onChange={this.lastNameChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="inputLastName" className="col-sm-4 control-label">
-                      Expiration Date
-                    </label>
-                    <div className="col-sm-8">
-                      <input
-                        type="date"
-                        className="form-control"
-                        id="inputDate"
-                        placeholder="01/2019"
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="col-sm-12">
-                      <button
-                        type="submit"
-                        className="btn btn-default col-xs-12"
-                        //onClick={this.formSubmit}
-                      >
-                        Add Payment 
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-        </Modal>
+      <AddPaymentInformation />
+      <div className="payment card">
+      <h3 className="payment-methods">Your Payment Methods</h3>
       {paymentInfoItem}
+      </div>
   </div>
   )};
 }

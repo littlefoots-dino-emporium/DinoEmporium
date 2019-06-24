@@ -1,5 +1,11 @@
 .product-info {
-    border: 4px;
-    border-color:black;
-    margin-left: 400px;
+    // border: solid 1px;
+    // border-color:black;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 70px;
+}
+.product-img {
+    margin-right: 200px;
 }

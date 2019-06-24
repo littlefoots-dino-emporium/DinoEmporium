@@ -1,9 +1,14 @@
 import React from 'react';
 import './CartItem.scss';
+import { Button } from 'reactstrap';
 
 class CartItem extends React.Component {
 
-
+    deleteKidEvent = (e) => {
+        e.preventDefault();
+        const { deleteOneProduct, customerProduct } = this.props;
+        deleteOneProduct(customerProduct.productId);
+      }
     render() {
         const { customerProduct } = this.props;
         console.log(customerProduct);
@@ -12,10 +17,16 @@ class CartItem extends React.Component {
             <div>
 
             <div className="product-info">
-                <h2>Title:{customerProduct.title}</h2>
-                <h2>{customerProduct.image}</h2>
-                <h2>Size:{customerProduct.size}</h2>
-                <h2>Price:{customerProduct.price}</h2> 
+                <div className="product-img">
+                    <img src={customerProduct.image} alt="cart items"/>
+                </div>
+                <div className="product-description">
+                    <h5>Title:{customerProduct.title}</h5>
+                    <h5>Size:{customerProduct.size}</h5>
+                    <h5>Price:${customerProduct.price}</h5> 
+                    <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
+                </div>
+                
                 </div>
             </div>
         )};

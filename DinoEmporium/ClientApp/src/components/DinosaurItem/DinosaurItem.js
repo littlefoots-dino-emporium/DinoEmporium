@@ -13,7 +13,6 @@ class DinosaurItem extends React.Component {
         showModal: false,
         customer: '',
         buttonTextChange: "Add To Cart",
-        disabeled: false
     }
 
     componentDidMount() {
