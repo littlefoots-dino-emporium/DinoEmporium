@@ -29,11 +29,7 @@ class DinosaurItem extends React.Component {
             showModal: !this.state.showModal
         });
     }
-
-    changeButton = () => {
-        
-    }
-
+    
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;

@@ -4,9 +4,6 @@ import customerProduct from '../../helpers/data/customerProductRequest';
 import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import { Button } from 'reactstrap';
-import customerProduct from '../../helpers/data/customerProductRequest';
-import autheRequests from '../../firebaseRequests/auth';
-import customerRequest from '../../helpers/data/customerRequest';
 
 
 
