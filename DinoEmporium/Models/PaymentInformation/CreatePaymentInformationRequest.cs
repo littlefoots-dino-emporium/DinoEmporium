@@ -10,9 +10,9 @@ namespace DinoEmporium.Models
         public PaymentType PaymentType { get; set; }
         public int AccountNumber { get; set; }
         public int CustomerId { get; set; }
-        public string PaymentFirstName { get; set; }
-        public string PaymentLastName { get; set; }
+        public string NameOnCard { get; set; }
         public string CustomerUid { get; set; }
+        public DateTime ExpirationDate { get; set; }
 
     }
 

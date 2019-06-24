@@ -30,7 +30,7 @@ namespace DinoEmporium.Controllers
                 return BadRequest(new { error = "users must have a username and password" });
             }
 
-            var newPaymentInformation = _repository.AddPaymentInformation(createRequest.PaymentType, createRequest.AccountNumber, createRequest.PaymentFirstName, createRequest.PaymentLastName);
+            var newPaymentInformation = _repository.AddPaymentInformation(createRequest.PaymentType, createRequest.AccountNumber, createRequest.NameOnCard, createRequest.ExpirationDate);
 
             return Created($"api/paymentinformation/{newPaymentInformation.Id}", newPaymentInformation);
 
@@ -44,8 +44,16 @@ namespace DinoEmporium.Controllers
             return Ok(paymentInformation);
         }
 
+        [HttpGet("allpaymentsOfCustomer/{id}")]
+        public ActionResult GetAllPaymentInformationOfSingleUser(int id)
+        {
+            var paymentInformation = _repository.GetAllPaymentInformationOfSingleUser(id);
+
+            return Ok(paymentInformation);
+        }
+
         [HttpGet("{customerUid}")]
-        public ActionResult GetSinglePayment(string customerUid)
+        public ActionResult GetSinglePayment(int customerUid)
         {
             var previousPaymentInformation = _repository.GetSinglePayment(customerUid);
 
@@ -75,8 +83,7 @@ namespace DinoEmporium.Controllers
     {
         public bool Validate(CreatePaymentInformationRequest requestToValidate)
         {
-            return string.IsNullOrEmpty(requestToValidate.PaymentFirstName)
-                   || string.IsNullOrEmpty(requestToValidate.PaymentLastName);
+            return string.IsNullOrEmpty(requestToValidate.NameOnCard);
         }
     }
 }

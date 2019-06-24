@@ -12,13 +12,8 @@ class DinosaurItem extends React.Component {
     state = {
         showModal: false,
         customer: '',
-        isToggleOn: true,
-    }
-
-    toggleModal = () => {
-        this.setState({
-            showModal: !this.state.showModal
-        });
+        buttonTextChange: "Add To Cart",
+        disabeled: false
     }
 
     componentDidMount() {
@@ -30,28 +25,30 @@ class DinosaurItem extends React.Component {
           })
     }
 
+    toggleModal = () => {
+        this.setState({
+            showModal: !this.state.showModal
+        });
+    }
+
+    changeButton = () => {
+        
+    }
+
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;
+        this.setState({ buttonTextChange: "In Cart" });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
         }
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }));
     }
 
-    // handleClick = () => {
-    //     this.setState(prevState => ({
-    //         isToggleOn: !prevState.isToggleOn
-    //     }));
-    // }
 
     render() {
         const { product } = this.props;
-
 
         return (
             <div className="dinosaurModal">
@@ -70,10 +67,8 @@ class DinosaurItem extends React.Component {
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick = {this.addToCart}>
-                                {this.state.isToggleOn ? 'Add To Cart' : 'In Cart'}
-                            </Button>
-
+                            <Button onClick = {this.addToCart}>{this.state.buttonTextChange}
+                            </Button >
                         </div>
                     </React.Fragment>
                 </Modal>
