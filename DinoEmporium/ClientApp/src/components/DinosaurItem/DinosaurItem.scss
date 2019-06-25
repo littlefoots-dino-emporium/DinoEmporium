@@ -3,11 +3,11 @@
   width: 300px;
 }
 
-.app {
+.anotherDivForDinosaurs {
   display: inline-flex;
   flex-direction: row;
   flex-flow: wrap;
-  align-content: center;
-  margin: 2%;
-  padding: 1%;
+  justify-content: center;
+  margin: 10% 10% 4% 13%;
+  padding: 2%;
 }

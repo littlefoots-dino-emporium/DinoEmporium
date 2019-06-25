@@ -46,6 +46,7 @@ class DinosaurItem extends React.Component {
         const { product } = this.props;
 
         return (
+        <div className="anotherDivForDinosaurs">
             <div className="dinosaurModal">
                 <Button className="modal_opener" onClick={this.toggleModal}>
                     <img className='dino-image' src={product.image} alt='product' />
@@ -69,6 +70,7 @@ class DinosaurItem extends React.Component {
                     </React.Fragment>
                 </Modal>
             </div>
+        </div>
         )
     }
 }
