@@ -13,6 +13,7 @@ const firebaseURL = apiKeys.firebaseConfig.databaseURL;
      .catch(err => reject(err));
  });
 
+ 
 const getSingleProduct = productId => axios.get(`${firebaseURL}/products/${productId}.json`);
 
 export default {

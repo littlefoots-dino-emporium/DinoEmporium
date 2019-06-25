@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
-import { Button } from 'reactstrap';
-import customerRequest from '../../helpers/data/customerRequest';
 import customerProduct from '../../helpers/data/customerProductRequest';
+import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
+import { Button } from 'reactstrap';
 
 import './DinosaurItem.scss';
 
@@ -11,7 +11,8 @@ class DinosaurItem extends React.Component {
 
     state = {
         showModal: false,
-        customer: ''
+        customer: '',
+        buttonTextChange: "Add To Cart"
     }
 
     componentDidMount() {
@@ -32,6 +33,7 @@ class DinosaurItem extends React.Component {
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;
+        this.setState({ buttonTextChange: "In Cart" });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
@@ -39,9 +41,12 @@ class DinosaurItem extends React.Component {
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
     }
 
+
     render() {
         const { product } = this.props;
+
         return (
+        <div className="anotherDivForDinosaurs">
             <div className="dinosaurModal">
                 <Button className="modal_opener" onClick={this.toggleModal}>
                     <img className='dino-image' src={product.image} alt='product' />
@@ -58,11 +63,14 @@ class DinosaurItem extends React.Component {
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick= {this.addToCart}>Add To Cart </Button>
+                            <Button onClick = {this.addToCart}>
+                                {this.state.buttonTextChange}
+                            </Button>
                         </div>
                     </React.Fragment>
                 </Modal>
             </div>
+        </div>
         )
     }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
-import { Button } from 'reactstrap';
 import customerProduct from '../../helpers/data/customerProductRequest';
-import autheRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
+import autheRequests from '../../firebaseRequests/auth';
+import { Button } from 'reactstrap';
 
 
 
@@ -13,8 +13,16 @@ class SweaterItem extends React.Component {
 
     state = {
         showModal: false,
-        customer: ''
+        customer: '',
+        buttonTextChange: "Add To Cart"
     }
+
+    toggleModal = () => {
+        this.setState({
+            showModal: !this.state.showModal
+        });
+    }
+
 
     componentDidMount() {
         let uid = autheRequests.getUid();
@@ -25,22 +33,17 @@ class SweaterItem extends React.Component {
           })
     }
 
-    toggleModal = () => {
-        this.setState({
-            showModal: !this.state.showModal
-        });
-    }
-
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;
+        this.setState({ buttonTextChange: "In Cart" });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
         }
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
     }
-    
+
     render() {
         const { product } = this.props;
         return (
@@ -60,7 +63,9 @@ class SweaterItem extends React.Component {
                             <li className='sweater-price'><i>${product.price}</i></li>
                             <li className='sweater-description'>{product.description}</li>
                             <li className='sweater-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick= {this.addToCart}>Add To Cart </Button>
+                            <Button onClick = {this.addToCart}>
+                                {this.state.buttonTextChange}
+                            </Button>
                         </div>
                     </React.Fragment>
                 </Modal>

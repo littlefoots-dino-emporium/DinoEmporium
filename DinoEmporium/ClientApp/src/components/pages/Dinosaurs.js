@@ -44,8 +44,6 @@ class Dinosaur extends React.Component {
   render() {
     const { filteredDinosaurs } = this.state;
 
-
-    
     const dinosaurItemComponent = filteredDinosaurs.map(product => (
       <div>
         <DinosaurItem 
