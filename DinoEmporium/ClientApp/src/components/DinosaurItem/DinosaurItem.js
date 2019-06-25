@@ -4,14 +4,15 @@ import { Button } from 'reactstrap';
 import customerRequest from '../../helpers/data/customerRequest';
 import customerProduct from '../../helpers/data/customerProductRequest';
 import autheRequests from '../../firebaseRequests/auth';
-
+import PropTypes from 'prop-types';
 import './DinosaurItem.scss';
 
 class DinosaurItem extends React.Component {
 
     state = {
         showModal: false,
-        customer: ''
+        customer: '',
+        inWishList: false,
     }
 
     componentDidMount() {
@@ -39,6 +40,14 @@ class DinosaurItem extends React.Component {
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
     }
 
+    addToWishList = () => {
+        // const { customer } = this.state;
+        // const { product } = this.props;
+        this.setState({
+            inWishList: true
+        })
+    }
+
     render() {
         const { product } = this.props;
         return (
@@ -58,7 +67,8 @@ class DinosaurItem extends React.Component {
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick= {this.addToCart}>Add To Cart </Button>
+                            <Button onClick={this.addToCart}>Add To Cart </Button>
+                            <Button onClick={this.addToWishList}>Add To Wish List</Button>
                         </div>
                     </React.Fragment>
                 </Modal>
