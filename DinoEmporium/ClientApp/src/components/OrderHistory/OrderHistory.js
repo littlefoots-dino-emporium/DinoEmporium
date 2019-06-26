@@ -7,41 +7,42 @@ import OrderHistoryItem from '../OrderHistoryItem/OrderHistoryItem';
 
 export class OrderHistory extends Component {
   state = {
-     customer: [],
-     orderHistory: []
+    customer: [],
+    orderHistory: []
   }
 
   getCustomer = () => {
     let uid = authRequests.getUid();
     getCustomerInfo.getCustomerProfile(uid).then((customer) => {
       this.setState({ customer })
-    });
-    getOrderHistory.getOrderHistory().then((orderHistory) => {
-      this.setState(orderHistory);
+      getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
+        this.setState({ orderHistory });
+      });
     })
   }
 
-  getCustomerOrder = () => {
-    const { customer } = this.state;
-    
-getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
-    this.setState({ orderHistory })
-    console.log(customer.id);
-})
-}
+  //   getCustomerOrder = () => {
+  //     const { customer } = this.state;
+  //     console.log(customer.id);
+
+  // getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
+  //     this.setState({ orderHistory })
+  //     console.log(customer.id);
+  // })
+  // }
 
   componentDidMount() {
     this.getCustomer();
-    this.getCustomerOrder();
+    // this.getCustomerOrder();
   }
-  
+
 
   render() {
     const { customer, orderHistory } = this.state
 
     const orderHistoryPrint = orderHistory.map(orderHistory => (
       <OrderHistoryItem
-      orderHistory={orderHistory}
+        orderHistory={orderHistory}
         key={orderHistory.id}
       />
     ));

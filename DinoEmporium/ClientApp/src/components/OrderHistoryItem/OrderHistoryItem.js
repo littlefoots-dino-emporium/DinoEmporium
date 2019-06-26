@@ -7,9 +7,10 @@ class OrderHistoryItem extends React.Component {
 
         return(
 
-            <div className="info">
-                <div className="customer-info">
-                    <h5>Name on card: {orderHistory.price}</h5>
+            <div className="card info">
+                <div className="card-body customer-info">
+                    <h5>Price: {orderHistory.price}</h5>
+                    <h5>Quantity: {orderHistory.productQuantity}</h5>
                 </div>
 
 

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 
-const getOrderHistory = () => new Promise((resolve, reject) => {
+const getOrderHistory = (customerId) => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/order/allorders/18`)
+    .get(`http://localhost:50312/api/order/allorders/${customerId}`)
     .then((res) => {
       let order = res.data;
       console.log(order);
