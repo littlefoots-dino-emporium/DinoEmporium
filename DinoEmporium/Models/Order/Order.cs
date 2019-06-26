@@ -11,5 +11,6 @@ namespace DinoEmporium.Models
         public int CustomerId { get; set; }
         public int Price { get; set; }
         public int PaymentInformationId { get; set; }
+        public int ProductQuantity { get; set; }
     }
 }

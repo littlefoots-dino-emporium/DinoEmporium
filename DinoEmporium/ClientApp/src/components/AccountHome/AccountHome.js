@@ -48,7 +48,8 @@ export class AccountHome extends Component {
       return <Redirect to='/customerprofile' />
     }
     if (this.state.orderHistory === true) {
-      return <Redirect to='/orderhistory' />
+      return <Redirect to='/orderhistory'/>
+      
     }
     if (this.state.wishList === true) {
       return <Redirect to='/wishlist' />

@@ -55,7 +55,7 @@ class Sweaters extends React.Component {
     ));
 
     return (
-      <div>
+      <div className = "searchField">
       <SearchField
       placeholder="Search Fences..."
       onChange={this.onChange}

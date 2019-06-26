@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Modal.scss';
 
 const Modal = ({ children, customClass, show, closeCallback }) => (
-  <div className={`modal ${customClass}`} style={{ display: show ? 'block' : 'none'}}>
+  <div className={`modal ${customClass}`} >
     <div className="overlay" onClick={closeCallback}></div>
     <div className="modal_content">
       {children}
