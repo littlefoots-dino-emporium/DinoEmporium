@@ -2,7 +2,7 @@ import React from 'react';
 import FenceItem from '../FenceItem/FenceItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
-
+import './Fences.scss';
 
 class Sweaters extends React.Component {
   state = {
@@ -62,7 +62,7 @@ class Sweaters extends React.Component {
       searchText=""
       classNames="test-class w-50 mt-auto"
     />
-      <div className='fences'>
+      <div className='fencesComponentDiv'>
         {fenceItemComponent}
       </div>
       </div>
