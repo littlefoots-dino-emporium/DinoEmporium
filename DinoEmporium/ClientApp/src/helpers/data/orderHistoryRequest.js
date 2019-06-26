@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 
-const getOrderHistory = uid => new Promise((resolve, reject) => {
+const getOrderHistory = (customerId) => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/order/${uid}`)
+    .get(`http://localhost:50312/api/order/${customerId}`)
     .then((res) => {
       let order = res.data;
+      console.log(order);
       resolve(order);
     })
     .catch(err => reject(err));

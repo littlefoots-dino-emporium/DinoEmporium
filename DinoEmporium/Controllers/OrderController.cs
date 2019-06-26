@@ -29,18 +29,18 @@ namespace DinoEmporium.Controllers
 
         }
 
-        [HttpGet("allorders")]
-        public ActionResult GetAllOrders()
+        [HttpGet("allorders/{id}")]
+        public ActionResult GetAllOrders(int id)
         {
-            var order = _repository.GetAllOrders();
+            var order = _repository.GetAllOrders(id);
 
             return Ok(order);
         }
 
-        [HttpGet("{customerId}")]
-        public ActionResult GetSingleOrder(int customerId)
+        [HttpGet("{id}")]
+        public ActionResult GetSingleOrder(int id)
         {
-            var singleOrder = _repository.GetSingleOrder(customerId);
+            var singleOrder = _repository.GetSingleOrder(id);
 
             return Ok(singleOrder);
         }

@@ -30,21 +30,31 @@ namespace DinoEmporium.Data
             throw new Exception("No order created");
         }
 
-        public IEnumerable<Order> GetAllOrders()
+        //public IEnumerable<Order> GetAllOrders()
+        //{
+        //    using (var db = new SqlConnection(ConnectionString))
+        //    {
+        //        var allOrders = db.Query<Order>("Select * from [Order]").ToList();
+
+        //        return allOrders;
+        //    }
+        //}
+
+        public IEnumerable<Order> GetAllOrders(int id)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var allOrders = db.Query<Order>("Select * from [Order]").ToList();
+                var allCustomerOrders = db.Query<Order>("Select * from [order] where customerId = @id", new { id }).ToList();
 
-                return allOrders;
+                return allCustomerOrders;
             }
         }
 
-        public Order GetSingleOrder(int customerId)
+        public Order GetSingleOrder(int id)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var singleOrder = db.QueryFirstOrDefault<Order>(@"select * from [Order] where customerId = @customerId", new { customerId });
+                var singleOrder = db.QueryFirstOrDefault<Order>(@"select * from [Order] where customerId = @id", new { id });
 
                 return singleOrder;
             }
