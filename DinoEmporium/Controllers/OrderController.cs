@@ -37,10 +37,10 @@ namespace DinoEmporium.Controllers
             return Ok(order);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult GetSingleOrder(int id)
+        [HttpGet("{customerId}")]
+        public ActionResult GetSingleOrder(int customerId)
         {
-            var singleOrder = _repository.GetSingleOrder(id);
+            var singleOrder = _repository.GetSingleOrder(customerId);
 
             return Ok(singleOrder);
         }

@@ -40,11 +40,11 @@ namespace DinoEmporium.Data
             }
         }
 
-        public Order GetSingleOrder(int id)
+        public Order GetSingleOrder(int customerId)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
-                var singleOrder = db.QueryFirstOrDefault<Order>(@"select * from [Order] where id = @id", new { id });
+                var singleOrder = db.QueryFirstOrDefault<Order>(@"select * from [Order] where customerId = @customerId", new { customerId });
 
                 return singleOrder;
             }
