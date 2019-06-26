@@ -29,10 +29,10 @@ namespace DinoEmporium.Controllers
 
         }
 
-        [HttpGet("allorders")]
-        public ActionResult GetAllOrders()
+        [HttpGet("allorders/{id}")]
+        public ActionResult GetAllOrders(int id)
         {
-            var order = _repository.GetAllOrders();
+            var order = _repository.GetAllOrders(id);
 
             return Ok(order);
         }
