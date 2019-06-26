@@ -3,6 +3,7 @@ import authRequests from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import getOrderHistory from '../../helpers/data/orderHistoryRequest';
 import PropTypes from 'prop-types';
+import OrderHistoryItem from '../OrderHistoryItem/OrderHistoryItem';
 
 export class OrderHistory extends Component {
   state = {
@@ -37,10 +38,19 @@ getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
 
   render() {
     const { customer, orderHistory } = this.state
+
+    const orderHistoryPrint = orderHistory.map(orderHistory => (
+      <OrderHistoryItem
+      orderHistory={orderHistory}
+        key={orderHistory.id}
+      />
+    ));
+
     return (
       <div>
         <h1>Order History</h1>
         <h2>{customer.firstName}</h2>
+        {orderHistoryPrint}
       </div>
     )
   }
