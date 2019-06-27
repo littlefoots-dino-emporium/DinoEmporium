@@ -17,9 +17,7 @@ class DinosaurItem extends React.Component {
 
     componentDidMount() {
         let uid = autheRequests.getUid();
-        const { product } = this.props;
         customerRequest.getCustomerProfile(uid).then((customer) => {
-            console.log(customer.id, product.id);
             this.setState({ customer });
           })
     }

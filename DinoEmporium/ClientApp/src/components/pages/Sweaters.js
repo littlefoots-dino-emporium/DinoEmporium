@@ -2,7 +2,7 @@ import React from 'react';
 import SweaterItem from '../SweaterItem/SweaterItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
-import './Sweaters.scss';
+
 
 class Sweaters extends React.Component {
   state = {
@@ -27,7 +27,7 @@ class Sweaters extends React.Component {
     const filteredSweaters = [];
     e.preventDefault();
     if (!value) {
-      this.setState({ filteredDinosaurs: products });
+      this.setState({ filteredSweaters: products });
     } else {
       products.forEach((product) => {
         if (product.title.toLowerCase().includes(value.toLowerCase())
