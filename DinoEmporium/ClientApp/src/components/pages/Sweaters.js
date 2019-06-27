@@ -3,6 +3,7 @@ import SweaterItem from '../SweaterItem/SweaterItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
 
+import './Sweaters.scss';
 
 class Sweaters extends React.Component {
   state = {

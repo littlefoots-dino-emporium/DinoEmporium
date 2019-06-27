@@ -3,6 +3,7 @@ import FenceItem from '../FenceItem/FenceItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
 
+import './Fences.scss';
 
 class Sweaters extends React.Component {
   state = {

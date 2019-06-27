@@ -64,6 +64,9 @@ class DinosaurItem extends React.Component {
                             <Button onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
                             </Button>
+                            <Button onClick = {this.addToWishlist}>
+                                Add To Wishlist
+                            </Button>
                         </div>
                     </React.Fragment>
                 </Modal>

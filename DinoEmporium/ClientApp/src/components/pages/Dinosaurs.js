@@ -3,6 +3,7 @@ import DinosaurItem from '../DinosaurItem/DinosaurItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
 
+import './Dinosaurs.scss';
 
 class Dinosaur extends React.Component {
   state = {
@@ -60,7 +61,7 @@ class Dinosaur extends React.Component {
       searchText=""
       classNames="test-class w-50 mt-auto"
     />
-      <div className='dinosaurDiv'>
+      <div className='dinosaursComponentDiv'>
         {dinosaurItemComponent}
       </div>
       </div>
