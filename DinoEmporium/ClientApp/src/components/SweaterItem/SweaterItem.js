@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
+import wishList from '../../helpers/data/wishListRequest';
 import customerProduct from '../../helpers/data/customerProductRequest';
 import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
@@ -13,7 +14,8 @@ class SweaterItem extends React.Component {
     state = {
         showModal: false,
         customer: '',
-        buttonTextChange: "Add To Cart"
+        buttonTextChange: "Add To Cart",
+        wishListButtonChange: "Add To Wish List"
     }
 
     toggleModal = () => {
@@ -43,6 +45,17 @@ class SweaterItem extends React.Component {
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
     }
 
+    addToWishlist = () => {
+        const { customer } = this.state;
+        const { product } = this.props;
+        this.setState({ wishListButtonChange: "In Wish List" });
+        const CustomerProductInfo = {
+            productId: product.id,
+            customerId: customer.id
+        }
+        wishList.postWishListRequest(CustomerProductInfo);
+    }
+
     render() {
         const { product } = this.props;
         return (
@@ -66,7 +79,7 @@ class SweaterItem extends React.Component {
                                 {this.state.buttonTextChange}
                             </Button>
                             <Button onClick = {this.addToWishlist}>
-                                Add To Wishlist
+                                {this.state.wishListButtonChange}
                             </Button>
                         </div>
                     </React.Fragment>
