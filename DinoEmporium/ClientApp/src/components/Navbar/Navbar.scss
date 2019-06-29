@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Barriecito&display=swap');
+
+$grey: rgb(102, 105, 102);
+$darkblue: #1A577F;
+$brown: rgb(102, 73, 36);
+$bone: rgb(202, 207, 183);
+$forestgreen: rgb(11, 138, 49);
+
+.Navbar{
+  background-color: $bone;
+  padding: 1em;
+  margin: 0;
+  font-family: 'Barriecito', cursive;
+}
+
+.navbar-brand {
+  font-family: 'Barriecito', cursive;
+  font-size: 40px;
+}
+
+.secondary-navbar-links {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  left: -5%;
+  top: 100px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  &:nth-child(2) {
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+  }
+  &:nth-child(3) {
+    bottom: 20%;
+    left: 0%;
+    width: 100%;
+  }
+  &:nth-child(4) {
+    bottom: 20%;
+    left: 0%;
+    width: 100%;
+  }
+}
+
+
+.container1, .container2, .container3, .container4 {
+  max-width: 100%;
+  background-color: transparent 100;
+  font-family: 'Barriecito', cursive;
+  font-size: 23px;
+}
+
+a, .btn {
+  color: white;
+}
+
