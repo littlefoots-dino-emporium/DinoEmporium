@@ -1,17 +1,15 @@
-// div {
-//   display: inline;
-// }
-
 .fence-image {
   height: 300px;
   width: 300px;
+  z-index: 200;
 }
 
-.fenceModal {
-  flex-direction: row;
-  flex-flow: row wrap;
-  align-items: space-evenly;
-  margin: auto;
-  padding: 1%;
-}
+//.fence-title{
+  //color: black;
+//}
 
+.fenceModal{
+  margin: 1%;
+  padding: 6%;
+  //background-color: white;
+}

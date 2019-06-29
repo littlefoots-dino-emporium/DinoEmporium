@@ -33,17 +33,17 @@ class MyNavbar extends React.Component {
 
                 <NavItem>
                           <NavLink tag={RRNavLink} to='/home'>
-                          <i class="fas fa-home"></i>
+                          <i className="fas fa-home"></i>
                           </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={RRNavLink} to='/ShoppingCart'>
-                  <i class="fas fa-cart-arrow-down"></i>
+                  <i className="fas fa-cart-arrow-down"></i>
                   </NavLink>
                 </NavItem>
                 <NavItem>
                           <NavLink tag={RRNavLink} to='/accounthome'>
-                          <i class="fas fa-user"></i>
+                          <i className="fas fa-user"></i>
                           </NavLink>
                 </NavItem>
 

@@ -17,9 +17,7 @@ class DinosaurItem extends React.Component {
 
     componentDidMount() {
         let uid = autheRequests.getUid();
-        const { product } = this.props;
         customerRequest.getCustomerProfile(uid).then((customer) => {
-            console.log(customer.id, product.id);
             this.setState({ customer });
           })
     }
@@ -65,6 +63,9 @@ class DinosaurItem extends React.Component {
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
                             <Button onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
+                            </Button>
+                            <Button onClick = {this.addToWishlist}>
+                                Add To Wishlist
                             </Button>
                         </div>
                     </React.Fragment>

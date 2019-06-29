@@ -5,9 +5,8 @@ import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import { Button } from 'reactstrap';
 
-
-
 import './SweaterItem.scss';
+
 
 class SweaterItem extends React.Component {
 
@@ -65,6 +64,9 @@ class SweaterItem extends React.Component {
                             <li className='sweater-quantity'>We have <b>{product.quantity}</b> in stock.</li>
                             <Button onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
+                            </Button>
+                            <Button onClick = {this.addToWishlist}>
+                                Add To Wishlist
                             </Button>
                         </div>
                     </React.Fragment>

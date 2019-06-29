@@ -16,19 +16,19 @@ class PaymentItem extends React.Component {
         const paymentType =() => {
             const { paymentInfo } = this.props;
             console.log(paymentInfo);
-            if(paymentInfo.paymentType == 0)
+            if(paymentInfo.paymentType === 0)
             {
                 return(
                 "Master Card"
                 )
             }
-            if(paymentInfo.paymentType == 1)
+            if(paymentInfo.paymentType === 1)
             {
                 return(
                 "Visa"
                 )
             }
-            if(paymentInfo.paymentType == 2)
+            if(paymentInfo.paymentType === 2)
             {
                 return(
                 "American Express"
