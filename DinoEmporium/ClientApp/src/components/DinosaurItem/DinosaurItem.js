@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../../helpers/modal/Modal';
 import customerProduct from '../../helpers/data/customerProductRequest';
+import wishList from '../../helpers/data/wishListRequest';
 import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
 import { Button } from 'reactstrap';
@@ -12,7 +13,8 @@ class DinosaurItem extends React.Component {
     state = {
         showModal: false,
         customer: '',
-        buttonTextChange: "Add To Cart"
+        buttonTextChange: "Add To Cart",
+        wishListButtonChange: "Add To Wish List"
     }
 
     componentDidMount() {
@@ -37,6 +39,17 @@ class DinosaurItem extends React.Component {
             customerId: customer.id
         }
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
+    }
+
+    addToWishlist = () => {
+        const { customer } = this.state;
+        const { product } = this.props;
+        this.setState({ wishListButtonChange: "In Wish List" });
+        const CustomerProductInfo = {
+            productId: product.id,
+            customerId: customer.id
+        }
+        wishList.postWishListRequest(CustomerProductInfo);
     }
 
 
@@ -65,7 +78,7 @@ class DinosaurItem extends React.Component {
                                 {this.state.buttonTextChange}
                             </Button>
                             <Button onClick = {this.addToWishlist}>
-                                Add To Wishlist
+                                {this.state.wishListButtonChange}
                             </Button>
                         </div>
                     </React.Fragment>
