@@ -27,6 +27,14 @@ getWishList.getWishListRequest(uid).then((customerProducts) => {
 });
 }
 
+deleteOneProduct = (productId) => {
+  getWishList.deleteSingleProduct(productId)
+    .then(() => {
+      this.customerInfo();
+    })
+    .catch(err => console.error('error with delte single', err));
+}
+
 render() {
     const { customerProducts, customer } = this.state;
     console.log(customerProducts);
@@ -36,6 +44,7 @@ render() {
         customerProduct={customerProducts}
           key={customerProducts.id}
           customer={customer}
+          deleteOneProduct={this.deleteOneProduct}
         />
       ));
       

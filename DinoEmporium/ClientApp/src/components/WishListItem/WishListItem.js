@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 
 export class WishListItem extends Component {
+    deleteKidEvent = (e) => {
+        e.preventDefault();
+        const { deleteOneProduct, customerProduct } = this.props;
+        deleteOneProduct(customerProduct.productId);
+      }
+      
   render() {
     const { customerProduct } = this.props;
     console.log(customerProduct);
@@ -16,6 +22,7 @@ export class WishListItem extends Component {
                 <h5>Title:{customerProduct.title}</h5>
                 <h5>Size:{customerProduct.size}</h5>
                 <h5>Price:${customerProduct.price}</h5> 
+                <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
             </div>
             
             </div>

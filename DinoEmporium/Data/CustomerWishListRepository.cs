@@ -42,5 +42,18 @@ namespace DinoEmporium.Data
                 return getSingleCustomerWishList;
             }
         }
+
+        public CustomerWishList DeleteSingleWishListItem(int productId)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var deleteCustomerProduct = db.QueryFirstOrDefault<CustomerWishList>(@"delete 
+                                                                       from customerWishList
+                                                                       where productId = @productId",
+                                                                       new { productId });
+                return deleteCustomerProduct;
+            }
+
+        }
     }
 }

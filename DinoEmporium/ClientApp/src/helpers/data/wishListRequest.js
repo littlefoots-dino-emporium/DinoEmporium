@@ -13,7 +13,10 @@ const getWishListRequest = uid => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
+const deleteSingleProduct = productId => axios.delete(`http://localhost:50312/api/customerProduct/deleteCustomerProduct/${productId}`);
+
 export default {
   getWishListRequest,
   postWishListRequest,
+  deleteSingleProduct
 }

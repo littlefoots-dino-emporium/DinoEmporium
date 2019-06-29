@@ -34,5 +34,12 @@ namespace DinoEmporium.Controllers
             var getCustomerWishList = _customerProductRepository.GetCustomerWishList(customerUid);
             return Ok(getCustomerWishList);
         }
+
+        [HttpDelete("deleteWishListItem/{productId}")]
+        public ActionResult DeleteWishListItem(int productId)
+        {
+            var deleteWishListItem = _customerProductRepository.DeleteSingleWishListItem(productId);
+            return Ok(deleteWishListItem);
+        }
     }
 }
