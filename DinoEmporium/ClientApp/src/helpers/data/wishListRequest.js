@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const getWishListRequest = uid => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/customerWishList/getCustomerProducts/${uid}`)
+    .get(`http://localhost:50312/api/customerWishList/getCustomerWishList/${uid}`)
     .then((res) => {
       let customerProducts = res.data;
       console.log(customerProducts);
@@ -10,3 +10,7 @@ const getWishListRequest = uid => new Promise((resolve, reject) => {
     })
     .catch(err => reject(err));
 });
+
+export default {
+  getWishListRequest,
+}
