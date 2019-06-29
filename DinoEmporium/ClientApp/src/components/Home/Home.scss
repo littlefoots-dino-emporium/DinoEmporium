@@ -1,32 +1,19 @@
 
 .dinosaurLinkToPge, .sweaterLinkToPge, .fenceLinkToPge {
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  width: 200px;
   height: 7rem;
   text-align: center;
 } 
-
-.homeLink {
-  border: double white;
-  width: 33.3%;
-}
-
-// .homePage {
-//   margin-top: 5%;
-// }
-
-.btn-info:hover {
-  width: 100%;
-}
-
-// .homePage {
-//   height: 100%;
-// }
 
 .productLinks {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  // border: solid white;
+  margin: 5%;
 }
 
 .carousel-item {
@@ -34,7 +21,7 @@
 }
 
 .carousel-inner {
-  height: 20rem;
+  height: 10rem;
   background-color: white;
   border: black solid;
   text-align: center;
