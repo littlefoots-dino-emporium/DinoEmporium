@@ -26,7 +26,7 @@ class MyNavbar extends React.Component {
         <div className="container">
           <Navbar expand="md">
             <NavbarBrand to="/" className="navbar-brand">
-              <img className='littlefoot-image' src={"http://i65.tinypic.com/a5f89j.jpg"} alt='product' />Littlefoot's Dino Emporium</NavbarBrand>
+              <img className='littlefoot-image' src={"http://i68.tinypic.com/5wcjd4.jpg"} alt='product' />Littlefoot's Dino Emporium</NavbarBrand>
             <NavbarToggler />
             <div className="yes">
               {authed ? (

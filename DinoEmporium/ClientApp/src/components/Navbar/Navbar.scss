@@ -6,16 +6,24 @@ $brown: rgb(102, 73, 36);
 $bone: rgb(202, 207, 183);
 $forestgreen: rgb(11, 138, 49);
 
-.Navbar{
+.littlefoot-image {
+  margin-left: -5%;
+}
+
+.Navbar {
   background-color: $bone;
   padding: 1em;
   margin: 0;
   font-family: 'Barriecito', cursive;
+  .littlefoot-image {
+    max-height:30%;
+    max-width: 30%;
+  }
 }
 
 .navbar-brand {
   font-family: 'Barriecito', cursive;
-  font-size: 40px;
+  font-size: 45.2px;
 }
 
 .secondary-navbar-links {
@@ -23,8 +31,8 @@ $forestgreen: rgb(11, 138, 49);
   display: flex;
   flex-direction: row;
   justify-content: center;
-  left: -5%;
-  top: 100px;
+  left: -1%;
+  top: 125px;
   width: 100%;
   margin: 0;
   padding: 0;

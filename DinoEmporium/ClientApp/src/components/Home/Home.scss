@@ -4,16 +4,16 @@
   flex-wrap: wrap;
   flex-direction: row;
   align-content: center;
-  width: 200px;
-  height: 7rem;
+  //width: 200px;
+  //height: 7rem;
   text-align: center;
 } 
 
 .productLinks {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  margin: 5%;
+  justify-content: center;
+  margin: 2%;
 }
 
 .carousel-item {
@@ -32,9 +32,22 @@
   background-color: white;
 }
 
-// .productLinks {
-//   display: flex;
-//   justify-content: space-between;
-//   margin: 2%;
-// }
+.lt1-image {
+  max-width: 25%;
+  max-height: 25%;
+}
 
+.lt2-image {
+  max-width: 33%;
+  max-height: 33%;
+}
+
+.lt3-image {
+  max-width: 30%;
+  max-height: 30%;
+}
+
+// .d-block {
+//   height: 400px;
+//   width: 400px;
+// }
