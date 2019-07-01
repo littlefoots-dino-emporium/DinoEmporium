@@ -4,8 +4,6 @@
   flex-wrap: wrap;
   flex-direction: row;
   align-content: center;
-  //width: 200px;
-  //height: 7rem;
   text-align: center;
 } 
 
@@ -13,24 +11,24 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 1%;
+}
+
+.whole-container-caurosel {
+  display: flex;
+  //flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
   margin: 2%;
 }
 
-.carousel-item {
-  background-color: white;
+.caurosel-container1, .caurosel-container2 {
+  //text-align: center;
+  margin: 2%;
+  max-height: 40%;
+  max-width: 40%;
 }
 
-.carousel-inner {
-  height: 10rem;
-  background-color: white;
-  border: black solid;
-  text-align: center;
-  // max-width: 200rem;
-}
-
-.test { 
-  background-color: white;
-}
 
 .lt1-image {
   max-width: 25%;
@@ -47,7 +45,17 @@
   max-height: 30%;
 }
 
-// .d-block {
-//   height: 400px;
-//   width: 400px;
-// }
+.d-block {
+  height: 400px;
+  width: 400px;
+}
+
+.deal-image {
+  max-height: 50%;
+  max-width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  margin: 0;
+}

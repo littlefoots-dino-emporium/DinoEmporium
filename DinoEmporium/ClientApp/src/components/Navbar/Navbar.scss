@@ -7,23 +7,15 @@ $bone: rgb(202, 207, 183);
 $forestgreen: rgb(11, 138, 49);
 
 .littlefoot-image {
-  margin-left: -5%;
+  max-height: 70%;
+  max-width: 70%;
+  margin: 0;
 }
 
 .Navbar {
   background-color: $bone;
-  padding: 1em;
+  padding: .5em;
   margin: 0;
-  font-family: 'Barriecito', cursive;
-  .littlefoot-image {
-    max-height:30%;
-    max-width: 30%;
-  }
-}
-
-.navbar-brand {
-  font-family: 'Barriecito', cursive;
-  font-size: 45.2px;
 }
 
 .secondary-navbar-links {
@@ -31,8 +23,8 @@ $forestgreen: rgb(11, 138, 49);
   display: flex;
   flex-direction: row;
   justify-content: center;
-  left: -1%;
-  top: 125px;
+  left: -7%;
+  top: 115px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -54,15 +46,19 @@ $forestgreen: rgb(11, 138, 49);
   }
 }
 
-
 .container1, .container2, .container3, .container4 {
   max-width: 100%;
   background-color: transparent 100;
-  font-family: 'Barriecito', cursive;
-  font-size: 23px;
+  //font-family: 'Barriecito', cursive;
+  font-size: 13px;
 }
 
 a, .btn {
   color: white;
+  background-color: transparent;
 }
 
+a:hover {
+  background-color: transparent 100;
+  color: black;
+}
