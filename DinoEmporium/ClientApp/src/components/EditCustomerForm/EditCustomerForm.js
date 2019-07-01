@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import authRequests from '../../firebaseRequests/auth';
 import customerRequest from '../../helpers/data/customerRequest';
 import { NavLink as RRNavLink } from 'react-router-dom';
+import getCustomerInfo from '../../helpers/data/customerRequest';
 import { Redirect } from 'react-router';
 import './EditCustomerForm.scss';
 
@@ -25,21 +26,10 @@ class EditCustomerForm extends React.Component {
 
   state = {
     updatedCustomerInformation: defaultCustomerInformation,
-    customer: this.props.customer,
   };
 
-  // getCustomer = () => {
-  //   let uid = authRequests.getUid();
-  //   customerRequest.getCustomerProfile(uid).then((customer) => {
-  //     this.setState({ customer })
-  //   });
-  // }
-
-  // componentDidMount() {
-  //   this.getCustomer();
-  // }
-
   updateCustomer = (updatedCustomerInformation) => {
+    const { customer } = this.props; 
     updatedCustomerInformation.uid = authRequests.getUid();
     const defaultCustomerInformation = {
       firstName: updatedCustomerInformation.firstName,
@@ -53,6 +43,11 @@ class EditCustomerForm extends React.Component {
       zip: updatedCustomerInformation.zip,
     }
     customerRequest.updateCustomerRequest(defaultCustomerInformation);
+    let uid = authRequests.getUid();
+    getCustomerInfo.getCustomerProfile(uid).then(() => {
+      this.setState({ customer })
+    });
+
     // this.props.history.push('/');
   }
 
@@ -97,20 +92,23 @@ class EditCustomerForm extends React.Component {
 
 
   formSubmit = (e) => {
+    const { customer } = this.props;
     e.preventDefault();
     const userInformation = { ...this.state.updatedCustomerInformation };
-    this.updateCustomer(userInformation);
-    this.setState({ updatedCustomerInformation: defaultCustomerInformation, toDashboard: true })
-    // this.componentDidMount();
+    this.updateCustomer(userInformation)
+    this.setState({ updatedCustomerInformation: defaultCustomerInformation });
+    let uid = authRequests.getUid();
+    getCustomerInfo.getCustomerProfile(uid).then(() => {
+      this.setState({ customer, toDashboard: true })
+    });
   }
 
   componentDidUpdate(prevProps) {
-    const { isEditing, editId } = this.props;
+    const { isEditing, editId, customer } = this.props;
     if (prevProps !== this.props && isEditing) {
       customerRequest.getCustomerProfile(editId)
-        .then((customer) => {
+        .then(() => {
           this.setState({ updatedCustomerInformation: customer });
-          // this.componentDidMount();
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
