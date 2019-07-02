@@ -5,8 +5,6 @@ import wishList from '../../helpers/data/wishListRequest';
 import customerProduct from '../../helpers/data/customerProductRequest';
 import customerRequest from '../../helpers/data/customerRequest';
 import autheRequests from '../../firebaseRequests/auth';
-
-
 import './FenceItem.scss';
 
 class FenceItem extends React.Component {

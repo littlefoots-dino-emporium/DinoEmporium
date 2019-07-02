@@ -3,7 +3,7 @@
 $grey: rgb(102, 105, 102);
 $darkblue: #1A577F;
 $brown: rgb(102, 73, 36);
-$bone: rgb(202, 207, 183);
+$bone: rgb(240, 243, 227);
 $forestgreen: rgb(11, 138, 49);
 
 .littlefoot-image {
@@ -54,11 +54,11 @@ $forestgreen: rgb(11, 138, 49);
 }
 
 a, .btn {
-  color: white;
+  color: black;
   background-color: transparent;
 }
 
-a:hover {
+a:hover, .btn:hover {
   background-color: transparent 100;
-  color: black;
+  color: $forestgreen;
 }

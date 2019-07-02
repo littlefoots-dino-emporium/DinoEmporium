@@ -4,6 +4,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import Ducky from '../../Images/Ducky.png';
+import $ from 'jQuery';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -33,6 +34,21 @@ class Home extends React.Component {
     });
   }
 
+  specialButton = () => {
+    $('.hero-btn').click(function(){
+      if(!$('.hero-btn').parent().hasClass('active')){
+        $(this).parent().stop().addClass('active');
+        setTimeout(function(){  
+          $('.hero-btn').parent().removeClass('active'); 
+        }, 2000);
+      }
+    });
+  }
+
+specialButton = () => {
+
+}
+
   render() {
     const { products } = this.state;
     const productItemComponent =
@@ -46,95 +62,137 @@ class Home extends React.Component {
         <div className="homePage">
 
           <div className='productLinks row'>
-            <Link to="/dinosaurs" className="dinosaurLink"><img className="lt1-image" src="http://i63.tinypic.com/x1ee83.jpg" alt="little"></img>Shop Dinosaurs</Link>
+            <Link to="/dinosaurs" className="dinosaurLink">
+              <div className='v-align'>
+                <div className='hero-btn'>
+                  <button className='btn' onClick={this.specialButton}>
+                    Shop Dinosaurs
+                  </button>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                  <span className='particles-circle'></span>
+                </div>
+              </div>
+            </Link>
+            <Link to="/sweaters" className="sweaterLink">Shop Sweaters</Link>
 
-            <Link to="/sweaters" className="sweaterLink"><img className="lt2-image" src="http://i67.tinypic.com/28i71v5.jpg" alt="foot"></img>Shop Sweaters</Link>
-
-            <Link to="/fences" className="fencesLink"><img className="lt3-image" src="http://i65.tinypic.com/a5f89j.jpg" alt="longneck"></img>Shop Fences</Link>
+            <Link to="/fences" className="fencesLink">Shop Fences</Link>
           </div>
 
-      <img className="deal-image" src={Ducky} alt="ducky"></img>
-        <div className="whole-container-caurosel">
-          <div className="caurosel-container1">
-            <Carousel>
-              <Carousel.Item>
-                <img
-                  className="d-block"
-                  src="http://i68.tinypic.com/xgktgj.jpg"
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block"
-                  src="http://i66.tinypic.com/2z6uwpx.jpg"
-                  alt="Third slide"
-                />
+          <img className="deal-image" src={Ducky} alt="ducky"></img>
+          <div className="whole-container-caurosel">
+            <div className="caurosel-container1">
+              <Carousel>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src="http://i68.tinypic.com/xgktgj.jpg"
+                    alt="First slide"
+                  />
+                  <Carousel.Caption>
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src="http://i66.tinypic.com/2z6uwpx.jpg"
+                    alt="Third slide"
+                  />
 
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block"
-                  src="http://i64.tinypic.com/73ecr4.jpg"
-                  alt="Third slide"
-                />
+                  <Carousel.Caption>
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src="http://i64.tinypic.com/73ecr4.jpg"
+                    alt="Third slide"
+                  />
 
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+                  <Carousel.Caption>
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
+            </div>
 
 
-          <div className="caurosel-container2">
-            <Carousel>
-              <Carousel.Item>
-                <img
-                  className="d-block"
-                  src="http://i66.tinypic.com/141jsjd.jpg"
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block"
-                  src="http://i68.tinypic.com/kcjcw0.jpg"
-                  alt="Third slide"
-                />
+            <div className="caurosel-container2">
+              <Carousel>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src="http://i66.tinypic.com/141jsjd.jpg"
+                    alt="First slide"
+                  />
+                  <Carousel.Caption>
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src="http://i68.tinypic.com/kcjcw0.jpg"
+                    alt="Third slide"
+                  />
 
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block"
-                  src="http://i68.tinypic.com/2vsnoec.jpg"
-                  alt="Third slide"
-                />
+                  <Carousel.Caption>
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block"
+                    src="http://i68.tinypic.com/2vsnoec.jpg"
+                    alt="Third slide"
+                  />
 
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+                  <Carousel.Caption>
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
+            </div>
           </div>
         </div>
       </div>
