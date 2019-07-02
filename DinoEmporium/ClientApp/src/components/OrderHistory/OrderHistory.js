@@ -40,7 +40,7 @@ export class OrderHistory extends Component {
     return (
       <div className="container">
         <div className="orderHistory">
-        <h1>Order History</h1>
+        <h1><b>Order History</b></h1>
         {orderHistoryPrint}
       </div>
       </div>
