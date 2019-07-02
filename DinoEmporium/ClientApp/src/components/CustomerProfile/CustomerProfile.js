@@ -40,8 +40,14 @@ export class CustomerProfile extends React.Component {
 
   componentDidMount() {
     let uid = autheRequests.getUid();
-    this.getCustomer();
+    this.getCustomer(uid);
     this.setState({ isEditing: true, editId: uid })
+  }
+  
+  componentWillUnmount() {
+    let uid = autheRequests.getUid();
+    this.getCustomer(uid);
+    this.setState({ isEditing: false, editId: uid })
   }
 
   editCustomer = (e) => {
@@ -49,10 +55,6 @@ export class CustomerProfile extends React.Component {
     let uid = autheRequests.getUid();
     this.setState({ isEditing: true, editId: uid })
     this.onOpenModal();
-  }
-  componentWillUnmount() {
-    this.getCustomer();
-    this.setState({ isEditing: false, editId: '-1' })
   }
 
   render() {
@@ -66,7 +68,6 @@ export class CustomerProfile extends React.Component {
           editId={editId}
           open={this.state.open}
           onCloseModal={this.onCloseModal}
-          componentWillUnmount={this.componentWillUnmount}
         />
       </div>
     )
