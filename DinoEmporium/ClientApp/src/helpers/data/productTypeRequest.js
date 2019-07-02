@@ -5,7 +5,7 @@ import axios from 'axios';
 
  const getSweaterRequest = () => new Promise((resolve, reject) => {
    axios
-     .get(`http://localhost:50312/api/productType/sweaterTypes`)
+     .get(`http://localhost:50319/api/productType/sweaterTypes`)
      .then((res) => {
         const productType = res.data;
         console.log(productType, 'sweaters');
@@ -16,7 +16,7 @@ import axios from 'axios';
 
  const getDinoRequest = () => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/productType/dinosaurTypes`)
+    .get(`http://localhost:50319/api/productType/dinosaurTypes`)
     .then((res) => {
        const productType = res.data;
        console.log(productType, 'dinos');
@@ -28,7 +28,7 @@ import axios from 'axios';
 
 const getFenceRequest = () => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/productType/fenceTypes`)
+    .get(`http://localhost:50319/api/productType/fenceTypes`)
     .then((res) => {
        const productType = res.data;
        console.log(productType, 'fences');

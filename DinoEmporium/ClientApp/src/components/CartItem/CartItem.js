@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 
 class CartItem extends React.Component {
 
-    deleteKidEvent = (e) => {
+    deleteProductEvent = (e) => {
         e.preventDefault();
         const { deleteOneProduct, customerProduct } = this.props;
         deleteOneProduct(customerProduct.productId);
@@ -24,7 +24,7 @@ class CartItem extends React.Component {
                     <h5>Title:{customerProduct.title}</h5>
                     <h5>Size:{customerProduct.size}</h5>
                     <h5>Price:${customerProduct.price}</h5> 
-                    <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
+                    <button className="btn btn-danger" onClick={this.deleteProductEvent}><i class="fas fa-trash-restore"></i></button>
                 </div>
                 
                 </div>

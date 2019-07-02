@@ -5,7 +5,7 @@ const firebaseURL = apiKeys.firebaseConfig.databaseURL;
 
  const getRequest = () => new Promise((resolve, reject) => {
    axios
-     .get(`http://localhost:50312/api/product/getAllProducts`)
+     .get(`http://localhost:50319/api/product/getAllProducts`)
      .then((res) => {
         const products = res.data;
        resolve(products);
