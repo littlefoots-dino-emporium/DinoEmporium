@@ -61,7 +61,9 @@ deleteOneProduct = (productId) => {
           if (this.state.checkout === true) {
             return <Redirect to={{
                 pathname: '/checkout',
-                state: { customer }
+                state: { customer: customer , 
+                          customerProducts: customerProducts
+                        }
             }}
     />
           }

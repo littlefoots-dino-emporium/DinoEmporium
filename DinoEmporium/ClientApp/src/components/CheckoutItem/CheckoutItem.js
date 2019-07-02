@@ -7,24 +7,39 @@ class CheckoutItem extends React.Component {
 
 
 render() {
-    const { payment } = this.props;
-    console.log(payment);
-
+    const { item } = this.props;
+    console.log(item);
+    let render;
+    if(item.nameOnCard != null)
+    {
+        render = item.nameOnCard;
+    }
+    else if (item.expirationDate != null){
+        render = item.expirationDate;
+    }
+    else if (item.address != null){
+        render = item.address;
+    }
+    else if (item.accountNumber != null){
+        render= item.accountNumber;
+    }
+    else if (item.price != null){
+        render= item.price;
+    }
     const paymentType =() => {
-        console.log(payment);
-        if(payment.paymentType == 0)
+        if(item.paymentType == 0)
         {
             return(
             "Master Card"
             )
         }
-        if(payment.paymentType == 1)
+        if(item.paymentType == 1)
         {
             return(
             "Visa"
             )
         }
-        if(payment.paymentType == 2)
+        if(item.paymentType == 2)
         {
             return(
             "American Express"
@@ -33,21 +48,23 @@ render() {
     }
 
     return(
-
+        
         <div className="info">
             <div className="customer-info">
-                <h5>Name on card: {payment.nameOnCard}</h5>
-                <h5>Address: {payment.address}</h5>
-                <h5>Account Number: {payment.accountNumber}</h5>
-                <h5>Expiration Date: {payment.expirationDate}</h5>
+                <h5>Name on card: {render}</h5>
+                <h5>Address: {render}</h5>
+                <h5>Account Number: {render}</h5>
+                <h5>Expiration Date: {render}</h5>
                 <h5>PaymentType:{paymentType()}</h5> 
+                <h5>Price{render}</h5>
             </div>
             <div className="delete-button" onClick={this.deletePaymentEvent}><button className="btn btn-danger delete-button" ><i class="fas fa-trash-restore"></i></button></div>
             {/* <button className="btn btn-primary edit-button"><i class="fas fa-pencil-alt"></i></button> */}
 
 
         </div>
-    )};
+    )
+    };
 
 }   
 

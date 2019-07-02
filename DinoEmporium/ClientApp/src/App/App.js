@@ -165,8 +165,8 @@ class App extends React.Component {
                   <PrivateRoute path='/paymentInformation' exact component={PaymentInformation} authed={this.state.authed} />
                   <PrivateRoute path='/orderhistory' exact component={OrderHistory} authed={this.state.authed} />
                   <PrivateRoute path='/wishlist' exact component={WishList} authed={this.state.authed} />
-                  {/* <PrivateRoute path='/checkout' exact component={Checkout} authed={this.state.authed} paymentInfo={this.state.paymentInfo} /> */}
-                  <PrivateRoute exact path="/checkout" authed={this.state.authed} component={props => <Checkout {...props} paymentInfo={this.state.paymentInfo}/>}/>
+                  <PrivateRoute path='/checkout' exact component={Checkout} authed={this.state.authed} paymentInfo={this.state.paymentInfo} />
+                  {/* <PrivateRoute exact path="/checkout" authed={this.state.authed} component={props => <Checkout {...props} paymentInfo={paymentInfo}/>}/> */}
                 </Switch>
           </div>
         </BrowserRouter>

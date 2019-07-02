@@ -9,7 +9,6 @@ const getCustomerProductsRequest = uid => new Promise((resolve, reject) => {
       .get(`http://localhost:50319/api/customerProduct/getCustomerProducts/${uid}`)
       .then((res) => {
         let customerProducts = res.data;
-        console.log(customerProducts);
         resolve(customerProducts);
       })
       .catch(err => reject(err));
