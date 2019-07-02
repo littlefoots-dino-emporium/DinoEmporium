@@ -48,7 +48,8 @@ export class AccountHome extends Component {
       return <Redirect to='/customerprofile' />
     }
     if (this.state.orderHistory === true) {
-      return <Redirect to='/orderhistory' />
+      return <Redirect to='/orderhistory'/>
+      
     }
     if (this.state.wishList === true) {
       return <Redirect to='/wishlist' />
@@ -61,18 +62,12 @@ export class AccountHome extends Component {
     return (
       <div className="container accountHome">
           <div class="welcome text-center">
-            <h3>{customer.firstName} {customer.lastName}</h3>
-            <div class="card-body">
-              <p>email: {customer.email}</p>
-              <p>
-                address: 
-                {customer.address}
-                {customer.city}
-                {customer.state}
-                {customer.zip}
-              </p>
-              
-            </div>
+            <h1><b>{customer.firstName} {customer.lastName}</b></h1>
+            {/* <div class="card-body"> */}
+                <h3>{customer.address}</h3>
+                <h5>{customer.city}, {customer.state} {customer.zip}</h5>
+                <p>{customer.email}</p>
+            {/* </div> */}
         <div className="customerNav text-right">
           <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
             Update Profile Information

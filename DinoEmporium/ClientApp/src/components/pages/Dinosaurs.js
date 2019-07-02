@@ -3,6 +3,7 @@ import DinosaurItem from '../DinosaurItem/DinosaurItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
 
+import './Dinosaurs.scss';
 
 class Dinosaur extends React.Component {
   state = {
@@ -44,15 +45,12 @@ class Dinosaur extends React.Component {
   render() {
     const { filteredDinosaurs } = this.state;
 
-
-    
     const dinosaurItemComponent = filteredDinosaurs.map(product => (
-      <div>
+      <div key={product.id}>
         <DinosaurItem 
           product={product}
-          key={product.id}
         />
-        </div>
+      </div>
     ));
 
     return (
@@ -63,7 +61,7 @@ class Dinosaur extends React.Component {
       searchText=""
       classNames="test-class w-50 mt-auto"
     />
-      <div className='dinosaurs'>
+      <div className='dinosaursComponentDiv'>
         {dinosaurItemComponent}
       </div>
       </div>

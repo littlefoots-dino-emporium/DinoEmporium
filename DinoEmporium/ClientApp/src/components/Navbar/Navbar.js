@@ -23,52 +23,50 @@ class MyNavbar extends React.Component {
 
     return (
       <div className="Navbar">
-       
-        <Navbar color="dark" dark expand="md">
-          <NavbarBrand to="/" className="navbar-brand">Littlefoot's Dino Emporium</NavbarBrand>
-          <NavbarToggler />
-          <div className="collapse navbar-collapse navar-buttons" id="bs-example-navbar-collapse-1">
-            {authed ? (
-              <Nav>
+        <div className="container">
+          <Navbar expand="md">
+            <NavbarBrand to="/" className="navbar-brand">
+              <img className='littlefoot-image' src={"http://i65.tinypic.com/a5f89j.jpg"} alt='product' />Littlefoot's Dino Emporium</NavbarBrand>
+            <NavbarToggler />
+            <div className="yes">
+              {authed ? (
+                <Nav className="secondary-navbar-links">
+                  <NavItem className="container1">
+                    <NavLink tag={RRNavLink} to='/home'>
+                      HOME
+                      </NavLink>
+                  </NavItem>
+                  <NavItem className="container2">
+                    <NavLink tag={RRNavLink} to='/ShoppingCart'>
+                      SHOPPING CART
+                      </NavLink>
+                  </NavItem>
+                  <NavItem className="container3">
+                    <NavLink tag={RRNavLink} to='/accounthome'>
+                      USER ACCOUNT
+                      </NavLink>
+                  </NavItem>
 
-                <NavItem>
-                          <NavLink tag={RRNavLink} to='/home'>
-                          <i class="fas fa-home"></i>
-                          </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to='/ShoppingCart'>
-                  <i class="fas fa-cart-arrow-down"></i>
+                  <NavLink
+                    onClick={logoutClickEvent}
+                    className="btn btn container4"
+                    tag={RRNavLink} to='/login'>
+                    LOGOUT
                   </NavLink>
-                </NavItem>
-                <NavItem>
-                          <NavLink tag={RRNavLink} to='/accounthome'>
-                          <i class="fas fa-user"></i>
-                          </NavLink>
-                </NavItem>
+                </Nav>
 
-                          <NavLink
-                                onClick={logoutClickEvent}
-                                className="btn btn-danger"
-                                tag={RRNavLink} to='/login'
-                                
-                          >
-                                Logout
-                          </NavLink>
-
-              </Nav>
-
-            ) 
-            : 
-            (
-                <ul className="nav navbar-nav navbar-right">
-                  <li>
-                  </li>
-                </ul>
               )
-            }
-          </div>
-        </Navbar>
+                :
+                (
+                  <ul className="nav navbar-nav navbar-right">
+                    <li>
+                    </li>
+                  </ul>
+                )
+              }
+            </div>
+          </Navbar>
+        </div>
       </div>
     );
   }

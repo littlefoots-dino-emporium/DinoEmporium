@@ -57,7 +57,7 @@ class ProductItem extends React.Component {
                             <li className='plant-price'><i>${product.price}</i></li>
                             <li className='plant-description'>{product.description}</li>
                             <li className='plant-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick= {this.addToCart}>Add To Cart </Button>
+                            <Button onClick= {this.addToCart}>Add To Cart</Button>
                         </div>
                     </React.Fragment>
                 </Modal>

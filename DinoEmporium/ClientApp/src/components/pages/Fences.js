@@ -3,6 +3,7 @@ import FenceItem from '../FenceItem/FenceItem';
 import productTypeRequests from '../../helpers/data/productTypeRequest';
 import SearchField from 'react-search-field';
 
+import './Fences.scss';
 
 class Sweaters extends React.Component {
   state = {
@@ -55,14 +56,14 @@ class Sweaters extends React.Component {
     ));
 
     return (
-      <div>
+      <div className = "searchField">
       <SearchField
       placeholder="Search Fences..."
       onChange={this.onChange}
       searchText=""
       classNames="test-class w-50 mt-auto"
     />
-      <div className='fences'>
+      <div className='fencesComponentDiv'>
         {fenceItemComponent}
       </div>
       </div>

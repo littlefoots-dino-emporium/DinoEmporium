@@ -1,13 +1,63 @@
 import React, { Component } from 'react'
+import authRequests from '../../firebaseRequests/auth';
+import getWishList from '../../helpers/data/wishListRequest';
+import getCustomerInfo from '../../helpers/data/customerRequest';
+import WishListItem from '../WishListItem/WishListItem';
 
 export class WishList extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Wish List</h1>
-      </div>
+  state = {
+    customerProducts: [],
+    customer: ''
+}
+
+componentDidMount() {
+  let uid = authRequests.getUid();
+  this.customerInfo();
+      getCustomerInfo.getCustomerProfile(uid).then((customer) => {
+        this.setState({ customer })
+        console.log(customer);
+});
+}
+
+customerInfo = () => {
+let uid = authRequests.getUid();
+getWishList.getWishListRequest(uid).then((customerProducts) => {
+    this.setState({ customerProducts });
+    console.log(customerProducts);
+});
+}
+
+deleteOneProduct = (productId) => {
+  getWishList.deleteSingleProduct(productId)
+    .then(() => {
+      this.customerInfo();
+    })
+    .catch(err => console.error('error with delte single', err));
+}
+
+render() {
+    const { customerProducts, customer } = this.state;
+    console.log(customerProducts);
+
+    const customerWishListItem = customerProducts.map(customerProducts => (
+        <WishListItem
+        customerProduct={customerProducts}
+          key={customerProducts.id}
+          customer={customer}
+          deleteOneProduct={this.deleteOneProduct}
+        />
+      ));
+      
+    return(
+        <div className="card all-in-cart">
+        <h1 className="cart">Wish List</h1>
+        <div>
+        { customerWishListItem } 
+        </div>
+        </div>
     )
-  }
+
+}
 }
 
 export default WishList

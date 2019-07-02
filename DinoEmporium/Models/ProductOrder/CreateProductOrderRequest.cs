@@ -11,5 +11,6 @@ namespace DinoEmporium.Models.ProductOrder
         public int ProductId { get; set; }
         public int OrderId { get; set; }
         public bool IsInCart { get; set; }
+        public bool IsInWishList { get; set; }
     }
 }
