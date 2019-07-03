@@ -51,7 +51,6 @@ this.setState({ paymentInfo })
             <h2>Payment Information</h2>
             {checkoutItem}
             {checkoutProducts}
-            <h4></h4>
             </div>
             </div>
         )
