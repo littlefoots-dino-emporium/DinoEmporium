@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './WishListItem.scss';
 
 export class WishListItem extends Component {
     deleteKidEvent = (e) => {
@@ -16,7 +17,7 @@ export class WishListItem extends Component {
 
         <div className="product-info">
             <div className="product-img">
-                <img src={customerProduct.image} alt="cart items"/>
+                <img className="wishlistImage" src={customerProduct.image} alt="cart items"/>
             </div>
             <div className="product-description">
                 <h5>Title:{customerProduct.title}</h5>

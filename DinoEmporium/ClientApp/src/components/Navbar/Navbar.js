@@ -9,6 +9,7 @@ import {
   NavLink,
   NavItem
 } from 'reactstrap';
+import Banner from '../../Images/Banner.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.scss';
 
@@ -26,7 +27,7 @@ class MyNavbar extends React.Component {
         <div className="container">
           <Navbar expand="md">
             <NavbarBrand to="/" className="navbar-brand">
-              <img className='littlefoot-image' src={"http://i65.tinypic.com/a5f89j.jpg"} alt='product' />Littlefoot's Dino Emporium</NavbarBrand>
+            <img className='littlefoot-image' src={Banner} alt='product' /></NavbarBrand>
             <NavbarToggler />
             <div className="yes">
               {authed ? (
@@ -47,9 +48,8 @@ class MyNavbar extends React.Component {
                       </NavLink>
                   </NavItem>
 
-                  <NavLink
+                  <NavLink className="btn btn container4"
                     onClick={logoutClickEvent}
-                    className="btn btn container4"
                     tag={RRNavLink} to='/login'>
                     LOGOUT
                   </NavLink>
