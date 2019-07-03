@@ -129,6 +129,7 @@ class Home extends React.Component {
           </div>
 
             <img className="deal-image" src={Ducky} alt="ducky"></img>
+            
             <div className="whole-container-caurosel">
               <div className="caurosel-container1">
                 <Carousel>
