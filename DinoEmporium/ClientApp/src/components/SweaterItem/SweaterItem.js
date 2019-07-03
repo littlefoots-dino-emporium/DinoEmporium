@@ -75,10 +75,10 @@ class SweaterItem extends React.Component {
                             <li className='sweater-price'><i>${product.price}</i></li>
                             <li className='sweater-description'>{product.description}</li>
                             <li className='sweater-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick = {this.addToCart}>
+                            <Button className="addToCart" onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
                             </Button>
-                            <Button onClick = {this.addToWishlist}>
+                            <Button className="addToWishList" onClick = {this.addToWishlist}>
                                 {this.state.wishListButtonChange}
                             </Button>
                         </div>
