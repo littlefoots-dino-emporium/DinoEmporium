@@ -70,10 +70,10 @@ class FenceItem extends React.Component {
                         <div className='productCard'>
                             <li className='fence-price'><i>${product.price} per foot.</i></li>
                             <li className='fence-description'>{product.description}</li>
-                            <Button onClick = {this.addToCart}>
+                            <Button className="addToCart" onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
                             </Button>
-                            <Button onClick = {this.addToWishlist}>
+                            <Button className="addToWishlist" onClick = {this.addToWishlist}>
                                 {this.state.wishListButtonChange}
                             </Button>
                         </div>

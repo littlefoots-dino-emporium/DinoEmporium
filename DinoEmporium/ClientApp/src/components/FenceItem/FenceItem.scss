@@ -4,12 +4,16 @@
   z-index: 200;
 }
 
-//.fence-title{
-  //color: black;
-//}
-
 .fenceModal{
   margin: 1%;
   padding: 6%;
-  //background-color: white;
+}
+
+.fence-title {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.addToCart, .addToWishList {
+  margin: 2%;
 }
