@@ -74,10 +74,10 @@ class DinosaurItem extends React.Component {
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
                             <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
-                            <Button onClick = {this.addToCart}>
+                            <Button className="addToCart" onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
                             </Button>
-                            <Button onClick = {this.addToWishlist}>
+                            <Button className="addToWishList" onClick = {this.addToWishlist}>
                                 {this.state.wishListButtonChange}
                             </Button>
                         </div>

@@ -1,7 +1,6 @@
-
 import React from 'react';
 import autheRequests from '../../firebaseRequests/auth';
-import customerRequest from '../../helpers/data/customerRequest';
+//import customerRequest from '../../helpers/data/customerRequest';
 import customerProductRequest from '../../helpers/data/customerProductRequest';
 import CartItem from '../CartItem/CartItem';
 import './ShoppingCart.scss';
