@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const getCustomerProfile = uid => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/customer/${uid}`)
+    .get(`http://localhost:50319/api/customer/${uid}`)
     .then((res) => {
       let customer = res.data;
       resolve(customer);
@@ -11,9 +11,9 @@ const getCustomerProfile = uid => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-const postCustomerRequest = (customerInfo) => axios.post(`http://localhost:50312/api/customer/register`, customerInfo);
+const postCustomerRequest = (customerInfo) => axios.post(`http://localhost:50319/api/customer/register`, customerInfo);
 
-const updateCustomerRequest = (customer) => axios.put(`http://localhost:50312/api/customer/${customer}`, customer);
+const updateCustomerRequest = (customer) => axios.put(`http://localhost:50319/api/customer/${customer}`, customer);
 
 export default {
   postCustomerRequest,

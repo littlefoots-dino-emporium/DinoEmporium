@@ -17,45 +17,65 @@ import './App.scss';
 import ShoppingCart from '../components/ShoppingCart/ShoppingCart';
 import PaymentInformation from '../components/PaymentInformation/PaymentInformation';
 import WishList from '../components/WishList/WishList';
+import customerRequest from '../helpers/data/customerRequest';
+import autheRequests from '../firebaseRequests/auth';
+import Checkout from '../components/Checkout/Checkout';
+import paymentRequest from '../helpers/data/paymentInformationRequest';
+
+
 fbConnection();
-
-const PrivateRoute = ({ component: Component, authed, ...rest}) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        authed === true ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{ pathname: '/login', state: {from: props.location}}}
-          />
-        )
-      }
-    />
-  );
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
+  let routeChecker = props => (authed === false
+    ? (<Component {...props} {...rest} />)
+    : (<Redirect to={{ pathname: '/login', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
-const PublicRoute = ({ component: Component, authed, ...rest}) => {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        authed === false ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{ pathname: '/orders', state: {from: props.location}}}
-          />
-        )
-      }
-    />
-  );
+
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  let routeChecker = props => (authed === true
+    ? (<Component {...props} {...rest} />)
+    : (<Redirect to={{ pathname: '/orders', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
 };
+
+// const PrivateRoute = ({ component: Component, authed,paymentInfo, ...rest}) => {
+//   return (
+//     <Route
+//       render={props =>
+//         authed === true ? (
+//           <Component {...props} {...rest}/>
+//         ) : (
+//           <Redirect
+//             to={{ pathname: '/login', state: {from: props.location}}}
+//           />
+//         )
+//       }
+//     />
+//   );
+// };
+
+// const PublicRoute = ({ component: Component, authed, ...rest}) => {
+//   return (
+//     <Route
+//       render={props =>
+//         authed === false ? (
+//           <Component {...props} {...rest} />
+//         ) : (
+//           <Redirect
+//             to={{ pathname: '/orders', state: {from: props.location}}}
+//           />
+//         )
+//       }
+//     />
+//   );
+// };
 
 class App extends React.Component {
   state={
     authed: false,
+    customer: '',
+    paymentInfo: ''
   }
 
   componentDidMount() {
@@ -65,14 +85,29 @@ class App extends React.Component {
         this.setState({
           authed: true,
         });
+        let uid = autheRequests.getUid();
+        customerRequest.getCustomerProfile(uid).then((customer) => {
+            this.setState({ customer });
+  paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
+    this.setState({ paymentInfo})
+    console.log(customer.id);
+})
+      });
       } else {
         this.setState({
           authed: false,
         });
       }
     });
-  }
+}
 
+// getCustomerPayment = () => {
+//   const { customer } = this.state;
+//   paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
+//     this.setState({ paymentInfo})
+//     console.log(customer.id);
+// })
+// }
   componentWillUnmount () {
     this.removeListener();
   }
@@ -83,7 +118,8 @@ class App extends React.Component {
 
   render () {
     const {
-      authed,
+      authed, 
+      customer
     } = this.state 
 
     if (!authed) {
@@ -121,7 +157,7 @@ class App extends React.Component {
                   <Route path="/" exact component={Home}/>
                   <PrivateRoute path='/customerprofile' exact component={CustomerProfile} authed={this.state.authed} />
                   <PrivateRoute path='/home' exact component={Home} authed={this.state.authed} />
-                  <PrivateRoute path='/shoppingCart' exact component={ShoppingCart} authed={this.state.authed} />
+                  <PrivateRoute path='/shoppingCart' exact component={ShoppingCart} authed={this.state.authed} customer={this.state.customer}/>
                   <PrivateRoute path='/dinosaurs' exact component={Dinosaurs} authed={this.state.authed} />
                   <PrivateRoute path='/sweaters' exact component={Sweaters} authed={this.state.authed} />
                   <PrivateRoute path='/fences' exact component={Fences} authed={this.state.authed} />
@@ -129,6 +165,8 @@ class App extends React.Component {
                   <PrivateRoute path='/paymentInformation' exact component={PaymentInformation} authed={this.state.authed} />
                   <PrivateRoute path='/orderhistory' exact component={OrderHistory} authed={this.state.authed} />
                   <PrivateRoute path='/wishlist' exact component={WishList} authed={this.state.authed} />
+                  <PrivateRoute path='/checkout' exact component={Checkout} authed={this.state.authed} paymentInfo={this.state.paymentInfo} />
+                  {/* <PrivateRoute exact path="/checkout" authed={this.state.authed} component={props => <Checkout {...props} paymentInfo={paymentInfo}/>}/> */}
                 </Switch>
           </div>
         </BrowserRouter>

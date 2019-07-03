@@ -5,13 +5,14 @@ import customerProductRequest from '../../helpers/data/customerProductRequest';
 import CartItem from '../CartItem/CartItem';
 import './ShoppingCart.scss';
 import getCustomerInfo from '../../helpers/data/customerRequest';
-
+import { Redirect } from 'react-router';
 
 class ShoppingCart extends React.Component {
 
     state = {
         customerProducts: [],
-        customer: ''
+        customer: '',
+        checkout: false
     }
 
 componentDidMount() {
@@ -39,6 +40,9 @@ deleteOneProduct = (productId) => {
       })
       .catch(err => console.error('error with delte single', err));
   }
+  checkout = () => {
+    this.setState({ checkout: true })
+  }
 
     render() {
         const { customerProducts, customer } = this.state;
@@ -53,12 +57,23 @@ deleteOneProduct = (productId) => {
             />
           ));
           
+          if (this.state.checkout === true) {
+            return <Redirect to={{
+                pathname: '/checkout',
+                state: { customer: customer , 
+                          customerProducts: customerProducts
+                        }
+            }}
+    />
+          }
+
         return(
             <div className="card all-in-cart">
-            <h1 className="cart">Shopping Cart</h1>
+            <div><h1 className="cart">Shopping Cart</h1></div>
+            <div><button className="btn btn-primary" onClick={this.checkout}>Proceed to checkout</button></div>
             <div>
             { customerProductItem } 
-            </div>
+            </div>    
             </div>
         )
 
