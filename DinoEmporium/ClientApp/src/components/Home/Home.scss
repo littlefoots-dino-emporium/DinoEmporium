@@ -14,7 +14,7 @@ $forestgreen: rgb(11, 138, 49);
   padding: 0;
 } 
 
-p, h3 {
+.description, .description1, .title, .title1 {
   text-shadow: 2px 2px 2px black;
 }
 
@@ -26,28 +26,26 @@ p, h3 {
   padding: 0;
 }
 
-.whole-container-caurosel {
-  display: flex;
-  position: static;
-  //flex-direction: row;
-  justify-content: center;
-  background-image: url(../../Images/Background.png);
-  margin-bottom: 5%;
-  margin: 1%;
-  overflow: hidden;
+// .whole-container {
+//   position: relative;
+//   overflow: hidden;
+// }
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-.caurosel-container1, .caurosel-container2 {
-  //text-align: center;
-  margin: 2%;
-  max-height: 40%;
-  max-width: 40%;
+.slide {
+  animation-name: slideInLeft;
 }
 
-.d-block {
-  height: 400px;
-  width: 400px;
-}
 
 .deal-image {
   max-height: 50%;

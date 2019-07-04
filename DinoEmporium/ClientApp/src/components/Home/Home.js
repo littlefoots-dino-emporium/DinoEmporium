@@ -25,12 +25,12 @@ class Home extends React.Component {
     })
   }
 
-  handleSelect(selectedIndex, e) {
-    this.setState({
-      index: selectedIndex,
-      direction: e.direction,
-    });
-  }
+  // handleSelect(selectedIndex, e) {
+  //   this.setState({
+  //     index: selectedIndex,
+  //     direction: e.direction,
+  //   });
+  // }
 
   // specialButton = () => {
   //   $('.hero-btn').click(function(){
@@ -130,90 +130,11 @@ class Home extends React.Component {
 
             <img className="deal-image" src={Ducky} alt="ducky"></img>
             
-            <div className="whole-container-caurosel">
-              <div className="caurosel-container1">
-                <Carousel>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i68.tinypic.com/xgktgj.jpg"
-                      alt="First slide"
-                    />
-                    <Carousel.Caption>
-                      <h3>Gate</h3>
-                      <p className="description">Necessary for all pens.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i66.tinypic.com/2z6uwpx.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Will Smith's Face</h3>
-                      <p className="description">Your dinosaur will be legit in this.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i64.tinypic.com/73ecr4.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Huayangosaurus</h3>
-                      <p className="description">I'm a super cool dino, but I need a pack. So don't buy this deal if you can't provide.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                </Carousel>
-              </div>
-
-
-              <div className="caurosel-container2">
-                <Carousel>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i66.tinypic.com/141jsjd.jpg"
-                      alt="First slide"
-                    />
-                    <Carousel.Caption>
-                      <h3>Dilophosaurus</h3>
-                      <p className="description">I'm a great by myself or with others of my kind. Just watch out, I spit!</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i68.tinypic.com/kcjcw0.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Cement Wall</h3>
-                      <p className="description">I'm better than steel, but I'd be even better with.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i68.tinypic.com/2vsnoec.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Pink Fluffy Sweater</h3>
-                      <p className="description">Fuzzy and pink. Don't you just want to cuddle?</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                </Carousel>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div className="whole-container"></div>
+            <div><img className="slide" src="http://i65.tinypic.com/149w6k2.jpg" alt="this one"></img></div>
+           </div>
+           </div>
+        
         );
       }
     }
