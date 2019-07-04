@@ -2,7 +2,6 @@ import React from 'react';
 import productRequests from '../../helpers/data/productRequest';
 import ProductItem from '../ProductItem/ProductItem';
 import { Link } from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel';
 import Ducky from '../../Images/Duckyxcf.png';
 import './Home.scss';
 
@@ -117,27 +116,35 @@ class Home extends React.Component {
                 <button className='btn' onClick={this.specialButton}>
                   Shop Sweaters
                   </button>
-                  </div>
-                  </Link>
-              <Link to="/fences" className="fencesLink">
+              </div>
+            </Link>
+            <Link to="/fences" className="fencesLink">
               <div className='hero-btn'>
                 <button className='btn' onClick={this.specialButton}>
                   Shop Fences
                   </button>
-                  </div>
-                  </Link>
+              </div>
+            </Link>
           </div>
 
-            <img className="deal-image" src={Ducky} alt="ducky"></img>
-            
-            <div className="whole-container"></div>
-            <div className="animated slideInLeft delay-2s"><img className="slideInLeft" src="http://i65.tinypic.com/149w6k2.jpg" alt="this one"></img></div>
-           </div>
-           </div>
-        
-        );
+          <img className="deal-image" src={Ducky} alt="ducky"></img>
+
+          <div className="whole-container">
+            <div className="animated slideInLeft delay-2s"><img className="slideInLeft" src="http://i65.tinypic.com/149w6k2.jpg" alt="dinosaur in deal"></img></div>
+            <div className="animated slideInLeft delay-3s"><img className="slide" src="http://i68.tinypic.com/xgktgj.jpg" alt="gate in deal"></img></div>
+            <div className="animated slideInLeft delay-4s"><img className="slider" src="http://i66.tinypic.com/2z6uwpx.jpg" alt="sweater in deal"></img></div>
+            <div className='v-align'>
+              <div className='hero-btn'>
+                <button className="btn dealOfMonth1" onClick={this.specialButton}>Buy Me!</button>
+              </div>
+            </div>
+
+              </div>
+            </div>
+          </div>
+          );
+        }
       }
-    }
-    
-    
-    export default Home;
+      
+      
+      export default Home;

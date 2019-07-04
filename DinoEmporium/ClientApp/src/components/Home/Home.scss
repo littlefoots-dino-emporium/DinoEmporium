@@ -79,10 +79,10 @@ $forestgreen: rgb(11, 138, 49);
   padding: 0;
 }
 
-// .whole-container {
-//   position: relative;
-//   overflow: hidden;
-// }
+.whole-container {
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
 
 @keyframes slideInLeft {
   from {
@@ -91,12 +91,28 @@ $forestgreen: rgb(11, 138, 49);
   }
 
   to {
-    transform: translate3d(50, 50, 50);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .slideInLeft {
   animation-name: slideInLeft;
+}
+
+.slide {
+  animation-name: slideInLeft;
+  width: 150px;
+  height: 150px;
+  margin-left: 330px;
+  margin-top: -560px;
+}
+
+.slider {
+  animation-name: slideInLeft;
+  width: 200px;
+  height: 200px;
+  margin-left: 330px;
+  margin-top: -240px;
 }
 
 .deal-image {
@@ -109,10 +125,15 @@ $forestgreen: rgb(11, 138, 49);
   margin: auto;
 }
 
+.dealOfMonth1 {
+  width: 600px;
+  height: 66px;
+}
+
 //special button for product links 
 //loader options
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400, 600");
-.hero-btn {
+.hero-btn, .dealOfTheMonth1 {
   position: relative;
   width: 500px;
   margin: auto;
