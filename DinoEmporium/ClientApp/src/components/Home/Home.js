@@ -131,7 +131,7 @@ class Home extends React.Component {
             <img className="deal-image" src={Ducky} alt="ducky"></img>
             
             <div className="whole-container"></div>
-            <div><img className="slide" src="http://i65.tinypic.com/149w6k2.jpg" alt="this one"></img></div>
+            <div className="animated slideInLeft delay-2s"><img className="slideInLeft" src="http://i65.tinypic.com/149w6k2.jpg" alt="this one"></img></div>
            </div>
            </div>
         
