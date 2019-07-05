@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const getPaymentInformation = customerId => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/paymentInformation/allpaymentsOfCustomer/${customerId}`)
+    .get(`http://localhost:50319/api/paymentInformation/allpaymentsOfCustomer/${customerId}`)
     .then((res) => {
       let customer = res.data;
       if(!customer)
@@ -16,9 +16,9 @@ const getPaymentInformation = customerId => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-const postPaymentInformation = (paymentInformation) => axios.post(`http://localhost:50312/api/PaymentInformation/register`, paymentInformation);
+const postPaymentInformation = (paymentInformation) => axios.post(`http://localhost:50319/api/PaymentInformation/register`, paymentInformation);
 
-const deleteSinglePaymentInformation = paymentId => axios.delete(`http://localhost:50312/api/paymentInformation/deletePayment/${paymentId}`);
+const deleteSinglePaymentInformation = paymentId => axios.delete(`http://localhost:50319/api/paymentInformation/deletePayment/${paymentId}`);
 
 export default {
     getPaymentInformation,
