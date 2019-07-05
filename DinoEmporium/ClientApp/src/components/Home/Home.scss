@@ -94,6 +94,41 @@ $forestgreen: rgb(11, 138, 49);
     transform: translate3d(0, 0, 0);
   }
 }
+@keyframes bounceInDown {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.bounceInDown {
+  animation-name: bounceInDown;
+}
 
 .slideInLeft {
   animation-name: slideInLeft;
@@ -107,12 +142,36 @@ $forestgreen: rgb(11, 138, 49);
   margin-top: -560px;
 }
 
-.slider {
+.slideLeft {
   animation-name: slideInLeft;
   width: 200px;
   height: 200px;
   margin-left: 330px;
   margin-top: -240px;
+}
+
+.bouncedownGate {
+  animation-name: slideInRight;
+  width: 150px;
+  height: 150px;
+  margin-left: 660px;
+  margin-top: -835px;
+}
+
+.bouncedownSweater {
+  animation-name: slideInRight;
+  width: 200px;
+  height: 200px;
+  margin-left: 610px;
+  margin-top: -515px;
+}
+
+.bouncedownDino {
+  margin-left: 820px;
+  margin-top: -550px;
+  height: 300px;
+  width: 300px;
+  padding: 0;
 }
 
 .deal-image {
@@ -128,6 +187,11 @@ $forestgreen: rgb(11, 138, 49);
 .dealOfMonth1 {
   width: 600px;
   height: 66px;
+}
+
+.v-align1 {
+  margin-left: 740px;
+  margin-top: -170px;
 }
 
 //special button for product links 
