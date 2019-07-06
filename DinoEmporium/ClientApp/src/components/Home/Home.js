@@ -2,7 +2,6 @@ import React from 'react';
 import productRequests from '../../helpers/data/productRequest';
 import ProductItem from '../ProductItem/ProductItem';
 import { Link } from 'react-router-dom';
-import Carousel from 'react-bootstrap/Carousel';
 import Ducky from '../../Images/Duckyxcf.png';
 import './Home.scss';
 
@@ -25,12 +24,12 @@ class Home extends React.Component {
     })
   }
 
-  handleSelect(selectedIndex, e) {
-    this.setState({
-      index: selectedIndex,
-      direction: e.direction,
-    });
-  }
+  // handleSelect(selectedIndex, e) {
+  //   this.setState({
+  //     index: selectedIndex,
+  //     direction: e.direction,
+  //   });
+  // }
 
   // specialButton = () => {
   //   $('.hero-btn').click(function(){
@@ -117,105 +116,49 @@ class Home extends React.Component {
                 <button className='btn' onClick={this.specialButton}>
                   Shop Sweaters
                   </button>
-                  </div>
-                  </Link>
-              <Link to="/fences" className="fencesLink">
+              </div>
+            </Link>
+            <Link to="/fences" className="fencesLink">
               <div className='hero-btn'>
                 <button className='btn' onClick={this.specialButton}>
                   Shop Fences
                   </button>
-                  </div>
-                  </Link>
+              </div>
+            </Link>
           </div>
 
-            <img className="deal-image" src={Ducky} alt="ducky"></img>
-            <div className="whole-container-caurosel">
-              <div className="caurosel-container1">
-                <Carousel>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i68.tinypic.com/xgktgj.jpg"
-                      alt="First slide"
-                    />
-                    <Carousel.Caption>
-                      <h3>Gate</h3>
-                      <p className="description">Necessary for all pens.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i66.tinypic.com/2z6uwpx.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Will Smith's Face</h3>
-                      <p className="description">Your dinosaur will be legit in this.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i64.tinypic.com/73ecr4.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Huayangosaurus</h3>
-                      <p className="description">I'm a super cool dino, but I need a pack. So don't buy this deal if you can't provide.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                </Carousel>
+          <img className="deal-image" src={Ducky} alt="ducky"></img>
+          <div className='v-align1'>
+            <div className='hero-btn'>
+              <div className="first">
+                <button className="btn dealOfMonth2" onClick={this.specialButton}>Buy Me!</button>
               </div>
-
-
-              <div className="caurosel-container2">
-                <Carousel>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i66.tinypic.com/141jsjd.jpg"
-                      alt="First slide"
-                    />
-                    <Carousel.Caption>
-                      <h3>Dilophosaurus</h3>
-                      <p className="description">I'm a great by myself or with others of my kind. Just watch out, I spit!</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i68.tinypic.com/kcjcw0.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Cement Wall</h3>
-                      <p className="description">I'm better than steel, but I'd be even better with.</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                  <Carousel.Item>
-                    <img
-                      className="d-block"
-                      src="http://i68.tinypic.com/2vsnoec.jpg"
-                      alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                      <h3>Pink Fluffy Sweater</h3>
-                      <p className="description">Fuzzy and pink. Don't you just want to cuddle?</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                </Carousel>
+              <div className="second">
+                <button className="btn dealOfMonth1" onClick={this.specialButton}>Buy Me!</button>
               </div>
             </div>
           </div>
+          <div className="background">
+            <div className="whole-container">
+              <div className="animated slideInLeft delay-.5s"><img className="slideInLeftDino" src="http://i65.tinypic.com/149w6k2.jpg" alt="dinosaur in deal"></img></div>
+              <div className="animated slideInLeft delay-1s"><img className="slide" src="http://i68.tinypic.com/xgktgj.jpg" alt="gate in deal"></img></div>
+              <div className="animated slideInLeft delay-2s"><img className="slideLeft" src="http://i66.tinypic.com/2z6uwpx.jpg" alt="sweater in deal"></img></div>
+              <div className='v-align'>
+                <div className='hero-btn'>
+                  {/* /*please do not remove this empty div, it needs to stay here*/}
+                </div>
+              </div>
+              <div className="animated bounceInDown delay-.5s"><img className="bouncedownDino" src="http://i68.tinypic.com/e9zyc6.jpg" alt="dinosaur in deal"></img></div>
+              <div className="animated bounceInDown delay-1s"><img className="bouncedownGate" src="http://i65.tinypic.com/20kzjmd.jpg" alt="gate in deal"></img></div>
+              <div className="animated bounceInDown delay-2s"><img className="bouncedownSweater" src="http://i68.tinypic.com/2vsnoec.jpg" alt="sweater in deal"></img></div>
+
+            </div>
+          </div>
         </div>
-        );
-      }
-    }
-    
-    
-    export default Home;
+      </div>
+    );
+  }
+}
+
+
+export default Home;

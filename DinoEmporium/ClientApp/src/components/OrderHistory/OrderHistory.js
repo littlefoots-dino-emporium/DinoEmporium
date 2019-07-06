@@ -4,6 +4,7 @@ import getCustomerInfo from '../../helpers/data/customerRequest';
 import getOrderHistory from '../../helpers/data/orderHistoryRequest';
 //import PropTypes from 'prop-types';
 import OrderHistoryItem from '../OrderHistoryItem/OrderHistoryItem';
+import './OrderHistory.scss';
 
 export class OrderHistory extends Component {
   state = {
@@ -21,24 +22,13 @@ export class OrderHistory extends Component {
     })
   }
 
-  //   getCustomerOrder = () => {
-  //     const { customer } = this.state;
-  //     console.log(customer.id);
-
-  // getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
-  //     this.setState({ orderHistory })
-  //     console.log(customer.id);
-  // })
-  // }
-
   componentDidMount() {
     this.getCustomer();
-    // this.getCustomerOrder();
   }
 
 
   render() {
-    const { customer, orderHistory } = this.state
+    const { orderHistory } = this.state
 
     const orderHistoryPrint = orderHistory.map(orderHistory => (
       <OrderHistoryItem
@@ -48,10 +38,11 @@ export class OrderHistory extends Component {
     ));
 
     return (
-      <div>
-        <h1>Order History</h1>
-        <h2>{customer.firstName}</h2>
+      <div className="container">
+        <div className="orderHistory">
+        <h1><b>Order History</b></h1>
         {orderHistoryPrint}
+      </div>
       </div>
     )
   }
