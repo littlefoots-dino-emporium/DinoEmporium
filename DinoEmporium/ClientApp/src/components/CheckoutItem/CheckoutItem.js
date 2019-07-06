@@ -1,6 +1,5 @@
 import React from 'react';
-import CartItem from '../CartItem/CartItem';
- 
+import './CheckoutItem.scss'; 
 
 
 class CheckoutItem extends React.Component {
@@ -28,11 +27,22 @@ render() {
             )
         }
     }
+
+    const lastFour = () => {
+        var card = item.accountNumber;
+        return (
+            card.toString().slice(-4)
+            )
+    }
     if(item.price != null){
         return(
-           <div> 
-                <img src={item.image} alt="cart items"/>
-               <h5>Price: ${item.price}</h5> 
+           <div class="products-in-checkout"> 
+               
+                <img class="product-img" src={item.image} alt="cart items"/>
+                <div>
+                    <h5>{item.title}</h5>
+                    <h5>Price: ${item.price}</h5> 
+                </div>
 
             </div> 
         )
@@ -40,12 +50,10 @@ render() {
     if (item.expirationDate != null && item.nameOnCard != null && item.accountNumber != null)
     {
         return(
-            <div>
-                 <h5>Name on card: {item.nameOnCard}</h5>
-            <h5>Address: {item.address}</h5>
-            <h5>Account Number: {item.accountNumber}</h5>
-            <h5>Expiration Date: {item.expirationDate}</h5>
-            <h5>PaymentType:{paymentType()}</h5>             
+            <div class="checkout-item">
+                <h5>Name on card: {item.nameOnCard}</h5>
+                <h5>Billing Address: {item.address}</h5>
+                <h5><span class="payment-type">{paymentType()}</span> ending in {lastFour()}</h5>             
             </div>
            
         
