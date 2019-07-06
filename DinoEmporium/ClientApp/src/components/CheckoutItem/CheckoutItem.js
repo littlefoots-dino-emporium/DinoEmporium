@@ -8,26 +8,6 @@ class CheckoutItem extends React.Component {
 
 render() {
     const { item } = this.props;
-    console.log(item);
-    let productPrice = 0 + item.price;
-
-    // let render;
-    // if(item.nameOnCard != null)
-    // {
-    //     render = item.nameOnCard;
-    // }
-    // if (item.expirationDate != null){
-    //     render = item.expirationDate;
-    // }
-    // if (item.address){
-    //     render = item.address;
-    // }
-    // if (item.accountNumber){
-    //     render= item.accountNumber;
-    // }
-    // if (item.price){
-    //     render= item.price;
-    // }
     const paymentType =() => {
         if(item.paymentType == 0)
         {
@@ -53,7 +33,6 @@ render() {
            <div> 
                 <img src={item.image} alt="cart items"/>
                <h5>Price: ${item.price}</h5> 
-               Total: ${productPrice}
 
             </div> 
         )
@@ -72,19 +51,6 @@ render() {
         
         )
     }
-
-    // return(
-        
-    //     <div className="info">
-    //         <div className="customer-info">
-    //             <h2>gghghf</h2>
-    //         </div>
-    //         <div className="delete-button" onClick={this.deletePaymentEvent}><button className="btn btn-danger delete-button" ><i class="fas fa-trash-restore"></i></button></div>
-    //         {/* <button className="btn btn-primary edit-button"><i class="fas fa-pencil-alt"></i></button> */}
-
-
-    //     </div>
-    // )
     };
 
 }   
