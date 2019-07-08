@@ -32,20 +32,21 @@ class DinosaurItem extends React.Component {
         });
     }
 
-    addToCart = () => {
+    addToCart = (productId) => {
         const { customer, inWishList } = this.state;
         const { product } = this.props;
 
-        if (inWishList === true) {
-            alert("This item is already in your wish list")
-        } else {
+        // if (inWishList === true) {
+        //     alert("This item is already in your wish list")
+        // } else {
         this.setState({ buttonTextChange: "In Cart", inCart: true });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
         }
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
-        }
+        wishList.deleteSingleProduct(product.id)
+        // }
     }
 
     addToWishlist = () => {
