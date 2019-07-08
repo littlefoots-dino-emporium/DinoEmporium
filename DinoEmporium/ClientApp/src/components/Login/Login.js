@@ -1,8 +1,8 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
 import { Link } from 'react-router-dom';
+import { Button, FormText, Input, FormGroup, Label } from 'reactstrap';
+import LoginBanner from '../../Images/Login.png';
 import authRequests from '../../firebaseRequests/auth';
-import LoginBanner from '../../Images//Login.png';
 
 import './Login.scss';
 
@@ -41,106 +41,71 @@ class Login extends React.Component {
 
   register = (e) => {
     e.preventDefault();
-    this.props.signUp( this.state.newParentInformation)
+    this.props.signUp(this.state.newParentInformation)
   };
 
+  validateEmail = (e) => {
+    const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const { validate } = this.state
+    if (emailRex.test(e.target.value)) {
+      validate.emailState = 'has-success'
+    } else {
+      validate.emailState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
 
-  render () {
+  render() {
     const { user } = this.state;
-   return (
-      <MDBContainer>
-        <MDBRow>
-          <MDBCol md="6">
-            <MDBCard>
-              <MDBCardBody className="mx-4">
-                <div className="text-center">
-                  <h3 className="dark-grey-text mb-5">
-                  <div><img className="login-image" src={LoginBanner} alt='login-banner'></img></div> 
-                    <strong>Sign in</strong>
-                  </h3>
-                </div>
-                <MDBInput
-                  label="Your email"
-                  group
-                  type="email"
-                  className="form-control"
-                  id="inputEmail"
-                  value={user.email}
-                  onChange={this.emailChange}
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <MDBInput
-                  label="Your password"
-                  group
-                  type="password"
-                  className="form-control"
-                  id="inputPassword"
-                  value={user.password}
-                  onChange={this.passwordChange}
-                  validate
-                  containerClass="mb-0"
-                />
-                <p className="font-small blue-text d-flex justify-content-end pb-3">
-                  Forgot
-                  <a href="#!" className="blue-text ml-1">
-  
-                    Password?
-                  </a>
-                </p>
-                <div className="text-center mb-3">
-                  <MDBBtn
-                    type="button"
-                    gradient="blue"
-                    rounded
-                    className="btn-block z-depth-1a"
-                    onClick={this.loginClickEvent}
-                  >
-                    Sign in
-                  </MDBBtn>
-                </div>
-                <p className="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2">
-  
-                  or Sign in with:
-                </p>
-                <div className="row my-3 d-flex justify-content-center">
-                  <MDBBtn
-                    type="button"
-                    color="white"
-                    rounded
-                    className="mr-md-3 z-depth-1a"
-                  >
-                    <MDBIcon fab icon="facebook-f" className="blue-text text-center" />
-                  </MDBBtn>
-                  <MDBBtn
-                    type="button"
-                    color="white"
-                    rounded
-                    className="mr-md-3 z-depth-1a"
-                  >
-                    <MDBIcon fab icon="twitter" className="blue-text" />
-                  </MDBBtn>
-                  <MDBBtn
-                    type="button"
-                    color="white"
-                    rounded
-                    className="z-depth-1a"
-                  >
-                    <MDBIcon fab icon="google-plus-g" className="blue-text" />
-                  </MDBBtn>
-                </div>
-              </MDBCardBody>
-              <MDBModalFooter className="mx-5 pt-3 mb-1">
-                <p className="font-small grey-text d-flex justify-content-end">
-                  Not a member?
-                  <Link className="blue-text ml-1" to="/register">Need to Register?</Link>
-                </p>
-              </MDBModalFooter>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+    return (
+      <div className="container Login">
+        <div className="loginForm" id="login-form">
+          <div className="lbanner"><img className="LoginBanner" src={LoginBanner} alt='login-banner'></img></div>
+          <FormGroup className="form-horizontal col-sm-offset-3">
+            <Label htmlFor="inputEmail" className=" m-1 control
+            -label">
+              Email:
+              </Label>
+            <div className="emailInput">
+              <Input
+                type="email"
+                className="form-control"
+                id="inputEmail"
+                placeholder="Email"
+                value={user.email}
+                onChange={this.emailChange}
+              />
+              <FormText>Please insert a valid email address.</FormText>
+            </div>
+            <Label htmlFor="inputPassword" className="col-lg-15 m-1 control-label">
+              Password:
+              </Label>
+            <div className="col-lg-15">
+              <Input
+                type="password"
+                className="form-control"
+                id="inputPassword"
+                placeholder="********"
+                value={user.password}
+                onChange={this.passwordChange}
+              />
+
+            </div>
+            <div className="col-lg-15">
+              <Button className="loginButton mt-2"
+                type="submit"
+                onClick={this.loginClickEvent}
+              >
+                Login
+                </Button>
+            </div>
+            <div className="titleReg">Not A Member?</div>
+            
+            <Link className="register" to="/register"><Button>Register</Button></Link>
+          </FormGroup>
+
+        </div>
+      </div>
     );
   }
 }
