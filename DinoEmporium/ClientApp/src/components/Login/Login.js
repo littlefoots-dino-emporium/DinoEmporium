@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Button, FormText, Input, FormGroup, Label } from 'reactstrap';
+import LoginBanner from '../../Images/Login.png';
 import authRequests from '../../firebaseRequests/auth';
 
 import './Login.scss';
@@ -40,65 +41,69 @@ class Login extends React.Component {
 
   register = (e) => {
     e.preventDefault();
-    this.props.signUp( this.state.newParentInformation)
+    this.props.signUp(this.state.newParentInformation)
   };
 
+  validateEmail = (e) => {
+    const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const { validate } = this.state
+    if (emailRex.test(e.target.value)) {
+      validate.emailState = 'has-success'
+    } else {
+      validate.emailState = 'has-danger'
+    }
+    this.setState({ validate })
+  }
 
-  render () {
+  render() {
     const { user } = this.state;
     return (
       <div className="container Login">
         <div className="loginForm" id="login-form">
-          <h1 className="text-center">Login</h1>
-          <form className="form-horizontal col-sm-6 col-sm-offset-3">
-            <div className="form-group">
-              <label htmlFor="inputEmail" className="col-sm-4 control-label">
-                Email:
-              </label>
-              <div className="col-sm-8">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="inputEmail"
-                  placeholder="Email"
-                  value={user.email}
-                  onChange={this.emailChange}
-                />
-              </div>
+          <div className="lbanner"><img className="LoginBanner" src={LoginBanner} alt='login-banner'></img></div>
+          <FormGroup className="form-horizontal col-sm-offset-3">
+            <Label htmlFor="inputEmail" className=" m-1 control
+            -label">
+              Email:
+              </Label>
+            <div className="emailInput mb-2">
+              <Input
+                type="email"
+                className="form-control"
+                id="inputEmail"
+                placeholder="Email"
+                value={user.email}
+                onChange={this.emailChange}
+              />
+              <FormText>Please insert the email for this account.</FormText>
             </div>
-            <div className="form-group">
-              <label htmlFor="inputPassword" className="col-sm-4 control-label">
-                Password:
-              </label>
-              <div className="col-sm-8">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="inputPassword"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={this.passwordChange}
-                />
-              </div>
+            <Label htmlFor="inputPassword" className="col-lg-15 m-1 control-label">
+              Password:
+              </Label>
+            <div className="col-lg-15 mb-2">
+              <Input
+                type="password"
+                className="form-control"
+                id="inputPassword"
+                placeholder="********"
+                value={user.password}
+                onChange={this.passwordChange}
+              />
+              <FormText>Do not share your password with anyone.</FormText>
             </div>
-            <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <Link to="/register">Need to Register?</Link>
-              </div>
+            <div className="col-lg-15">
+              <Button className="loginButton mt-2"
+                type="submit"
+                onClick={this.loginClickEvent}
+              >
+                Login
+                </Button>
             </div>
-            <div className="form-group">
-              <div className="col-sm-12">
-                <button
-                  type="submit"
-                  className="btn btn-default col-xs-12"
-                  onClick={this.loginClickEvent}
-                >
-                  Login
-                </button>
-              </div>
-            </div>
-          </form>
-          
+            <div className="titleReg">Not A Member?</div>
+            
+            <Link className="register" to="/register"><Button>Register</Button></Link>
+          </FormGroup>
+
         </div>
       </div>
     );
