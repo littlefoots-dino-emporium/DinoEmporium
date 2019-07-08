@@ -1,4 +1,17 @@
-.wishlistImage {
-  width: 300px;
-  height: 300px;
+// .wishlistImage {
+//   width: 300px;
+//   height: 300px;
+// }
+
+.product-info {
+  // border: solid 1px;
+  // border-color:black;
+  // margin-left: 100px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30%;
+}
+.product-img {
+  margin-right: 200px;
+
 }
