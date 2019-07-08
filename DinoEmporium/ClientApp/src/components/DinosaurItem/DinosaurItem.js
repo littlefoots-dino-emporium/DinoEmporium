@@ -36,9 +36,6 @@ class DinosaurItem extends React.Component {
         const { customer, inWishList } = this.state;
         const { product } = this.props;
 
-        // if (inWishList === true) {
-        //     alert("This item is already in your wish list")
-        // } else {
         this.setState({ buttonTextChange: "In Cart", inCart: true });
         const CustomerProductInfo = {
             productId: product.id,
@@ -46,7 +43,6 @@ class DinosaurItem extends React.Component {
         }
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
         wishList.deleteSingleProduct(product.id)
-        // }
     }
 
     addToWishlist = () => {
