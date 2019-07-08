@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Button, FormText, Input, FormGroup, Label } from 'reactstrap';
 import authRequests from '../../firebaseRequests/auth';
 import postCustomer from '../../helpers/data/customerRequest';
 import firebase from 'firebase';
-
+import RegisterBanner from '../../Images/Register.png';
 
 import './Register.scss';
 
@@ -64,20 +64,7 @@ class Register extends React.Component {
     this.formFieldStringState('password', e);
   }
 
-  // registerClickEvent = e => {
-  //   const { newCustomerInformation } = this.state;
-  //   e.preventDefault();
-  //   console.log('click');
-  //   authRequests
-  //     .registerUser(newCustomerInformation)
-  //     .then(() => {
-  //       this.props.history.push('/');
-  //     })
-  //     .catch(error => {
-  //       console.error('there was an error in registering', error);
-  //     });
-  // };
-
+  
   formSubmit = (e) => {
     e.preventDefault();
     const userInformation = { ...this.state.newCustomerInformation };
@@ -90,15 +77,14 @@ class Register extends React.Component {
     console.log(newCustomerInformation);
     return (
       <div className="container">
-        <div className="Register" id="login-form">
-          <h1 className="text-center">Register</h1>
-          <form className="form-horizontal col-sm-6 col-sm-offset-3">
-            <div className="form-group">
-              <label htmlFor="inputName" className="col-sm-4 control-label">
+        <div className="Register" id="register-form">
+        <div className="lbanner"><img className="LoginBanner" src={RegisterBanner} alt='login-banner'></img></div>
+          <FormGroup className="form-horizontal col-offset-3">
+              <Label htmlFor="inputName" className="col-lg-12 m-1 control-label">
                 First Name:
-              </label>
-              <div className="col-sm-8">
-                <input
+              </Label>
+              <div className="registerEmailInput col-lg-12 mb-2">
+                <Input
                   type="name"
                   className="form-control"
                   id="inputEmail"
@@ -107,13 +93,11 @@ class Register extends React.Component {
                   onChange={this.firstNameChange}
                 />
               </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputLastName" className="col-sm-4 control-label">
+              <Label htmlFor="inputLastName" className="col-lg-12 m-1 control-label">
                 Last Name:
-              </label>
-              <div className="col-sm-8">
-                <input
+              </Label>
+              <div className="col-lg-12 mb-2">
+                <Input
                   type="name"
                   className="form-control"
                   id="inputEmail"
@@ -122,13 +106,11 @@ class Register extends React.Component {
                   onChange={this.lastNameChange}
                 />
               </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputEmail" className="col-sm-4 control-label">
+              <Label htmlFor="inputEmail" className="col-lg-12 m-1 control-label">
                 Email:
-              </label>
-              <div className="col-sm-8">
-                <input
+              </Label>
+              <div className="col-lg-12 mb-2">
+                <Input
                   type="email"
                   className="form-control"
                   id="inputEmail"
@@ -136,13 +118,12 @@ class Register extends React.Component {
                   value={newCustomerInformation.email}
                   onChange={this.emailChange}
                 />
+              <FormText>Please use a valid email address.</FormText>
               </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputPassword" className="col-sm-4 control-label">
+              <label htmlFor="inputPassword" className="col-lg-12 m-1 control-label">
                 Password:
               </label>
-              <div className="col-sm-8">
+              <div className="col-lg-12 mb-2">
                 <input
                   type="password"
                   className="form-control"
@@ -151,25 +132,22 @@ class Register extends React.Component {
                   value={newCustomerInformation.password}
                   onChange={this.passwordChange}
                 />
+              <FormText>Your password should be longer than 8 characters.</FormText>
               </div>
-            </div>
-            <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <Link to="/login">Need to Login?</Link>
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="col-sm-12">
-                <button
+              <div className="col-sm-12 mb-2">
+                <Button
                   type="submit"
                   className="btn btn-default col-xs-12"
                   onClick={this.formSubmit}
                 >
-                  Register
-                </button>
+                  Submit
+                </Button>
               </div>
-            </div>
-          </form>
+              <div className="col-sm-12 mb-3 p-2 text-center">
+              <div className="alreadyAccount">Already have an account?</div>
+                <Link to="/login"><Button className="mb-2">Return To Login</Button></Link>
+              </div>
+          </FormGroup>
         </div>
       </div>
     );
