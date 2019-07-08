@@ -36,7 +36,7 @@ class SweaterItem extends React.Component {
           })
     }
 
-    addToCart = (productId) => {
+    addToCart = () => {
         const { customer, inWishList } = this.state;
         const { product } = this.props;
 
