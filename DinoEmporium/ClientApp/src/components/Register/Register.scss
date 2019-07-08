@@ -1,5 +1,14 @@
+$grey: rgb(102, 105, 102);
+$darkblue: #1A577F;
+$brown: rgb(102, 73, 36);
+$bone: rgb(240, 243, 227);
+$forestgreen: rgb(11, 138, 49);
+$lightgrey: #cdd3cd;
+
 .Register {
-  background-color: white;
-  border: black double;
-  margin-top: 3%;
+  background-color: $lightgrey;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  border-radius: 10px;
 }

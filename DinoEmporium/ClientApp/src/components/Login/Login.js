@@ -66,7 +66,7 @@ class Login extends React.Component {
             -label">
               Email:
               </Label>
-            <div className="emailInput">
+            <div className="emailInput mb-2">
               <Input
                 type="email"
                 className="form-control"
@@ -75,12 +75,12 @@ class Login extends React.Component {
                 value={user.email}
                 onChange={this.emailChange}
               />
-              <FormText>Please insert a valid email address.</FormText>
+              <FormText>Please insert the email for this account.</FormText>
             </div>
             <Label htmlFor="inputPassword" className="col-lg-15 m-1 control-label">
               Password:
               </Label>
-            <div className="col-lg-15">
+            <div className="col-lg-15 mb-2">
               <Input
                 type="password"
                 className="form-control"
@@ -89,7 +89,7 @@ class Login extends React.Component {
                 value={user.password}
                 onChange={this.passwordChange}
               />
-
+              <FormText>Do not share your password with anyone.</FormText>
             </div>
             <div className="col-lg-15">
               <Button className="loginButton mt-2"
