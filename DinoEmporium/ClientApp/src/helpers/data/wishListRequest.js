@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const postWishListRequest = (customerProductInfo) => axios.post(`http://localhost:50312/api/customerWishList/register`, customerProductInfo);
+const postWishListRequest = (customerProductInfo) => axios.post(`http://localhost:50319/api/customerWishList/register`, customerProductInfo);
 
 const getWishListRequest = uid => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/customerWishList/getCustomerWishList/${uid}`)
+    .get(`http://localhost:50319/api/customerWishList/getCustomerWishList/${uid}`)
     .then((res) => {
       let customerProducts = res.data;
       console.log(customerProducts);
@@ -13,7 +13,7 @@ const getWishListRequest = uid => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-const deleteSingleProduct = productId => axios.delete(`http://localhost:50312/api/customerWishList/deleteWishListItem/${productId}`);
+const deleteSingleProduct = productId => axios.delete(`http://localhost:50319/api/customerWishList/deleteWishListItem/${productId}`);
 
 export default {
   getWishListRequest,

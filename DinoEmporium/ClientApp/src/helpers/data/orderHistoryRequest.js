@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const getOrderHistory = (customerId) => new Promise((resolve, reject) => {
   axios
-    .get(`http://localhost:50312/api/order/allorders/${customerId}`)
+    .get(`http://localhost:50319/api/order/allorders/${customerId}`)
     .then((res) => {
       let order = res.data;
       console.log(order);
@@ -12,9 +12,9 @@ const getOrderHistory = (customerId) => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-// const postCustomerRequest = (customerInfo) => axios.post(`http://localhost:50312/api/customer/register`, customerInfo);
+// const postCustomerRequest = (customerInfo) => axios.post(`http://localhost:50319/api/customer/register`, customerInfo);
 
-// const updateCustomerRequest = (customer) => axios.put(`http://localhost:50312/api/customer/${customer}`, customer);
+// const updateCustomerRequest = (customer) => axios.put(`http://localhost:50319/api/customer/${customer}`, customer);
 
 export default {
   // postCustomerRequest,

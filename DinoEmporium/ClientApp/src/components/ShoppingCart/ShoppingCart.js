@@ -68,12 +68,14 @@ deleteOneProduct = (productId) => {
           }
 
         return(
-            <div className="card all-in-cart">
+            <div className="container">
+            <div className="all-in-cart">
             <div><h1 className="cart">Shopping Cart</h1></div>
-            <div><button className="btn btn-primary" onClick={this.checkout}>Proceed to checkout</button></div>
             <div>
             { customerProductItem } 
             </div>    
+            <div><button className="btn btn-info checkoutBtn" onClick={this.checkout}>Proceed to checkout</button></div>
+            </div>
             </div>
         )
 
