@@ -4,6 +4,9 @@ $brown: rgb(102, 73, 36);
 $bone: rgb(240, 243, 227);
 $forestgreen: rgb(11, 138, 49);
 
+body {
+  overflow-x: hidden;
+}
     
 .animated {
   animation-duration: 1s;
@@ -62,22 +65,61 @@ $forestgreen: rgb(11, 138, 49);
   text-shadow: 2px 2px 2px black;
 }
 
+.whole-links {
+  margin-top: -10%;
+  margin-left: -10%;
+}
+
 .productLinks {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 1%;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.dinosaurLink, .sweaterLink, .fencesLink {
+  margin: -1%;
+}
+
+.dinosaurLink {
+  margin-bottom: -1%;
+}
+
+#btnsdinosaurs {
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+}
+
+#btnsfence{
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+  padding-left: 20.5%;
+  padding-right: 20%;
+}
+
+#btnsweaters {
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+  padding-left: 10%;
+  padding-right: 8%;
+}
+
+#align-links {
+  margin-left: 1250px;
+}
+
+#buyMe {
   padding: 0;
+  margin: 10px;
 }
 
 .whole-container {
   margin-bottom: 10%;
   margin-top: 10%;
+  z-index: 1;
 }
-
-// .background {
-//   background-image: url(../../Images/Background.png);
-// }
 
 @keyframes slideInLeft {
   from {
@@ -187,18 +229,63 @@ $forestgreen: rgb(11, 138, 49);
   flex-direction: row;
   justify-content: center;
   margin: auto;
+  margin-top: 5%;
 }
 
-.v-align1 {
+.first {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  text-align: center;
+  margin: 14%;
+  justify-content: space-between;
 }
 
-.second, .first {
-  margin: 4%;
-  justify-content: space-evenly;
+#dealOfMonth2{
+  margin-left: 80%;
+  margin-top: 30%;
+  line-height: 3.5px;
+}
+
+#dealOfMonth1 {
+  margin-right: -260%;
+  margin-top: 65%;
+  line-height: 3.5px;
+}
+
+.package-one {
+  width: 20%;
+  height: 20%;
+  margin-left: 10%;
+  margin-bottom: -2%;
+}
+
+.package-two {
+  width: 20%;
+  height: 20%;
+  padding: 0;
+  margin-left: 75%;
+  margin-bottom: -15%;
+}
+
+.packageImages {
+  margin-top: 10%;
+  margin-bottom: -8%;
+}
+
+.treestar-border {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: -2;
+}
+
+.treestar {
+  width: 10%;
+  height: 75%;
+  z-index: -1;
+  margin: 0;
+  margin-bottom: -2%;
 }
 
 //special button for product links 

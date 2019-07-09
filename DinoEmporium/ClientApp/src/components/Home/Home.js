@@ -3,6 +3,9 @@ import productRequests from '../../helpers/data/productRequest';
 import ProductItem from '../ProductItem/ProductItem';
 import { Link } from 'react-router-dom';
 import Ducky from '../../Images/Duckyxcf.png';
+import PackageOne from '../../Images/PackageOne.png';
+import PackageTwo from '../../Images/PackageTwo.png';
+import Treestar from '../../Images/Treestar.png';
 import './Home.scss';
 
 class Home extends React.Component {
@@ -24,36 +27,6 @@ class Home extends React.Component {
     })
   }
 
-  // handleSelect(selectedIndex, e) {
-  //   this.setState({
-  //     index: selectedIndex,
-  //     direction: e.direction,
-  //   });
-  // }
-
-  // specialButton = () => {
-  //   $('.hero-btn').click(function(){
-  //     if(!$('.hero-btn').parent().hasClass('active')){
-  //       $(this).parent().stop().addClass('active');
-  //       setTimeout(function(){  
-  //         $('.hero-btn').parent().removeClass('active'); 
-  //       }, 2000);
-  //     }
-  //   });
-  // }
-
-  // specialButton = () => {
-  //   this.setState({
-  //     btn: !this.state.btn,
-  //     if(btn =! 'true'){
-  //       this.parent.stop.addClass('true')
-  //     },
-  //     setTimeout () {
-  //       this.parent.removeCLass('true', 2000)
-  //     }
-  //   })
-  // }
-
   render() {
     const { products } = this.state;
     const productItemComponent =
@@ -65,76 +38,47 @@ class Home extends React.Component {
     return (
       <div className="container">
         <div className="homePage">
-
-          <div className='productLinks row'>
+        <div className="whole-links">
+          <div className='productLinks'>
             <Link to="/dinosaurs" className="dinosaurLink">
-              <div className='v-align'>
+              <div className='v-align' id="align-links">
                 <div className='hero-btn'>
-                  <button className='btn' onClick={this.specialButton}>
+                  <button className='btn' id="btnsdinosaurs" onClick={this.specialButton}>
                     Shop Dinosaurs
                   </button>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
-                  <span className='particles-circle'></span>
                 </div>
               </div>
             </Link>
             <Link to="/sweaters" className="sweaterLink">
+            <div className='v-align' id="align-links">
               <div className='hero-btn'>
-                <button className='btn' onClick={this.specialButton}>
+                <button className='btn' id="btnsweaters" onClick={this.specialButton}>
                   Shop Sweaters
                   </button>
               </div>
+              </div>
             </Link>
             <Link to="/fences" className="fencesLink">
+            <div className='v-align' id="align-links">
               <div className='hero-btn'>
-                <button className='btn' onClick={this.specialButton}>
+                <button className='btn' id="btnsfence" onClick={this.specialButton}>
                   Shop Fences
                   </button>
               </div>
+              </div>
             </Link>
           </div>
-
+          </div>
           <img className="deal-image" src={Ducky} alt="ducky"></img>
-          <div className='v-align1'>
+          <div className="packageImages">
+          <img className="package-one" src={PackageOne} alt="packageOne"></img>
+          <img className="package-two" src={PackageTwo} alt="packageTwo"></img>
+          </div>
+          <div className='v-align1' id="buyMe">
             <div className='hero-btn'>
               <div className="first">
-                <button className="btn dealOfMonth2" onClick={this.specialButton}>Buy Me!</button>
-              </div>
-              <div className="second">
-                <button className="btn dealOfMonth1" onClick={this.specialButton}>Buy Me!</button>
+                <button className="btn" id="dealOfMonth2" onClick={this.specialButton}>Buy Me!</button>
+                <button className="btn" id="dealOfMonth1" onClick={this.specialButton}>Buy Me!</button>
               </div>
             </div>
           </div>
@@ -146,6 +90,9 @@ class Home extends React.Component {
               <div className='v-align'>
                 <div className='hero-btn'>
                   {/* /*please do not remove this empty div, it needs to stay here*/}
+                </div>
+                <div className="treestar-border">
+                  <img className="treestar" src={Treestar} alt="treestar"></img>
                 </div>
               </div>
               <div className="animated bounceInDown delay-.5s"><img className="bouncedownDino" src="http://i68.tinypic.com/e9zyc6.jpg" alt="dinosaur in deal"></img></div>
