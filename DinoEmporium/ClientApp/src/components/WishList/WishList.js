@@ -3,6 +3,7 @@ import authRequests from '../../firebaseRequests/auth';
 import getWishList from '../../helpers/data/wishListRequest';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import WishListItem from '../WishListItem/WishListItem';
+import './WishList.scss';
 
 export class WishList extends Component {
   state = {
@@ -49,10 +50,12 @@ render() {
       ));
       
     return(
-        <div className="card all-in-cart">
-        <h1 className="cart">Wish List</h1>
+        <div className="container">
+        <div className="all-in-wishlist">
+        <div><h1 className="cart">Wish List</h1></div>
         <div>
         { customerWishListItem } 
+        </div>
         </div>
         </div>
     )
