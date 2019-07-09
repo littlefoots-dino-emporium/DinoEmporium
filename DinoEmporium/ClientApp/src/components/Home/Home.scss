@@ -4,9 +4,6 @@ $brown: rgb(102, 73, 36);
 $bone: rgb(240, 243, 227);
 $forestgreen: rgb(11, 138, 49);
 
-body {
-  overflow-x: hidden;
-}
     
 .animated {
   animation-duration: 1s;
@@ -74,6 +71,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: left;
+  margin-top: 2%;
+  margin-left: 6%;
 }
 
 .dinosaurLink, .sweaterLink, .fencesLink {
@@ -82,12 +81,6 @@ body {
 
 .dinosaurLink {
   margin-bottom: -1%;
-}
-
-#btnsdinosaurs {
-  line-height: 2px;
-  height: 25%;
-  padding-bottom: 2px;
 }
 
 #btnsfence{
@@ -106,6 +99,12 @@ body {
   padding-right: 8%;
 }
 
+#btnsdinosaurs {
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+}
+
 #align-links {
   margin-left: 1250px;
 }
@@ -118,7 +117,7 @@ body {
 .whole-container {
   margin-bottom: 10%;
   margin-top: 10%;
-  z-index: 1;
+  margin-left: 8.5%;
 }
 
 @keyframes slideInLeft {
@@ -239,53 +238,34 @@ body {
   justify-content: space-between;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 #dealOfMonth2{
-  margin-left: 80%;
-  margin-top: 30%;
+  margin-left: 121%;
+  margin-top: 43%;
   line-height: 3.5px;
 }
 
 #dealOfMonth1 {
-  margin-right: -260%;
-  margin-top: 65%;
+  margin-right: -295%;
+  margin-top: 45%;
   line-height: 3.5px;
 }
 
 .package-one {
   width: 20%;
   height: 20%;
-  margin-left: 10%;
-  margin-bottom: -2%;
+  margin-left: 20%;
+  margin-bottom: -10%;
 }
 
 .package-two {
   width: 20%;
   height: 20%;
-  padding: 0;
-  margin-left: 75%;
-  margin-bottom: -15%;
-}
-
-.packageImages {
-  margin-top: 10%;
-  margin-bottom: -8%;
-}
-
-.treestar-border {
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  z-index: -2;
-}
-
-.treestar {
-  width: 10%;
-  height: 75%;
-  z-index: -1;
-  margin: 0;
-  margin-bottom: -2%;
+  margin-left: 20%;
+  margin-bottom: -10%;
 }
 
 //special button for product links 
