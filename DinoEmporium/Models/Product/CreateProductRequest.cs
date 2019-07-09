@@ -15,5 +15,6 @@ namespace DinoEmporium.Models
         public int Quantity { get; set; }
         public string Size { get; set; }
         public string Image { get; set; }
+        public bool IsInCart { get; set; }
     }
 }

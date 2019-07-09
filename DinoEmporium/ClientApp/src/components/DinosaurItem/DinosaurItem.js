@@ -32,7 +32,7 @@ class DinosaurItem extends React.Component {
         });
     }
 
-    addToCart = (productId) => {
+    addToCart = () => {
         const { customer, inWishList } = this.state;
         const { product } = this.props;
 
@@ -41,6 +41,7 @@ class DinosaurItem extends React.Component {
             productId: product.id,
             customerId: customer.id
         }
+        console.log(CustomerProductInfo)
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
         wishList.deleteSingleProduct(product.id)
     }
@@ -59,7 +60,6 @@ class DinosaurItem extends React.Component {
         wishList.postWishListRequest(CustomerProductInfo);
       }   
     }
-
 
     render() {
         const { product } = this.props;

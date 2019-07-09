@@ -42,6 +42,10 @@ class Dinosaur extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    
+  }
+
   render() {
     const { filteredDinosaurs } = this.state;
 
