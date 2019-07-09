@@ -62,22 +62,63 @@ $forestgreen: rgb(11, 138, 49);
   text-shadow: 2px 2px 2px black;
 }
 
+.whole-links {
+  margin-top: -10%;
+  margin-left: -10%;
+}
+
 .productLinks {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 1%;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 2%;
+  margin-left: 6%;
+}
+
+.dinosaurLink, .sweaterLink, .fencesLink {
+  margin: -1%;
+}
+
+.dinosaurLink {
+  margin-bottom: -1%;
+}
+
+#btnsfence{
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+  padding-left: 20.5%;
+  padding-right: 20%;
+}
+
+#btnsweaters {
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+  padding-left: 10%;
+  padding-right: 8%;
+}
+
+#btnsdinosaurs {
+  line-height: 2px;
+  height: 25%;
+  padding-bottom: 2px;
+}
+
+#align-links {
+  margin-left: 1250px;
+}
+
+#buyMe {
   padding: 0;
+  margin: 10px;
 }
 
 .whole-container {
   margin-bottom: 10%;
   margin-top: 10%;
+  margin-left: 8.5%;
 }
-
-// .background {
-//   background-image: url(../../Images/Background.png);
-// }
 
 @keyframes slideInLeft {
   from {
@@ -187,18 +228,44 @@ $forestgreen: rgb(11, 138, 49);
   flex-direction: row;
   justify-content: center;
   margin: auto;
+  margin-top: 5%;
 }
 
-.v-align1 {
+.first {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  text-align: center;
+  margin: 14%;
+  justify-content: space-between;
 }
 
-.second, .first {
-  margin: 4%;
-  justify-content: space-evenly;
+body {
+  overflow-x: hidden;
+}
+
+#dealOfMonth2{
+  margin-left: 121%;
+  margin-top: 43%;
+  line-height: 3.5px;
+}
+
+#dealOfMonth1 {
+  margin-right: -295%;
+  margin-top: 45%;
+  line-height: 3.5px;
+}
+
+.package-one {
+  width: 20%;
+  height: 20%;
+  margin-left: 20%;
+  margin-bottom: -10%;
+}
+
+.package-two {
+  width: 20%;
+  height: 20%;
+  margin-left: 20%;
+  margin-bottom: -10%;
 }
 
 //special button for product links 

@@ -59,12 +59,14 @@ class Dinosaur extends React.Component {
 
     return (
       <div>
+      <div className="searchbar">
       <SearchField
       placeholder="Search Dinosaurs..."
       onChange={this.onChange}
       searchText=""
       classNames="test-class w-50 mt-auto"
     />
+    </div>
       <div className='dinosaursComponentDiv'>
         {dinosaurItemComponent}
       </div>
