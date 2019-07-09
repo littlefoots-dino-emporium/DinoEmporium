@@ -4,8 +4,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import { Link } from 'react-router-dom';
 import Ducky from '../../Images/Duckyxcf.png';
 import PackageOne from '../../Images/PackageOne.png';
-import PackageTwo from '../../Images/PackageTwo.png';
-import Treestar from '../../Images/Treestar.png';
+import PackageTwo from '../../Images/PackageTwo.png'
 import './Home.scss';
 
 class Home extends React.Component {
@@ -84,17 +83,17 @@ class Home extends React.Component {
           </div>
           <div className="background">
             <div className="whole-container">
+              
               <div className="animated slideInLeft delay-.5s"><img className="slideInLeftDino" src="http://i65.tinypic.com/149w6k2.jpg" alt="dinosaur in deal"></img></div>
               <div className="animated slideInLeft delay-1s"><img className="slide" src="http://i68.tinypic.com/xgktgj.jpg" alt="gate in deal"></img></div>
               <div className="animated slideInLeft delay-2s"><img className="slideLeft" src="http://i66.tinypic.com/2z6uwpx.jpg" alt="sweater in deal"></img></div>
+              
               <div className='v-align'>
                 <div className='hero-btn'>
                   {/* /*please do not remove this empty div, it needs to stay here*/}
                 </div>
-                <div className="treestar-border">
-                  <img className="treestar" src={Treestar} alt="treestar"></img>
-                </div>
               </div>
+
               <div className="animated bounceInDown delay-.5s"><img className="bouncedownDino" src="http://i68.tinypic.com/e9zyc6.jpg" alt="dinosaur in deal"></img></div>
               <div className="animated bounceInDown delay-1s"><img className="bouncedownGate" src="http://i65.tinypic.com/20kzjmd.jpg" alt="gate in deal"></img></div>
               <div className="animated bounceInDown delay-2s"><img className="bouncedownSweater" src="http://i68.tinypic.com/2vsnoec.jpg" alt="sweater in deal"></img></div>
