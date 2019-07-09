@@ -17,6 +17,7 @@ export class WishListItem extends Component {
         e.preventDefault();
         const { deleteOneProduct, customerProduct } = this.props;
         deleteOneProduct(customerProduct.productId);
+        wishList.deleteSingleProduct(customerProduct.id)
       }
 
       componentDidMount() {
@@ -32,7 +33,7 @@ export class WishListItem extends Component {
 
     }
 
-      addToCart = () => {
+      addToCart = (e) => {
         const { customer } = this.state;
         const {customerProduct} = this.props;
 
@@ -42,7 +43,8 @@ export class WishListItem extends Component {
             customerId: customer.id
         }
         customerProductReq.postCustomerProductRequest(CustomerProductInfo);
-        wishList.deleteSingleProduct(customerProduct.id)
+        this.deleteKidEvent(e);
+        alert("This item has been added to your cart")
     }
       
   render() {
