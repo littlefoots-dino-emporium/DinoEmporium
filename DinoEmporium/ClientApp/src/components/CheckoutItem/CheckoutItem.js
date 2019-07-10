@@ -5,9 +5,20 @@ import './CheckoutItem.scss';
 
 class CheckoutItem extends React.Component {
 
+    // formFieldStringState = (name,e) => {
+    //     e.preventDefault();
+    //     const tempInfo = { ...this.state.addNewPayment};
+    //     tempInfo[name] = e.target.value;
+    //     this.setState({ addNewPayment: tempInfo});
+    //   }
+
+    //   paymentTypeChange = e => {
+    //     this.formFieldStringState('paymentType', e);
+    //   };
+
 
     render() {
-        const { item, payment, selectedCheckoutPayment } = this.props;
+        const { item, payment } = this.props;
         const paymentType = () => {
             if (item.paymentType == 0) {
                 return (
@@ -52,7 +63,7 @@ class CheckoutItem extends React.Component {
                         <label>Payment Type</label>
                         <FormGroup check>
                             <Label check>
-                                <Input type="radio" name="radio1" value={payment} onClick={selectedCheckoutPayment} />
+                                <Input type="radio" name="radio1" value={payment} onClick={this.props.selectedCheckoutPayment} />
                                 <h5>Name on card: {item.nameOnCard}</h5>
                                 <h5>Billing Address: {item.address}</h5>
                                 <h5><span class="payment-type">{paymentType()}</span> ending in {lastFour()}</h5>

@@ -19,13 +19,12 @@ componentDidMount() {
     const { customer } = this.props.location.state;
 paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
 this.setState({ paymentInfo })
-console.log(paymentInfo);
 
 })
 }
 
 selectedCheckoutPayment = (e) => {
-  const value = e.target.paymentInfo;
+  const value = e.target.value;
   // const selectedPayment = value
   // this.setState({ payment: value })
   console.log(value)
@@ -62,7 +61,8 @@ selectedCheckoutPayment = (e) => {
         const checkoutItem = paymentInfo.map(payment => (
             <CheckoutItem
             item={payment}
-              key={paymentInfo.id}
+              key={payment.id}
+              payment={payment.id}
               selectedCheckoutPayment={this.selectedCheckoutPayment}
             />
           ));
