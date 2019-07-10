@@ -3,8 +3,9 @@ import React from 'react';
 import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
+import orderRequest from '../../helpers/data/orderRequest';
 
-
+import PlaceOrder from '../PlaceOrder/PlaceOrder';
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
 
 class Checkout extends React.Component {
@@ -21,6 +22,24 @@ this.setState({ paymentInfo })
 })
 }
 
+selectedCheckoutPayment = (e) => {
+  const value = e.target.value;
+  // const selectedPayment = value
+  // this.setState({ payment: value })
+  console.log(value)
+  }
+
+addOrder = () => {
+  const { customer } =  this.props.location.state;
+  const { paymentInfo } = this.state;
+const orderInfo = {
+  price: paymentInfo.id,
+  paymentInformationId: paymentInfo.id,
+  customerId: customer.id
+}
+orderRequest.postOrderRequest(orderInfo);
+}
+
 // componentWillReceiveProps(props) {
 //     this.setState({ paymentInfo: props.paymentInfo})
 // }
@@ -30,20 +49,22 @@ this.setState({ paymentInfo })
         const { customer, customerProducts } =  this.props.location.state;
         const { paymentInfo } = this.state;
 
-        const addTotal = () => {
-        let add = 0;
-        customerProducts.forEach((customerProduct,i) => {
-          add = parseInt(add) + parseInt(customerProduct.price);
-        });
-        return (
-          add
-        )
-      }
+      //   const addTotal = () => {
+      //   let add = 0;
+      //   customerProducts.forEach((customerProduct) => {
+      //     add = parseInt(add) + parseInt(customerProduct.price);
+      //   });
+      //   return (
+      //     add
+      //   )
+      // }
 
         const checkoutItem = paymentInfo.map(payment => (
             <CheckoutItem
             item={payment}
-              key={paymentInfo.id}
+              key={payment.id}
+              payment={payment.id}
+              selectedCheckoutPayment={this.selectedCheckoutPayment}
             />
           ));
           const checkoutProducts = customerProducts.map(customerProduct => (
@@ -76,8 +97,12 @@ const address = () => {
               </div>
               <div class="card total">
                 <h4 class="order-text">Order Total</h4>
-                <h5> ${addTotal()}</h5>
-                <button class="btn btn-primary">Place Your Order</button>
+                {/* <h5> ${addTotal()}</h5> */}
+                <PlaceOrder 
+                  customerProducts = {customerProducts}
+                  paymentInfo = {paymentInfo}
+                  customer= {customer}
+                />
               </div>
           </div>
         )
