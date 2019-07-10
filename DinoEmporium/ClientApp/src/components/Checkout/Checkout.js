@@ -29,16 +29,18 @@ selectedCheckoutPayment = (e) => {
   // this.setState({ payment: value })
   console.log(value)
   }
-// addOrder = () => {
-//   const { customer } =  this.props.location.state;
-//   const { paymentInfo } = this.state;
-// const orderInfo = {
-//   price: paymentInfo.id,
-//   paymentInformationId: paymentInfo.id,
-//   customerId: customer.id
-// }
-// orderRequest.postOrderRequest(orderInfo);
-// }
+
+addOrder = () => {
+  const { customer } =  this.props.location.state;
+  const { paymentInfo } = this.state;
+const orderInfo = {
+  price: paymentInfo.id,
+  paymentInformationId: paymentInfo.id,
+  customerId: customer.id
+}
+orderRequest.postOrderRequest(orderInfo);
+}
+
 // componentWillReceiveProps(props) {
 //     this.setState({ paymentInfo: props.paymentInfo})
 // }
