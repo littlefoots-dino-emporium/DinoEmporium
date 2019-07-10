@@ -12,14 +12,14 @@ namespace DinoEmporium.Data
     {
         const string ConnectionString = "Server=localhost;Database=Littlefoots;Trusted_Connection=True;";
 
-        public Order AddOrder(int price)
+        public Order AddOrder(int price, int customerId, int paymentInformation)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
                 var newOrder = db.QueryFirstOrDefault<Order>(@"
-                    Insert into [Order] (price)
+                    Insert into [Order] (price, customerId, paymentInformation)
                     Output inserted.*
-                    Values(@price)",
+                    Values(@price, @customerId, @paymentInformation)",
                     new { price });
 
                 if (newOrder != null)
