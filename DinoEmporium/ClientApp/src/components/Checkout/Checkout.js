@@ -19,7 +19,6 @@ componentDidMount() {
     const { customer } = this.props.location.state;
 paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
 this.setState({ paymentInfo })
-
 })
 }
 
