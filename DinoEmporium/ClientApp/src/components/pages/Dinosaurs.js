@@ -60,7 +60,7 @@ class Dinosaur extends React.Component {
       placeholder="Search Dinosaurs..."
       onChange={this.onChange}
       searchText=""
-      classNames="test-class w-50 mt-auto"
+      classNames="searchbar w-50 mt-auto rounded border-warning"
     />
     </div>
       <div className='dinosaursComponentDiv'>
