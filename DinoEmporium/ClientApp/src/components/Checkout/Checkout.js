@@ -1,4 +1,3 @@
-
 import React from 'react';
 import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
@@ -19,7 +18,19 @@ componentDidMount() {
     const { customer } = this.props.location.state;
 paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
 this.setState({ paymentInfo })
+
 })
+}
+
+addTotal = () => {
+  const { customerProducts } = this.props.location.state;
+let add = 0;
+customerProducts.forEach((customerProduct) => {
+add = parseInt(add) + parseInt(customerProduct.price);
+});
+return (
+add
+)
 }
 
 selectedCheckoutPayment = (e) => {
@@ -29,20 +40,19 @@ selectedCheckoutPayment = (e) => {
   console.log(value)
   }
 
-addOrder = () => {
+addOrderToDatabase = () => {
   const { customer } =  this.props.location.state;
   const { paymentInfo } = this.state;
 const orderInfo = {
-  price: paymentInfo.id,
+  // price: paymentInfo.id,
   paymentInformationId: paymentInfo.id,
   customerId: customer.id
 }
 orderRequest.postOrderRequest(orderInfo);
 }
-
-// componentWillReceiveProps(props) {
-//     this.setState({ paymentInfo: props.paymentInfo})
-// }
+componentWillReceiveProps(props) {
+    this.setState({ paymentInfo: props.paymentInfo})
+}
 
 
     render() {
@@ -98,11 +108,15 @@ const address = () => {
               <div class="card total">
                 <h4 class="order-text">Order Total</h4>
                 {/* <h5> ${addTotal()}</h5> */}
-                <PlaceOrder 
+                {/* <PlaceOrder 
                   customerProducts = {customerProducts}
                   paymentInfo = {paymentInfo}
                   customer= {customer}
-                />
+                /> */}
+                <div>
+                <h5> ${this.addTotal()}</h5> 
+                <button class="btn btn-primary" onClick={this.addOrderToDatabase}>Place Your Order</button>
+            </div>
               </div>
           </div>
         )
