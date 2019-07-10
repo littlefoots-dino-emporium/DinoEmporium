@@ -14,7 +14,9 @@ class DinosaurItem extends React.Component {
         showModal: false,
         customer: '',
         buttonTextChange: "Add To Cart",
-        wishListButtonChange: "Add To Wish List"
+        wishListButtonChange: "Add To Wish List",
+        inWishList: false, 
+        inCart: false,
     }
 
     componentDidMount() {
@@ -31,27 +33,33 @@ class DinosaurItem extends React.Component {
     }
 
     addToCart = () => {
-        const { customer } = this.state;
+        const { customer, inWishList } = this.state;
         const { product } = this.props;
-        this.setState({ buttonTextChange: "In Cart" });
+
+        this.setState({ buttonTextChange: "In Cart", inCart: true });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
         }
+        console.log(CustomerProductInfo)
         customerProduct.postCustomerProductRequest(CustomerProductInfo);
+        wishList.deleteSingleProduct(product.id)
     }
 
     addToWishlist = () => {
-        const { customer } = this.state;
+        const { customer, inCart } = this.state;
         const { product } = this.props;
-        this.setState({ wishListButtonChange: "In Wish List" });
+        if (inCart === true) {
+            alert("This item is already in your cart")
+        } else {
+        this.setState({ wishListButtonChange: "In Wish List", inWishList: true });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
         }
         wishList.postWishListRequest(CustomerProductInfo);
+      }   
     }
-
 
     render() {
         const { product } = this.props;
@@ -73,7 +81,6 @@ class DinosaurItem extends React.Component {
                         <div className='productCard'>
                             <li className='dino-price'><i>${product.price}</i></li>
                             <li className='dino-description'>{product.description}</li>
-                            <li className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</li>
                             <Button className="addToCart" onClick = {this.addToCart}>
                                 {this.state.buttonTextChange}
                             </Button>

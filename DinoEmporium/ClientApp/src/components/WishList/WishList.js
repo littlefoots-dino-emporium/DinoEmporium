@@ -9,58 +9,70 @@ export class WishList extends Component {
   state = {
     customerProducts: [],
     customer: ''
-}
+  }
 
-componentDidMount() {
-  let uid = authRequests.getUid();
-  this.customerInfo();
-      getCustomerInfo.getCustomerProfile(uid).then((customer) => {
-        this.setState({ customer })
-        console.log(customer);
-});
-}
+  componentDidMount() {
+    let uid = authRequests.getUid();
+    this.customerInfo();
+    getCustomerInfo.getCustomerProfile(uid).then((customer) => {
+      this.setState({ customer })
+      console.log(customer);
+    });
+  }
 
-customerInfo = () => {
-let uid = authRequests.getUid();
-getWishList.getWishListRequest(uid).then((customerProducts) => {
-    this.setState({ customerProducts });
-    console.log(customerProducts);
-});
-}
+  customerInfo = () => {
+    let uid = authRequests.getUid();
+    getWishList.getWishListRequest(uid).then((customerProducts) => {
+      this.setState({ customerProducts });
+      console.log(customerProducts);
+    });
+  }
 
-deleteOneProduct = (productId) => {
-  getWishList.deleteSingleProduct(productId)
-    .then(() => {
-      this.customerInfo();
-    })
-    .catch(err => console.error('error with delte single', err));
-}
+  deleteOneProduct = (productId) => {
+    getWishList.deleteSingleProduct(productId)
+      .then(() => {
+        this.customerInfo();
+      })
+      .catch(err => console.error('error with delte single', err));
+  }
 
-render() {
+  render() {
     const { customerProducts, customer } = this.state;
     console.log(customerProducts);
 
     const customerWishListItem = customerProducts.map(customerProducts => (
-        <WishListItem
+      <WishListItem
         customerProduct={customerProducts}
-          key={customerProducts.id}
-          customer={customer}
-          deleteOneProduct={this.deleteOneProduct}
-        />
-      ));
-      
-    return(
-        <div className="container">
-        <div className="all-in-wishlist">
-        <div><h1 className="cart">Wish List</h1></div>
-        <div>
-        { customerWishListItem } 
-        </div>
-        </div>
-        </div>
-    )
+        key={customerProducts.id}
+        customer={customer}
+        deleteOneProduct={this.deleteOneProduct}
+      />
+    ));
 
-}
+    if (customerProducts.length === 0) {
+      return (
+        <div className="container">
+          <div className="all-in-wishlist">
+            <div><h1 className="cart">Wish List</h1></div>
+            <div>
+              <p>You do not currently have any items in your wish list</p>
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="container">
+          <div className="all-in-wishlist">
+            <div><h1 className="cart">Wish List</h1></div>
+            <div>
+              {customerWishListItem}
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
 }
 
 export default WishList
