@@ -13,8 +13,8 @@ class DinosaurItem extends React.Component {
     state = {
         showModal: false,
         customer: '',
-        buttonTextChange: "Add To Cart",
-        wishListButtonChange: "Add To Wish List"
+        buttonTextChange: " Add To Cart",
+        wishListButtonChange: " Add To Wish List"
     }
 
     componentDidMount() {
@@ -33,7 +33,7 @@ class DinosaurItem extends React.Component {
     addToCart = () => {
         const { customer } = this.state;
         const { product } = this.props;
-        this.setState({ buttonTextChange: "In Cart" });
+        this.setState({ buttonTextChange: " In Cart" });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
@@ -44,7 +44,7 @@ class DinosaurItem extends React.Component {
     addToWishlist = () => {
         const { customer } = this.state;
         const { product } = this.props;
-        this.setState({ wishListButtonChange: "In Wish List" });
+        this.setState({ wishListButtonChange: " In Wish List" });
         const CustomerProductInfo = {
             productId: product.id,
             customerId: customer.id
@@ -66,14 +66,14 @@ class DinosaurItem extends React.Component {
                             <h2 className='dino-title'><i>{product.title}</i></h2>
                             <p className='dino-price'><i>${product.price}</i></p>
                             <p className='dino-quantity'>We have <b>{product.quantity}</b> in stock.</p>
-                            <Button className="addToCart" onClick={this.addToCart}>
+                            <Button className="addToCart btn-sm" onClick={this.addToCart}><i class="fas fa-luggage-cart"></i> 
                                 {this.state.buttonTextChange}
                             </Button>
-                            <Button className="addToWishList" onClick={this.addToWishlist}>
+                            <Button className="addToWishList btn-sm" onClick={this.addToWishlist}><i class="fas fa-magic mr-1"></i> 
                                 {this.state.wishListButtonChange}
                             </Button>
-                            <Button className="modal_opener btn-light" onClick={this.toggleModal}>
-                                Description
+                            <Button className="modal_opener btn-sm" onClick={this.toggleModal}>
+                            <i class="far fa-question-circle"></i>
                                 </Button>
                             <Modal
                                 show={this.state.showModal}
