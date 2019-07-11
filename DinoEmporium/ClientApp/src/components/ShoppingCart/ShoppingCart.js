@@ -66,7 +66,18 @@ deleteOneProduct = (productId) => {
             }}
     />
           }
-
+        if (customerProducts.length === 0) {
+          return (
+            <div className="container">
+            <div className="all-in-cart">
+            <div><h1 className="cart">Shopping Cart</h1></div>
+            <div>
+            <p>You do not currently have any items in your cart</p>
+            </div>    
+            </div>
+            </div>
+          )
+        } else {
         return(
             <div className="container">
             <div className="all-in-cart">
@@ -78,7 +89,7 @@ deleteOneProduct = (productId) => {
             </div>
             </div>
         )
-
+      }
     }
 }
 
