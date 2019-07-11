@@ -23,7 +23,7 @@ namespace DinoEmporium.Controllers
         [HttpPost()]
         public ActionResult AddOrder(CreateOrderRequest createRequest)
         {
-            var newOrder = _repository.AddOrder(createRequest.Price, createRequest.PaymentInformationId, createRequest.CustomerId);
+            var newOrder = _repository.AddOrder(createRequest.Price, createRequest.CustomerId, createRequest.PaymentInformationId);
 
             return Created($"api/orders/{newOrder.Id}", newOrder);
 
