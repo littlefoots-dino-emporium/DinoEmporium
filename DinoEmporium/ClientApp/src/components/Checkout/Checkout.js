@@ -11,14 +11,15 @@ class Checkout extends React.Component {
     state = {
         paymentInfo: [],
         checkout: false,
-        paymentId: ''
+        paymentId: '',
+        price: ''
     }
 
 componentDidMount() {
     const { customer } = this.props.location.state;
 paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
 this.setState({ paymentInfo })
-
+this.addTotal()
 })
 }
 
@@ -28,9 +29,10 @@ let add = 0;
 customerProducts.forEach((customerProduct) => {
 add = parseInt(add) + parseInt(customerProduct.price);
 });
-return (
-add
-)
+// return (
+// add
+// )
+this.setState({ price: add })
 }
 
 selectedCheckoutPayment = (e) => {
@@ -42,7 +44,7 @@ selectedCheckoutPayment = (e) => {
 addOrderToDatabase = () => {
   const { customer } =  this.props.location.state;
 const orderInfo = {
-  price: 67,
+  price: this.state.price,
   paymentInformationId: this.state.paymentId,
   customerId: customer.id
 }
@@ -93,7 +95,7 @@ const address = () => {
               <div class="card total">
                 <h4 class="order-text">Order Total</h4>
                 <div>
-                <h5> ${this.addTotal()}</h5> 
+                <h5> ${this.state.price}</h5> 
                 <button class="btn btn-primary" onClick={this.addOrderToDatabase}>Place Your Order</button>
             </div>
               </div>
