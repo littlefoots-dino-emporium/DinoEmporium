@@ -14,30 +14,29 @@
   width: 100%;
   height: 100%;
   z-index: 995;
-  background: rgba(0, 0, 0, 0.425);
 }
 
 .modal .modal_content {
   z-index: 999;
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-height: 90%;
+  max-height: 100%;
   overflow: auto;
   background: #fff;
   box-sizing: border-box;
   padding: 20px;
   box-shadow: 0 1px 5px rgba(0,0,0,0.7);
   border-radius: 4px;
-  width: 520px; /* This just a default width */
 }
 
-.modal .modal_content > h2 {
-  font-size: 28px;
+.modal .modal_content > li {
+  font-size: 14px;
   font-weight: 200;
-  margin: 20px 0 40px;
+  margin: 5px 0;
   text-align: center;
+  //width: 540px;
 }
 
 .modal .modal_content .buttons_wrapper {
@@ -46,16 +45,14 @@
 }
 
 .modal .close_modal {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  position: relative;
   cursor: pointer;
+  margin-top: -45px;
   font-size: 18px;
   opacity: 0.5;
   background: none;
   border: none;
   transition: opacity 0.2s ease;
-
 }
 
 .modal .close_modal:hover {

@@ -18,7 +18,7 @@ class Sweaters extends React.Component {
     })
   }
 
-  
+
   componentDidMount() {
     this.getAllSweaters();
   }
@@ -49,25 +49,27 @@ class Sweaters extends React.Component {
 
     const sweaterItemComponent = filteredSweaters.map(product => (
       <div>
-      <SweaterItem
-        product={product}
-        key={product.id}
-      />
+        <SweaterItem
+          product={product}
+          key={product.id}
+        />
       </div>
     ));
 
 
     return (
       <div>
-      <SearchField
-      placeholder="Search Sweaters..."
-      onChange={this.onChange}
-      searchText=""
-      classNames="test-class w-50 mt-auto"
-    />
-      <div className='sweatersComponentDiv'>
-        {sweaterItemComponent}
-      </div>
+        <div className="searchbar">
+          <SearchField
+            placeholder="Search Sweaters..."
+            onChange={this.onChange}
+            searchText=""
+            classNames="searchbar w-50 mt-auto rounded border-warning"
+          />
+        </div>
+        <div className='sweatersComponentDiv'>
+          {sweaterItemComponent}
+        </div>
       </div>
     );
   }
