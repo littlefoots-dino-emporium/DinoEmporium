@@ -1,63 +1,58 @@
-
 import React from 'react';
 import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import orderRequest from '../../helpers/data/orderRequest';
 
-import PlaceOrder from '../PlaceOrder/PlaceOrder';
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
 
 class Checkout extends React.Component {
 
     state = {
         paymentInfo: [],
-        checkout: false
+        checkout: false,
+        paymentId: ''
     }
 
 componentDidMount() {
     const { customer } = this.props.location.state;
 paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
 this.setState({ paymentInfo })
+
 })
+}
+
+addTotal = () => {
+  const { customerProducts } = this.props.location.state;
+let add = 0;
+customerProducts.forEach((customerProduct) => {
+add = parseInt(add) + parseInt(customerProduct.price);
+});
+return (
+add
+)
 }
 
 selectedCheckoutPayment = (e) => {
   const value = e.target.value;
-  // const selectedPayment = value
-  // this.setState({ payment: value })
-  console.log(value)
+  this.setState({ paymentId: value })
+ 
   }
 
-addOrder = () => {
+addOrderToDatabase = () => {
   const { customer } =  this.props.location.state;
-  const { paymentInfo } = this.state;
 const orderInfo = {
-  price: paymentInfo.id,
-  paymentInformationId: paymentInfo.id,
+  price: 67,
+  paymentInformationId: this.state.paymentId,
   customerId: customer.id
 }
-orderRequest.postOrderRequest(orderInfo);
+orderRequest.PostOrderRequest(orderInfo);
 }
-
-// componentWillReceiveProps(props) {
-//     this.setState({ paymentInfo: props.paymentInfo})
-// }
-
 
     render() {
         const { customer, customerProducts } =  this.props.location.state;
         const { paymentInfo } = this.state;
 
-      //   const addTotal = () => {
-      //   let add = 0;
-      //   customerProducts.forEach((customerProduct) => {
-      //     add = parseInt(add) + parseInt(customerProduct.price);
-      //   });
-      //   return (
-      //     add
-      //   )
-      // }
 
         const checkoutItem = paymentInfo.map(payment => (
             <CheckoutItem
@@ -97,12 +92,10 @@ const address = () => {
               </div>
               <div class="card total">
                 <h4 class="order-text">Order Total</h4>
-                {/* <h5> ${addTotal()}</h5> */}
-                <PlaceOrder 
-                  customerProducts = {customerProducts}
-                  paymentInfo = {paymentInfo}
-                  customer= {customer}
-                />
+                <div>
+                <h5> ${this.addTotal()}</h5> 
+                <button class="btn btn-primary" onClick={this.addOrderToDatabase}>Place Your Order</button>
+            </div>
               </div>
           </div>
         )

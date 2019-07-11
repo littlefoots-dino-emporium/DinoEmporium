@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const PostOrderRequest = (orderInfo) => axios.post(`http://localhost:50312/api/order/register`, orderInfo);
+const PostOrderRequest = (orderInfo) => axios.post(`http://localhost:50319/api/order`, orderInfo);
 
-export default PostOrderRequest;
+export default { PostOrderRequest };
