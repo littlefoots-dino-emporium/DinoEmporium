@@ -60,13 +60,16 @@ class CheckoutItem extends React.Component {
             return (
                 <div class="checkout-item">
                     <FormGroup tag="fieldset">
-                        <label>Payment Type</label>
                         <FormGroup check>
                             <Label check>
+                                <div>
                                 <Input type="radio" name="radio1" value={payment} onClick={this.props.selectedCheckoutPayment} />
+                                </div>
+                                <div>
                                 <h5>Name on card: {item.nameOnCard}</h5>
                                 <h5>Billing Address: {item.address}</h5>
                                 <h5><span class="payment-type">{paymentType()}</span> ending in {lastFour()}</h5>
+                                </div>
                             </Label>
                         </FormGroup>
                     </FormGroup>
