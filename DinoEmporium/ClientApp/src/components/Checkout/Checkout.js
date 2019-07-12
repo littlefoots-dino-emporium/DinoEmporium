@@ -1,5 +1,5 @@
 import React from 'react';
-import autheRequests from '../../firebaseRequests/auth';
+// import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import orderRequest from '../../helpers/data/orderRequest';
@@ -79,25 +79,29 @@ const address = () => {
   return customer.address
 }
         return(
-          <div class="checkout">
+          <div class="checkout container">
               <div className="card all-in-cart">
               <div><h1 className="cart">Checkout</h1>
               <div class="shipping">
                 <h3>Shipping Information</h3>
-                <h4 class="shipping-item">Name: {customer.firstName}</h4>
-                <h4 class="shipping-item">Shipping address: <span class="address">{address()}</span></h4>
+                <h4 class="shipping-item">Name: {customer.firstName} {customer.lastName}</h4>
+                <h4 class="shipping-item">Shipping address: <span class="address">{address()} {customer.city}, {customer.state} {customer.zip}</span></h4>
               </div>
+              <hr></hr>
               <h3>Payment Method</h3>
+              <div className="paymentMethod">
               {checkoutItem}
+              </div>
+              <hr></hr>
+              <div className="checkout-products">
               {checkoutProducts}
               </div>
-              </div>
-              <div class="card total">
-                <h4 class="order-text">Order Total</h4>
+              <h4 class="order-text">Order Total</h4>
                 <div>
                 <h5> ${this.state.price}</h5> 
-                <button class="btn btn-primary" onClick={this.addOrderToDatabase}>Place Your Order</button>
+                <button class="btn btn-info checkout-button" onClick={this.addOrderToDatabase}>Place Your Order</button>
             </div>
+              </div>
               </div>
           </div>
         )
