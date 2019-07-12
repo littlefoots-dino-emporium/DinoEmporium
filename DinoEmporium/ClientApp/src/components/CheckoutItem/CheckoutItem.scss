@@ -1,8 +1,8 @@
 .checkout-item {
-    margin-bottom: 50px;
-    margin-left: 50px;
+    // margin-bottom: 50px;
+    // margin-left: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .payment-type{
     font-weight: bold;
@@ -12,7 +12,7 @@
     height: 150px;
 }
 .products-in-checkout{
-    margin-bottom: 50px;
+    margin-bottom: 3%;
     display: flex;
     flex-direction: row;
     border-style: solid black 2px;

@@ -84,14 +84,16 @@ const address = () => {
               <div><h1 className="cart">Checkout</h1>
               <div class="shipping">
                 <h3>Shipping Information</h3>
-                <h4 class="shipping-item">Name: {customer.firstName} {customer.Name}</h4>
+                <h4 class="shipping-item">Name: {customer.firstName} {customer.lastName}</h4>
                 <h4 class="shipping-item">Shipping address: <span class="address">{address()}</span></h4>
               </div>
               <h3>Payment Method</h3>
               <div className="paymentMethod">
               {checkoutItem}
               </div>
+              <div className="checkout-products">
               {checkoutProducts}
+              </div>
               <h4 class="order-text">Order Total</h4>
                 <div>
                 <h5> ${this.state.price}</h5> 
