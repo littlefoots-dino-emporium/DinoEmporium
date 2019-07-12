@@ -164,7 +164,8 @@ class EditCustomerForm extends React.Component {
               </div>
               {/* <button type="submit" class="btn btn-primary">Sign in</button> */}
                   <button
-                    class="btn btn-primary"
+                    class="btn"
+                    id="buttonYeah"
                     type="submit"
                     className="btn btn-info col-xs-12"
                     onClick={this.formSubmit}

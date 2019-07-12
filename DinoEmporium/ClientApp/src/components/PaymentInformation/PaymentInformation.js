@@ -1,8 +1,4 @@
 import React from 'react';
-import Modal from 'react-responsive-modal';
-import {
-    TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col,
-  } from 'reactstrap';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import authRequest from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
@@ -15,7 +11,6 @@ import './PaymentInformation.scss';
     state = {
         
         customer: {},
-        //open: false,
         paymentInfo: []
     }
 
@@ -48,7 +43,6 @@ deleteOnePaymentInformation = (paymentId) => {
   }
 
 render(){
-    // const { open } = this.state;
   const { paymentInfo } = this.state;
   console.log(paymentInfo);
 

@@ -37,7 +37,7 @@ class PaymentItem extends React.Component {
         }
 
         return(
-
+        <div className="mainDiv">
             <div className="info">
                 <div className="customer-info">
                     <h5>Name on card: {paymentInfo.nameOnCard}</h5>
@@ -46,13 +46,13 @@ class PaymentItem extends React.Component {
                     <h5>Expiration Date: {paymentInfo.expirationDate}</h5>
                     <h5>PaymentType:{paymentType()}</h5> 
                 </div>
-                <div className="delete-button" onClick={this.deletePaymentEvent}><button className="btn btn-danger delete-button" ><i class="fas fa-trash-restore"></i></button></div>
+                <div className="delete-button" onClick={this.deletePaymentEvent}><button className="btn btn-sm delete-button"><i class="fas fa-trash-restore"></i>Delete</button></div>
                 {/* <button className="btn btn-primary edit-button"><i class="fas fa-pencil-alt"></i></button> */}
 
-
+                </div>
             </div>
         )};
 
 }      
 
-export default PaymentItem
+export default PaymentItem;

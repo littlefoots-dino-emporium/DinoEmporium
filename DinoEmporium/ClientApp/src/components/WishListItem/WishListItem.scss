@@ -1,17 +1,18 @@
-// .wishlistImage {
-//   width: 300px;
-//   height: 300px;
-// }
-
 .product-info {
-  // border: solid 1px;
-  // border-color:black;
-  // margin-left: 100px;
-  display: flex;
-  flex-direction: row;
+  margin-right: 30px;
   margin-bottom: 30%;
+  background-color: rgba(255, 255, 255, 0.322);
 }
-.product-img {
+.wishlistImage {
   margin-right: 200px;
+  width: 300px;
+  height: 300px;
+}
 
+.titleForProduct {
+  font-size: 20px;
+}
+
+.price, .size {
+  font-size: 13px;
 }

@@ -246,14 +246,14 @@ body {
   margin-left: 121%;
   margin-top: 43%;
   line-height: 3.5px;
-  color: $grey !important;
+  background-color: $forestgreen;
 }
 
 #dealOfMonth1 {
   margin-right: -295%;
   margin-top: 45%;
   line-height: 3.5px;
-  color: $grey !important;
+  background-color: $forestgreen;
 }
 
 .package-one {
@@ -313,7 +313,7 @@ $speed: 1.5s;
     -moz-appearance: none;
     cursor: pointer;
     -webkit-appearance: none;
-    box-shadow: 0 15px 40px rgba($theme,0.5);
+    //box-shadow: 0 15px 40px rgba($theme,0.5);
     transform: perspective(600px) rotateX(0deg) scale(1);
     transition: all 0.2s linear;
     &:hover {

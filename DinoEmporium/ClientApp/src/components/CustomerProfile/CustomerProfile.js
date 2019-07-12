@@ -74,4 +74,4 @@ export class CustomerProfile extends React.Component {
   }
 }
 
-export default CustomerProfile
+export default CustomerProfile;
