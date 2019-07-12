@@ -1,5 +1,5 @@
 import React from 'react';
-import autheRequests from '../../firebaseRequests/auth';
+// import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import orderRequest from '../../helpers/data/orderRequest';
