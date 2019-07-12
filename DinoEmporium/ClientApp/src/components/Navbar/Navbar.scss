@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Barriecito&display=swap');
 
-$grey: rgb(102, 105, 102);
+$grey: rgba(102, 105, 102, 0.795);
 $lightgrey: #cdd3cd;
 $darkblue: #1A577F;
-$brown: rgb(102, 73, 36);
+$brown: rgb(121, 170, 74);
 $bone: rgb(240, 243, 227);
-$forestgreen: rgb(11, 138, 49);
+$yellow: rgba(230, 218, 52, 0.438);
 
 .littlefoot-image {
   max-height: 70%;
@@ -14,7 +14,7 @@ $forestgreen: rgb(11, 138, 49);
 }
 
 .Navbar {
-  background-color: $lightgrey;
+  background-color: $grey;
   padding: .5em;
   margin: 0;
 }
