@@ -99,7 +99,7 @@ const address = () => {
               <h4 class="order-text">Order Total</h4>
                 <div>
                 <h5> ${this.state.price}</h5> 
-                <button class="btn btn-primary" onClick={this.addOrderToDatabase}>Place Your Order</button>
+                <button class="btn btn-info checkout-button" onClick={this.addOrderToDatabase}>Place Your Order</button>
             </div>
               </div>
               </div>

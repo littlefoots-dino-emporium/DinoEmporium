@@ -5,17 +5,20 @@
   display: flex;
   text-align: center;
   flex-direction: column;
+  justify-content: center;
   // margin-left: 25%;
-  padding-left: 3%;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin-top: 3%;
   background-color: white;
   width: 100%;
   border: black solid;
   border-width: thick;
 }
 
+.items-in-wishlist {
+  margin-bottom: 2%;
+}
+
 .container {
-display: flex;
+// display: flex;
 justify-content: center;
 }

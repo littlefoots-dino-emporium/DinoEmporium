@@ -3,15 +3,17 @@
 //   height: 300px;
 // }
 
-.product-info {
+.wishList {
   // border: solid 1px;
   // border-color:black;
   // margin-left: 100px;
   display: flex;
+  margin-top: 2%;
   flex-direction: row;
-  margin-bottom: 30%;
+  justify-content: center;
+  margin-bottom: 2%;
 }
-.product-img {
-  // margin-right: 200px;
+// .product-img {
+//   // margin-right: 200px;
 
-}
+// }

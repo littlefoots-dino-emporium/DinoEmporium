@@ -59,22 +59,15 @@ class CheckoutItem extends React.Component {
         if (item.expirationDate != null && item.nameOnCard != null && item.accountNumber != null) {
             return (
                 <div class="checkout-item">
-                    <FormGroup tag="fieldset">
-                        <FormGroup check>
-                            <Label check>
-                                <div>
-                                <Input type="radio" name="radio1" value={payment} onClick={this.props.selectedCheckoutPayment} />
-                                </div>
-                                <div>
-                                <h5>Name on card: {item.nameOnCard}</h5>
-                                <h5>Billing Address: {item.address}</h5>
-                                <h5><span class="payment-type">{paymentType()}</span> ending in {lastFour()}</h5>
-                                </div>
-                            </Label>
-                        </FormGroup>
-                    </FormGroup>
+                    <div>
+                        <Input type="radio" name="radio1" value={payment} onClick={this.props.selectedCheckoutPayment} />
+                    </div>
+                    <div>
+                        <h5>Name on card: {item.nameOnCard}</h5>
+                        <h5>Billing Address: {item.address}</h5>
+                        <h5><span class="payment-type">{paymentType()}</span> ending in {lastFour()}</h5>
+                    </div>
                 </div>
-
             )
         }
 
