@@ -65,7 +65,7 @@ export class WishList extends Component {
         <div className="container">
           <div className="all-in-wishlist">
             <div><h1 className="cart">Wish List</h1></div>
-            <div>
+            <div className="items-in-wishlist">
               {customerWishListItem}
             </div>
           </div>

@@ -1,13 +1,14 @@
-.product-info {
-    // border: solid 1px;
-    // border-color:black;
-    // margin-left: 100px;
+.cart-item {
+    border-color:black;
+    margin-left: 2%;
+    margin-top: 1%;
     display: flex;
+    justify-content: center;
     flex-direction: row;
-    margin-bottom: 30%;
+    margin-bottom: 2%;
 }
 .product-img {
-    margin-right: 200px;
+    // margin-right: 2%;
 
 }
 
