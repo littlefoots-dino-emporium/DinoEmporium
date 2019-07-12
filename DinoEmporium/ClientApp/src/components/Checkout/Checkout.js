@@ -85,12 +85,14 @@ const address = () => {
               <div class="shipping">
                 <h3>Shipping Information</h3>
                 <h4 class="shipping-item">Name: {customer.firstName} {customer.lastName}</h4>
-                <h4 class="shipping-item">Shipping address: <span class="address">{address()}</span></h4>
+                <h4 class="shipping-item">Shipping address: <span class="address">{address()} {customer.city}, {customer.state} {customer.zip}</span></h4>
               </div>
+              <hr></hr>
               <h3>Payment Method</h3>
               <div className="paymentMethod">
               {checkoutItem}
               </div>
+              <hr></hr>
               <div className="checkout-products">
               {checkoutProducts}
               </div>
