@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import authRequests from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import getOrderHistory from '../../helpers/data/orderHistoryRequest';
@@ -8,7 +9,8 @@ import './OrderHistory.scss';
 export class OrderHistory extends Component {
   state = {
     customer: [],
-    orderHistory: []
+    orderHistory: [],
+    paymentInfo: [],
   }
 
   getCustomer = () => {
@@ -18,7 +20,12 @@ export class OrderHistory extends Component {
       getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
         this.setState({ orderHistory });
       });
+      paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
+        this.setState({ paymentInfo })
+        console.log(paymentInfo)
+        })
     })
+    
   }
 
   componentDidMount() {
