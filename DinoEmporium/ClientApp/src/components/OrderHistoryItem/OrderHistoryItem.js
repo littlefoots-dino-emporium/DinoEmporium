@@ -13,9 +13,6 @@ class OrderHistoryItem extends React.Component {
                     <h5>Total Price: ${orderHistory.price}</h5>
                     <h5>Payment Information: {orderHistory.paymentInformationId}</h5>
                 </div>
-
-
-
             </div>
         )};
 
