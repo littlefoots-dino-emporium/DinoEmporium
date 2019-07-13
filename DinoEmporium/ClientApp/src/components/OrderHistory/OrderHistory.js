@@ -10,7 +10,6 @@ export class OrderHistory extends Component {
   state = {
     customer: [],
     orderHistory: [],
-    paymentInfo: [],
   }
 
   getCustomer = () => {
@@ -20,10 +19,6 @@ export class OrderHistory extends Component {
       getOrderHistory.getOrderHistory(customer.id).then((orderHistory) => {
         this.setState({ orderHistory });
       });
-      paymentRequest.getPaymentInformation(customer.id).then((paymentInfo) => {
-        this.setState({ paymentInfo })
-        console.log(paymentInfo)
-        })
     })
     
   }

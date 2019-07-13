@@ -4,30 +4,7 @@ import './OrderHistoryItem.scss';
 class OrderHistoryItem extends React.Component {
     render() {
         const { orderHistory } = this.props;
-        // const paymentType = () => {
-        //     if (orderHistory.paymentType == 0) {
-        //         return (
-        //             "Master Card"
-        //         )
-        //     }
-        //     if (orderHistory.paymentType == 1) {
-        //         return (
-        //             "Visa"
-        //         )
-        //     }
-        //     if (orderHistory.paymentType == 2) {
-        //         return (
-        //             "American Express"
-        //         )
-        //     }
-        // }
-      
-        // const lastFour = () => {
-        //     var card = orderHistory.accountNumber;
-        //     return (
-        //         card
-        //     )
-        // }
+
 
         return(
 
