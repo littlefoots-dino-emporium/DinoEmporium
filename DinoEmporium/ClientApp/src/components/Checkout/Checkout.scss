@@ -1,21 +1,9 @@
-// .shipping {
-//     margin-bottom: 50px;
-// }
-
-// .shipping-item {
-//     margin-left: 50px;
-// }
-// .checkout {
-//     display: flex;
-//     flex-direction: row;
-// }
 .all-in-cart{
     width: 100%;
     margin-top: 3%;
     display: flex;
     // flex-direction: column;
 }
-
 
 .paymentMethod {
     display: flex;
@@ -27,23 +15,8 @@
      margin-bottom: 3%;
 }
 
-
 .checkout-products {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-
-.cart {
-    text-decoration: underline;
-}
-// .total {
-//     width: 200px;
-//     height: 200px;
-// }
-// .order-text {
-//     margin: 20px 0px 20px 30px;
-// }
-// .address {
-//     font-size: 0.8em;
-// }

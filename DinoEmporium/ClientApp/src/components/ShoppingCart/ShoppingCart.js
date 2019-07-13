@@ -80,7 +80,7 @@ deleteOneProduct = (productId) => {
         } else {
         return(
             <div className="container">
-            <div className="all-in-cart">
+            <div className="cartItems">
             <div><h1 className="cart">Shopping Cart</h1></div>
             <div>
             { customerProductItem } 

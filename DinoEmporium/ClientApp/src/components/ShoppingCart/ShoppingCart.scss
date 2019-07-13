@@ -1,12 +1,12 @@
 // .cart {
 //     margin: 30px 0px 50px 400px;
 // }
-.all-in-cart {
+.cartItems {
     display: flex;
     flex-direction: column;
     text-align: center;
     margin-top: 3%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.322);  
     width: 100%;
     border: black solid;
     border-width: thick;

@@ -20,12 +20,10 @@ class CartItem extends React.Component {
                     <img className="cartProduct" src={customerProduct.image} alt="cart items"/>
                 </div>
                 <div className="product-description">
-                    <h5>Title:{customerProduct.title}</h5>
-                    <h5>Size:{customerProduct.size}</h5>
-                    <h5>Price:${customerProduct.price}</h5> 
-                    <button className="btn btn-danger" onClick={this.deleteProductEvent}><i class="fas fa-trash-restore"></i></button>
+                    <h5>{customerProduct.title}</h5>
+                    <h5>${customerProduct.price}</h5> 
+                    <button className="btn-sm delete-button" id="deleteButton2" onClick={this.deleteProductEvent}><i class="fas fa-trash-restore">delete</i></button>
                 </div>
-                
                 </div>
             </div>
         )};
