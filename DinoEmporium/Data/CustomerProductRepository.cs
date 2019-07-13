@@ -80,7 +80,7 @@ namespace DinoEmporium.Data.CustomerProductRepo.cs
 
         }
 
-        public CustomerProduct DeleteAllCustomerProduct(string customerId)
+        public CustomerProduct DeleteAllCustomerProduct(int customerId)
         {
             using (var db = new SqlConnection(ConnectionString))
             {
