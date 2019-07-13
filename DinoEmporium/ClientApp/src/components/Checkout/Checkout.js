@@ -2,6 +2,7 @@ import React from 'react';
 // import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
+import customerProductRequest from '../../helpers/data/customerProductRequest';
 import orderRequest from '../../helpers/data/orderRequest';
 
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
@@ -42,13 +43,14 @@ selectedCheckoutPayment = (e) => {
   }
 
 addOrderToDatabase = () => {
-  const { customer } =  this.props.location.state;
+  const { customer, customerProducts } =  this.props.location.state;
 const orderInfo = {
   price: this.state.price,
   paymentInformationId: this.state.paymentId,
   customerId: customer.id
 }
-orderRequest.PostOrderRequest(orderInfo);
+orderRequest.postOrderRequest(orderInfo);
+customerProductRequest.deleteAllProduct();
 }
 
     render() {

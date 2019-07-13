@@ -80,6 +80,24 @@ namespace DinoEmporium.Data.CustomerProductRepo.cs
 
         }
 
+        public CustomerProduct DeleteAllCustomerProduct(CustomerProduct CustomerProductInfo)
+        {
+            using (var db = new SqlConnection(ConnectionString))
+            {
+                var deleteAllCustomerProduct = db.QueryFirstOrDefault<CustomerProduct>(@"delete
+                                                                       from CustomerProduct
+                                                                        where customerId = @customerId",
+                                                                        new { customerId = CustomerProductInfo.CustomerId });
+                                                                        //new { id = CustomerProductInfo.Id });
+                                                                       //new { id = CustomerProduct });
+
+
+
+                return deleteAllCustomerProduct;
+            }
+
+        }
+
         public IEnumerable<CustomerProduct> GetCustomerProduct(string customerUid)
         {
             using (var db = new SqlConnection(ConnectionString))
