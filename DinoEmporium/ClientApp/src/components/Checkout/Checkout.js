@@ -1,6 +1,7 @@
 import React from 'react';
 // import autheRequests from '../../firebaseRequests/auth';
 import './Checkout.scss';
+import { Redirect } from 'react-router';
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import customerProductRequest from '../../helpers/data/customerProductRequest';
 import orderRequest from '../../helpers/data/orderRequest';
@@ -13,7 +14,8 @@ class Checkout extends React.Component {
         paymentInfo: [],
         checkout: false,
         paymentId: '',
-        price: ''
+        price: '',
+        checkoutComplete: false,
     }
 
 componentDidMount() {
@@ -50,14 +52,19 @@ const orderInfo = {
   customerId: customer.id
 }
 orderRequest.postOrderRequest(orderInfo);
+alert("Your order has been successfully processed!")
 customerProductRequest.deleteAllProduct(customer.id).then(
   this.setState({ customerProducts })
 )
+this.setState({ checkoutComplete: true })
 }
 
     render() {
         const { customer, customerProducts } =  this.props.location.state;
         const { paymentInfo } = this.state;
+        if (this.state.checkoutComplete === true) {
+          return <Redirect to='/home' />
+        }
 
 
         const checkoutItem = paymentInfo.map(payment => (
