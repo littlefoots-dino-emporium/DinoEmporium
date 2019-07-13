@@ -49,8 +49,10 @@ const orderInfo = {
   paymentInformationId: this.state.paymentId,
   customerId: customer.id
 }
-// orderRequest.postOrderRequest(orderInfo);
-customerProductRequest.deleteAllProduct();
+orderRequest.postOrderRequest(orderInfo);
+customerProductRequest.deleteAllProduct(customer.id).then(
+  this.setState({ customerProducts })
+)
 }
 
     render() {
