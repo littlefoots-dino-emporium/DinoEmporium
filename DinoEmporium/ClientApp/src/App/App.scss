@@ -1,15 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+
+
 body {
   background: url(../Images/MadeBackground2.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  font-family: 'Fjalla One', sans-serif;
 }
-
-// .container {
-//   max-width: 100%;
-// }
 
 .row {
   margin-right: 0px;
   margin-left: 0px;
 }
+
