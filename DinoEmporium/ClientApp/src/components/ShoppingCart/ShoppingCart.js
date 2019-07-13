@@ -80,12 +80,12 @@ deleteOneProduct = (productId) => {
         } else {
         return(
             <div className="container">
-            <div className="all-in-cart">
+            <div className="cartItems">
             <div><h1 className="cart">Shopping Cart</h1></div>
             <div>
             { customerProductItem } 
             </div>    
-            <div><button className="btn btn-info checkoutBtn" onClick={this.checkout}>Proceed to checkout</button></div>
+            <div><button className="btn checkoutBtn" onClick={this.checkout}>Proceed to checkout</button></div>
             </div>
             </div>
         )

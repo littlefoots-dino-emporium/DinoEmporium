@@ -1,49 +1,95 @@
-// .shipping {
-//     margin-bottom: 50px;
-// }
+$forestgreen: rgb(11, 138, 49);
+$theme: $forestgreen;
 
-// .shipping-item {
-//     margin-left: 50px;
-// }
-// .checkout {
-//     display: flex;
-//     flex-direction: row;
-// }
+.checkout {
+    background-color: rgba(255, 255, 255, 0.322);
+}
+
 .all-in-cart{
     width: 100%;
     margin-top: 3%;
     display: flex;
-    // flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.322);
+    margin-bottom: 13%;
 }
-
 
 .paymentMethod {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-size: 12px;
 }
 
 .checkout-button {
      margin-bottom: 3%;
+     box-shadow: 2px 3px 5px rgb(41, 40, 40);
+    margin: 2%;
+    background-color: $theme !important;
+      border: none;
+      outline: none;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 1px black;
+      color: #fff;
+      display: inline-block;
+      width: 199px;
+      height: 40px;
+      text-align: center;
+      font-size: 10px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border-radius: 8px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      -moz-user-select: -moz-none;
+      -ms-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      -webkit-appearance: none;
+      //box-shadow: 0 5px 10px rgba($theme,0.5);
+      transform: perspective(600px) rotateX(0deg) scale(1);
+      transition: all 0.2s linear;
+      &:hover {
+        background-color: darken($theme, 5%);
+        box-shadow: 0 20px 40px rgba($theme,0.5);
+      }
+      &:active{
+        transform: perspective(600px) rotateX(20deg)  scale(0.9);
+        font-size: 10px;
+        box-shadow: 0 20px 40px rgba($theme,0.5);
+      }
+      .active &:active{
+        transform: perspective(600px) rotateX(0deg) scale(1);
+        font-size: 10px;
+        box-shadow: 0 15px 40px rgba($theme,0.5);
+      }
 }
-
 
 .checkout-products {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-size: 12px;
 }
 
-.cart {
+.shippingInfo, .shipping-item, .order-text, .priceForCheckout {
+    margin-left: 5%;
+}
+
+.shippingInfo {
+    margin-top: 1%;
     text-decoration: underline;
 }
-// .total {
-//     width: 200px;
-//     height: 200px;
-// }
-// .order-text {
-//     margin: 20px 0px 20px 30px;
-// }
-// .address {
-//     font-size: 0.8em;
-// }
+.cartOut {
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+}
+
+.paymentMethodTitle {
+    margin-top: 2%;
+    margin-left: 38%;
+}
