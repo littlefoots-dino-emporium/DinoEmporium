@@ -60,7 +60,6 @@ export class WishListItem extends Component {
           </div>
           <div className="descriptionForProducts">
           <h5 className="titleForProduct">{customerProduct.title}</h5>
-                <h5 className="size">{customerProduct.size}</h5>
                 <h5 className="price">${customerProduct.price}</h5> 
                 <button className="btn btn-sm delete-button" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore">delete</i></button>
                 <button className="btn btn-sm to-cart-button" onClick={this.addToCart}><i class="fas fa-luggage-cart">Add To Cart</i></button>
