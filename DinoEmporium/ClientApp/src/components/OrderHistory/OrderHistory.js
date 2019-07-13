@@ -28,6 +28,7 @@ export class OrderHistory extends Component {
 
   render() {
     const { orderHistory } = this.state
+   
 
     const orderHistoryPrint = orderHistory.map(orderHistory => (
       <OrderHistoryItem
