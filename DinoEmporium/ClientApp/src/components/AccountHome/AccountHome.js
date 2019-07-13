@@ -61,7 +61,7 @@ export class AccountHome extends Component {
 
     return (
       <div className="container accountHome">
-          <div class="welcome text-center">
+          <div class="welcome">
             <h1><b>{customer.firstName} {customer.lastName}</b></h1>
             {/* <div class="card-body"> */}
                 <h3>{customer.address}</h3>
@@ -69,16 +69,16 @@ export class AccountHome extends Component {
                 <p>{customer.email}</p>
             {/* </div> */}
         <div className="customerNav text-right">
-          <Button className="customerNavBtn outline color=secondary" onClick={this.editCustomer}  color="info">
+          <Button className="btn" id="buttonYeah" onClick={this.editCustomer}>
             Update Profile Information
         </Button>
-          <Button className="customerNavBtn outline-secondary"  onClick={this.wishList} color="info">
+          <Button className="btn" id="buttonYeah"  onClick={this.wishList}>
             Wish List
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary"  onClick={this.orderHistory} color="info">
+          <Button className="btn" id="buttonYeah"   onClick={this.orderHistory}>
             Order History
         </Button>
-          <Button className="customerNavBtn variant=outline-secondary"  onClick={this.paymentInformation} color="info" text="center">
+          <Button className="btn" id="buttonYeah"  onClick={this.paymentInformation}text="center">
             Payment Information
         </Button>
         </div>

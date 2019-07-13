@@ -1,5 +1,5 @@
 $grey: rgb(102, 105, 102);
-$darkblue: #1A577F;
+$orange: rgb(252, 174, 57);
 $brown: rgb(102, 73, 36);
 $bone: rgb(240, 243, 227);
 $forestgreen: rgb(11, 138, 49);
@@ -71,7 +71,7 @@ $forestgreen: rgb(11, 138, 49);
   display: flex;
   flex-direction: column;
   justify-content: left;
-  margin-top: 2%;
+  margin-top: -1%;
   margin-left: 6%;
 }
 
@@ -85,7 +85,7 @@ $forestgreen: rgb(11, 138, 49);
 
 #btnsfence{
   line-height: 2px;
-  height: 25%;
+  height: 42%;
   padding-bottom: 2px;
   padding-left: 20.5%;
   padding-right: 20%;
@@ -93,7 +93,7 @@ $forestgreen: rgb(11, 138, 49);
 
 #btnsweaters {
   line-height: 2px;
-  height: 25%;
+  height: 45%;
   padding-bottom: 2px;
   padding-left: 10%;
   padding-right: 8%;
@@ -101,7 +101,7 @@ $forestgreen: rgb(11, 138, 49);
 
 #btnsdinosaurs {
   line-height: 2px;
-  height: 25%;
+  height: 45%;
   padding-bottom: 2px;
 }
 
@@ -246,12 +246,14 @@ body {
   margin-left: 121%;
   margin-top: 43%;
   line-height: 3.5px;
+  background-color: $forestgreen;
 }
 
 #dealOfMonth1 {
   margin-right: -295%;
   margin-top: 45%;
   line-height: 3.5px;
+  background-color: $forestgreen;
 }
 
 .package-one {
@@ -269,7 +271,7 @@ body {
 }
 
 
-$theme: $grey;
+$theme: $orange;
 $loader-size: 150px;
 $speed: 1.5s; 
 
@@ -311,7 +313,7 @@ $speed: 1.5s;
     -moz-appearance: none;
     cursor: pointer;
     -webkit-appearance: none;
-    box-shadow: 0 15px 40px rgba($theme,0.5);
+    //box-shadow: 0 15px 40px rgba($theme,0.5);
     transform: perspective(600px) rotateX(0deg) scale(1);
     transition: all 0.2s linear;
     &:hover {

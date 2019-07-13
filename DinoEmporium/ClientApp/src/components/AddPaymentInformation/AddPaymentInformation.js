@@ -8,7 +8,6 @@ import {
 import paymentRequest from '../../helpers/data/paymentInformationRequest';
 import authRequest from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
-import PaymentItem from '../PaymentItem/PaymentItem';
 import './AddPaymentInformation.scss';
 
 const addPayment = {
@@ -100,7 +99,7 @@ this.setState({ paymentType: value })
     const { open, addNewPayment } = this.state;
  return (
      <div className="addPayment">
-         <button onClick={this.onOpenModal} className="add btn btn-info">Add Payment Information</button>
+         <button onClick={this.onOpenModal} className="btn" id="buttonOh">Add Payment Information</button>
       <Modal open={open} onClose={this.onCloseModal} center>
       <div className="Register">
               <div id="login-form">

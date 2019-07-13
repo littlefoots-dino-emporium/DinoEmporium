@@ -59,13 +59,12 @@ export class WishListItem extends Component {
             <img className="wishlistImage" src={customerProduct.image} alt="cart items" />
           </div>
           <div className="product-description">
-            <h5>Title:{customerProduct.title}</h5>
-            <h5>Size:{customerProduct.size}</h5>
-            <h5>Price:${customerProduct.price}</h5>
-            <button className="btn btn-danger" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore"></i></button>
-          <button className="btn btn-info" onClick={this.addToCart}>Add To Cart</button>
+          <h5 className="titleForProduct">{customerProduct.title}</h5>
+                <h5 className="size">{customerProduct.size}</h5>
+                <h5 className="price">${customerProduct.price}</h5> 
+                <button className="btn btn-sm delete-button" onClick={this.deleteKidEvent}><i class="fas fa-trash-restore">delete</i></button>
+                <button className="btn btn-info" onClick={this.addToCart}>Add To Cart</button>
           </div>
-
         </div>
       </div>
     )
@@ -73,3 +72,5 @@ export class WishListItem extends Component {
 }
 
 export default WishListItem
+
+

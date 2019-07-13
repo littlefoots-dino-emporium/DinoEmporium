@@ -1,15 +1,22 @@
+$loader-size: 150px;
+$speed: 1.5s; 
+$grey: rgba(82, 80, 76, 0.712);
+$darkblue: rgb(252, 174, 57);
+$brown: rgb(102, 73, 36);
+$bone: rgb(240, 243, 227);
+$forestgreen: rgb(11, 138, 49);
+$theme: $forestgreen;
+
+
 .accountHome {
-  width: 100%;
-  background-color: white;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.322);
   margin-top: 3%;
   padding-right: 13%;
   padding-left: 13%;
-  border: solid black;
-  border-width: thick;
   // 
   h1 {
     text-align: center;
-    text-decoration: overline underline;
   }
   .welcome {
     width: 100%;
@@ -17,19 +24,61 @@
     padding-left: 7%;
     padding-right: 7%;
     margin-bottom: 3%;
-    background-color: white;
   }
+
   .customerNav {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
-
-    .customerNavBtn {
-      width: 100%;
-      margin: 1%;
-      height: 50%;
-      border-radius: 25px 25px;
-    }
   }
 }
+
+
+#buttonYeah {
+box-shadow: 2px 3px 5px rgb(41, 40, 40);
+margin: 2%;
+  background-color: $theme !important;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 1px 2px 2px black;
+    text-shadow: 1px 3px 1px 8px black;
+    color: #fff;
+    display: inline-block;
+    width: 650px;
+    height: 40px;
+    text-align: center;
+    font-size: 19px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    //box-shadow: 0 5px 10px rgba($theme,0.5);
+    transform: perspective(600px) rotateX(0deg) scale(1);
+    transition: all 0.2s linear;
+    &:hover {
+      background-color: darken($theme, 5%);
+      box-shadow: 0 20px 40px rgba($theme,0.5);
+    }
+    &:active{
+      transform: perspective(600px) rotateX(20deg)  scale(0.9);
+      font-size: 10px;
+      box-shadow: 0 20px 40px rgba($theme,0.5);
+    }
+    .active &:active{
+      transform: perspective(600px) rotateX(0deg) scale(1);
+      font-size: 10px;
+      box-shadow: 0 15px 40px rgba($theme,0.5);
+    }
+  }

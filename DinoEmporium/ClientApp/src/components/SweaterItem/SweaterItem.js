@@ -16,7 +16,7 @@ class SweaterItem extends React.Component {
         customer: '',
         buttonTextChange: "Add To Cart",
         wishListButtonChange: "Add To Wish List",
-        inWishList: false, 
+        inWishList: false,
         inCart: false,
     }
 
@@ -33,7 +33,7 @@ class SweaterItem extends React.Component {
         customerRequest.getCustomerProfile(uid).then((customer) => {
             console.log(customer.id, product.id);
             this.setState({ customer });
-          })
+        })
     }
 
     addToCart = () => {
@@ -55,42 +55,49 @@ class SweaterItem extends React.Component {
         if (inCart === true) {
             alert("This item is already in your cart")
         } else {
-        this.setState({ wishListButtonChange: "In Wish List", inWishList: true });
-        const CustomerProductInfo = {
-            productId: product.id,
-            customerId: customer.id
+            this.setState({ wishListButtonChange: "In Wish List", inWishList: true });
+            const CustomerProductInfo = {
+                productId: product.id,
+                customerId: customer.id
+            }
+            wishList.postWishListRequest(CustomerProductInfo);
         }
-        wishList.postWishListRequest(CustomerProductInfo);
-      }   
     }
 
     render() {
         const { product } = this.props;
         return (
-            <div className="sweaterModal">
-                <Button className="modal_opener" onClick={this.toggleModal}>
-                    <img className='sweater-image' src={product.image} alt='product' />
-                    <p className='sweater-title'><i>{product.title}</i></p>
-                </Button>
-
-                <Modal
-                    show={this.state.showModal}
-                    closeCallback={this.toggleModal}
-                    customClass="custom_modal_class"
-                >
-                    <React.Fragment>
-                        <div className='productCard'>
-                            <li className='sweater-price'><i>${product.price}</i></li>
-                            <li className='sweater-description'>{product.description}</li>
-                            <Button className="addToCart" onClick = {this.addToCart}>
+            <div className="anotherDivForSweaters">
+                <div className="sweaterModal">
+                    <div className='productCard'>
+                        <img className='sweater-image' src={product.image} alt='product' />
+                        <p className="all">
+                            <h2 className='sweater-title'><i>{product.title}</i></h2>
+                            <p className='sweater-price'><i>${product.price}</i></p>
+                            <p className='sweater-quantity'>We have <b>{product.quantity}</b> in stock.</p>
+                            <Button className="addToCart btn-sm" onClick={this.addToCart}><i class="fas fa-luggage-cart"></i>
                                 {this.state.buttonTextChange}
                             </Button>
-                            <Button className="addToWishList" onClick = {this.addToWishlist}>
+                            <Button className="addToWishList btn-sm" onClick={this.addToWishlist}><i class="fas fa-magic mr-1"></i>
                                 {this.state.wishListButtonChange}
                             </Button>
-                        </div>
-                    </React.Fragment>
-                </Modal>
+                            <Button className="modal_opener btn-sm" onClick={this.toggleModal}>
+                                <i class="far fa-question-circle"></i>
+                            </Button>
+                            <Modal
+                                show={this.state.showModal}
+                                closeCallback={this.toggleModal}
+                                customClass="custom_modal_class w-500"
+                            >
+                                <React.Fragment>
+
+                                    <li className='sweater-description'>{product.description}</li>
+
+                                </React.Fragment>
+                            </Modal>
+                        </p>
+                    </div>
+                </div>
             </div>
         )
     }

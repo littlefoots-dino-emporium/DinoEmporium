@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import authRequests from '../../firebaseRequests/auth';
 import getCustomerInfo from '../../helpers/data/customerRequest';
 import getOrderHistory from '../../helpers/data/orderHistoryRequest';
-//import PropTypes from 'prop-types';
 import OrderHistoryItem from '../OrderHistoryItem/OrderHistoryItem';
 import './OrderHistory.scss';
 
