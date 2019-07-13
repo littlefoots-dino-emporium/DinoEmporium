@@ -85,7 +85,7 @@ deleteOneProduct = (productId) => {
             <div>
             { customerProductItem } 
             </div>    
-            <div><button className="btn btn-info checkoutBtn" onClick={this.checkout}>Proceed to checkout</button></div>
+            <div><button className="btn checkoutBtn" onClick={this.checkout}>Proceed to checkout</button></div>
             </div>
             </div>
         )

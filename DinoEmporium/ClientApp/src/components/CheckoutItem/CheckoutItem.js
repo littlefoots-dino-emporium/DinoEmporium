@@ -60,12 +60,12 @@ class CheckoutItem extends React.Component {
             return (
                 <div class="checkout-item">
                     <div>
-                        <Input type="radio" name="radio1" value={payment} onClick={this.props.selectedCheckoutPayment} />
+                        <Input className="radioButton" type="radio" name="radio1" value={payment} onClick={this.props.selectedCheckoutPayment} />
                     </div>
                     <div>
-                        <h5>Name on card: {item.nameOnCard}</h5>
-                        <h5>Billing Address: {item.address}</h5>
-                        <h5><span class="payment-type">{paymentType()}</span> ending in {lastFour()}</h5>
+                        <h5 className="nameOnCard"><u>NAME ON CARD:</u> {item.nameOnCard}</h5>
+                        <h5 className="billingAddress"><u>BILLING ADDRESS:</u> {item.address}</h5>
+                        <h5 className="cardUsed"><span class="payment-type"><b>{paymentType()}</b></span> ENDING IN <b className="lastFour">{lastFour()}</b></h5>
                     </div>
                 </div>
             )

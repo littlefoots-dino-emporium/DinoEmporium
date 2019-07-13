@@ -92,14 +92,14 @@ const address = () => {
         return(
           <div class="checkout container">
               <div className="card all-in-cart">
-              <div><h1 className="cart">Checkout</h1>
+              <div><h1 className="cartOut">CHECKOUT</h1>
               <div class="shipping">
-                <h3>Shipping Information</h3>
+                <h3 className="shippingInfo">Shipping Information</h3>
                 <h4 class="shipping-item">Name: {customer.firstName} {customer.lastName}</h4>
                 <h4 class="shipping-item">Shipping address: <span class="address">{address()} {customer.city}, {customer.state} {customer.zip}</span></h4>
               </div>
               <hr></hr>
-              <h3>Payment Method</h3>
+              <h3 className="paymentMethodTitle">PAYMENT METHOD</h3>
               <div className="paymentMethod">
               {checkoutItem}
               </div>
@@ -109,8 +109,8 @@ const address = () => {
               </div>
               <h4 class="order-text">Order Total</h4>
                 <div>
-                <h5> ${this.state.price}</h5> 
-                <button class="btn btn-info checkout-button" onClick={this.addOrderToDatabase}>Place Your Order</button>
+                <h5 className="priceForCheckout"> ${this.state.price}</h5> 
+                <button class="btn checkout-button" onClick={this.addOrderToDatabase}>Place Your Order</button>
             </div>
               </div>
               </div>

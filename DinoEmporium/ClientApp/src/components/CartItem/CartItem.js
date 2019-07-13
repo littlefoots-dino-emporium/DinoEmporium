@@ -23,7 +23,7 @@ class CartItem extends React.Component {
                 <div className="product-description">
                     <h5 className="titleForProduct">{customerProduct.title}</h5>
                     <h5 className="price">${customerProduct.price}</h5> 
-                    <button className="btn-sm delete-button" id="deleteButton2" onClick={this.deleteProductEvent}><i class="fas fa-trash-restore">delete</i></button>
+                    <button className="btn-sm delete-button" id="deleteButtonCart" onClick={this.deleteProductEvent}><i class="fas fa-trash-restore">delete</i></button>
                 </div>
                 </div>
                 </div>
