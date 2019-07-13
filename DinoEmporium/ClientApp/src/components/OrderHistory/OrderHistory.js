@@ -36,6 +36,16 @@ export class OrderHistory extends Component {
       />
     ));
 
+    if ( orderHistory.length === 0) {
+      return (
+        <div className="container">
+        <div className="orderHistory">
+        <h1><b>Order History</b></h1>
+        <p>You have not made any orders yet!</p>
+      </div>
+      </div>
+      )
+    } else {
     return (
       <div className="container">
         <div className="orderHistory">
@@ -44,6 +54,7 @@ export class OrderHistory extends Component {
       </div>
       </div>
     )
+    }
   }
 }
 
