@@ -57,10 +57,10 @@ namespace DinoEmporium.Controllers.CustomerProductController
             return Ok(deleteCustomerProduct);
         }
 
-        [HttpDelete("deleteCustomerProduct/allProducts")]
-        public ActionResult DeleteAllCustomerProduct(CustomerProduct customerProduct)
+        [HttpDelete("deleteCart/{customerUid}")]
+        public ActionResult DeleteAllCustomerProduct(string customerUid)
         {
-            var deleteAllCustomerProduct = _customerProductRepository.DeleteAllCustomerProduct(customerProduct);
+            var deleteAllCustomerProduct = _customerProductRepository.DeleteAllCustomerProduct(customerUid);
             return Ok(deleteAllCustomerProduct);
         }
 

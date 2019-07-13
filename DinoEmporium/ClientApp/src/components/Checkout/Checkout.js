@@ -49,7 +49,7 @@ const orderInfo = {
   paymentInformationId: this.state.paymentId,
   customerId: customer.id
 }
-orderRequest.postOrderRequest(orderInfo);
+// orderRequest.postOrderRequest(orderInfo);
 customerProductRequest.deleteAllProduct();
 }
 

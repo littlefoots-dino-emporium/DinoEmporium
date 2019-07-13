@@ -16,7 +16,7 @@ const getCustomerProductsRequest = uid => new Promise((resolve, reject) => {
 
   const deleteSingleProduct = productId => axios.delete(`http://localhost:50319/api/customerProduct/deleteCustomerProduct/${productId}`);
 
-  const deleteAllProduct = () => axios.delete(`http://localhost:50319/api/customerProduct/deleteCustomerProduct/allProducts`);
+  const deleteAllProduct = () => axios.delete(`http://localhost:50319/api/customerProduct/deleteCart`);
 
 export default {
     postCustomerProductRequest,
